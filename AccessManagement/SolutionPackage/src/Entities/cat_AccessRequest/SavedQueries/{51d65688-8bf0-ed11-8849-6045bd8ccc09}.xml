@@ -16,7 +16,6 @@
           <cell name="cat_environmentname" width="151" />
           <cell name="cat_environmenturl" width="136" />
           <cell name="cat_securityrole" width="117" />
-          <cell name="statecode" width="100" />
           <cell name="statuscode" width="119" />
           <cell name="createdon" width="105" />
         </row>
@@ -33,7 +32,6 @@
           <attribute name="cat_environmentname" />
           <attribute name="cat_environmenturl" />
           <attribute name="cat_securityrole" />
-          <attribute name="statecode" />
           <attribute name="statuscode" />
           <attribute name="cat_accessrequestid" />
           <attribute name="createdon" />

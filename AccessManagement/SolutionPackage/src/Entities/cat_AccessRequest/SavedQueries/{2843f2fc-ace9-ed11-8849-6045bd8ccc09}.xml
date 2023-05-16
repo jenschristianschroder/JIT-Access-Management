@@ -61,6 +61,7 @@
           <attribute name="cat_user" />
           <attribute name="cat_accessprofile" />
           <attribute name="cat_accessrequestid" />
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

@@ -11,13 +11,13 @@
       <grid name="resultset" jump="cat_name" select="1" icon="1" preview="1">
         <row name="result" id="cat_accessrequestid">
           <cell name="cat_name" width="200" />
-          <cell name="createdon" width="105" />
           <cell name="cat_duration" width="100" />
           <cell name="cat_environmentid" width="129" />
           <cell name="cat_environmentname" width="151" />
           <cell name="cat_securityrole" width="117" />
           <cell name="cat_user" width="100" />
           <cell name="statuscode" width="119" />
+          <cell name="createdon" width="105" />
         </row>
       </grid>
     </layoutxml>
@@ -37,6 +37,7 @@
           <attribute name="cat_securityrole" />
           <attribute name="cat_user" />
           <attribute name="statuscode" />
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

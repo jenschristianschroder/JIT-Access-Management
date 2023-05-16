@@ -27,7 +27,6 @@
       <fetch version="1.0" mapping="logical">
         <entity name="cat_accessrequest">
           <attribute name="cat_name" />
-          <order attribute="cat_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -39,6 +38,7 @@
           <attribute name="statuscode" />
           <attribute name="createdon" />
           <attribute name="cat_accessrequestid" />
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
