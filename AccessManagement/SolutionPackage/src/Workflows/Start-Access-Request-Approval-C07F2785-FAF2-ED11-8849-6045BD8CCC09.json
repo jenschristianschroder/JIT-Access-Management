@@ -1,0 +1,781 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "christie_sharedcommondataserviceforapps_75b53"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedapprovals_7460d"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "f5900a4f-d367-45de-87bc-e78e3b2603e0"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "cat_accessrequest",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "(statecode eq 0 and statuscode eq 809060006)",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Access_Profile": {
+          "runAfter": {
+            "Get_a_row_by_ID_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5270d0db-86a2-4075-a56d-839be7bb132d"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessprofiles",
+              "recordId": "@triggerOutputs()?['body/_cat_accessprofile_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Access_Profile_Approval": {
+          "runAfter": {
+            "Condition_4": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cdf3548f-01e4-4b6d-85e4-41b64150a876"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessprofileapproverses",
+              "$filter": "_cat_accessprofile_value eq '@{outputs('Get_Access_Profile')?['body/cat_accessprofileid']}'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Start_and_wait_for_an_approval": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "bdb0933e-1f27-43db-995a-bba56d5055f8"
+              },
+              "type": "OpenApiConnectionWebhook",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_approvals",
+                  "operationId": "StartAndWaitForAnApproval",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+                },
+                "parameters": {
+                  "approvalType": "Basic",
+                  "WebhookApprovalCreationInput/title": "Access Request Approval Required",
+                  "WebhookApprovalCreationInput/assignedTo": "@{variables('approversUPN')};",
+                  "WebhookApprovalCreationInput/details": "**@{outputs('Get_a_row_by_ID_2')?['body/fullname']}** has requested **@{triggerOutputs()?['body/cat_securityrole']}** in **@{outputs('Get_Access_Profile')?['body/cat_environmentname']}** (@{outputs('Get_Access_Profile')?['body/cat_environmenturl']})\n\n@{variables('justificationPrefix')}@{triggerOutputs()?['body/cat_justification']}",
+                  "WebhookApprovalCreationInput/enableNotifications": true,
+                  "WebhookApprovalCreationInput/enableReassignment": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Condition_2": {
+              "actions": {
+                "List_Open_Access_Request_Activities_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "c9eb18ab-f4ad-430a-a753-9f77b8fd93d4"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cat_accessrequestactivities",
+                      "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Approvel Process started'"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Update_Access_Request_-_Approved": {
+                  "runAfter": {
+                    "Update_Access_Request_Activity_-_Approval_": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "52bfc1a6-2e15-41a9-85ec-73d3255e1f8d"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cat_accessrequests",
+                      "recordId": "@triggerOutputs()?['body/cat_accessrequestid']",
+                      "item/statecode": 0,
+                      "item/statuscode": 809060007
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Update_Access_Request_Activity_-_Approval_": {
+                  "runAfter": {
+                    "List_Open_Access_Request_Activities_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e9eed4f2-13bd-45af-b177-cb862536bec6"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cat_accessrequestactivities",
+                      "recordId": "@first(outputs('List_Open_Access_Request_Activities_2')?['body/value'])?['activityid']",
+                      "item/statecode": 1,
+                      "item/description": "Approval Outcome: @{outputs('Start_and_wait_for_an_approval')?['body/outcome']}",
+                      "item/statuscode": 2
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Start_and_wait_for_an_approval": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "List_Open_Access_Request_Activities_Approval": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "88aa79d7-442f-48f6-9c0e-3c37edaec6d9"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cat_accessrequestactivities",
+                        "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Approvel Process started'"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Update_a_row": {
+                    "runAfter": {
+                      "Update_a_row_3": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "f0744ace-3bb4-4a0e-b479-3390137c3dcf"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cat_accessrequests",
+                        "recordId": "@triggerOutputs()?['body/cat_accessrequestid']",
+                        "item/statecode": 1,
+                        "item/statuscode": 809060003
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Update_a_row_2": {
+                    "runAfter": {
+                      "List_Open_Access_Request_Activities_Approval": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "1205f92b-2df8-4c18-b0f4-84f997b0f404"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cat_accessrequestactivities",
+                        "recordId": "@first(outputs('List_Open_Access_Request_Activities_Approval')?['body/value'])?['activityid']",
+                        "item/statecode": 1,
+                        "item/description": "Approval Outcome: @{outputs('Start_and_wait_for_an_approval')?['body/outcome']}",
+                        "item/statuscode": 2
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "List_rows": {
+                    "runAfter": {
+                      "Update_a_row_2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "8fa16136-aea8-4cf2-8d63-4383d7929a03"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cat_accessrequestactivities",
+                        "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Created'"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Update_a_row_3": {
+                    "runAfter": {
+                      "List_rows": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "346fbdd2-056c-4438-8518-9421c105af99"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cat_accessrequestactivities",
+                        "recordId": "@first(outputs('List_rows')?['body/value'])?['activityid']",
+                        "item/statecode": 2,
+                        "item/statuscode": 3
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@outputs('Start_and_wait_for_an_approval')?['body/outcome']",
+                  "Approve"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "a8eba26a-031d-4bee-b2d8-570dddd7d2a1"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Start_and_wait_for_an_approval_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "bdb0933e-1f27-43db-995a-bba56d5055f8"
+                },
+                "type": "OpenApiConnectionWebhook",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_approvals",
+                    "operationId": "StartAndWaitForAnApproval",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+                  },
+                  "parameters": {
+                    "approvalType": "BasicAwaitAll",
+                    "WebhookApprovalCreationInput/title": "Access Request Approval Required",
+                    "WebhookApprovalCreationInput/assignedTo": "@{variables('approversUPN')};",
+                    "WebhookApprovalCreationInput/details": "**@{outputs('Get_a_row_by_ID_2')?['body/fullname']}** has requested **@{triggerOutputs()?['body/cat_securityrole']}** in **@{outputs('Get_Access_Profile')?['body/cat_environmentname']}** (@{outputs('Get_Access_Profile')?['body/cat_environmenturl']})\n\n@{variables('justificationPrefix')}@{triggerOutputs()?['body/cat_justification']}",
+                    "WebhookApprovalCreationInput/enableNotifications": true,
+                    "WebhookApprovalCreationInput/enableReassignment": true
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Condition_3": {
+                "actions": {
+                  "List_Open_Access_Request_Activities": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "c9eb18ab-f4ad-430a-a753-9f77b8fd93d4"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cat_accessrequestactivities",
+                        "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Approvel Process started'"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Update_Access_Request_-_Approved_2": {
+                    "runAfter": {
+                      "Update_Access_Request_Activity_-_Approval__2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "52bfc1a6-2e15-41a9-85ec-73d3255e1f8d"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cat_accessrequests",
+                        "recordId": "@triggerOutputs()?['body/cat_accessrequestid']",
+                        "item/statecode": 0,
+                        "item/statuscode": 809060007
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Update_Access_Request_Activity_-_Approval__2": {
+                    "runAfter": {
+                      "List_Open_Access_Request_Activities": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "e9eed4f2-13bd-45af-b177-cb862536bec6"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cat_accessrequestactivities",
+                        "recordId": "@first(outputs('List_Open_Access_Request_Activities')?['body/value'])?['activityid']",
+                        "item/statecode": 1,
+                        "item/description": "Approval Outcome: @{outputs('Start_and_wait_for_an_approval_2')?['body/outcome']}",
+                        "item/statuscode": 2
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {
+                  "Start_and_wait_for_an_approval_2": [
+                    "Succeeded"
+                  ]
+                },
+                "else": {
+                  "actions": {
+                    "List_Open_Access_Request_Activities_Approval_2": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "88aa79d7-442f-48f6-9c0e-3c37edaec6d9"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "ListRecords",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "cat_accessrequestactivities",
+                          "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Approvel Process started'"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Update_a_row_4": {
+                      "runAfter": {
+                        "Update_a_row_6": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "f0744ace-3bb4-4a0e-b479-3390137c3dcf"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "cat_accessrequests",
+                          "recordId": "@triggerOutputs()?['body/cat_accessrequestid']",
+                          "item/statecode": 1,
+                          "item/statuscode": 809060003
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Update_a_row_5": {
+                      "runAfter": {
+                        "List_Open_Access_Request_Activities_Approval_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "1205f92b-2df8-4c18-b0f4-84f997b0f404"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "cat_accessrequestactivities",
+                          "recordId": "@first(outputs('List_Open_Access_Request_Activities_Approval_2')?['body/value'])?['activityid']",
+                          "item/statecode": 1,
+                          "item/description": "Approval Outcome: @{outputs('Start_and_wait_for_an_approval_2')?['body/outcome']}",
+                          "item/statuscode": 2
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "List_rows_2": {
+                      "runAfter": {
+                        "Update_a_row_5": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "8fa16136-aea8-4cf2-8d63-4383d7929a03"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "ListRecords",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "cat_accessrequestactivities",
+                          "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Created'"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Update_a_row_6": {
+                      "runAfter": {
+                        "List_rows_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "346fbdd2-056c-4438-8518-9421c105af99"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "cat_accessrequestactivities",
+                          "recordId": "@first(outputs('List_rows_2')?['body/value'])?['activityid']",
+                          "item/statecode": 2,
+                          "item/statuscode": 3
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  }
+                },
+                "expression": {
+                  "equals": [
+                    "@outputs('Start_and_wait_for_an_approval_2')?['body/outcome']",
+                    "Approve"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "a8eba26a-031d-4bee-b2d8-570dddd7d2a1"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@first(outputs('Get_Access_Profile_Approval')?['body/value'])?['cat_approvaltype']",
+              809060000
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "588e54e8-b6b1-41e8-9c1c-5272dc9bde67"
+          },
+          "type": "If"
+        },
+        "List_Access_Request_Approvers": {
+          "runAfter": {
+            "Get_Access_Profile_Approval": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "202542d6-31b8-495c-a6a5-9ef47af676e8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessprofileapprovers_systemuserset",
+              "$filter": "cat_accessprofileapproversid eq '@{first(outputs('Get_Access_Profile_Approval')?['body/value'])?['cat_accessprofileapproversid']}'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_Access_Request_Approvers')?['body/value']",
+          "actions": {
+            "Get_a_row_by_ID": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "9ea65343-d146-4a31-afa8-ebc8536ef6ad"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@items('Apply_to_each')?['systemuserid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Append_to_approversUPN": {
+              "runAfter": {
+                "Get_a_row_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7e7585bd-bc7b-4ca5-a6fa-210a0f3f1d17"
+              },
+              "type": "AppendToStringVariable",
+              "inputs": {
+                "name": "approversUPN",
+                "value": "@{outputs('Get_a_row_by_ID')?['body/internalemailaddress']};"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Access_Request_Approvers": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2acb0c19-e066-4f5b-ba0b-ccd8baaf0640"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_approversUPN": {
+          "runAfter": {
+            "Initialize_hostEnvironmentUrl": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "eb1cd53b-38fc-439f-833d-87c6b5c05f59"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "approversUPN",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_hostEnvironmentUrl": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "205535c3-bc02-4213-b547-051e0cc49f33"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "hostEnvironmentUrl",
+                "type": "string",
+                "value": "@{workflow()}"
+              }
+            ]
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Initialize_approversUPN": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "92121e70-3d48-45c8-90f7-ab128c833855"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "justificationPrefix",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Condition_4": {
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a0d22449-11fe-4379-b116-365973f57bef"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "justificationPrefix",
+                "value": "Justification: "
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Access_Profile": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Access_Profile')?['body/cat_justificationrequired']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8bded4e1-f7bb-4dab-b6af-4f36240c2f9a"
+          },
+          "type": "If"
+        },
+        "Get_a_row_by_ID_2": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ce5e8488-b14f-485c-8617-7819e2147f2b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/_cat_user_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

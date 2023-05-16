@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<visualization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedqueryvisualizationid>{EEA89790-8CF0-ED11-8849-6045BD8CCC09}</savedqueryvisualizationid>
+  <datadescription>
+    <datadefinition>
+      <fetchcollection>
+        <fetch mapping="logical" aggregate="true">
+          <entity name="cat_accessrequest">
+            <attribute name="cat_accessprofile" aggregate="count" alias="_CRMAutoGen_aggregate_column_Num_13" />
+            <attribute name="cat_accessprofile" groupby="true" alias="_CRMAutoGen_groupby_column_Num_14" />
+            <attribute name="statuscode" groupby="true" alias="_CRMAutoGen_groupby_column_Num_15" />
+          </entity>
+        </fetch>
+      </fetchcollection>
+      <categorycollection>
+        <category alias="_CRMAutoGen_groupby_column_Num_14">
+          <measurecollection>
+            <measure alias="_CRMAutoGen_aggregate_column_Num_13" />
+          </measurecollection>
+        </category>
+      </categorycollection>
+    </datadefinition>
+  </datadescription>
+  <presentationdescription>
+    <Chart Palette="None" PaletteCustomColors="71,96,213; 230,28,153; 0,165,175; 178,124,0; 177,70,194; 0,155,81; 107,63,158; 52,135,199; 202,80,16; 104,153,32; 119,141,241; 238,95,183; 0,139,148; 215,116,64; 195,107,209; 87,129,27; 148,112,189; 58,150,221; 227,0,140; 208,98,40;">
+      <Series>
+        <Series ChartType="StackedColumn" Font="{0}, 14px" LabelForeColor="36, 36, 36" CustomProperties="PointWidth=0.75, MaxPixelPointWidth=40" />
+      </Series>
+      <ChartAreas>
+        <ChartArea BorderColor="White" BorderDashStyle="Solid">
+          <AxisY LabelAutoFitMinFontSize="8" TitleForeColor="36, 36, 36" TitleFont="{0}, 14px" LineColor="209, 209, 209" IntervalAutoMode="VariableCount">
+            <MajorGrid LineColor="240, 240, 240" />
+            <MajorTickMark LineColor="209, 209, 209" />
+            <LabelStyle Font="{0}, 14px" ForeColor="36, 36, 36" />
+          </AxisY>
+          <AxisX LabelAutoFitMinFontSize="8" TitleForeColor="36, 36, 36" TitleFont="{0}, 14px" LineColor="209, 209, 209" IntervalAutoMode="VariableCount">
+            <MajorTickMark LineColor="209, 209, 209" />
+            <MajorGrid LineColor="Transparent" />
+            <LabelStyle Font="{0}, 14px" ForeColor="36, 36, 36" />
+          </AxisX>
+        </ChartArea>
+      </ChartAreas>
+      <Titles>
+        <Title Alignment="TopLeft" DockingOffset="-3" Font="{0}, 14px" ForeColor="214, 214, 214" />
+      </Titles>
+      <Legends>
+        <Legend Alignment="Center" LegendStyle="Table" Docking="right" IsEquallySpacedItems="True" Font="{0}, 12px" ShadowColor="0, 0, 0, 0" ForeColor="36, 36, 36" />
+      </Legends>
+    </Chart>
+  </presentationdescription>
+  <isdefault>0</isdefault>
+  <LocalizedNames>
+    <LocalizedName description="All Access Requests" languagecode="1033" />
+  </LocalizedNames>
+  <IsCustomizable>1</IsCustomizable>
+  <IntroducedVersion>0.0.0.0</IntroducedVersion>
+  <CanBeDeleted>1</CanBeDeleted>
+</visualization>

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{bf3c59b9-a6f0-ed11-8849-6045bd8ccc09}</formid>
+    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="F931FFE2-B873-473F-8F95-9502F0AA3F5E" name="tab_1" showlabel="false" labelid="{765eb8ac-ced4-4f39-b7e6-800704232c08}">
+          <labels>
+            <label description="New Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="34%">
+              <sections>
+                <section id="0C655D4E-C6E3-424E-9AF5-71E72D30D12E" name="tab_1_column_1_section_1" columns="1" showlabel="false" showbar="false" IsUserDefined="0" labelwidth="130" labelid="{aa015cae-33ea-4149-8d74-6e22b0d1a937}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{6f1b618c-41ef-46ca-be98-1dddf29fac59}" locklevel="0" colspan="1" rowspan="1" labelid="{99f30688-8fd5-43fe-82a3-585549af8e81}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="cat_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1d05fa34-6222-4b0d-85d3-4e34e1281ac0}" locklevel="0" colspan="1" rowspan="1" labelid="{8f277889-6b8e-427a-9550-d796d33ae57c}">
+                        <labels>
+                          <label description="Access Profile" languagecode="1033" />
+                        </labels>
+                        <control id="cat_accessprofile" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cat_accessprofile" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{620dcb9a-71d4-47f1-adbf-06804e6814be}" locklevel="0" colspan="1" rowspan="1" labelid="{b6a11123-3797-42ce-b480-feb9f37a50dc}">
+                        <labels>
+                          <label description="User" languagecode="1033" />
+                        </labels>
+                        <control id="cat_user" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cat_user" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{70a57393-1895-463c-8fb1-491509aad590}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Notify User" languagecode="1033" />
+                        </labels>
+                        <control id="cat_notifyuser" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="cat_notifyuser" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0475fd05-1efc-44bf-bda9-4220cc87ef8c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Notification Channel" languagecode="1033" />
+                        </labels>
+                        <control id="cat_notificationchannel" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="cat_notificationchannel" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bfc97baf-6003-4be3-ad48-1f5b4fc07ab7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Security Role" languagecode="1033" />
+                        </labels>
+                        <control id="cat_securityrole" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_securityrole" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{98d16cdf-08b0-4009-98d9-8eb54f07779b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Duration" languagecode="1033" />
+                        </labels>
+                        <control id="cat_duration" classid="{AA987274-CE4E-4271-A803-66164311A958}" datafieldname="cat_duration" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="02DECBA0-3AE2-484D-A19F-C5353AF4F4F2" name="tab_1_column_2_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="true" labelid="{fd966db0-215b-43c5-b04b-598538cdc0c4}">
+                  <labels>
+                    <label description="Environment Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{77b4321e-e749-4e24-8a3a-beb5277020aa}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Environment Id" languagecode="1033" />
+                        </labels>
+                        <control id="cat_environmentid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_environmentid" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{541c519e-a1d0-4c23-b2b1-d1de3da62f56}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Environment Name" languagecode="1033" />
+                        </labels>
+                        <control id="cat_environmentname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_environmentname" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1c9fc0b1-1c46-4120-9cca-3e80ca03fc86}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Environment Unique Name" languagecode="1033" />
+                        </labels>
+                        <control id="cat_environmentuniquename" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_environmentuniquename" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d63f42e7-e9e5-479f-b4e5-cb0dc88764dd}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Environment Url" languagecode="1033" />
+                        </labels>
+                        <control id="cat_environmenturl" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_environmenturl" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="46FD66EA-B686-41D9-AAE0-C565BD78EC1F" name="tab_1_column_3_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{65588cdb-f7b1-4206-bc76-55a5b02ec1a3}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cat_accessrequestquickcreateformlibrary" libraryUniqueId="{d517e074-0ece-4ed8-9d13-900a667ea816}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cat_notifyuser">
+          <Handlers>
+            <Handler functionName="ShowHideControl.attributeOnChange" libraryName="cat_accessrequestquickcreateformlibrary" handlerUniqueId="{23247d90-0d4c-40fd-ac47-f2de7954d3ef}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Access Request quick create form" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

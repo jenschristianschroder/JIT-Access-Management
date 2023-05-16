@@ -1,0 +1,239 @@
+Screen1 As screen:
+
+    Container1 As groupContainer.manualLayoutContainer:
+        Height: =575
+        Width: =608
+        X: =718
+        Y: =40
+        ZIndex: =1
+
+        Label3 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =44
+            Text: =selectedAccessProfile.Name
+            Width: =420
+            X: =182
+            Y: =5
+            ZIndex: =1
+
+        Label3_1 As label:
+            Height: =44
+            Text: =selectedAccessProfile.'Environment Name'
+            Width: =420
+            X: =182
+            Y: =48
+            ZIndex: =2
+
+        Label3_2 As label:
+            Height: =44
+            Text: =selectedAccessProfile.'Environment Url'
+            Width: =420
+            X: =182
+            Y: =91
+            ZIndex: =3
+
+        Label3_3 As label:
+            Height: =44
+            Text: =selectedAccessProfile.'Environment Id'
+            Width: =420
+            X: =183
+            Y: =132
+            ZIndex: =4
+
+        Button1 As button:
+            DisplayMode: =If(selectedAccessProfile.'Justification Required' && Len(TextInput1.Text) < 10, DisplayMode.Disabled, DisplayMode.Edit)
+            OnSelect: |-
+                =Patch('Access Requests', {
+                    Name: selectedAccessProfile.Name, 
+                    'Environment Id': selectedAccessProfile.'Environment Id',
+                    'Environment Name': selectedAccessProfile.'Environment Name',
+                    'Environment Url': selectedAccessProfile.'Environment Url',
+                    'Environment Unique Name': selectedAccessProfile.'Environment Unique Name',
+                    'Security Role': selectedAccessProfile.'Security Role',
+                    'Approval Required': If(selectedAccessProfile.'Approval Required' = 'Approval Required (Access Profiles)'.Yes, 'Approval Required (Access Requests)'.Yes),
+                    'Access Profile':selectedAccessProfile, 
+                    User: LookUp(Users, 'Primary Email' = User().Email), 
+                    'Notify User': Not(IsEmpty(ComboBox1.SelectedItems)), 
+                    'Notification Channel': ComboBox1.SelectedItems,
+                    Justification: TextInput1.Text,
+                    'Status Reason': 'Status Reason (Access Requests)'.Requested
+                });
+            Text: ="Request Access"
+            Width: =218
+            X: =384
+            Y: =498
+            ZIndex: =6
+
+        Label3_5 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =44
+            Text: =selectedAccessProfile.'Security Role'
+            Width: =420
+            X: =182
+            Y: =177
+            ZIndex: =8
+
+        ComboBox1 As combobox:
+            DisplayFields: =["Value"]
+            InputTextPlaceholder: =
+            IsSearchable: =false
+            Items: =Choices('Notification Channel (Access Requests)')
+            NoSelectionText: ="No notification"
+            SearchFields: =["Value"]
+            SearchItems: =[]
+            Width: =204
+            X: =150
+            Y: =498
+            ZIndex: =9
+
+        HtmlText3 As htmlViewer:
+            Height: =95
+            HtmlText: =selectedAccessProfile.Description
+            Width: =590
+            X: =12
+            Y: =266
+            ZIndex: =10
+
+        TextInput1 As text:
+            Default: =""
+            HintText: ="Justification for access (min 10 characters)"
+            Visible: =selectedAccessProfile.'Justification Required'
+            Width: =452
+            X: =150
+            Y: =438
+            ZIndex: =11
+
+        Label1 As label:
+            Text: |-
+                ="Notify me:"
+            X: =12
+            Y: =498
+            ZIndex: =12
+
+        Label3_4 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =44
+            Text: |-
+                ="Profile: "
+            Width: =170
+            X: =12
+            Y: =4
+            ZIndex: =13
+
+        Label3_6 As label:
+            Height: =44
+            Text: |-
+                ="Environment name: "
+            Width: =170
+            X: =13
+            Y: =49
+            ZIndex: =14
+
+        Label3_7 As label:
+            Height: =44
+            Text: |-
+                ="Environment Url: "
+            Width: =170
+            X: =13
+            Y: =91
+            ZIndex: =15
+
+        Label3_8 As label:
+            Height: =44
+            Text: |-
+                ="Environment Id: "
+            Width: =170
+            X: =13
+            Y: =135
+            ZIndex: =16
+
+        Label3_9 As label:
+            Height: =44
+            Text: |-
+                ="Security Role: "
+            Width: =170
+            X: =13
+            Y: =179
+            ZIndex: =17
+
+        Label3_10 As label:
+            Height: =44
+            Text: |-
+                ="Description: "
+            Width: =170
+            X: =12
+            Y: =221
+            ZIndex: =18
+
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        DelayItemLoading: =true
+        Height: =696
+        Items: ='Access Profiles'
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |-
+            =UpdateContext({ selectedAccessProfile: ThisItem });
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        X: =40
+        Y: =40
+        ZIndex: =2
+
+        NextArrow1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator1 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        lblAccessProfileName As label:
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Name
+            Width: =421
+            ZIndex: =6
+
+        lblApprovalRequired As label:
+            Align: =Align.Center
+            Fill: =RGBA(209, 232, 178, 1)
+            OnSelect: =Select(Parent)
+            Text: ="Approval"
+            Visible: =ThisItem.'Approval Required'
+            Width: =If(ThisItem.'Approval Required', 108, 0)
+            X: =If(ThisItem.'Approval Required', 525, Parent.Width)
+            ZIndex: =8
+
+        HtmlText2 As htmlViewer:
+            Height: =119
+            HtmlText: =ThisItem.Description
+            OnSelect: =Select(Parent)
+            Width: =575
+            Y: =40
+            ZIndex: =9
+
+        lblApprovalRequired_1 As label:
+            Align: =Align.Center
+            Fill: =RGBA(204, 231, 246, 1)
+            OnSelect: =Select(Parent)
+            Text: ="Justification"
+            Visible: =ThisItem.'Justification Required'
+            Width: =108
+            X: =lblApprovalRequired.X - Self.Width - 10
+            ZIndex: =10
+

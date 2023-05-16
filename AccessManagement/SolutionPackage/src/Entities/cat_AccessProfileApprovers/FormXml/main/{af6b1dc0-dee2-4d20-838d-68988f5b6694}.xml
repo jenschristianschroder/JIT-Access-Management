@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{af6b1dc0-dee2-4d20-838d-68988f5b6694}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{18fcfb96-6ac7-4b75-9d11-c62d2ee82257}" IsUserDefined="1">
+          <labels>
+            <label description="Generelt" languagecode="1030" />
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{93096e8d-6c41-4b4f-82cd-9f9f1d8bb0e3}" columns="11">
+                  <labels>
+                    <label description="Generelt" languagecode="1030" />
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e9245ef6-4c11-4b62-b4d2-1d4316c36ce7}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="cat_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cat_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9c325fb5-71cc-4f16-9fa7-e686f02d39ee}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Access Profile" languagecode="1033" />
+                        </labels>
+                        <control id="cat_accessprofile" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cat_accessprofile" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{3bb101e9-dfe6-4496-827a-e6b1f2f0cced}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1e015687-b026-4da8-bc08-b6780019fe91}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Approval Type" languagecode="1033" />
+                        </labels>
+                        <control id="cat_approvaltype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cat_approvaltype" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{1940f26e-cab6-4a25-ad48-8bdc286dd805}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{31ae0d9d-1d1a-4e8e-bd53-405195b30a51}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{88f37df7-55b4-4905-8de1-55508538ae2b}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="New QV control 1684134712180" languagecode="1033" />
+                        </labels>
+                        <control id="QuickviewControl1684134712180" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="cat_accessprofile">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="cat_accessprofile"&gt;c0fc3a6e-e5ef-ed11-8849-6045bd8ccc09&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="c961aa71-e932-4694-bebd-6868e5086f7c" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{a9fa4cbf-f2fa-45d9-b6d6-4a65d261a202}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Approvers" languagecode="1033" />
+                          <label description="Brugere" languagecode="1030" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>systemuser</TargetEntityType>
+                            <ViewId>{00000000-0000-0000-00AA-000010001019}</ViewId>
+                            <ViewIds>{00000000-0000-0000-00AA-000010001019}</ViewIds>
+                            <RelationshipName>cat_AccessProfileApprovers_SystemUser_Sys</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{b9620d09-0851-4cad-8412-aa43734140e5}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{61c73d85-c491-434f-ba3b-ee22924419eb}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{28420bda-296c-4f15-8424-9e5f40cc013d}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0fb0045a-56c5-413c-9b26-4235eabb037e}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell locklevel="0" id="{cd87fe90-e42c-4e43-a8d1-90df96b2f487}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d3ce18f7-dfc3-4c91-b097-f656accbf272}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Created By" languagecode="1033" />
+                <label description="Oprettet af" languagecode="1030" />
+              </labels>
+              <control id="header_createdby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdby" disabled="false" />
+            </cell>
+            <cell id="{bba01e06-413f-4921-8bc3-35243331854a}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Created On" languagecode="1033" />
+                <label description="Oprettet" languagecode="1030" />
+              </labels>
+              <control id="header_createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+            </cell>
+            <cell id="{8a257bc6-1265-4964-ae96-9950bf9bbbe7}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Modified By" languagecode="1033" />
+                <label description="Ændret af" languagecode="1030" />
+              </labels>
+              <control id="header_modifiedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="modifiedby" disabled="false" />
+            </cell>
+            <cell id="{c204164a-eade-4711-8f28-1b4daa4f2729}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Modified On" languagecode="1033" />
+                <label description="Ændret" languagecode="1030" />
+              </labels>
+              <control id="header_modifiedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="modifiedon" disabled="false" />
+            </cell>
+            <cell id="{45b19a8a-fe56-4070-b990-2f6d84945c29}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+                <label description="Ejer" languagecode="1030" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{4a6cf753-3e0d-4f9e-9af3-687c88816eea}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{6b856273-10a3-4ca2-a73b-ba7d05cae32b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{34888744-4e7c-485d-8e32-f74726fd0c4a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d20c9608-da77-4a8e-a1fe-d31d98970bf9}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

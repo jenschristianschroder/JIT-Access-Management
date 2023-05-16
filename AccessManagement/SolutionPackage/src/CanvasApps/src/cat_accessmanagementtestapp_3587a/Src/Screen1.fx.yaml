@@ -1,0 +1,35 @@
+Screen1 As screen:
+
+    ComboBox1 As combobox:
+        DisplayFields: =["fullname"]
+        Items: =Users
+        SearchFields: =["fullname"]
+        SearchItems: =Search(Users,ComboBox1.SearchText,"fullname")
+        SelectMultiple: =false
+        X: =40
+        Y: =40
+        ZIndex: =1
+
+    ComboBox2 As combobox:
+        DisplayFields: =["name"]
+        Items: ='Security Roles'
+        SearchFields: =["name"]
+        SearchItems: =Search('Security Roles',ComboBox2.SearchText,"name")
+        X: =436
+        Y: =40
+        ZIndex: =2
+
+    Button1 As button:
+        OnSelect: =Relate(ComboBox1.Selected.'Security Roles (systemuserroles_association)', ComboBox2.Selected);
+        Text: ="Grant"
+        X: =834
+        Y: =40
+        ZIndex: =3
+
+    Button1_1 As button:
+        OnSelect: =Unrelate(ComboBox1.Selected.'Security Roles (systemuserroles_association)', ComboBox2.Selected);
+        Text: ="Revoke"
+        X: =1030
+        Y: =40
+        ZIndex: =4
+

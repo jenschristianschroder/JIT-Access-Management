@@ -1,0 +1,15 @@
+var ShowHideControl = window.ShowHideControl || {};
+(function () {
+    // Code to run in the column OnChange event 
+    this.attributeOnChange = function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        // Automatically set some column values if the account name contains "Contoso"
+        var notifyUser = formContext.getAttribute("cat_notifyuser").getValue();
+        if (notifyUser == true) {
+            formContext.getControl("cat_notificationchannel").setVisible(true);
+        } else {
+            formContext.getControl("cat_notificationchannel").setVisible(false);
+        }
+    }
+}).call(ShowHideControl);

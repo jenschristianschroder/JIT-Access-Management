@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{2843f2fc-ace9-ed11-8849-6045bd8ccc09}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cat_name" select="1" icon="1" preview="1">
+        <row name="result" id="cat_accessrequestid">
+          <cell name="cat_name" width="200" />
+          <cell name="cat_user" width="100" />
+          <cell name="cat_accessprofile" width="122" />
+          <cell name="createdon" width="105" />
+          <cell name="createdby" width="104" />
+          <cell name="modifiedon" width="113" />
+          <cell name="modifiedby" width="112" />
+        </row>
+        <controlDescriptions>
+          <controlDescription>
+            <customControl id="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" formFactor="0">
+              <parameters />
+            </customControl>
+            <customControl name="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" formFactor="1">
+              <parameters>
+                <data-set name="Calendar">
+                  <ViewId>00000000-0000-0000-0000-000000000000</ViewId>
+                  <StartDate>createdon</StartDate>
+                  <Description>cat_user</Description>
+                  <EndDate>modifiedon</EndDate>
+                  <Color>statuscode</Color>
+                </data-set>
+              </parameters>
+            </customControl>
+            <customControl name="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" formFactor="2">
+              <parameters>
+                <data-set name="Calendar">
+                  <ViewId>00000000-0000-0000-0000-000000000000</ViewId>
+                  <StartDate>createdon</StartDate>
+                  <Description>cat_user</Description>
+                  <EndDate>modifiedon</EndDate>
+                  <Color>statuscode</Color>
+                </data-set>
+              </parameters>
+            </customControl>
+          </controlDescription>
+        </controlDescriptions>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="cat_accessrequest">
+          <attribute name="cat_name" />
+          <attribute name="createdon" />
+          <attribute name="modifiedon" />
+          <attribute name="createdby" />
+          <attribute name="modifiedby" />
+          <attribute name="cat_user" />
+          <attribute name="cat_accessprofile" />
+          <attribute name="cat_accessrequestid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Calendar View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
