@@ -1,0 +1,27 @@
+"'Revoke Access_3' As CommandComponent":
+    AutoSave: =true
+    DataSource: ='Access Requests'
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =0
+    Icon: =SampleImage
+    OnSelect: |-
+        =If(CountRows(Self.Selected.AllItems) > 0, 
+            ForAll(Self.Selected.AllItems, 
+                If(ThisRecord.'Status Reason' = 'Status Reason (Access Requests)'.Granted,
+                    Patch('Access Requests', ThisRecord, {'Status Reason': 'Status Reason (Access Requests)'.Revoke })
+                )
+            ),
+            Notify("Please select Access Requests to be revoked", NotificationType.Warning, 3000);
+        )
+    Selected: |-
+        ={ Item: {}, AllItems:[], Unsaved: false, State: SelectedState.Edit }
+    SelectionMax: =100
+    SelectionMin: =100
+    Title: = 
+    Tooltip: = 
+    Visible: =true
+    Width: =0
+    X: =0
+    Y: =0
+    ZIndex: =1
+

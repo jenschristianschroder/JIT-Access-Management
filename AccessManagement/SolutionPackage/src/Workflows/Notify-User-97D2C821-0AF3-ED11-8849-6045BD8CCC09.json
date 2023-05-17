@@ -1,0 +1,237 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_office365_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedoffice365_07f2f"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_MicrosoftDataverseAccessManagement"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_teams_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedteams_fdf5c"
+        },
+        "api": {
+          "name": "shared_teams"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "76c1551f-ee33-4137-910b-e68c4644f459"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "cat_accessrequest",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "cat_notifyuser eq true and (statuscode eq 809060001)",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Compose": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "eb0954c5-215d-46fc-b2ba-789321434143"
+          },
+          "type": "Compose",
+          "inputs": "@split(triggerOutputs()?['body/cat_notificationchannel'], ',')"
+        },
+        "Condition": {
+          "actions": {
+            "Send_an_email_(V2)": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2b14439f-8998-4302-9343-f2d01c3f49c8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365_1",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@outputs('Get_a_row_by_ID')?['body/internalemailaddress']",
+                  "emailMessage/Subject": "Access Granted",
+                  "emailMessage/Body": "<p>Hi @{outputs('Get_a_row_by_ID')?['body/firstname']},<br>\n<br>\nYou Access Request for <strong></strong><strong>@{triggerOutputs()?['body/cat_securityrole']}</strong> in <strong></strong><strong>@{triggerOutputs()?['body/cat_environmentname']}</strong><strong> </strong>(<a href=\"@{triggerOutputs()?['body/cat_environmenturl']}\">@{triggerOutputs()?['body/cat_environmenturl']}</a>) has been granted.<br>\n<br>\n<strong><a href=\"https://make.powerapps.com/environments/@{triggerOutputs()?['body/cat_environmentid']}/home\">Go to Power Apps Studio</a></strong><br>\n<br>\nAccess will be <strong>revoked in </strong><strong>@{triggerOutputs()?['body/cat_duration']}</strong><strong> minutes</strong><br>\n<br>\n</p>",
+                  "emailMessage/Importance": "Normal"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@variables('notifyViaEmail')",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "14a8d1e9-53d1-460c-9615-f06751808176"
+          },
+          "type": "If"
+        },
+        "Get_a_row_by_ID": {
+          "runAfter": {
+            "Initialize_notifyViaTeams_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a09ded4e-df43-47a6-92ec-3e8d353bf638"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/_cat_user_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose_2": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "93925aeb-0c2f-40e9-9a50-f3ec7defb79f"
+          },
+          "type": "Compose",
+          "inputs": "@contains(split(triggerOutputs()?['body/cat_notificationchannel'], ','), '809060000')"
+        },
+        "Initialize_notifyViaEmail_variable": {
+          "runAfter": {
+            "Compose_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e7aeb15c-0169-439b-bade-d89dd8019fba"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "notifyViaEmail",
+                "type": "boolean",
+                "value": "@contains(split(triggerOutputs()?['body/cat_notificationchannel'], ','), '809060000')"
+              }
+            ]
+          }
+        },
+        "Initialize_notifyViaTeams_variable": {
+          "runAfter": {
+            "Initialize_notifyViaEmail_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "723e50b6-c482-4644-bd21-bc6eb98540fd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "notifyViaTeams",
+                "type": "boolean",
+                "value": "@contains(split(triggerOutputs()?['body/cat_notificationchannel'], ','), '809060001')"
+              }
+            ]
+          }
+        },
+        "Condition_2": {
+          "actions": {
+            "Post_message_in_a_chat_or_channel": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "38c458a2-3b46-4171-97ba-abe91ebcb555"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_teams_1",
+                  "operationId": "PostMessageToConversation",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams"
+                },
+                "parameters": {
+                  "poster": "Flow bot",
+                  "location": "Chat with Flow bot",
+                  "body/recipient": "@{outputs('Get_a_row_by_ID')?['body/internalemailaddress']};",
+                  "body/messageBody": "<p>Hi @{outputs('Get_a_row_by_ID')?['body/firstname']},<br>\n<br>\nYou Access Request for <strong></strong><strong>@{triggerOutputs()?['body/cat_securityrole']}</strong> in <strong></strong><strong>@{triggerOutputs()?['body/cat_environmentname']}</strong><strong> </strong>(<a href=\"@{triggerOutputs()?['body/cat_environmenturl']}\">@{triggerOutputs()?['body/cat_environmenturl']}</a>) has been granted.<br>\n<br>\n<strong><a href=\"https://make.powerapps.com/environments/@{triggerOutputs()?['body/cat_environmentid']}/home\">Go to Power Apps Studio</a></strong><br>\n<br>\nAccess will be <strong>revoked in </strong><strong>@{triggerOutputs()?['body/cat_duration']}</strong><strong> minutes</strong><br>\n<br>\n</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Condition": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@variables('notifyViaTeams')",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f3d8a5de-54b2-477f-94ef-b21273227b29"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
