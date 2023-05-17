@@ -25,7 +25,7 @@
           <IsCustomField>1</IsCustomField>
           <IsAuditEnabled>0</IsAuditEnabled>
           <IsSecured>0</IsSecured>
-          <IntroducedVersion>0.0.0.0</IntroducedVersion>
+          <IntroducedVersion>0.0.0.1</IntroducedVersion>
           <IsCustomizable>1</IsCustomizable>
           <IsRenameable>1</IsRenameable>
           <CanModifySearchSettings>1</CanModifySearchSettings>
@@ -86,7 +86,6 @@
           </displaynames>
           <Descriptions>
             <Description description="Unique identifier for entity instances" languagecode="1033" />
-            <Description description="Entydigt id for objektforekomster" languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="cat_ApprovalType">
@@ -102,7 +101,7 @@
           <IsCustomField>1</IsCustomField>
           <IsAuditEnabled>1</IsAuditEnabled>
           <IsSecured>0</IsSecured>
-          <IntroducedVersion>0.0.0.0</IntroducedVersion>
+          <IntroducedVersion>0.0.0.1</IntroducedVersion>
           <IsCustomizable>1</IsCustomizable>
           <IsRenameable>1</IsRenameable>
           <CanModifySearchSettings>1</CanModifySearchSettings>
@@ -122,7 +121,7 @@
           <AppDefaultValue>809060000</AppDefaultValue>
           <optionset Name="cat_accessprofileapprovers_cat_approvaltype">
             <OptionSetType>picklist</OptionSetType>
-            <IntroducedVersion>0.0.0.0</IntroducedVersion>
+            <IntroducedVersion>0.0.0.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <ExternalTypeName></ExternalTypeName>
             <displaynames>
@@ -231,11 +230,9 @@
           <LookupTypes />
           <displaynames>
             <displayname description="Created By" languagecode="1033" />
-            <displayname description="Oprettet af" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Unique identifier of the user who created the record." languagecode="1033" />
-            <Description description="Entydigt id for den bruger, der oprettede posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="CreatedOn">
@@ -273,11 +270,9 @@
           <Behavior>1</Behavior>
           <displaynames>
             <displayname description="Created On" languagecode="1033" />
-            <displayname description="Oprettet" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Date and time when the record was created." languagecode="1033" />
-            <Description description="Dato og klokkeslæt for oprettelse af posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="CreatedOnBehalfBy">
@@ -314,11 +309,9 @@
           <LookupTypes />
           <displaynames>
             <displayname description="Created By (Delegate)" languagecode="1033" />
-            <displayname description="Oprettet af (stedfortræder)" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Unique identifier of the delegate user who created the record." languagecode="1033" />
-            <Description description="Entydigt id for den stedfortræderbruger, der oprettede posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="ImportSequenceNumber">
@@ -356,11 +349,9 @@
           <MaxValue>2147483647</MaxValue>
           <displaynames>
             <displayname description="Import Sequence Number" languagecode="1033" />
-            <displayname description="Importsekvensnummer" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Sequence number of the import that created this record." languagecode="1033" />
-            <Description description="Sekvensnummer for den import, der oprettede denne post." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="ModifiedBy">
@@ -397,11 +388,9 @@
           <LookupTypes />
           <displaynames>
             <displayname description="Modified By" languagecode="1033" />
-            <displayname description="Ændret af" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Unique identifier of the user who modified the record." languagecode="1033" />
-            <Description description="Entydigt id for den bruger, der ændrede posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="ModifiedOn">
@@ -439,11 +428,9 @@
           <Behavior>1</Behavior>
           <displaynames>
             <displayname description="Modified On" languagecode="1033" />
-            <displayname description="Ændret" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Date and time when the record was modified." languagecode="1033" />
-            <Description description="Dato og klokkeslæt for ændring af posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="ModifiedOnBehalfBy">
@@ -480,11 +467,9 @@
           <LookupTypes />
           <displaynames>
             <displayname description="Modified By (Delegate)" languagecode="1033" />
-            <displayname description="Ændret af (stedfortræder)" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Unique identifier of the delegate user who modified the record." languagecode="1033" />
-            <Description description="Entydigt id for den stedfortræderbruger, der ændrede posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="OverriddenCreatedOn">
@@ -522,11 +507,9 @@
           <Behavior>1</Behavior>
           <displaynames>
             <displayname description="Record Created On" languagecode="1033" />
-            <displayname description="Posten blev oprettet den" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Date and time that the record was migrated." languagecode="1033" />
-            <Description description="Dato og klokkeslæt for overførsel af posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="OwnerId">
@@ -566,11 +549,9 @@
           </LookupTypes>
           <displaynames>
             <displayname description="Owner" languagecode="1033" />
-            <displayname description="Ejer" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Owner Id" languagecode="1033" />
-            <Description description="Ejer-id" languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="OwningBusinessUnit">
@@ -607,11 +588,9 @@
           <LookupTypes />
           <displaynames>
             <displayname description="Owning Business Unit" languagecode="1033" />
-            <displayname description="Ejende afdeling" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Unique identifier for the business unit that owns the record" languagecode="1033" />
-            <Description description="Entydigt id for den afdeling, der ejer posten" languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="OwningTeam">
@@ -648,11 +627,9 @@
           <LookupTypes />
           <displaynames>
             <displayname description="Owning Team" languagecode="1033" />
-            <displayname description="Ejende team" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Unique identifier for the team that owns the record." languagecode="1033" />
-            <Description description="Entydigt id for det team, der ejer posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="OwningUser">
@@ -689,11 +666,9 @@
           <LookupTypes />
           <displaynames>
             <displayname description="Owning User" languagecode="1033" />
-            <displayname description="Ejende bruger" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Unique identifier for the user that owns the record." languagecode="1033" />
-            <Description description="Entydigt id for den bruger, der ejer posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="statecode">
@@ -735,19 +710,16 @@
             </displaynames>
             <Descriptions>
               <Description description="Status of the Access Profile Approvers" languagecode="1033" />
-              <Description description="Status for Access Profile Approvers" languagecode="1030" />
             </Descriptions>
             <states>
               <state value="0" defaultstatus="1" invariantname="Active">
                 <labels>
                   <label description="Active" languagecode="1033" />
-                  <label description="Aktiv" languagecode="1030" />
                 </labels>
               </state>
               <state value="1" defaultstatus="2" invariantname="Inactive">
                 <labels>
                   <label description="Inactive" languagecode="1033" />
-                  <label description="Inaktiv" languagecode="1030" />
                 </labels>
               </state>
             </states>
@@ -757,7 +729,6 @@
           </displaynames>
           <Descriptions>
             <Description description="Status of the Access Profile Approvers" languagecode="1033" />
-            <Description description="Status for Access Profile Approvers" languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="statuscode">
@@ -796,34 +767,28 @@
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Status Reason" languagecode="1033" />
-              <displayname description="Statusårsag" languagecode="1030" />
             </displaynames>
             <Descriptions>
               <Description description="Reason for the status of the Access Profile Approvers" languagecode="1033" />
-              <Description description="Årsag til statussen for Access Profile Approvers" languagecode="1030" />
             </Descriptions>
             <statuses>
               <status value="1" state="0">
                 <labels>
                   <label description="Active" languagecode="1033" />
-                  <label description="Aktiv" languagecode="1030" />
                 </labels>
               </status>
               <status value="2" state="1">
                 <labels>
                   <label description="Inactive" languagecode="1033" />
-                  <label description="Inaktiv" languagecode="1030" />
                 </labels>
               </status>
             </statuses>
           </optionset>
           <displaynames>
             <displayname description="Status Reason" languagecode="1033" />
-            <displayname description="Statusårsag" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Reason for the status of the Access Profile Approvers" languagecode="1033" />
-            <Description description="Årsag til statussen for Access Profile Approvers" languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="TimeZoneRuleVersionNumber">
@@ -860,11 +825,9 @@
           <MaxValue>2147483647</MaxValue>
           <displaynames>
             <displayname description="Time Zone Rule Version Number" languagecode="1033" />
-            <displayname description="Versionsnummer for tidszoneregel" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="For internal use only." languagecode="1033" />
-            <Description description="Kun til intern brug." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="UTCConversionTimeZoneCode">
@@ -901,11 +864,9 @@
           <MaxValue>2147483647</MaxValue>
           <displaynames>
             <displayname description="UTC Conversion Time Zone Code" languagecode="1033" />
-            <displayname description="Tidszonekode for UTC-konvertering" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Time zone code that was in use when the record was created." languagecode="1033" />
-            <Description description="Den tidszonekode, der var i brug ved oprettelse af posten." languagecode="1030" />
           </Descriptions>
         </attribute>
       </attributes>

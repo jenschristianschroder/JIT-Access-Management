@@ -3,7 +3,7 @@
   <EntityRelationship Name="cat_cat_accessprofileapprovers_AccessProfile_">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessProfileApprovers</ReferencingEntityName>
     <ReferencedEntityName>cat_AccessProfile</ReferencedEntityName>

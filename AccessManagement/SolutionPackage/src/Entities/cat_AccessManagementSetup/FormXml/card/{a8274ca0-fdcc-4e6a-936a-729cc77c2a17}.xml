@@ -16,7 +16,6 @@
               <sections>
                 <section name="ColorStrip" showlabel="false" showbar="false" columns="1" IsUserDefined="0" id="{0a621d7f-35cf-400f-b511-8bac948a9881}">
                   <labels>
-                    <label description="Farvestribe" languagecode="1030" />
                     <label description="ColorStrip" languagecode="1033" />
                   </labels>
                 </section>
@@ -26,7 +25,6 @@
               <sections>
                 <section name="CardHeader" showlabel="false" showbar="false" columns="111" id="{1d45abc3-e719-4a28-a853-ebe801e0b198}" IsUserDefined="0">
                   <labels>
-                    <label description="Sidehoved" languagecode="1030" />
                     <label description="Header" languagecode="1033" />
                   </labels>
                   <rows>
@@ -52,7 +50,6 @@
                 </section>
                 <section name="CardDetails" showlabel="false" showbar="false" columns="1" id="{4750051c-cf37-43b3-b84c-9c45e1c9ef00}" IsUserDefined="0">
                   <labels>
-                    <label description="Detaljer" languagecode="1030" />
                     <label description="Details" languagecode="1033" />
                   </labels>
                   <rows>
@@ -68,7 +65,6 @@
                 </section>
                 <section name="CardFooter" showlabel="false" columns="1111" showbar="false" id="{27a99015-48b6-4b7c-9592-65ddce79f1cb}" IsUserDefined="0">
                   <labels>
-                    <label description="Sidefod" languagecode="1030" />
                     <label description="Footer" languagecode="1033" />
                   </labels>
                   <rows>

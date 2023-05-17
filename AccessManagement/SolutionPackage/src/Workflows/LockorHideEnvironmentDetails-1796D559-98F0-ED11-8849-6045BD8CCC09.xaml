@@ -72,7 +72,7 @@
                     <Sequence DisplayName="SetDisplayModeStep7: Lock Environment Url">
                       <mcwc:SetDisplayMode ControlId="cat_environmenturl" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="cat_accessprofile" IsReadOnly="True" />
                     </Sequence>
-                    <Sequence DisplayName="SetDisplayModeStep_SetDisplayModeStep7_9: Lock Environment Resource Id">
+                    <Sequence DisplayName="SetDisplayModeStep9: Lock Environment Resource Id">
                       <mcwc:SetDisplayMode ControlId="cat_environmentresourceid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="cat_accessprofile" IsReadOnly="True" />
                     </Sequence>
                   </sco:Collection>
@@ -85,7 +85,7 @@
           <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
             <mxswa:ActivityReference.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
-              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "true" }]</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "True" }]</InArgument>
               <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
                 <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
               </InArgument>
@@ -110,7 +110,7 @@
                     <Sequence DisplayName="SetVisibilityStep3: Hide Environment Url">
                       <mcwc:SetVisibility ControlId="cat_environmenturl" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="cat_accessprofile" IsVisible="False" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep3_8: Hide Environment Resource Id">
+                    <Sequence DisplayName="SetVisibilityStep8: Hide Environment Resource Id">
                       <mcwc:SetVisibility ControlId="cat_environmentresourceid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="cat_accessprofile" IsVisible="False" />
                     </Sequence>
                   </sco:Collection>

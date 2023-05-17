@@ -29,6 +29,7 @@
       "cat_environmentresourceid": "Environment Resource Id",
       "cat_environmentuniquename": "Environment Unique Name",
       "cat_environmenturl": "Environment Url",
+      "cat_justificationrequired": "Justification Required",
       "cat_name": "Name",
       "cat_securityrole": "Security Role",
       "createdby": "Created By",
@@ -78,6 +79,26 @@
     },
     "OptionSetTypeKey": "BooleanType",
     "RelatedColumnInvariantName": "cat_approvalrequired",
+    "RelatedEntityName": "Access Profiles",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Justification Required (Access Profiles)",
+    "Name": "cat_accessprofile_cat_justificationrequired",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cat_justificationrequired",
+        "OptionSetReferenceEntityName": "Access Profiles"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "cat_justificationrequired",
     "RelatedEntityName": "Access Profiles",
     "Type": "OptionSetInfo"
   },

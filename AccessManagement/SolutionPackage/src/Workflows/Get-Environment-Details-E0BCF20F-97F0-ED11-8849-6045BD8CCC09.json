@@ -10,10 +10,10 @@
           "name": "shared_powerplatformforadmins"
         }
       },
-      "shared_commondataserviceforapps": {
+      "shared_commondataserviceforapps_1": {
         "runtimeSource": "embedded",
         "connection": {
-          "connectionReferenceLogicalName": "christie_sharedcommondataserviceforapps_75b53"
+          "connectionReferenceLogicalName": "cat_MicrosoftDataverseAccessManagement"
         },
         "api": {
           "name": "shared_commondataserviceforapps"
@@ -41,7 +41,7 @@
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps_1",
               "operationId": "SubscribeWebhookTrigger",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
@@ -88,7 +88,7 @@
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps_1",
               "operationId": "UpdateRecord",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
@@ -96,9 +96,9 @@
               "entityName": "cat_accessprofiles",
               "recordId": "@triggerOutputs()?['body/cat_accessprofileid']",
               "item/cat_environmentid": "@outputs('Get_Environment_as_Admin')?['body/name']",
-              "item/cat_environmentuniquename": "@{outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/uniqueName']}.@{first(split(outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/hostNameSuffix'], '.'))}",
               "item/cat_environmentname": "@outputs('Get_Environment_as_Admin')?['body/properties/displayName']",
               "item/cat_environmentresourceid": "@outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/resourceId']",
+              "item/cat_environmentuniquename": "@{outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/uniqueName']}.@{first(split(outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/hostNameSuffix'], '.'))}",
               "item/cat_environmenturl": "@outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/instanceUrl']",
               "item/statuscode": 1
             },

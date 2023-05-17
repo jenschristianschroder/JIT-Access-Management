@@ -20,10 +20,8 @@
   <EntityRelationship Name="cat_cat_accessprofileapprovers_AccessProfile_" />
   <EntityRelationship Name="cat_cat_accessrequest_AccessProfile_cat_acces" />
   <EntityRelationship Name="cat_cat_accessrequest_User_systemuser" />
-  <EntityRelationship Name="christie_dispensation_cat_AccessRequestActivities" />
   <EntityRelationship Name="contact_cat_AccessRequestActivities" />
   <EntityRelationship Name="interactionforemail_cat_AccessRequestActivities" />
-  <EntityRelationship Name="jeschro_masterdata_cat_AccessRequestActivities" />
   <EntityRelationship Name="knowledgearticle_cat_AccessRequestActivities" />
   <EntityRelationship Name="knowledgebaserecord_cat_AccessRequestActivities" />
   <EntityRelationship Name="lk_cat_accessmanagementsetup_createdby" />

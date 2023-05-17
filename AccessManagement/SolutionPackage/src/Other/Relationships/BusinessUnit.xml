@@ -57,7 +57,6 @@
     <RelationshipDescription>
       <Descriptions>
         <Description description="Unique identifier for the business unit that owns the record" languagecode="1033" />
-        <Description description="Entydigt id for den afdeling, der ejer posten" languagecode="1030" />
       </Descriptions>
     </RelationshipDescription>
   </EntityRelationship>
@@ -84,7 +83,7 @@
   <EntityRelationship Name="cat_accessrequestactivity_businessunit_owningbusinessunit">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessRequestActivity</ReferencingEntityName>
     <ReferencedEntityName>BusinessUnit</ReferencedEntityName>
@@ -98,7 +97,6 @@
     <ReferencingAttributeName>OwningBusinessUnit</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Entydigt id for den afdeling, der ejer aktiviteten." languagecode="1030" />
         <Description description="Unique identifier of the business unit that owns the activity." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>

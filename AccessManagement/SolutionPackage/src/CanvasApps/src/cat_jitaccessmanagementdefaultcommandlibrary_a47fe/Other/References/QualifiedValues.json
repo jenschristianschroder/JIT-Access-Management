@@ -18,17 +18,17 @@
       }
     },
     {
-      "Kind": "default.cds_cat_accessrequestactivity_forms",
-      "Namespace": "Access Request Activities (Forms)",
-      "Values": {
-        "Information": "0214d677-787a-4d9d-8868-f932d56f1e87"
-      }
-    },
-    {
       "Kind": "default.cds_cat_accessprofileapprovers_forms",
       "Namespace": "Access Profile Approvers (Forms)",
       "Values": {
-        "Information": "7be24ed1-d2e6-4705-9fc8-c86ee5572112"
+        "Information": "31c9fe15-458d-4aa1-bc1e-ad7c86240cb3"
+      }
+    },
+    {
+      "Kind": "default.cds_cat_accessrequestactivity_forms",
+      "Namespace": "Access Request Activities (Forms)",
+      "Values": {
+        "Information": "d88375ab-7f2d-4a89-b3a8-d882aac19ff0"
       }
     }
   ]

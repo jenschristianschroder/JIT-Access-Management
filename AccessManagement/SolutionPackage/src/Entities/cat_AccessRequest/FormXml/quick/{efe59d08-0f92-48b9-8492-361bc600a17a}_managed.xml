@@ -16,14 +16,13 @@
               <sections>
                 <section showlabel="false" showbar="false" IsUserDefined="0" id="{3fedd21b-7624-4cf8-92f9-35f759cc01ff}">
                   <labels>
-                    <label description="GENERELT" languagecode="1030" />
                     <label description="GENERAL" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
                       <cell id="{4e5fbad7-79f9-4cca-93d9-c60874fa1468}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Name" languagecode="1033" />
                         </labels>
                         <control id="cat_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cat_name" />
                       </cell>
@@ -31,7 +30,7 @@
                     <row>
                       <cell id="{8b8f2b4d-9952-4c97-bf22-373967b0bb77}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Owner" languagecode="1033" />
                         </labels>
                         <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
                       </cell>

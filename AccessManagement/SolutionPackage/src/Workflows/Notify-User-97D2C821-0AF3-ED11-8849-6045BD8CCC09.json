@@ -1,28 +1,28 @@
 {
   "properties": {
     "connectionReferences": {
-      "shared_office365": {
+      "shared_office365_1": {
         "runtimeSource": "embedded",
         "connection": {
-          "connectionReferenceLogicalName": "jeschro_sharedoffice365_061bf"
+          "connectionReferenceLogicalName": "cat_sharedoffice365_07f2f"
         },
         "api": {
           "name": "shared_office365"
         }
       },
-      "shared_commondataserviceforapps": {
+      "shared_commondataserviceforapps_1": {
         "runtimeSource": "embedded",
         "connection": {
-          "connectionReferenceLogicalName": "christie_sharedcommondataserviceforapps_75b53"
+          "connectionReferenceLogicalName": "cat_MicrosoftDataverseAccessManagement"
         },
         "api": {
           "name": "shared_commondataserviceforapps"
         }
       },
-      "shared_teams": {
+      "shared_teams_1": {
         "runtimeSource": "embedded",
         "connection": {
-          "connectionReferenceLogicalName": "christie_sharedteams_17b90"
+          "connectionReferenceLogicalName": "cat_sharedteams_fdf5c"
         },
         "api": {
           "name": "shared_teams"
@@ -50,7 +50,7 @@
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps_1",
               "operationId": "SubscribeWebhookTrigger",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
@@ -84,7 +84,7 @@
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
-                  "connectionName": "shared_office365",
+                  "connectionName": "shared_office365_1",
                   "operationId": "SendEmailV2",
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
                 },
@@ -126,7 +126,7 @@
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps_1",
               "operationId": "GetItem",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
@@ -199,7 +199,7 @@
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
-                  "connectionName": "shared_teams",
+                  "connectionName": "shared_teams_1",
                   "operationId": "PostMessageToConversation",
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams"
                 },

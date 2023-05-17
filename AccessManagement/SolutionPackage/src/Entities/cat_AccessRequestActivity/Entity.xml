@@ -3,6 +3,15 @@
   <Name LocalizedName="Access Request Activity" OriginalName="Access Request Activity">cat_AccessRequestActivity</Name>
   <EntityInfo>
     <entity Name="cat_AccessRequestActivity">
+      <LocalizedNames>
+        <LocalizedName description="Access Request Activity" languagecode="1033" />
+      </LocalizedNames>
+      <LocalizedCollectionNames>
+        <LocalizedCollectionName description="Access Request Activities" languagecode="1033" />
+      </LocalizedCollectionNames>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
       <attributes>
         <attribute PhysicalName="ActivityAdditionalParams">
           <Type>ntext</Type>
@@ -37,11 +46,9 @@
           <Format>textarea</Format>
           <MaxLength>8192</MaxLength>
           <displaynames>
-            <displayname description="Flere parametre for aktivitet" languagecode="1030" />
             <displayname description="Activity Additional Parameters" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Yderligere oplysninger leveret af det eksterne program som JSON. Kun til intern brug." languagecode="1030" />
             <Description description="Additional information provided by the external application as JSON. For internal use only." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -76,11 +83,9 @@
           <IsRetrievable>1</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <displaynames>
-            <displayname description="Aktivitet" languagecode="1030" />
             <displayname description="Activity" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for aktiviteten." languagecode="1030" />
             <Description description="Unique identifier of the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -117,11 +122,9 @@
           <AppDefaultValue>-1</AppDefaultValue>
           <OptionSetName>activitypointer_activitytypecode</OptionSetName>
           <displaynames>
-            <displayname description="Aktivitetstype" languagecode="1030" />
             <displayname description="Activity Type" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Aktivitetstypen." languagecode="1030" />
             <Description description="Type of activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -159,11 +162,9 @@
           <MinValue>0</MinValue>
           <MaxValue>2147483647</MaxValue>
           <displaynames>
-            <displayname description="Faktisk varighed" languagecode="1030" />
             <displayname description="Actual Duration" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Aktivitetens faktiske varighed i minutter." languagecode="1030" />
             <Description description="Actual duration of the activity in minutes." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -201,11 +202,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Faktisk slutning" languagecode="1030" />
             <displayname description="Actual End" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Aktivitetens faktiske sluttidspunkt." languagecode="1030" />
             <Description description="Actual end time of the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -243,11 +242,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Faktisk start" languagecode="1030" />
             <displayname description="Actual Start" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Aktivitetens faktiske starttidspunkt." languagecode="1030" />
             <Description description="Actual start time of the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -290,11 +287,9 @@
           </LookupTypes>
           <displaynames>
             <displayname description="BCC" languagecode="1033" />
-            <displayname description="Bcc" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Blind Carbon-copy (bcc) recipients of the activity." languagecode="1033" />
-            <Description description="Bcc-modtagere af aktiviteten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="CC">
@@ -336,11 +331,9 @@
           </LookupTypes>
           <displaynames>
             <displayname description="CC" languagecode="1033" />
-            <displayname description="Cc" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Carbon-copy (cc) recipients of the activity." languagecode="1033" />
-            <Description description="Cc-modtagere af aktiviteten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="Community">
@@ -376,11 +369,9 @@
           <AppDefaultValue>-1</AppDefaultValue>
           <OptionSetName>socialprofile_community</OptionSetName>
           <displaynames>
-            <displayname description="Social kanal" languagecode="1030" />
             <displayname description="Social Channel" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Viser, hvor kontakt om den sociale aktivitet stammer fra, f.eks. fra Twitter eller Facebook. Dette felt er skrivebeskyttet." languagecode="1030" />
             <Description description="Shows how contact about the social activity originated, such as from Twitter or Facebook. This field is read-only." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -419,11 +410,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Oprettet af" languagecode="1030" />
             <displayname description="Created By" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for den bruger, der oprettede aktiviteten." languagecode="1030" />
             <Description description="Unique identifier of the user who created the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -461,11 +450,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Dato for oprettelse" languagecode="1030" />
             <displayname description="Date Created" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Dato og klokkeslæt for oprettelse af aktiviteten." languagecode="1030" />
             <Description description="Date and time when the activity was created." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -504,11 +491,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Oprettet af (stedfortræder)" languagecode="1030" />
             <displayname description="Created By (Delegate)" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for den stedfortrædende bruger, der oprettede aktivitetspointeren." languagecode="1030" />
             <Description description="Unique identifier of the delegate user who created the activitypointer." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -550,11 +535,9 @@
           </LookupTypes>
           <displaynames>
             <displayname description="Customers" languagecode="1033" />
-            <displayname description="Kunder" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Customer with which the activity is associated." languagecode="1033" />
-            <Description description="Kunde, som aktiviteten er tilknyttet." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="DeliveryLastAttemptedOn">
@@ -591,11 +574,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Dato for seneste leveringsforsøg" languagecode="1030" />
             <displayname description="Date Delivery Last Attempted" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Dato og klokkeslæt for det seneste forsøg på levering af aktiviteten." languagecode="1030" />
             <Description description="Date and time when the delivery of the activity was last attempted." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -632,11 +613,9 @@
           <AppDefaultValue>1</AppDefaultValue>
           <OptionSetName>activitypointer_deliveryprioritycode</OptionSetName>
           <displaynames>
-            <displayname description="Leveringsprioritet" languagecode="1030" />
             <displayname description="Delivery Priority" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Prioritet for levering af aktiviteten til mailserveren." languagecode="1030" />
             <Description description="Priority of delivery of the activity to the email server." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -673,11 +652,9 @@
           <Format></Format>
           <MaxLength>2000</MaxLength>
           <displaynames>
-            <displayname description="Beskrivelse" languagecode="1030" />
             <displayname description="Description" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Beskrivelse af aktiviteten." languagecode="1030" />
             <Description description="Description of the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -715,11 +692,9 @@
           <MaxLength>200</MaxLength>
           <Length>400</Length>
           <displaynames>
-            <displayname description="Id for Exchange-element" languagecode="1030" />
             <displayname description="Exchange Item ID" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Meddelelses-id'et for aktivitet, der returneres fra Exchange Server." languagecode="1030" />
             <Description description="The message id of activity which is returned from Exchange Server." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -757,11 +732,9 @@
           <MaxLength>1250</MaxLength>
           <Length>2500</Length>
           <displaynames>
-            <displayname description="Exchange WebLink" languagecode="1030" />
             <displayname description="Exchange WebLink" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Viser weblinket for aktivitet af typen mail." languagecode="1030" />
             <Description description="Shows the web link of Activity of type email." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -804,11 +777,9 @@
           </LookupTypes>
           <displaynames>
             <displayname description="From" languagecode="1033" />
-            <displayname description="Fra" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Person who the activity is from." languagecode="1033" />
-            <Description description="Person, som aktiviteten stammer fra." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="ImportSequenceNumber">
@@ -846,11 +817,9 @@
           <MaxValue>2147483647</MaxValue>
           <displaynames>
             <displayname description="Import Sequence Number" languagecode="1033" />
-            <displayname description="Importsekvensnummer" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Sequence number of the import that created this record." languagecode="1033" />
-            <Description description="Sekvensnummer for den import, der oprettede denne post." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="InstanceTypeCode">
@@ -886,55 +855,46 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="cat_accessrequestactivity_instancetypecode">
             <OptionSetType>picklist</OptionSetType>
-            <IntroducedVersion>0.0.0.0</IntroducedVersion>
+            <IntroducedVersion>0.0.0.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
-              <displayname description="Aftaletype" languagecode="1030" />
               <displayname description="Appointment Type" languagecode="1033" />
             </displaynames>
             <Descriptions>
-              <Description description="Forekomsttype for en tilbagevendende serie." languagecode="1030" />
               <Description description="Type of instance of a recurring series." languagecode="1033" />
             </Descriptions>
             <options>
               <option value="0">
                 <labels>
-                  <label description="Skal ikke gentages" languagecode="1030" />
                   <label description="Not Recurring" languagecode="1033" />
                 </labels>
               </option>
               <option value="1">
                 <labels>
-                  <label description="Gentaget master" languagecode="1030" />
                   <label description="Recurring Master" languagecode="1033" />
                 </labels>
               </option>
               <option value="2">
                 <labels>
-                  <label description="Gentaget forekomst" languagecode="1030" />
                   <label description="Recurring Instance" languagecode="1033" />
                 </labels>
               </option>
               <option value="3">
                 <labels>
-                  <label description="Gentaget undtagelse" languagecode="1030" />
                   <label description="Recurring Exception" languagecode="1033" />
                 </labels>
               </option>
               <option value="4">
                 <labels>
-                  <label description="Gentaget fremtidig undtagelse" languagecode="1030" />
                   <label description="Recurring Future Exception" languagecode="1033" />
                 </labels>
               </option>
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Tilbagevendende forekomsttype" languagecode="1030" />
             <displayname description="Recurring Instance Type" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Forekomsttype for en tilbagevendende serie." languagecode="1030" />
             <Description description="Type of instance of a recurring series." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -971,37 +931,31 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="cat_accessrequestactivity_isbilled">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>0.0.0.0</IntroducedVersion>
+            <IntroducedVersion>0.0.0.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
-              <displayname description="Er faktureret" languagecode="1030" />
               <displayname description="Is Billed" languagecode="1033" />
             </displaynames>
             <Descriptions>
-              <Description description="Angiver, om aktiviteten blev faktureret som en del af løsning af en sag." languagecode="1030" />
               <Description description="Information regarding whether the activity was billed as part of resolving a case." languagecode="1033" />
             </Descriptions>
             <options>
               <option value="0">
                 <labels>
-                  <label description="Nej" languagecode="1030" />
                   <label description="No" languagecode="1033" />
                 </labels>
               </option>
               <option value="1">
                 <labels>
-                  <label description="Ja" languagecode="1030" />
                   <label description="Yes" languagecode="1033" />
                 </labels>
               </option>
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Er faktureret" languagecode="1030" />
             <displayname description="Is Billed" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Angiver, om aktiviteten blev faktureret som en del af løsning af en sag." languagecode="1030" />
             <Description description="Information regarding whether the activity was billed as part of resolving a case." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1037,37 +991,31 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="cat_accessrequestactivity_ismapiprivate">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>0.0.0.0</IntroducedVersion>
+            <IntroducedVersion>0.0.0.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
-              <displayname description="Er privat" languagecode="1030" />
               <displayname description="Is Private" languagecode="1033" />
             </displaynames>
             <Descriptions>
-              <Description description="Kun til intern brug." languagecode="1030" />
               <Description description="For internal use only." languagecode="1033" />
             </Descriptions>
             <options>
               <option value="0">
                 <labels>
-                  <label description="Nej" languagecode="1030" />
                   <label description="No" languagecode="1033" />
                 </labels>
               </option>
               <option value="1">
                 <labels>
-                  <label description="Ja" languagecode="1030" />
                   <label description="Yes" languagecode="1033" />
                 </labels>
               </option>
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Er privat" languagecode="1030" />
             <displayname description="Is Private" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Kun til intern brug." languagecode="1030" />
             <Description description="For internal use only." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1104,11 +1052,9 @@
           <AppDefaultValue>1</AppDefaultValue>
           <OptionSetName>activitypointer_isregularactivity</OptionSetName>
           <displaynames>
-            <displayname description="Er en almindelig aktivitet" languagecode="1030" />
             <displayname description="Is Regular Activity" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Oplysninger om, hvorvidt aktiviteten er en almindelig aktivitetstype eller hændelsestype." languagecode="1030" />
             <Description description="Information regarding whether the activity is a regular activity type or event type." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1145,37 +1091,31 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="cat_accessrequestactivity_isworkflowcreated">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>0.0.0.0</IntroducedVersion>
+            <IntroducedVersion>0.0.0.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
-              <displayname description="Er der oprettet en arbejdsproces?" languagecode="1030" />
               <displayname description="Is Workflow Created" languagecode="1033" />
             </displaynames>
             <Descriptions>
-              <Description description="Angiver, om aktiviteten blev oprettet ud fra en arbejdsprocesregel." languagecode="1030" />
               <Description description="Information regarding whether the activity was created from a workflow rule." languagecode="1033" />
             </Descriptions>
             <options>
               <option value="0">
                 <labels>
-                  <label description="Nej" languagecode="1030" />
                   <label description="No" languagecode="1033" />
                 </labels>
               </option>
               <option value="1">
                 <labels>
-                  <label description="Ja" languagecode="1030" />
                   <label description="Yes" languagecode="1033" />
                 </labels>
               </option>
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Er der oprettet en arbejdsproces?" languagecode="1030" />
             <displayname description="Is Workflow Created" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Angiver, om aktiviteten blev oprettet ud fra en arbejdsprocesregel." languagecode="1030" />
             <Description description="Information regarding whether the activity was created from a workflow rule." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1213,11 +1153,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Seneste tid for I venteposition" languagecode="1030" />
             <displayname description="Last On Hold Time" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Indeholder dato- og klokkeslætsstemplet for den seneste tid for I venteposition." languagecode="1030" />
             <Description description="Contains the date and time stamp of the last on hold time." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1254,37 +1192,31 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="cat_accessrequestactivity_leftvoicemail">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>0.0.0.0</IntroducedVersion>
+            <IntroducedVersion>0.0.0.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
-              <displayname description="Har lagt talebesked" languagecode="1030" />
               <displayname description="Left Voice Mail" languagecode="1033" />
             </displaynames>
             <Descriptions>
-              <Description description="Har lagt talebesked." languagecode="1030" />
               <Description description="Left Voice Mail." languagecode="1033" />
             </Descriptions>
             <options>
               <option value="0">
                 <labels>
-                  <label description="Nej" languagecode="1030" />
                   <label description="No" languagecode="1033" />
                 </labels>
               </option>
               <option value="1">
                 <labels>
-                  <label description="Ja" languagecode="1030" />
                   <label description="Yes" languagecode="1033" />
                 </labels>
               </option>
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Har lagt talebesked" languagecode="1030" />
             <displayname description="Left Voice Mail" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Har lagt talebeskeden" languagecode="1030" />
             <Description description="Left the voice mail" languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1323,11 +1255,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Ændret af" languagecode="1030" />
             <displayname description="Modified By" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for den bruger, der sidst ændrede aktiviteten." languagecode="1030" />
             <Description description="Unique identifier of user who last modified the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1365,11 +1295,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Sidst opdateret" languagecode="1030" />
             <displayname description="Last Updated" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Dato og klokkeslæt for den seneste ændring af aktiviteten." languagecode="1030" />
             <Description description="Date and time when activity was last modified." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1408,11 +1336,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Ændret af (stedfortræder)" languagecode="1030" />
             <displayname description="Modified By (Delegate)" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for den stedfortrædende bruger, der senest ændrede aktivitetspointeren." languagecode="1030" />
             <Description description="Unique identifier of the delegate user who last modified the activitypointer." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1450,11 +1376,9 @@
           <MinValue>-2147483648</MinValue>
           <MaxValue>2147483647</MaxValue>
           <displaynames>
-            <displayname description="Tid for I venteposition (minutter)" languagecode="1030" />
             <displayname description="On Hold Time (Minutes)" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Viser, hvor længe posten var i venteposition i minutter." languagecode="1030" />
             <Description description="Shows how long, in minutes, that the record was on hold." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1492,11 +1416,9 @@
           <LookupStyle>multi</LookupStyle>
           <displaynames>
             <displayname description="Optional Attendees" languagecode="1033" />
-            <displayname description="Valgfrie deltagere" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="List of optional attendees for the activity." languagecode="1033" />
-            <Description description="Liste over valgfrie deltagere i denne aktivitet." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="Organizer">
@@ -1536,11 +1458,9 @@
           </LookupTypes>
           <displaynames>
             <displayname description="Organizer" languagecode="1033" />
-            <displayname description="Arrangør" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Person who organized the activity." languagecode="1033" />
-            <Description description="Den person, der organiserede aktiviteten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="OverriddenCreatedOn">
@@ -1578,11 +1498,9 @@
           <Behavior>1</Behavior>
           <displaynames>
             <displayname description="Record Created On" languagecode="1033" />
-            <displayname description="Posten blev oprettet den" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Date and time that the record was migrated." languagecode="1033" />
-            <Description description="Dato og klokkeslæt for overførsel af posten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="OwnerId">
@@ -1621,11 +1539,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">9</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Ejer" languagecode="1030" />
             <displayname description="Owner" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for den bruger eller det team, der ejer aktiviteten." languagecode="1030" />
             <Description description="Unique identifier of the user or team who owns the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1664,11 +1580,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">10</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Ejende afdeling" languagecode="1030" />
             <displayname description="Owning Business Unit" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for den afdeling, der ejer aktiviteten." languagecode="1030" />
             <Description description="Unique identifier of the business unit that owns the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1707,11 +1621,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">9</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Ejende team" languagecode="1030" />
             <displayname description="Owning Team" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for det team, der ejer aktiviteten." languagecode="1030" />
             <Description description="Unique identifier of the team that owns the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1750,11 +1662,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Ejende bruger" languagecode="1030" />
             <displayname description="Owning User" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for den bruger, der ejer aktiviteten." languagecode="1030" />
             <Description description="Unique identifier of the user that owns the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1796,11 +1706,9 @@
           </LookupTypes>
           <displaynames>
             <displayname description="Outsource Vendors" languagecode="1033" />
-            <displayname description="Underleverandører" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Outsource vendor with which activity is associated." languagecode="1033" />
-            <Description description="Underleverandør, som aktiviteten er tilknyttet." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="PostponeActivityProcessingUntil">
@@ -1836,11 +1744,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Udskyd aktivitetsbehandlingen indtil" languagecode="1030" />
             <displayname description="Delay activity processing until" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Kun til intern brug." languagecode="1030" />
             <Description description="For internal use only." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1877,43 +1783,36 @@
           <AppDefaultValue>1</AppDefaultValue>
           <optionset Name="cat_accessrequestactivity_prioritycode">
             <OptionSetType>picklist</OptionSetType>
-            <IntroducedVersion>0.0.0.0</IntroducedVersion>
+            <IntroducedVersion>0.0.0.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
-              <displayname description="Prioritet" languagecode="1030" />
               <displayname description="Priority" languagecode="1033" />
             </displaynames>
             <Descriptions>
-              <Description description="Aktivitetens prioritet." languagecode="1030" />
               <Description description="Priority of the activity." languagecode="1033" />
             </Descriptions>
             <options>
               <option value="0">
                 <labels>
-                  <label description="Lav" languagecode="1030" />
                   <label description="Low" languagecode="1033" />
                 </labels>
               </option>
               <option value="1">
                 <labels>
-                  <label description="Normal" languagecode="1030" />
                   <label description="Normal" languagecode="1033" />
                 </labels>
               </option>
               <option value="2">
                 <labels>
-                  <label description="Høj" languagecode="1030" />
                   <label description="High" languagecode="1033" />
                 </labels>
               </option>
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Prioritet" languagecode="1030" />
             <displayname description="Priority" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Aktivitetens prioritet." languagecode="1030" />
             <Description description="Priority of the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1947,11 +1846,9 @@
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <displaynames>
-            <displayname description="Proces" languagecode="1030" />
             <displayname description="Process" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for processen." languagecode="1030" />
             <Description description="Unique identifier of the Process." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -1987,11 +1884,9 @@
           <IsLocalizable>0</IsLocalizable>
           <LookupStyle>single</LookupStyle>
           <displaynames>
-            <displayname description="Angående" languagecode="1030" />
             <displayname description="Regarding" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for det objekt, som aktiviteten er tilknyttet." languagecode="1030" />
             <Description description="Unique identifier of the object with which the activity is associated." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2029,11 +1924,9 @@
           <LookupStyle>multi</LookupStyle>
           <displaynames>
             <displayname description="Required Attendees" languagecode="1033" />
-            <displayname description="Nødvendige deltagere" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="List of required attendees for the activity." languagecode="1033" />
-            <Description description="Liste over nødvendige deltagere i denne aktivitet." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="Resources">
@@ -2073,11 +1966,9 @@
           </LookupTypes>
           <displaynames>
             <displayname description="Resources" languagecode="1033" />
-            <displayname description="Ressourcer" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Users or facility/equipment that are required for the activity." languagecode="1033" />
-            <Description description="Brugere eller lokaler/udstyr, der kræves til denne aktivitet." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="ScheduledDurationMinutes">
@@ -2114,11 +2005,9 @@
           <MinValue>0</MinValue>
           <MaxValue>2147483647</MaxValue>
           <displaynames>
-            <displayname description="Planlagt varighed" languagecode="1030" />
             <displayname description="Scheduled Duration" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Planlagt varighed af aktiviteten, angivet i minutter." languagecode="1030" />
             <Description description="Scheduled duration of the activity, specified in minutes." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2156,11 +2045,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Forfaldsdato" languagecode="1030" />
             <displayname description="Due Date" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Aktivitetens planlagte sluttidspunkt." languagecode="1030" />
             <Description description="Scheduled end time of the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2198,11 +2085,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Startdato" languagecode="1030" />
             <displayname description="Start Date" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Aktivitetens planlagte starttidspunkt." languagecode="1030" />
             <Description description="Scheduled start time of the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2240,11 +2125,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">9606</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Afsenders postkasse" languagecode="1030" />
             <displayname description="Sender's Mailbox" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for den postkasse, der er tilknyttet afsenderen af mailen." languagecode="1030" />
             <Description description="Unique identifier of the mailbox associated with the sender of the email message." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2282,11 +2165,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Sendt" languagecode="1030" />
             <displayname description="Date Sent" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Dato og klokkeslæt for afsendelse af aktiviteten." languagecode="1030" />
             <Description description="Date and time when the activity was sent." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2320,11 +2201,9 @@
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <displaynames>
-            <displayname description="Serie-id" languagecode="1030" />
             <displayname description="Series Id" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for en tilbagevendende serie af en forekomst." languagecode="1030" />
             <Description description="Uniqueidentifier specifying the id of recurring series of an instance." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2363,11 +2242,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">9750</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="SLA" languagecode="1030" />
             <displayname description="SLA" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Vælg den serviceaftale (SLA), du vil anvende på sagsposten." languagecode="1030" />
             <Description description="Choose the service level agreement (SLA) that you want to apply to the case record." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2405,11 +2282,9 @@
             <LookupType id="00000000-0000-0000-0000-000000000000">9750</LookupType>
           </LookupTypes>
           <displaynames>
-            <displayname description="Sidst anvendte SLA" languagecode="1030" />
             <displayname description="Last SLA applied" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Sidste SLA, der blev anvendt til denne sag. Dette felt er kun beregnet til intern brug." languagecode="1030" />
             <Description description="Last SLA that was applied to this case. This field is for internal use only." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2447,11 +2322,9 @@
           <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Sorteringsdato" languagecode="1030" />
             <displayname description="Sort Date" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Viser den dato og det klokkeslæt, aktiviteterne er sorteret efter." languagecode="1030" />
             <Description description="Shows the date and time by which the activities are sorted." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2486,11 +2359,9 @@
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <displaynames>
-            <displayname description="(Udfaset) Navn på procesfase" languagecode="1030" />
             <displayname description="(Deprecated) Process Stage" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Entydigt id for fasen." languagecode="1030" />
             <Description description="Unique identifier of the Stage." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2526,49 +2397,41 @@
           <IsLocalizable>0</IsLocalizable>
           <optionset Name="cat_accessrequestactivity_statecode">
             <OptionSetType>state</OptionSetType>
-            <IntroducedVersion>0.0.0.0</IntroducedVersion>
+            <IntroducedVersion>0.0.0.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
-              <displayname description="Aktivitetsstatus" languagecode="1030" />
               <displayname description="Activity Status" languagecode="1033" />
             </displaynames>
             <Descriptions>
-              <Description description="Status for aktiviteten." languagecode="1030" />
               <Description description="Status of the activity." languagecode="1033" />
             </Descriptions>
             <states>
               <state value="0" defaultstatus="1" invariantname="Open">
                 <labels>
-                  <label description="Åben" languagecode="1030" />
                   <label description="Open" languagecode="1033" />
                 </labels>
               </state>
               <state value="1" defaultstatus="2" invariantname="Completed">
                 <labels>
-                  <label description="Fuldført" languagecode="1030" />
                   <label description="Completed" languagecode="1033" />
                 </labels>
               </state>
               <state value="2" defaultstatus="3" invariantname="Canceled">
                 <labels>
-                  <label description="Annulleret" languagecode="1030" />
                   <label description="Canceled" languagecode="1033" />
                 </labels>
               </state>
               <state value="3" defaultstatus="4" invariantname="Scheduled">
                 <labels>
-                  <label description="Planlagt" languagecode="1030" />
                   <label description="Scheduled" languagecode="1033" />
                 </labels>
               </state>
             </states>
           </optionset>
           <displaynames>
-            <displayname description="Aktivitetsstatus" languagecode="1030" />
             <displayname description="Activity Status" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Status for aktiviteten." languagecode="1030" />
             <Description description="Status of the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2604,49 +2467,41 @@
           <IsLocalizable>0</IsLocalizable>
           <optionset Name="cat_accessrequestactivity_statuscode">
             <OptionSetType>status</OptionSetType>
-            <IntroducedVersion>0.0.0.0</IntroducedVersion>
+            <IntroducedVersion>0.0.0.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
-              <displayname description="Statusårsag" languagecode="1030" />
               <displayname description="Status Reason" languagecode="1033" />
             </displaynames>
             <Descriptions>
-              <Description description="Årsag til aktivitetens status." languagecode="1030" />
               <Description description="Reason for the status of the activity." languagecode="1033" />
             </Descriptions>
             <statuses>
               <status value="1" state="0">
                 <labels>
-                  <label description="Åben" languagecode="1030" />
                   <label description="Open" languagecode="1033" />
                 </labels>
               </status>
               <status value="2" state="1">
                 <labels>
-                  <label description="Fuldført" languagecode="1030" />
                   <label description="Completed" languagecode="1033" />
                 </labels>
               </status>
               <status value="3" state="2">
                 <labels>
-                  <label description="Annulleret" languagecode="1030" />
                   <label description="Canceled" languagecode="1033" />
                 </labels>
               </status>
               <status value="4" state="3">
                 <labels>
-                  <label description="Planlagt" languagecode="1030" />
                   <label description="Scheduled" languagecode="1033" />
                 </labels>
               </status>
             </statuses>
           </optionset>
           <displaynames>
-            <displayname description="Statusårsag" languagecode="1030" />
             <displayname description="Status Reason" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Årsag til aktivitetens status." languagecode="1030" />
             <Description description="Reason for the status of the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2685,11 +2540,9 @@
           <MaxLength>400</MaxLength>
           <Length>1600</Length>
           <displaynames>
-            <displayname description="Emne" languagecode="1030" />
             <displayname description="Subject" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Det emne, der er tilknyttet aktiviteten." languagecode="1030" />
             <Description description="Subject associated with the activity." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2726,11 +2579,9 @@
           <MinValue>-1</MinValue>
           <MaxValue>2147483647</MaxValue>
           <displaynames>
-            <displayname description="Versionsnummeret for tidszonereglen" languagecode="1030" />
             <displayname description="Time Zone Rule Version Number" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Kun til intern brug." languagecode="1030" />
             <Description description="For internal use only." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2773,11 +2624,9 @@
           </LookupTypes>
           <displaynames>
             <displayname description="To" languagecode="1033" />
-            <displayname description="Til" languagecode="1030" />
           </displaynames>
           <Descriptions>
             <Description description="Person who is the receiver of the activity." languagecode="1033" />
-            <Description description="Person, der er modtager af aktiviteten." languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="TraversedPath">
@@ -2813,11 +2662,9 @@
           <MaxLength>1250</MaxLength>
           <Length>2500</Length>
           <displaynames>
-            <displayname description="(Udfaset) Gennemløbet sti" languagecode="1030" />
             <displayname description="(Deprecated) Traversed Path" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Kun til intern brug." languagecode="1030" />
             <Description description="For internal use only." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2854,11 +2701,9 @@
           <MinValue>-1</MinValue>
           <MaxValue>2147483647</MaxValue>
           <displaynames>
-            <displayname description="Tidszonekode til UTC-konvertering" languagecode="1030" />
             <displayname description="UTC Conversion Time Zone Code" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Den tidszonekode, der var i brug ved oprettelse af posten." languagecode="1030" />
             <Description description="Time zone code that was in use when the record was created." languagecode="1033" />
           </Descriptions>
         </attribute>
@@ -2880,14 +2725,14 @@
       <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>
       <IsBPFEntity>0</IsBPFEntity>
       <OwnershipTypeMask>UserOwned</OwnershipTypeMask>
-      <IsAuditEnabled>1</IsAuditEnabled>
+      <IsAuditEnabled>0</IsAuditEnabled>
       <IsRetrieveAuditEnabled>0</IsRetrieveAuditEnabled>
       <IsRetrieveMultipleAuditEnabled>0</IsRetrieveMultipleAuditEnabled>
       <IsActivity>1</IsActivity>
-      <ActivityTypeMask>CommunicationActivity</ActivityTypeMask>
+      <ActivityTypeMask></ActivityTypeMask>
       <IsActivityParty>0</IsActivityParty>
       <IsReplicated>1</IsReplicated>
-      <IsReplicationUserFiltered>1</IsReplicationUserFiltered>
+      <IsReplicationUserFiltered>0</IsReplicationUserFiltered>
       <IsMailMergeEnabled>0</IsMailMergeEnabled>
       <IsVisibleInMobile>0</IsVisibleInMobile>
       <IsVisibleInMobileClient>0</IsVisibleInMobileClient>
@@ -2900,11 +2745,31 @@
       <IsQuickCreateEnabled>0</IsQuickCreateEnabled>
       <SyncToExternalSearchIndex>0</SyncToExternalSearchIndex>
       <IntroducedVersion>5.0.0.0</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <IsRenameable>1</IsRenameable>
+      <IsMappable>1</IsMappable>
+      <CanModifyAuditSettings>1</CanModifyAuditSettings>
+      <CanModifyMobileVisibility>1</CanModifyMobileVisibility>
+      <CanModifyMobileClientVisibility>1</CanModifyMobileClientVisibility>
+      <CanModifyMobileClientReadOnly>1</CanModifyMobileClientReadOnly>
+      <CanModifyMobileClientOffline>1</CanModifyMobileClientOffline>
+      <CanModifyConnectionSettings>1</CanModifyConnectionSettings>
+      <CanModifyDuplicateDetectionSettings>1</CanModifyDuplicateDetectionSettings>
+      <CanModifyMailMergeSettings>1</CanModifyMailMergeSettings>
+      <CanModifyQueueSettings>1</CanModifyQueueSettings>
+      <CanCreateAttributes>1</CanCreateAttributes>
+      <CanCreateForms>1</CanCreateForms>
+      <CanCreateCharts>1</CanCreateCharts>
+      <CanCreateViews>1</CanCreateViews>
+      <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+      <CanEnableSyncToExternalSearchIndex>1</CanEnableSyncToExternalSearchIndex>
       <IconVectorName></IconVectorName>
       <EnforceStateTransitions>0</EnforceStateTransitions>
+      <CanChangeHierarchicalRelationship>1</CanChangeHierarchicalRelationship>
       <EntityHelpUrlEnabled>0</EntityHelpUrlEnabled>
       <EntityHelpUrl></EntityHelpUrl>
-      <ChangeTrackingEnabled>1</ChangeTrackingEnabled>
+      <ChangeTrackingEnabled>0</ChangeTrackingEnabled>
+      <CanChangeTrackingBeEnabled>1</CanChangeTrackingBeEnabled>
       <IsEnabledForExternalChannels>0</IsEnabledForExternalChannels>
       <IsSolutionAware>0</IsSolutionAware>
       <HasRelatedNotes>True</HasRelatedNotes>

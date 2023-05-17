@@ -9,7 +9,6 @@
       <tabs>
         <tab verticallayout="true" id="{0eefeb83-bae2-48f4-80d8-c7324a0d4b2c}" IsUserDefined="1">
           <labels>
-            <label description="Generelt" languagecode="1030" />
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
@@ -17,7 +16,6 @@
               <sections>
                 <section showlabel="false" showbar="false" IsUserDefined="0" id="{d3dafd38-33dd-416f-b815-85a7c5ad385f}" columns="111">
                   <labels>
-                    <label description="Generelt" languagecode="1030" />
                     <label description="General" languagecode="1033" />
                   </labels>
                   <rows>

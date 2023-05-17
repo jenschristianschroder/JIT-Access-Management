@@ -3,7 +3,7 @@
   <EntityRelationship Name="cat_accessrequestactivity_team_owningteam">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessRequestActivity</ReferencingEntityName>
     <ReferencedEntityName>Team</ReferencedEntityName>
@@ -17,7 +17,6 @@
     <ReferencingAttributeName>OwningTeam</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Entydigt id for det team, der ejer aktiviteten." languagecode="1030" />
         <Description description="Unique identifier of the team that owns the activity." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
@@ -79,7 +78,6 @@
     <RelationshipDescription>
       <Descriptions>
         <Description description="Unique identifier for the team that owns the record." languagecode="1033" />
-        <Description description="Entydigt id for det team, der ejer posten." languagecode="1030" />
       </Descriptions>
     </RelationshipDescription>
   </EntityRelationship>

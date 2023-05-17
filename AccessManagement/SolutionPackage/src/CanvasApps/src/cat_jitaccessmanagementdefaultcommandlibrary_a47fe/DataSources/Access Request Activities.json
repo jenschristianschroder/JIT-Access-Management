@@ -6,6 +6,7 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "cat_accessrequestactivity",
+    "MaxGetRowsCount": 500,
     "Name": "Access Request Activities",
     "NativeCDSDataSourceInfoNameMapping": {
       "_ownerid_value": "Owner",
@@ -85,24 +86,20 @@
     "TrimmedViewName": true,
     "Type": "ViewInfo",
     "ViewInfoNameMapping": {
-      "11698630-7868-4f8f-bcf4-07c22f2934db": "Access Request Activity Lookup View",
-      "43ac8167-eea2-4630-ba36-c9500a7f54a7": "Closed Access Request Activities",
-      "5babc82c-b10d-44b3-80d6-201ba808d8e5": "All Access Request Activities",
-      "629c66d5-fce6-4f51-8138-11b80be69da2": "Access Request Activity Associated View",
-      "8192d692-0d2f-428d-9b07-858223d4359f": "Access Request Activity Advanced Find View",
-      "dc0a4f89-4ceb-434a-8414-c8f34fb65325": "My Open Access Request Activities"
+      "74424ed3-8af4-459b-b21b-c3eb88ded22e": "My Open Access Request Activities",
+      "7e1af4d2-86b9-463b-86c3-1d0ee9407429": "Access Request Activity Advanced Find View",
+      "81252e24-4d88-4273-a0e4-ecc1a353f9ae": "Access Request Activity Lookup View",
+      "8f873aff-c9de-4ea5-97c5-7324094c4b5e": "All Access Request Activities",
+      "a5858357-2c55-4e6a-9afd-7b3d664946d6": "Access Request Activity Associated View",
+      "e82feb42-38ad-4fc7-87f3-b60960e49e86": "Closed Access Request Activities"
     }
   },
   {
     "DisplayName": "Activity Type",
     "Name": "activitypointer_activitytypecode",
     "OptionSetInfoNameMapping": {
-      "10083": "Teams chat",
-      "10398": "Action",
-      "10429": "Customer Voice alert",
-      "10439": "Customer Voice survey invite",
-      "10441": "Customer Voice survey response",
-      "10472": "Access Request Activity",
+      "10097": "Teams chat",
+      "10317": "Access Request Activity",
       "4201": "Appointment",
       "4202": "Email",
       "4204": "Fax",

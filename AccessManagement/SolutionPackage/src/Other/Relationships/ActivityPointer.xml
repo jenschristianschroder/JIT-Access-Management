@@ -3,7 +3,7 @@
   <EntityRelationship Name="activity_pointer_cat_AccessRequestActivity">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessRequestActivity</ReferencingEntityName>
     <ReferencedEntityName>ActivityPointer</ReferencedEntityName>
@@ -16,7 +16,6 @@
     <ReferencingAttributeName>ActivityId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Entydigt id for aktiviteten." languagecode="1030" />
         <Description description="Unique identifier of the activity." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>

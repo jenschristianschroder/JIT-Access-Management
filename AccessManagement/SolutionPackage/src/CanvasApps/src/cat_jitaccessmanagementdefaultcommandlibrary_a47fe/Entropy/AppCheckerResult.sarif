@@ -112,17 +112,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.Access Request Activities"
+                  "fullyQualifiedName": "App.Access Profile Approvers"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.Access Request Activities",
+                  "fullyQualifiedName": "App.Access Profile Approvers",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "Access Request Activities",
+                "member": "Access Profile Approvers",
                 "module": "App",
                 "type": "App"
               }
@@ -142,17 +142,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.Access Profile Approvers"
+                  "fullyQualifiedName": "App.Access Request Activities"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.Access Profile Approvers",
+                  "fullyQualifiedName": "App.Access Request Activities",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "Access Profile Approvers",
+                "member": "Access Request Activities",
                 "module": "App",
                 "type": "App"
               }

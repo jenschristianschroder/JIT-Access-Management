@@ -3,7 +3,7 @@
   <EntityRelationship Name="knowledgearticle_cat_AccessRequestActivities">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessRequestActivity</ReferencingEntityName>
     <ReferencedEntityName>KnowledgeArticle</ReferencedEntityName>
@@ -17,7 +17,6 @@
     <ReferencingAttributeName>RegardingObjectId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Entydigt id for det objekt, som aktiviteten er tilknyttet." languagecode="1030" />
         <Description description="Unique identifier of the object with which the activity is associated." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>

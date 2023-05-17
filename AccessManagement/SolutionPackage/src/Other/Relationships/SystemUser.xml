@@ -3,7 +3,7 @@
   <EntityRelationship Name="cat_AccessProfileApprovers_SystemUser_Sys">
     <EntityRelationshipType>ManyToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <FirstEntityName>SystemUser</FirstEntityName>
     <SecondEntityName>cat_AccessProfileApprovers</SecondEntityName>
@@ -29,7 +29,7 @@
   <EntityRelationship Name="cat_accessrequestactivity_systemuser_createdby">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessRequestActivity</ReferencingEntityName>
     <ReferencedEntityName>SystemUser</ReferencedEntityName>
@@ -43,7 +43,6 @@
     <ReferencingAttributeName>CreatedBy</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Entydigt id for den bruger, der oprettede aktiviteten." languagecode="1030" />
         <Description description="Unique identifier of the user who created the activity." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
@@ -51,7 +50,7 @@
   <EntityRelationship Name="cat_accessrequestactivity_systemuser_modifiedby">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessRequestActivity</ReferencingEntityName>
     <ReferencedEntityName>SystemUser</ReferencedEntityName>
@@ -65,7 +64,6 @@
     <ReferencingAttributeName>ModifiedBy</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Entydigt id for den bruger, der sidst ændrede aktiviteten." languagecode="1030" />
         <Description description="Unique identifier of user who last modified the activity." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
@@ -73,7 +71,7 @@
   <EntityRelationship Name="cat_accessrequestactivity_systemuser_owninguser">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessRequestActivity</ReferencingEntityName>
     <ReferencedEntityName>SystemUser</ReferencedEntityName>
@@ -87,7 +85,6 @@
     <ReferencingAttributeName>OwningUser</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Entydigt id for den bruger, der ejer aktiviteten." languagecode="1030" />
         <Description description="Unique identifier of the user that owns the activity." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
@@ -224,7 +221,6 @@
     <RelationshipDescription>
       <Descriptions>
         <Description description="Unique identifier of the user who created the record." languagecode="1033" />
-        <Description description="Entydigt id for den bruger, der oprettede posten." languagecode="1030" />
       </Descriptions>
     </RelationshipDescription>
   </EntityRelationship>
@@ -245,7 +241,6 @@
     <RelationshipDescription>
       <Descriptions>
         <Description description="Unique identifier of the user who modified the record." languagecode="1033" />
-        <Description description="Entydigt id for den bruger, der ændrede posten." languagecode="1030" />
       </Descriptions>
     </RelationshipDescription>
   </EntityRelationship>
@@ -346,7 +341,6 @@
     <RelationshipDescription>
       <Descriptions>
         <Description description="Unique identifier for the user that owns the record." languagecode="1033" />
-        <Description description="Entydigt id for den bruger, der ejer posten." languagecode="1030" />
       </Descriptions>
     </RelationshipDescription>
   </EntityRelationship>

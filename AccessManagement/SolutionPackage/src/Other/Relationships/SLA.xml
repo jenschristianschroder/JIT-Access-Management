@@ -3,7 +3,7 @@
   <EntityRelationship Name="cat_accessrequestactivity_sla_slaid">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessRequestActivity</ReferencingEntityName>
     <ReferencedEntityName>SLA</ReferencedEntityName>
@@ -17,7 +17,6 @@
     <ReferencingAttributeName>SLAId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Vælg den serviceaftale (SLA), du vil anvende på sagsposten." languagecode="1030" />
         <Description description="Choose the service level agreement (SLA) that you want to apply to the case record." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
@@ -38,7 +37,7 @@
   <EntityRelationship Name="cat_accessrequestactivity_sla_slainvokedid">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>0.0.0.0</IntroducedVersion>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>cat_AccessRequestActivity</ReferencingEntityName>
     <ReferencedEntityName>SLA</ReferencedEntityName>
@@ -52,7 +51,6 @@
     <ReferencingAttributeName>SLAInvokedId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Sidste SLA, der blev anvendt til denne sag. Dette felt er kun beregnet til intern brug." languagecode="1030" />
         <Description description="Last SLA that was applied to this case. This field is for internal use only." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
