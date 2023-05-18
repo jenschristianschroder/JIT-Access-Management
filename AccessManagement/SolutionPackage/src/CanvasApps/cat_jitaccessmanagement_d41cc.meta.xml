@@ -1,27 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>cat_jitaccessmanagement_d41cc</Name>
-  <AppVersion>2023-05-17T06:06:17Z</AppVersion>
+  <AppVersion>2023-05-18T07:07:27Z</AppVersion>
   <Status>Ready</Status>
-  <CreatedByClientVersion>3.23051.23.0</CreatedByClientVersion>
-  <MinClientVersion>3.23051.23.0</MinClientVersion>
-  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","publisherVersion":"3.23051.23","minimumRequiredApiVersion":"2.2.0","hasComponent":"false","hasUnlockedComponent":"false","isUnifiedRootApp":"false","sienaVersion":"20230516T124410Z-3.23051.23.0"}</Tags>
+  <CreatedByClientVersion>3.23052.19.0</CreatedByClientVersion>
+  <MinClientVersion>3.23052.19.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","publisherVersion":"3.23052.19","minimumRequiredApiVersion":"2.2.0","hasComponent":"false","hasUnlockedComponent":"false","isUnifiedRootApp":"false","sienaVersion":"20230517T060617Z-3.23051.23.0"}</Tags>
   <IsCdsUpgraded>0</IsCdsUpgraded>
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
   <DisplayName>JIT Access Management</DisplayName>
-  <Description></Description>
-  <CommitMessage></CommitMessage>
+  <Description xsi:nil="true"></Description>
+  <CommitMessage xsi:nil="true"></CommitMessage>
   <Publisher></Publisher>
   <AuthorizationReferences>[]</AuthorizationReferences>
-  <ConnectionReferences>{}</ConnectionReferences>
+  <ConnectionReferences>{"9762438a-8fca-4a70-b085-364bb9275b1d":{"id":"/providers/microsoft.powerapps/apis/shared_powerappsforappmakers","displayName":"Power Apps for Makers","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1626/1.0.1626.3238/powerappsforappmakers/icon.png","dataSources":["PowerAppsforMakers"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Get-Environments"]}}</ConnectionReferences>
   <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified"}},"dataSources":{"Access Profiles":{"entitySetName":"cat_accessprofiles","logicalName":"cat_accessprofile"},"Access Requests":{"entitySetName":"cat_accessrequests","logicalName":"cat_accessrequest"},"Users":{"entitySetName":"systemusers","logicalName":"systemuser"}}}}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
+  <AppComponentDependencies>[]</AppComponentDependencies>
   <CanConsumeAppPass>1</CanConsumeAppPass>
   <CanvasAppType>0</CanvasAppType>
   <BypassConsent>0</BypassConsent>
+  <AdminControlBypassConsent>0</AdminControlBypassConsent>
   <EmbeddedApp xsi:nil="true"></EmbeddedApp>
   <IntroducedVersion>1.0</IntroducedVersion>
-  <CdsDependencies>{"cdsdependencies":[{"componenttype":1,"logicalname":"cat_accessprofile"},{"componenttype":1,"logicalname":"cat_accessrequest"},{"componenttype":1,"logicalname":"systemuser"}]}</CdsDependencies>
+  <CdsDependencies>{"cdsdependencies":[{"logicalname":"cat_accessprofile","componenttype":1},{"logicalname":"cat_accessrequest","componenttype":1},{"logicalname":"systemuser","componenttype":1}]}</CdsDependencies>
   <IsCustomizable>1</IsCustomizable>
   <BackgroundImageUri>/CanvasApps/cat_jitaccessmanagement_d41cc_BackgroundImageUri</BackgroundImageUri>
   <DocumentUri>/CanvasApps/cat_jitaccessmanagement_d41cc_DocumentUri.msapp</DocumentUri>
