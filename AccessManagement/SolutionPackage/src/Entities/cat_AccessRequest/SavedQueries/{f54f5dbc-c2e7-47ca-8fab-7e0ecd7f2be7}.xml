@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{f54f5dbc-c2e7-47ca-8fab-7e0ecd7f2be7}</savedqueryid>
+    <layoutxml>
+      <grid name="cat_accessrequests" jump="cat_name" select="1" icon="1" preview="1">
+        <row name="cat_accessrequest" id="cat_accessrequestid">
+          <cell name="cat_name" width="300" />
+          <cell name="statuscode" width="119" />
+          <cell name="cat_user" width="100" />
+          <cell name="cat_accessprofile" width="122" />
+          <cell name="cat_securityrole" width="117" />
+          <cell name="cat_duration" width="100" />
+          <cell name="cat_environmentname" width="151" />
+          <cell name="cat_environmenturl" width="136" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cat_accessrequest">
+          <attribute name="cat_accessrequestid" />
+          <attribute name="cat_name" />
+          <attribute name="createdon" />
+          <order attribute="cat_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cat_accessprofile" />
+          <attribute name="cat_environmentname" />
+          <attribute name="cat_environmenturl" />
+          <attribute name="cat_user" />
+          <attribute name="cat_securityrole" />
+          <attribute name="statuscode" />
+          <attribute name="cat_duration" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Access Request Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

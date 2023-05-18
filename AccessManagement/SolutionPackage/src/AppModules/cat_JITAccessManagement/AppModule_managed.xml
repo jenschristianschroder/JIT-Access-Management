@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>cat_JITAccessManagement</UniqueName>
+  <IntroducedVersion>0.0.0.0</IntroducedVersion>
+  <WebResourceId>953b9fac-1e5e-e611-80d6-00155ded156f</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="cat_accessmanagementsetup" />
+    <AppModuleComponent type="1" schemaName="cat_accessprofile" />
+    <AppModuleComponent type="1" schemaName="cat_accessrequest" />
+    <AppModuleComponent type="60" id="{5bfded23-9af0-ed11-8849-6045bd8ccc09}" />
+    <AppModuleComponent type="62" schemaName="cat_JITAccessManagement" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{a5d9ee8e-bfe9-ed11-8849-6045bd8ccc09}" />
+    <Role id="{dec607cd-bfe9-ed11-8849-6045bd8ccc09}" />
+    <Role id="{236750cd-45ae-4939-ab12-b24b920ced93}" />
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="JIT Access Management" languagecode="1033" />
+  </LocalizedNames>
+  <appelements>
+    <appelement uniquename="cat_cat_JITAccessManagement_canvasappid_cat_jitaccessmanagementdefaultcommandlibrary_a47fe">
+      <canvasappid>
+        <name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>
+      </canvasappid>
+      <iscustomizable>1</iscustomizable>
+      <name>cat_cat_JITAccessManagement_canvasappid_cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>
+    </appelement>
+  </appelements>
+  <appsettings>
+    <appsetting settingdefinitionid.uniquename="FluentThemingPreview">
+      <iscustomizable>1</iscustomizable>
+      <value>false</value>
+    </appsetting>
+  </appsettings>
+</AppModule>

@@ -1,0 +1,37 @@
+<appaction uniquename="cat__EnabledApproval!a170fc11d0254c81870748b01fa48f17!cat_JITAccessManagement!cat_accessprofile!0">
+  <appmoduleid>
+    <uniquename>cat_JITAccessManagement</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Enable Approval">
+    <label description="Enable Approval" languagecode="1033" />
+  </buttonlabeltext>
+  <buttonsequencepriority>3.2500000000</buttonsequencepriority>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cat_accessprofile</logicalname>
+  </contextentity>
+  <contextvalue>cat_accessprofile</contextvalue>
+  <fonticon>AddFriend</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>EnabledApproval!a170fc11d0254c81870748b01fa48f17</name>
+  <onclickeventformulacomponentlibraryid>
+    <name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>
+  </onclickeventformulacomponentlibraryid>
+  <onclickeventformulacomponentname>87e4e116e4dc4ff780c6b8094167c88e</onclickeventformulacomponentname>
+  <onclickeventformulafunctionname>OnSelect</onclickeventformulafunctionname>
+  <onclickeventtype>1</onclickeventtype>
+  <origin>0</origin>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilityformulacomponentlibraryid>
+    <name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>
+  </visibilityformulacomponentlibraryid>
+  <visibilityformulacomponentname>87e4e116e4dc4ff780c6b8094167c88e</visibilityformulacomponentname>
+  <visibilityformulafunctionname>Visible</visibilityformulafunctionname>
+  <visibilitytype>1</visibilitytype>
+</appaction>

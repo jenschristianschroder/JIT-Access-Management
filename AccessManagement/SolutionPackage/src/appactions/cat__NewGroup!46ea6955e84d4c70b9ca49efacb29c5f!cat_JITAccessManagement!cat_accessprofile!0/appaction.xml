@@ -1,0 +1,28 @@
+<appaction uniquename="cat__NewGroup!46ea6955e84d4c70b9ca49efacb29c5f!cat_JITAccessManagement!cat_accessprofile!0">
+  <appmoduleid>
+    <uniquename>cat_JITAccessManagement</uniquename>
+  </appmoduleid>
+  <buttonsequencepriority>10000.0000000000</buttonsequencepriority>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cat_accessprofile</logicalname>
+  </contextentity>
+  <contextvalue>cat_accessprofile</contextvalue>
+  <grouptitle default="NewGroup">
+    <label description="NewGroup" languagecode="1033" />
+  </grouptitle>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>1</isgrouptitlehidden>
+  <location>0</location>
+  <name>NewGroup!46ea6955e84d4c70b9ca49efacb29c5f</name>
+  <onclickeventtype>0</onclickeventtype>
+  <origin>0</origin>
+  <parentappactionid>
+    <uniquename>cat__Environment!0a9fabe779ee4040a85f40eea6eee83d!cat_JITAccessManagement!cat_accessprofile!0</uniquename>
+  </parentappactionid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>3</type>
+</appaction>

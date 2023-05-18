@@ -1,0 +1,113 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_powerplatformforadmins": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedpowerplatformforadmins_e2509"
+        },
+        "api": {
+          "name": "shared_powerplatformforadmins"
+        }
+      },
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_MicrosoftDataverseAccessManagement"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "12dda5b9-47d7-4d9a-8cab-dab4662430d4"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "cat_accessprofile",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "statuscode eq 809060001",
+              "subscriptionRequest/runas": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Environment_as_Admin": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "885a83f0-9f6a-4a84-b9c4-440aac2f2b21"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_powerplatformforadmins",
+              "operationId": "GetSingleEnvironment",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_powerplatformforadmins"
+            },
+            "parameters": {
+              "environment": "@triggerOutputs()?['body/cat_environmentid']",
+              "api-version": "2018-10-01"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Get_Environment_as_Admin": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1ae4ac01-cf0e-4b15-ab9e-4fa964b13d4d"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessprofiles",
+              "recordId": "@triggerOutputs()?['body/cat_accessprofileid']",
+              "item/cat_environmentid": "@outputs('Get_Environment_as_Admin')?['body/name']",
+              "item/cat_environmentname": "@outputs('Get_Environment_as_Admin')?['body/properties/displayName']",
+              "item/cat_environmentresourceid": "@outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/resourceId']",
+              "item/cat_environmentuniquename": "@{outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/uniqueName']}.@{first(split(outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/hostNameSuffix'], '.'))}",
+              "item/cat_environmenturl": "@outputs('Get_Environment_as_Admin')?['body/properties/linkedEnvironmentMetadata/instanceUrl']",
+              "item/statuscode": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

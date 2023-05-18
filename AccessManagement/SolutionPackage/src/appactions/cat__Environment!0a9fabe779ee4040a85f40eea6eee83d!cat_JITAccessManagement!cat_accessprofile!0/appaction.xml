@@ -1,0 +1,32 @@
+<appaction uniquename="cat__Environment!0a9fabe779ee4040a85f40eea6eee83d!cat_JITAccessManagement!cat_accessprofile!0">
+  <appmoduleid>
+    <uniquename>cat_JITAccessManagement</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Environment">
+    <label description="Environment" languagecode="1033" />
+  </buttonlabeltext>
+  <buttonsequencepriority>5.5000000000</buttonsequencepriority>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cat_accessprofile</logicalname>
+  </contextentity>
+  <contextvalue>cat_accessprofile</contextvalue>
+  <fonticon>LinkArticle</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>Environment!0a9fabe779ee4040a85f40eea6eee83d</name>
+  <onclickeventtype>0</onclickeventtype>
+  <origin>0</origin>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>1</type>
+  <visibilityformulacomponentlibraryid>
+    <name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>
+  </visibilityformulacomponentlibraryid>
+  <visibilityformulacomponentname>cdc839619a584e75bc53f2f2fe1a8e41</visibilityformulacomponentname>
+  <visibilityformulafunctionname>Visible</visibilityformulafunctionname>
+  <visibilitytype>1</visibilitytype>
+</appaction>

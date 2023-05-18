@@ -1,0 +1,35 @@
+<appaction uniquename="cat__Settings!febb5984f6474b08ba1f5fbedcf12c06!cat_JITAccessManagement!cat_accessprofile!0">
+  <appmoduleid>
+    <uniquename>cat_JITAccessManagement</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Settings">
+    <label description="Settings" languagecode="1033" />
+  </buttonlabeltext>
+  <buttonsequencepriority>20000.0000000000</buttonsequencepriority>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cat_accessprofile</logicalname>
+  </contextentity>
+  <contextvalue>cat_accessprofile</contextvalue>
+  <fonticon>$clientsvg:Settings</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>Settings!febb5984f6474b08ba1f5fbedcf12c06</name>
+  <onclickeventformulacomponentlibraryid>
+    <name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>
+  </onclickeventformulacomponentlibraryid>
+  <onclickeventformulacomponentname>c14312b5c0034c5caaf7a67e4e7a3ffb</onclickeventformulacomponentname>
+  <onclickeventformulafunctionname>OnSelect</onclickeventformulafunctionname>
+  <onclickeventtype>1</onclickeventtype>
+  <origin>0</origin>
+  <parentappactionid>
+    <uniquename>cat__NewGroup!46ea6955e84d4c70b9ca49efacb29c5f!cat_JITAccessManagement!cat_accessprofile!0</uniquename>
+  </parentappactionid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

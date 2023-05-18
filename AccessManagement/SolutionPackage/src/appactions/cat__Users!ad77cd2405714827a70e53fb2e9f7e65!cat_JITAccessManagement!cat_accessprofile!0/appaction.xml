@@ -1,0 +1,35 @@
+<appaction uniquename="cat__Users!ad77cd2405714827a70e53fb2e9f7e65!cat_JITAccessManagement!cat_accessprofile!0">
+  <appmoduleid>
+    <uniquename>cat_JITAccessManagement</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Users">
+    <label description="Users" languagecode="1033" />
+  </buttonlabeltext>
+  <buttonsequencepriority>40000.0000000000</buttonsequencepriority>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cat_accessprofile</logicalname>
+  </contextentity>
+  <contextvalue>cat_accessprofile</contextvalue>
+  <fonticon>People</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>Users!ad77cd2405714827a70e53fb2e9f7e65</name>
+  <onclickeventformulacomponentlibraryid>
+    <name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>
+  </onclickeventformulacomponentlibraryid>
+  <onclickeventformulacomponentname>32fb70fddb1c42a187a7c57e143b32fa</onclickeventformulacomponentname>
+  <onclickeventformulafunctionname>OnSelect</onclickeventformulafunctionname>
+  <onclickeventtype>1</onclickeventtype>
+  <origin>0</origin>
+  <parentappactionid>
+    <uniquename>cat__NewGroup!46ea6955e84d4c70b9ca49efacb29c5f!cat_JITAccessManagement!cat_accessprofile!0</uniquename>
+  </parentappactionid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

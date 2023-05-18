@@ -1,0 +1,37 @@
+<appaction uniquename="cat__RevokeAccess!ef77de07df8b4018b30f2c7f0654a602!cat_JITAccessManagement!cat_accessrequest!3">
+  <appmoduleid>
+    <uniquename>cat_JITAccessManagement</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Revoke Access">
+    <label description="Revoke Access" languagecode="1033" />
+  </buttonlabeltext>
+  <buttonsequencepriority>5.5000000000</buttonsequencepriority>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cat_accessrequest</logicalname>
+  </contextentity>
+  <contextvalue>cat_accessrequest</contextvalue>
+  <fonticon>PeopleBlock</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>3</location>
+  <name>RevokeAccess!ef77de07df8b4018b30f2c7f0654a602</name>
+  <onclickeventformulacomponentlibraryid>
+    <name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>
+  </onclickeventformulacomponentlibraryid>
+  <onclickeventformulacomponentname>d3ade3ac399e41a994e718d3dbcef1f3</onclickeventformulacomponentname>
+  <onclickeventformulafunctionname>OnSelect</onclickeventformulafunctionname>
+  <onclickeventtype>1</onclickeventtype>
+  <origin>0</origin>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilityformulacomponentlibraryid>
+    <name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>
+  </visibilityformulacomponentlibraryid>
+  <visibilityformulacomponentname>d3ade3ac399e41a994e718d3dbcef1f3</visibilityformulacomponentname>
+  <visibilityformulafunctionname>Visible</visibilityformulafunctionname>
+  <visibilitytype>1</visibilitytype>
+</appaction>

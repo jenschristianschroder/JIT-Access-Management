@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Role id="{dec607cd-bfe9-ed11-8849-6045bd8ccc09}" name="Access Management User" isinherited="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsCustomizable>1</IsCustomizable>
+  <RolePrivileges>
+    <RolePrivilege name="prvAppendcat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvAppendcat_AccessRequest" level="Basic" />
+    <RolePrivilege name="prvAppendTocat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvAppendTocat_AccessRequest" level="Basic" />
+    <RolePrivilege name="prvAppendToUser" level="Local" />
+    <RolePrivilege name="prvAssigncat_AccessRequest" level="Basic" />
+    <RolePrivilege name="prvCreatecat_AccessRequest" level="Basic" />
+    <RolePrivilege name="prvCreateSharePointData" level="Global" />
+    <RolePrivilege name="prvDeletecat_AccessRequest" level="Basic" />
+    <RolePrivilege name="prvReadcat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvReadcat_AccessRequest" level="Basic" />
+    <RolePrivilege name="prvReadPluginAssembly" level="Global" />
+    <RolePrivilege name="prvReadPluginType" level="Global" />
+    <RolePrivilege name="prvReadSdkMessage" level="Global" />
+    <RolePrivilege name="prvReadSdkMessageProcessingStep" level="Global" />
+    <RolePrivilege name="prvReadSdkMessageProcessingStepImage" level="Global" />
+    <RolePrivilege name="prvReadSharePointData" level="Global" />
+    <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+    <RolePrivilege name="prvReadUser" level="Local" />
+    <RolePrivilege name="prvSharecat_AccessRequest" level="Basic" />
+    <RolePrivilege name="prvWritecat_AccessRequest" level="Basic" />
+    <RolePrivilege name="prvWriteSharePointData" level="Global" />
+  </RolePrivileges>
+</Role>
