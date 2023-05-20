@@ -225,6 +225,8 @@
                     "parameters": {
                       "entityName": "cat_accessrequestactivities",
                       "item/subject": "Access Granted",
+                      "item/cat_flowname": "@workflow().name",
+                      "item/cat_flowrun": "@workflow().run.name",
                       "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})",
                       "item/statuscode": 1
                     },
@@ -305,6 +307,8 @@
                         "entityName": "cat_accessrequestactivities",
                         "item/subject": "FAILED: Grant access",
                         "item/description": "User \"@{outputs('Get_User')?['body/internalemailaddress']}\" was not found in environment \"@{outputs('Get_Access_Profile')?['body/cat_environmentname']}\" with Id @{outputs('Get_Access_Profile')?['body/cat_environmentid']}\n\nPlease ensure user exist in target environment",
+                        "item/cat_flowname": "@workflow().name",
+                        "item/cat_flowrun": "@workflow().run.name",
                         "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})"
                       },
                       "authentication": "@parameters('$authentication')"
@@ -444,6 +448,8 @@
                   "parameters": {
                     "entityName": "cat_accessrequestactivities",
                     "item/subject": "FAILED: Grant access",
+                    "item/cat_flowname": "@workflow().name",
+                    "item/cat_flowrun": "@workflow().run.name",
                     "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})",
                     "item/statuscode": 1
                   },

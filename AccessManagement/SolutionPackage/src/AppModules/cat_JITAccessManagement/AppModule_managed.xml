@@ -14,6 +14,7 @@
     <AppModuleComponent type="1" schemaName="cat_accessprofile" />
     <AppModuleComponent type="1" schemaName="cat_accessrequest" />
     <AppModuleComponent type="60" id="{5bfded23-9af0-ed11-8849-6045bd8ccc09}" />
+    <AppModuleComponent type="60" id="{1af66d4e-2ff7-ed11-8848-000d3a246956}" />
     <AppModuleComponent type="62" schemaName="cat_JITAccessManagement" />
   </AppModuleComponents>
   <AppModuleRoleMaps>

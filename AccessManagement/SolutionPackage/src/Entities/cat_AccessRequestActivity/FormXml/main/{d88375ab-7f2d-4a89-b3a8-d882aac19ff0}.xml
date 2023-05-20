@@ -5,7 +5,7 @@
     <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form>
+    <form headerdensity="HighWithControls">
       <tabs>
         <tab verticallayout="true" id="{1a969e9f-80d0-4223-aa73-950496ad0248}" IsUserDefined="1">
           <labels>
@@ -41,6 +41,22 @@
                           <label description="Regarding" languagecode="1033" />
                         </labels>
                         <control id="regardingobjectid" classid="{F3015350-44A2-4aa0-97B5-00166532B5E9}" datafieldname="regardingobjectid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c3912740-069b-4ac4-8206-0767278f63a2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Flow Name" languagecode="1033" />
+                        </labels>
+                        <control id="cat_flowname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_flowname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{871fd7c0-0b84-430a-8dd8-3784b01632f7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Flow Run" languagecode="1033" />
+                        </labels>
+                        <control id="cat_flowrun" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_flowrun" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -117,6 +133,30 @@
           </row>
         </rows>
       </header>
+      <footer id="{f273118f-c6c6-4632-916a-299329766930}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{452e5d4e-7709-4243-9e1b-a324990fc112}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{01608f4c-01c4-4929-8f3a-a71a6f88a655}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d91a8810-03f6-4794-ac69-7e1a5eb7ea73}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

@@ -5,7 +5,7 @@
     <IntroducedVersion>0.0.0.1</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form>
+    <form headerdensity="HighWithControls">
       <tabs>
         <tab verticallayout="true" id="{1a969e9f-80d0-4223-aa73-950496ad0248}" IsUserDefined="1">
           <labels>
@@ -22,7 +22,7 @@
                     <row>
                       <cell id="{8927384f-7b30-4257-8193-052a2123b720}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Subject" languagecode="1033" />
                         </labels>
                         <control id="subject" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="subject" />
                       </cell>
@@ -30,7 +30,7 @@
                     <row>
                       <cell id="{44e39cd4-3241-42bd-bb8d-98910686e18f}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Owner" languagecode="1033" />
                         </labels>
                         <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
                       </cell>
@@ -38,9 +38,25 @@
                     <row>
                       <cell id="{55b45016-c677-4652-a79b-029836cba0c5}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Regarding" languagecode="1033" />
                         </labels>
                         <control id="regardingobjectid" classid="{F3015350-44A2-4aa0-97B5-00166532B5E9}" datafieldname="regardingobjectid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c3912740-069b-4ac4-8206-0767278f63a2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Flow Name" languagecode="1033" />
+                        </labels>
+                        <control id="cat_flowname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_flowname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{871fd7c0-0b84-430a-8dd8-3784b01632f7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Flow Run" languagecode="1033" />
+                        </labels>
+                        <control id="cat_flowrun" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_flowrun" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -92,31 +108,55 @@
           <row>
             <cell id="{4c6a6f3b-c2f0-4d86-b69e-d307e95cabab}">
               <labels>
-                <label description="" languagecode="1033" />
+                <label description="Priority" languagecode="1033" />
               </labels>
               <control id="header_prioritycode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="prioritycode" disabled="false" />
             </cell>
             <cell id="{23dc8b82-9928-471a-aa13-c57d4c738437}">
               <labels>
-                <label description="" languagecode="1033" />
+                <label description="Due Date" languagecode="1033" />
               </labels>
               <control id="header_scheduledend" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="scheduledend" disabled="false" />
             </cell>
             <cell id="{e739a1a5-fe05-49e7-b12b-52bdb1a50774}">
               <labels>
-                <label description="" languagecode="1033" />
+                <label description="Activity Status" languagecode="1033" />
               </labels>
               <control id="header_statecode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="statecode" disabled="false" />
             </cell>
             <cell id="{517d3d53-51d2-44c0-8d98-c9f03c51f313}">
               <labels>
-                <label description="" languagecode="1033" />
+                <label description="Owner" languagecode="1033" />
               </labels>
               <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
             </cell>
           </row>
         </rows>
       </header>
+      <footer id="{f273118f-c6c6-4632-916a-299329766930}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{452e5d4e-7709-4243-9e1b-a324990fc112}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{01608f4c-01c4-4929-8f3a-a71a6f88a655}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d91a8810-03f6-4794-ac69-7e1a5eb7ea73}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
