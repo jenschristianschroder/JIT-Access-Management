@@ -22,7 +22,7 @@
                     <row>
                       <cell id="{4ba28bfa-4f36-4188-819c-95700841e7a1}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Status Reason" languagecode="1033" />
                         </labels>
                         <control id="statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
                       </cell>
@@ -41,13 +41,13 @@
                     <row>
                       <cell id="{84ba2bd8-54e8-40c9-a009-1b33aeb8c3c7}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Priority" languagecode="1033" />
                         </labels>
                         <control id="prioritycode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="prioritycode" disabled="false" />
                       </cell>
                       <cell id="{3dca1ff6-24a7-4108-a8fd-4fb28d45a458}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Due Date" languagecode="1033" />
                         </labels>
                         <control id="scheduledend" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="scheduledend" disabled="false" />
                       </cell>
@@ -67,7 +67,7 @@
                     <row>
                       <cell id="{fa85ae5f-0f45-45c5-8074-b901767ce10b}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Subject" languagecode="1033" />
                         </labels>
                         <control id="subject" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="subject" disabled="false" />
                       </cell>
@@ -75,9 +75,17 @@
                     <row>
                       <cell id="{d23175ec-f90a-476b-b455-3e9fa8cb49c5}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Regarding" languagecode="1033" />
                         </labels>
                         <control id="regardingobjectid" classid="{F3015350-44A2-4aa0-97B5-00166532B5E9}" datafieldname="regardingobjectid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3c78b64c-1ae2-a69e-b862-76d38393d77c}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Flow Run Url" languagecode="1033" />
+                        </labels>
+                        <control id="cat_flowrunurl" classid="{71716B6C-711E-476c-8AB8-5D11542BFB47}" datafieldname="cat_flowrunurl" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -90,13 +98,13 @@
                     <row>
                       <cell id="{b70d4bae-bad2-4aab-ba7e-1b757fe42204}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Owner" languagecode="1033" />
                         </labels>
                         <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
                       </cell>
                       <cell id="{f677de64-2bca-4717-9743-d020e280fed2}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Date Created" languagecode="1033" />
                         </labels>
                         <control id="createdon" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdon" disabled="false" />
                       </cell>

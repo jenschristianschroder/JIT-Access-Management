@@ -4,22 +4,28 @@
   <RolePrivileges>
     <RolePrivilege name="prvAppendcat_AccessManagementSetup" level="Global" />
     <RolePrivilege name="prvAppendcat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvAppendcat_AccessProfileApprovers" level="Global" />
     <RolePrivilege name="prvAppendcat_AccessRequest" level="Global" />
     <RolePrivilege name="prvAppendTocat_AccessManagementSetup" level="Global" />
     <RolePrivilege name="prvAppendTocat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvAppendTocat_AccessProfileApprovers" level="Global" />
     <RolePrivilege name="prvAppendTocat_AccessRequest" level="Global" />
     <RolePrivilege name="prvAssigncat_AccessManagementSetup" level="Global" />
     <RolePrivilege name="prvAssigncat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvAssigncat_AccessProfileApprovers" level="Global" />
     <RolePrivilege name="prvAssigncat_AccessRequest" level="Global" />
     <RolePrivilege name="prvCreatecat_AccessManagementSetup" level="Global" />
     <RolePrivilege name="prvCreatecat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvCreatecat_AccessProfileApprovers" level="Global" />
     <RolePrivilege name="prvCreatecat_AccessRequest" level="Global" />
     <RolePrivilege name="prvCreateSharePointData" level="Global" />
     <RolePrivilege name="prvDeletecat_AccessManagementSetup" level="Global" />
     <RolePrivilege name="prvDeletecat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvDeletecat_AccessProfileApprovers" level="Global" />
     <RolePrivilege name="prvDeletecat_AccessRequest" level="Global" />
     <RolePrivilege name="prvReadcat_AccessManagementSetup" level="Global" />
     <RolePrivilege name="prvReadcat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvReadcat_AccessProfileApprovers" level="Global" />
     <RolePrivilege name="prvReadcat_AccessRequest" level="Global" />
     <RolePrivilege name="prvReadPluginAssembly" level="Global" />
     <RolePrivilege name="prvReadPluginType" level="Global" />
@@ -30,9 +36,11 @@
     <RolePrivilege name="prvReadSharePointDocument" level="Global" />
     <RolePrivilege name="prvSharecat_AccessManagementSetup" level="Global" />
     <RolePrivilege name="prvSharecat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvSharecat_AccessProfileApprovers" level="Global" />
     <RolePrivilege name="prvSharecat_AccessRequest" level="Global" />
     <RolePrivilege name="prvWritecat_AccessManagementSetup" level="Global" />
     <RolePrivilege name="prvWritecat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvWritecat_AccessProfileApprovers" level="Global" />
     <RolePrivilege name="prvWritecat_AccessRequest" level="Global" />
     <RolePrivilege name="prvWriteSharePointData" level="Global" />
   </RolePrivileges>
