@@ -18,6 +18,15 @@
         "api": {
           "name": "shared_commondataservice"
         }
+      },
+      "shared_flowmanagement": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedflowmanagement_68987"
+        },
+        "api": {
+          "name": "shared_flowmanagement"
+        }
       }
     },
     "definition": {
@@ -248,6 +257,9 @@
             "parameters": {
               "entityName": "cat_accessrequestactivities",
               "item/subject": "Access Revoked",
+              "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
+              "item/cat_flowname": "@workflow().name",
+              "item/cat_flowrun": "@workflow().run.name",
               "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})",
               "item/statuscode": 1
             },
@@ -375,6 +387,68 @@
               "$top": 1
             },
             "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Cancel_Delayed_Run": {
+          "runAfter": {
+            "Get_Access_Request_Activity_-_Revoke_Access": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8a2b49d3-9a02-4312-aa5d-cc94fd26136f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_flowmanagement",
+              "operationId": "CancelFlowRun",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_flowmanagement"
+            },
+            "parameters": {
+              "environmentName": "@workflow().tags.environmentName",
+              "flowName": "@first(outputs('Get_Access_Request_Activity_-_Revoke_Access')?['body/value'])?['cat_flowname']",
+              "runId": "@first(outputs('Get_Access_Request_Activity_-_Revoke_Access')?['body/value'])?['cat_flowrun']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Access_Request_Activity_-_Revoke_Access": {
+          "runAfter": {
+            "Update_a_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a41b88d7-27cb-4a11-9925-5a6d594403ef"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessrequestactivities",
+              "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Revoke Access'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Terminate": {
+          "runAfter": {
+            "Cancel_Delayed_Run": [
+              "Failed"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b99ff58a-3f56-4075-a487-cc84927d7401"
+          },
+          "type": "Terminate",
+          "inputs": {
+            "runStatus": "Succeeded"
           }
         }
       }

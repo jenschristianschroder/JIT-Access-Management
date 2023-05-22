@@ -95,6 +95,7 @@
       <RootComponent type="29" id="{e0bcf20f-97f0-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="300" schemaName="cat_jitaccessmanagement_d41cc" behavior="0" />
       <RootComponent type="300" schemaName="cat_jitaccessmanagementdefaultcommandlibrary_a47fe" behavior="0" />
+      <RootComponent type="60" id="{1af66d4e-2ff7-ed11-8848-000d3a246956}" behavior="0" />
       <RootComponent type="61" schemaName="cat_accessrequestquickcreateformlibrary" behavior="0" />
       <RootComponent type="62" schemaName="cat_JITAccessManagement" behavior="0" />
       <RootComponent type="70" id="{4d6247ee-bee9-ed11-8849-6045bd8ccc09}" behavior="0" />
