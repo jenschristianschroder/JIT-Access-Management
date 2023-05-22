@@ -44,11 +44,27 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{1450fb6f-5ade-4d14-87f8-19595276f4d7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Flow Run Url" languagecode="1033" />
+                        </labels>
+                        <control id="cat_flowrunurl" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="cat_flowrunurl" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{15527499-14b7-46d4-9ea9-72ff75a6e28d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Flow Environment Id" languagecode="1033" />
+                        </labels>
+                        <control id="cat_flowenvironmentid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_flowenvironmentid" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{c3912740-069b-4ac4-8206-0767278f63a2}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Flow Name" languagecode="1033" />
                         </labels>
-                        <control id="cat_flowname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_flowname" disabled="false" />
+                        <control id="cat_flowname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_flowname" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -56,7 +72,7 @@
                         <labels>
                           <label description="Flow Run" languagecode="1033" />
                         </labels>
-                        <control id="cat_flowrun" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_flowrun" disabled="false" />
+                        <control id="cat_flowrun" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_flowrun" disabled="true" />
                       </cell>
                     </row>
                   </rows>

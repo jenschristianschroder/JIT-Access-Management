@@ -68,6 +68,9 @@
                 }
               ],
               "item/actualstart": "@utcNow()",
+              "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
+              "item/cat_flowname": "@workflow().name",
+              "item/cat_flowrun": "@workflow().run.name",
               "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})",
               "item/statuscode": 1
             },
@@ -92,6 +95,9 @@
                   "entityName": "cat_accessrequestactivities",
                   "item/subject": "Access Request Approvel Process started",
                   "item/actualstart": "@utcNow()",
+                  "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
+                  "item/cat_flowname": "@workflow().name",
+                  "item/cat_flowrun": "@workflow().run.name",
                   "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})",
                   "item/statuscode": 1
                 },

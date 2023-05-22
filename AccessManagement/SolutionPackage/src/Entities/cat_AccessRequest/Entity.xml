@@ -1215,7 +1215,7 @@
               <Description description="Reason for the status of the Access Request" languagecode="1033" />
             </Descriptions>
             <statuses>
-              <status value="1" state="0" Color="#9cf7ff">
+              <status value="1" state="0" Color="#c9d7f8">
                 <labels>
                   <label description="Requested" languagecode="1033" />
                 </labels>
@@ -1223,9 +1223,17 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </status>
-              <status value="809060001" state="0" Color="#00e622">
+              <status value="809060001" state="0" Color="#4da167">
                 <labels>
                   <label description="Granted" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </status>
+              <status value="809060004" state="0" Color="#ff934f">
+                <labels>
+                  <label description="Revoke" languagecode="1033" />
                 </labels>
                 <Descriptions>
                   <Description description="" languagecode="1033" />
@@ -1239,15 +1247,7 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </status>
-              <status value="809060004" state="0" Color="#ffc800">
-                <labels>
-                  <label description="Revoke" languagecode="1033" />
-                </labels>
-                <Descriptions>
-                  <Description description="" languagecode="1033" />
-                </Descriptions>
-              </status>
-              <status value="809060002" state="1" Color="#d9d9d9">
+              <status value="809060002" state="1" Color="#cfcfcf">
                 <labels>
                   <label description="Revoked" languagecode="1033" />
                 </labels>
@@ -1255,7 +1255,7 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </status>
-              <status value="809060003" state="1" Color="#ff5454">
+              <status value="809060003" state="1" Color="#b10f2e">
                 <labels>
                   <label description="Rejected" languagecode="1033" />
                 </labels>
@@ -1263,7 +1263,7 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </status>
-              <status value="809060005" state="1" Color="#ff9d00">
+              <status value="809060005" state="1" Color="#f06543">
                 <labels>
                   <label description="Failed" languagecode="1033" />
                 </labels>
@@ -1271,7 +1271,7 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </status>
-              <status value="809060006" state="0" Color="#6e92ff">
+              <status value="809060006" state="0" Color="#246eb9">
                 <labels>
                   <label description="Waiting for approval" languagecode="1033" />
                 </labels>
@@ -1279,7 +1279,7 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </status>
-              <status value="809060007" state="0" Color="#deffe1">
+              <status value="809060007" state="0" Color="#78aace">
                 <labels>
                   <label description="Approved" languagecode="1033" />
                 </labels>

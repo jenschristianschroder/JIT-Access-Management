@@ -257,6 +257,7 @@
             "parameters": {
               "entityName": "cat_accessrequestactivities",
               "item/subject": "Access Revoked",
+              "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
               "item/cat_flowname": "@workflow().name",
               "item/cat_flowrun": "@workflow().run.name",
               "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})",

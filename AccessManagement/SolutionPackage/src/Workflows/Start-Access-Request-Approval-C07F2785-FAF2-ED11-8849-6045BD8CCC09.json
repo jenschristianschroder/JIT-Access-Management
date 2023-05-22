@@ -724,6 +724,7 @@
               "entityName": "cat_accessrequestactivities",
               "recordId": "@first(outputs('List_Open_Access_Request_Activities_2')?['body/value'])?['activityid']",
               "item/statecode": 1,
+              "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
               "item/cat_flowname": "@workflow().name",
               "item/cat_flowrun": "@workflow().run.name",
               "item/statuscode": 2
