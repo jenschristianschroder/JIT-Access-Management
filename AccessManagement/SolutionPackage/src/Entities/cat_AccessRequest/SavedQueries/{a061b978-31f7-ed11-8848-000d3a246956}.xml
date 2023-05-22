@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{a061b978-31f7-ed11-8848-000d3a246956}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cat_name" select="1" icon="1" preview="1">
+        <row name="result" id="cat_accessrequestid">
+          <cell name="cat_name" width="200" />
+          <cell name="cat_accessprofile" width="122" />
+          <cell name="cat_environmentname" width="151" />
+          <cell name="cat_securityrole" width="117" />
+          <cell name="cat_user" width="100" />
+          <cell name="createdon" width="105" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="cat_accessrequest">
+          <attribute name="cat_name" />
+          <attribute name="cat_accessrequestid" />
+          <attribute name="cat_accessprofile" />
+          <attribute name="cat_environmentname" />
+          <attribute name="cat_securityrole" />
+          <attribute name="cat_user" />
+          <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="eq" value="809060005" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>0.0.0.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Failed" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

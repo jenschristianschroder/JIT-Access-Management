@@ -80,6 +80,14 @@
                         <control id="regardingobjectid" classid="{F3015350-44A2-4aa0-97B5-00166532B5E9}" datafieldname="regardingobjectid" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{3c78b64c-1ae2-a69e-b862-76d38393d77c}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Flow Run Url" languagecode="1033" />
+                        </labels>
+                        <control id="cat_flowrunurl" classid="{71716B6C-711E-476c-8AB8-5D11542BFB47}" datafieldname="cat_flowrunurl" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="CardFooter" showlabel="false" columns="1111" showbar="false" id="{5c8ed40f-0057-4ae8-ac99-9f93d4caa274}" IsUserDefined="0">

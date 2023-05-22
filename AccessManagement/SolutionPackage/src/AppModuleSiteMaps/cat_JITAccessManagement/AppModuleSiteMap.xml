@@ -14,6 +14,11 @@
         <Titles>
           <Title LCID="1033" Title="JIT Access Management" />
         </Titles>
+        <SubArea Id="subarea_7ddf86b0" DescriptionResourceId="Dashboards_Description" Icon="/_imgs/imagestrips/transparent_spacer.gif" Url="/workplace/home_dashboards.aspx" DefaultDashboard="1af66d4e-2ff7-ed11-8848-000d3a246956" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" ToolTipResourseId="DashboardTooltip">
+          <Titles>
+            <Title LCID="1033" Title="Overview" />
+          </Titles>
+        </SubArea>
         <SubArea Id="subarea_2ab78072" VectorIcon="/WebResources/SLAManagement/_imgs/SLA.svg" Icon="/WebResources/SLAManagement/_imgs/SLA.svg" Entity="cat_accessprofile" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
         <SubArea Id="subarea_37735243" VectorIcon="/WebResources/AppCommon/ControlWS/SummaryPageImages/BPF_HighContrast.svg" Icon="/WebResources/AppCommon/ControlWS/SummaryPageImages/BPF_HighContrast.svg" Entity="cat_accessrequest" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
       </Group>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<InteractionCentricDashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <LocalizedNames>
+    <LocalizedName description="Access Request Overview" languagecode="1033" />
+  </LocalizedNames>
+  <FormId>{1af66d4e-2ff7-ed11-8848-000d3a246956}</FormId>
+  <IsCustomizable>1</IsCustomizable>
+  <IsDefault>0</IsDefault>
+  <FormXml>
+    <forms type="interactioncentricdashboard">
+      <form>
+        <tabs filterby="createdon" timeframe="4" primaryentitylogicalname="cat_accessrequest" entityview="{51D65688-8BF0-ED11-8849-6045BD8CCC09}" dashboardCategory="1_0" tilespresent="false">
+          <tab showlabel="true" verticallayout="true" collapsible="true" id="{eae9420b-842e-43ec-acb3-70683df30b18}">
+            <labels>
+              <label description="Visual Filters" languagecode="1033" />
+            </labels>
+            <columns>
+              <column width="100%">
+                <sections>
+                  <section name="VisualFilters" showlabel="false" showbar="false" columns="111" id="{be67c640-618d-48d4-8a3b-e794947ee64d}">
+                    <labels>
+                      <label description="Section" languagecode="1033" />
+                    </labels>
+                    <rows>
+                      <row>
+                        <cell colspan="1" rowspan="12" showlabel="false" ischartcell="true" id="{b060146c-0b17-48e4-91f6-4f805c6b5865}" auto="false">
+                          <labels>
+                            <label description="Access Request" languagecode="1033" />
+                          </labels>
+                          <control id="Component6dc234b" uniqueid="{527ab245-76c7-b170-aa86-ce15a409287a}" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                            <parameters>
+                              <TargetEntityType>cat_accessrequest</TargetEntityType>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <RecordsPerPage>10</RecordsPerPage>
+                              <HeaderColorCode />
+                              <ViewId>{51D65688-8BF0-ED11-8849-6045BD8CCC09}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <ViewIds />
+                              <AutoExpand>Fixed</AutoExpand>
+                              <VisualizationId>{32E2AE19-2DF7-ED11-8848-000D3A246956}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RelationshipName />
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell colspan="1" rowspan="12" showlabel="false" ischartcell="true" id="{d955f06a-4fd7-4b66-87d6-774655d179ff}" auto="false">
+                          <labels>
+                            <label description="Access Request" languagecode="1033" />
+                          </labels>
+                          <control id="Componentf645c4b" uniqueid="{ec9b4159-680d-c472-0312-bc4c324c9637}" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                            <parameters>
+                              <TargetEntityType>cat_accessrequest</TargetEntityType>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <RecordsPerPage>10</RecordsPerPage>
+                              <HeaderColorCode />
+                              <ViewId>{51D65688-8BF0-ED11-8849-6045BD8CCC09}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <ViewIds />
+                              <AutoExpand>Fixed</AutoExpand>
+                              <VisualizationId>{4D00F7A3-2CF7-ED11-8848-000D3A246956}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RelationshipName />
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell colspan="1" rowspan="12" showlabel="false" ischartcell="true" id="{06ab52eb-8faa-4b29-9d4f-2345fd0c19b4}" auto="false">
+                          <labels>
+                            <label description="Access Request" languagecode="1033" />
+                          </labels>
+                          <control id="Component2b12529" uniqueid="{7e27d8b1-bdbc-b40c-7baa-98d1377b257c}" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                            <parameters>
+                              <TargetEntityType>cat_accessrequest</TargetEntityType>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <RecordsPerPage>10</RecordsPerPage>
+                              <HeaderColorCode />
+                              <ViewId>{51D65688-8BF0-ED11-8849-6045BD8CCC09}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <ViewIds />
+                              <AutoExpand>Fixed</AutoExpand>
+                              <VisualizationId>{3E080D33-BBF0-ED11-8849-6045BD8CCC09}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RelationshipName />
+                            </parameters>
+                          </control>
+                        </cell>
+                      </row>
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                    </rows>
+                  </section>
+                </sections>
+              </column>
+            </columns>
+          </tab>
+          <tab name="StreamsContainer" showlabel="true" verticallayout="true" collapsible="false" id="{dc19b0b3-54fa-4637-82c3-52f5174bc5fb}">
+            <labels>
+              <label description="Streams" languagecode="1033" />
+            </labels>
+            <columns>
+              <column width="100%">
+                <sections>
+                  <section name="Streams" showlabel="false" showbar="false" columns="1111" id="{8cb2763d-3d2c-4e03-8225-d85d7e212d96}">
+                    <labels>
+                      <label description="Section" languagecode="1033" />
+                    </labels>
+                    <rows>
+                      <row>
+                        <cell colspan="4" rowspan="12" showlabel="false" isstreamcell="true" id="{3e7051c6-6f5b-45d9-8f44-59d0e013aac4}">
+                          <labels>
+                            <label description="" languagecode="1033" />
+                          </labels>
+                          <control id="Component{582b2a40-0130-618d-d893-36d02ea95c2d}" classid="{EE9078C8-6946-4E2C-B8F8-35E65F4BE6A8}">
+                            <parameters>
+                              <StreamObjects>
+                                <ShowAsTiles>false</ShowAsTiles>
+                                <StreamObject id="{2d4ab9e8-7ddb-841d-16e7-7c30079c2dc8}" type="1">
+                                  <LogicalEntityName>cat_accessrequest</LogicalEntityName>
+                                  <EntityViewId>{51D65688-8BF0-ED11-8849-6045BD8CCC09}</EntityViewId>
+                                </StreamObject>
+                                <StreamObject id="{a06ba5d1-74e8-2ab0-d2ce-a3edb04a24b7}" type="1">
+                                  <LogicalEntityName>cat_accessrequest</LogicalEntityName>
+                                  <EntityViewId>{B46E9643-2FF7-ED11-8848-00224883988B}</EntityViewId>
+                                </StreamObject>
+                                <StreamObject id="{a7d4b373-a886-075c-4a6e-db7b3d72eb11}" type="1">
+                                  <LogicalEntityName>cat_accessrequest</LogicalEntityName>
+                                  <EntityViewId>{BB4C7DF1-30F7-ED11-8848-00224883988B}</EntityViewId>
+                                </StreamObject>
+                                <StreamObject id="{e7102921-3e5a-ba8a-8108-b07aca63cc6c}" type="1">
+                                  <LogicalEntityName>cat_accessrequest</LogicalEntityName>
+                                  <EntityViewId>{DAFFC86D-31F7-ED11-8848-00224883988B}</EntityViewId>
+                                </StreamObject>
+                                <StreamObject id="{1d919447-ac37-06e1-7ade-463654d787bc}" type="1">
+                                  <LogicalEntityName>cat_accessrequest</LogicalEntityName>
+                                  <EntityViewId>{A061B978-31F7-ED11-8848-000D3A246956}</EntityViewId>
+                                </StreamObject>
+                              </StreamObjects>
+                            </parameters>
+                          </control>
+                        </cell>
+                      </row>
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                    </rows>
+                  </section>
+                </sections>
+              </column>
+            </columns>
+          </tab>
+        </tabs>
+      </form>
+    </forms>
+  </FormXml>
+  <IntroducedVersion>0.0.0.1</IntroducedVersion>
+  <IsTabletEnabled>0</IsTabletEnabled>
+</InteractionCentricDashboard>
