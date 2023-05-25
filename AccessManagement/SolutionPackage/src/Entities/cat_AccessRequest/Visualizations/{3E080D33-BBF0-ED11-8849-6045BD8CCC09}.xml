@@ -22,7 +22,7 @@
     </datadefinition>
   </datadescription>
   <presentationdescription>
-    <Chart Palette="None" PaletteCustomColors="71,96,213; 230,28,153; 0,165,175; 178,124,0; 177,70,194; 0,155,81; 107,63,158; 52,135,199; 202,80,16; 104,153,32; 119,141,241; 238,95,183; 0,139,148; 215,116,64; 195,107,209; 87,129,27; 148,112,189; 58,150,221; 227,0,140; 208,98,40;">
+    <Chart Palette="Excel" PaletteCustomColors="71,96,213; 230,28,153; 0,165,175; 178,124,0; 177,70,194; 0,155,81; 107,63,158; 52,135,199; 202,80,16; 104,153,32; 119,141,241; 238,95,183; 0,139,148; 215,116,64; 195,107,209; 87,129,27; 148,112,189; 58,150,221; 227,0,140; 208,98,40;">
       <Series>
         <Series ChartType="StackedColumn" Font="{0}, 14px" LabelForeColor="36, 36, 36" CustomProperties="PointWidth=0.75, MaxPixelPointWidth=40" />
       </Series>

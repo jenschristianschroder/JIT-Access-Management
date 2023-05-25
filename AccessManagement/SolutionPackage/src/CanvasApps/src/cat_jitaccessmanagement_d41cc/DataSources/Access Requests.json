@@ -74,7 +74,11 @@
       "426e0a5f-717b-4fd9-ab8e-d4c8a9c4dd9f": "Access Request Advanced Find View",
       "51d65688-8bf0-ed11-8849-6045bd8ccc09": "All Access Requests",
       "7287ddca-2bfe-4b71-907b-e68e8c27c2e2": "Active Access Requests",
+      "a061b978-31f7-ed11-8848-000d3a246956": "Failed",
+      "b46e9643-2ff7-ed11-8848-00224883988b": "Waiting for Approval",
+      "bb4c7df1-30f7-ed11-8848-00224883988b": "Granted",
       "c924eea9-baf0-ed11-8849-6045bd8ccc09": "Access Requests (Last 30 Days)",
+      "daffc86d-31f7-ed11-8848-00224883988b": "Rejected",
       "e5ba7899-db08-4370-84f0-accb0b73d90f": "Inactive Access Requests",
       "f54f5dbc-c2e7-47ca-8fab-7e0ecd7f2be7": "Access Request Associated View"
     }
