@@ -1,0 +1,13 @@
+{
+    "EnvironmentVariables":  [
+
+                             ],
+    "ConnectionReferences":  [
+                                 {
+                                     "LogicalName":  "cat_MicrosoftDataverseAccessManagement",
+                                     "ConnectionId":  "#{connectionreference.cat_MicrosoftDataverseAccessManagement}#",
+                                     "ConnectorId":  "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                                     "ConnectionOwner":  "#{connectionreference.user.cat_MicrosoftDataverseAccessManagement}#"
+                                 }
+                             ]
+}
