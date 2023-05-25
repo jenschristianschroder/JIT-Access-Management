@@ -10,6 +10,7 @@
     <RolePrivilege name="prvCreatecat_AccessRequest" level="Basic" />
     <RolePrivilege name="prvCreateSharePointData" level="Global" />
     <RolePrivilege name="prvReadcat_AccessProfile" level="Global" />
+    <RolePrivilege name="prvReadcat_AccessProfileApprovers" level="Global" />
     <RolePrivilege name="prvReadcat_AccessRequest" level="Basic" />
     <RolePrivilege name="prvReadPluginAssembly" level="Global" />
     <RolePrivilege name="prvReadPluginType" level="Global" />

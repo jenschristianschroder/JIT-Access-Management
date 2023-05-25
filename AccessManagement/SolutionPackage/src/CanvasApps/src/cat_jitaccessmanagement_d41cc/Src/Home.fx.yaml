@@ -119,7 +119,7 @@ Home As screen:
         Transition: =Transition.Pop
         X: =40
         Y: =100
-        ZIndex: =3
+        ZIndex: =2
 
         htmlAccessProfileBackground As htmlViewer:
             Height: =Parent.TemplateHeight
@@ -213,22 +213,12 @@ Home As screen:
                 Y: =48
                 ZIndex: =7
 
-    lblHeader As label:
-        Color: =RGBA(255, 255, 255, 1)
-        Fill: =RGBA(0, 134, 208, 1)
-        Height: =50
-        PaddingLeft: =15
-        Size: =24
-        Text: ="JIT Access Request"
-        Width: =1366
-        ZIndex: =4
-
     cntRootSelectedProfile As groupContainer.manualLayoutContainer:
         Height: =427
         Width: =644
         X: =704
         Y: =100
-        ZIndex: =5
+        ZIndex: =3
 
         HtmlText1_1 As htmlViewer:
             Height: =Parent.Height
@@ -404,25 +394,26 @@ Home As screen:
 
     cmbEnvironmentFilter As combobox:
         DefaultSelectedItems: =If(Not(IsBlank(environmentFilter)), LookUp(makerEnvironments, name = environmentFilter))
-        DisplayFields: =["displayName"]
+        DisplayFields: =["displayName","name"]
         InputTextPlaceholder: ="Find environment"
         Items: =makerEnvironments
         SearchFields: =["displayName" ]
         SearchItems: =Search(makerEnvironments,cmbEnvironmentFilter.SearchText,"displayName")
         SelectMultiple: =false
+        Template: =ListItemTemplate.Double
         Width: =466
         X: =187
         Y: =60
-        ZIndex: =6
+        ZIndex: =4
 
     lblEnvironmentFilter As label:
         Text: |-
             ="Environment:"
         X: =53
         Y: =60
-        ZIndex: =7
+        ZIndex: =5
 
-    Label4 As label:
+    lblNoProfilesFound As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Semibold
         Height: =41
@@ -431,7 +422,17 @@ Home As screen:
         Width: =600
         X: =53
         Y: =397
-        ZIndex: =11
+        ZIndex: =6
+
+    lblHeader As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 134, 208, 1)
+        Height: =50
+        PaddingLeft: =15
+        Size: =24
+        Text: ="JIT Access Request"
+        Width: =1366
+        ZIndex: =7
 
     grpHelp As group:
         Height: =5
