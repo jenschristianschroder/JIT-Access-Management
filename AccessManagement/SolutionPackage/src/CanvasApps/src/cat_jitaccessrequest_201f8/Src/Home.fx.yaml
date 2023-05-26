@@ -120,14 +120,13 @@ Home As screen:
                                 ColResizable:true
                             },
                             {
-                                ColName:"created",ColDisplayName:"Created",ColSortable:true,ColWidth:140,ColRowHeader:true,
+                                ColName:"created",ColDisplayName:"Created",ColSortable:true,ColWidth:150,ColRowHeader:true,
                                 ColResizable:true
                             },
                             {
                                 ColName:"status",ColDisplayName:"Status",ColSortable:true,ColWidth:200,ColRowHeader:true,
                                 ColResizable:false,
                                 ColCellType:"indicatortag",
-                                ColTextColor: "statusTextColor",
                                 ColTagColorColumn: "statusColor",
                                 ColTagBorderColorColumn: "statusBorderColor"
                             },
