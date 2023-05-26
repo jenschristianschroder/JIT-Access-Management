@@ -1,0 +1,358 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cat_accessrequestactivities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cat_accessrequestactivity",
+    "MaxGetRowsCount": 500,
+    "Name": "Access Request Activities",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "_regardingobjectid_value": "Regarding",
+      "{Attachments}": "Attachments",
+      "activityadditionalparams": "Activity Additional Parameters",
+      "activityid": "Activity",
+      "activitytypecode": "Activity Type",
+      "actualdurationminutes": "Actual Duration",
+      "actualend": "Actual End",
+      "actualstart": "Actual Start",
+      "cat_accessrequestactivity_ActionCards": "Action Cards",
+      "cat_accessrequestactivity_Annotations": "Notes",
+      "cat_accessrequestactivity_AsyncOperations": "System Jobs",
+      "cat_accessrequestactivity_BulkDeleteFailures": "Bulk Delete Failures",
+      "cat_accessrequestactivity_connections1": "Connections (cat_accessrequestactivity_connections1)",
+      "cat_accessrequestactivity_connections2": "Connections (cat_accessrequestactivity_connections2)",
+      "cat_accessrequestactivity_Feedback": "Feedback",
+      "cat_accessrequestactivity_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cat_accessrequestactivity_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cat_accessrequestactivity_ProcessSession": "Process Sessions",
+      "cat_accessrequestactivity_QueueItems": "Queue Items",
+      "cat_accessrequestactivity_SyncErrors": "Sync Errors",
+      "cat_flowenvironmentid": "Flow Environment Id",
+      "cat_flowname": "Flow Name",
+      "cat_flowrun": "Flow Run",
+      "cat_flowrunurl": "Flow Run Url",
+      "community": "Social Channel",
+      "createdby_cat_accessrequestactivity": "Created By",
+      "createdon": "Date Created",
+      "createdonbehalfby_cat_accessrequestactivity": "Created By (Delegate)",
+      "deliverylastattemptedon": "Date Delivery Last Attempted",
+      "deliveryprioritycode": "Delivery Priority",
+      "description": "Description",
+      "exchangeitemid": "Exchange Item ID",
+      "exchangerate": "Exchange Rate",
+      "exchangeweblink": "Exchange WebLink",
+      "importsequencenumber": "Import Sequence Number",
+      "instancetypecode": "Recurring Instance Type",
+      "isbilled": "Is Billed",
+      "ismapiprivate": "Is Private",
+      "isregularactivity": "Is Regular Activity",
+      "isworkflowcreated": "Is Workflow Created",
+      "lastonholdtime": "Last On Hold Time",
+      "leftvoicemail": "Left Voice Mail",
+      "modifiedby_cat_accessrequestactivity": "Modified By",
+      "modifiedon": "Last Updated",
+      "modifiedonbehalfby_cat_accessrequestactivity": "Modified By (Delegate)",
+      "onholdtime": "On Hold Time (Minutes)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit_cat_accessrequestactivity": "Owning Business Unit",
+      "owningteam_cat_accessrequestactivity": "Owning Team",
+      "owninguser_cat_accessrequestactivity": "Owning User",
+      "postponeactivityprocessinguntil": "Delay activity processing until",
+      "prioritycode": "Priority",
+      "processid": "Process",
+      "scheduleddurationminutes": "Scheduled Duration",
+      "scheduledend": "Due Date",
+      "scheduledstart": "Start Date",
+      "sendermailboxid_cat_accessrequestactivity": "Sender's Mailbox",
+      "senton": "Date Sent",
+      "seriesid": "Series Id",
+      "sortdate": "Sort Date",
+      "stageid": "(Deprecated) Process Stage",
+      "statecode": "Activity Status",
+      "statuscode": "Status Reason",
+      "subject": "Subject",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid_cat_accessrequestactivity": "Currency",
+      "traversedpath": "(Deprecated) Traversed Path",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Access Request Activities",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Access Request Activities (Views)",
+    "Name": "_cat_accessrequestactivity_views",
+    "RelatedEntityName": "Access Request Activities",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "74424ed3-8af4-459b-b21b-c3eb88ded22e": "My Open Access Request Activities",
+      "7e1af4d2-86b9-463b-86c3-1d0ee9407429": "Access Request Activity Advanced Find View",
+      "81252e24-4d88-4273-a0e4-ecc1a353f9ae": "Access Request Activity Lookup View",
+      "8f873aff-c9de-4ea5-97c5-7324094c4b5e": "All Access Request Activities",
+      "a5858357-2c55-4e6a-9afd-7b3d664946d6": "Access Request Activity Associated View",
+      "e82feb42-38ad-4fc7-87f3-b60960e49e86": "Closed Access Request Activities"
+    }
+  },
+  {
+    "DisplayName": "Activity Type",
+    "Name": "activitypointer_activitytypecode",
+    "OptionSetInfoNameMapping": {
+      "10097": "Teams chat",
+      "10317": "Access Request Activity",
+      "4201": "Appointment",
+      "4202": "Email",
+      "4204": "Fax",
+      "4207": "Letter",
+      "4210": "Phone Call",
+      "4212": "Task",
+      "4251": "Recurring Appointment"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "activitytypecode",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "EntityNameType",
+    "RelatedColumnInvariantName": "activitytypecode",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Delivery Priority",
+    "Name": "activitypointer_deliveryprioritycode",
+    "OptionSetInfoNameMapping": {
+      "0": "Low",
+      "1": "Normal",
+      "2": "High"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "deliveryprioritycode",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "deliveryprioritycode",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Regular Activity",
+    "Name": "activitypointer_isregularactivity",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "isregularactivity",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "isregularactivity",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Recurring Instance Type (Access Request Activities)",
+    "Name": "cat_accessrequestactivity_instancetypecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Not Recurring",
+      "1": "Recurring Master",
+      "2": "Recurring Instance",
+      "3": "Recurring Exception",
+      "4": "Recurring Future Exception"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "instancetypecode",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "instancetypecode",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Billed (Access Request Activities)",
+    "Name": "cat_accessrequestactivity_isbilled",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "isbilled",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "isbilled",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Private (Access Request Activities)",
+    "Name": "cat_accessrequestactivity_ismapiprivate",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "ismapiprivate",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "ismapiprivate",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Workflow Created (Access Request Activities)",
+    "Name": "cat_accessrequestactivity_isworkflowcreated",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "isworkflowcreated",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "isworkflowcreated",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Left Voice Mail (Access Request Activities)",
+    "Name": "cat_accessrequestactivity_leftvoicemail",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "leftvoicemail",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "leftvoicemail",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Priority (Access Request Activities)",
+    "Name": "cat_accessrequestactivity_prioritycode",
+    "OptionSetInfoNameMapping": {
+      "0": "Low",
+      "1": "Normal",
+      "2": "High"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "prioritycode",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "prioritycode",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Activity Status (Access Request Activities)",
+    "Name": "cat_accessrequestactivity_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Open",
+      "1": "Completed",
+      "2": "Canceled",
+      "3": "Scheduled"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Access Request Activities)",
+    "Name": "cat_accessrequestactivity_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Open",
+      "2": "Completed",
+      "3": "Canceled",
+      "4": "Scheduled"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Social Channel",
+    "Name": "socialprofile_community",
+    "OptionSetInfoNameMapping": {
+      "0": "Other",
+      "1": "Facebook",
+      "2": "Twitter"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "community",
+        "OptionSetReferenceEntityName": "Access Request Activities"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "community",
+    "RelatedEntityName": "Access Request Activities",
+    "Type": "OptionSetInfo"
+  }
+]
