@@ -138,7 +138,7 @@
                                         {
                                             "aadGroupId":  "#{canvasshare.aadGroupId.cat_jitaccessmanagement_d41cc}#",
                                             "canvasNameInSolution":  "cat_jitaccessmanagement_d41cc",
-                                            "canvasDisplayName":  "JIT Access Management",
+                                            "canvasDisplayName":  "JIT Access Management POC",
                                             "roleName":  "#{canvasshare.roleName.cat_jitaccessmanagement_d41cc}#"
                                         },
                                         {
