@@ -1,0 +1,36 @@
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\AccessManagementPlugins.CreateAccessRequest.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\AccessManagementPlugins.CreateAccessRequest.pdb
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Buffers.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Memory.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Text.Json.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.ValueTuple.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\obj\Debug\CreateAccessRequest.csproj.AssemblyReference.cache
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\obj\Debug\CreateAccessRequest.csproj.CoreCompileInputs.cache
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\obj\Debug\CreateAccessRequest.csproj.CopyComplete
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\obj\Debug\AccessManagementPlugins.CreateAccessRequest.dll
+C:\Users\jeschro\source\repos\AccessManagementPlugins\CreateAccessRequest\obj\Debug\AccessManagementPlugins.CreateAccessRequest.pdb
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\AccessManagementPlugins.CreateAccessRequest.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\AccessManagementPlugins.CreateAccessRequest.pdb
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Buffers.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Memory.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Numerics.Vectors.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Text.Encodings.Web.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Text.Json.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\bin\Debug\System.ValueTuple.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\obj\Debug\CreateAccessRequest.csproj.AssemblyReference.cache
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\obj\Debug\CreateAccessRequest.csproj.CoreCompileInputs.cache
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\obj\Debug\CreateAccessRequest.csproj.CopyComplete
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\obj\Debug\AccessManagementPlugins.CreateAccessRequest.dll
+C:\SRC\JIT Access Management\JIT-Access-Management\AccessManagement\AccessManagementPlugins\CreateAccessRequest\obj\Debug\AccessManagementPlugins.CreateAccessRequest.pdb

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)system.text.json\6.0.7\buildTransitive\netstandard2.0\System.Text.Json.targets" Condition="Exists('$(NuGetPackageRoot)system.text.json\6.0.7\buildTransitive\netstandard2.0\System.Text.Json.targets')" />
+    <Import Project="$(NuGetPackageRoot)nuget.build.tasks.pack\5.2.0\build\NuGet.Build.Tasks.Pack.targets" Condition="Exists('$(NuGetPackageRoot)nuget.build.tasks.pack\5.2.0\build\NuGet.Build.Tasks.Pack.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.netframework.referenceassemblies.net462\1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net462.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.netframework.referenceassemblies.net462\1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net462.targets')" />
+  </ImportGroup>
+</Project>
