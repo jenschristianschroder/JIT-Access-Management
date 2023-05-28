@@ -4,29 +4,40 @@ Home As screen:
             UpdateContext({showNewRequestPanel:true})
         );
         Clear(myRequests);
-            ForAll(Sort('Access Requests', 'Created On', SortOrder.Descending), 
-                Collect(myRequests, 
-                    {
-                        name: ThisRecord.Name,
-                        created: DateTimeValue(ThisRecord.'Created On'),
-                        status: Text(ThisRecord.'Status Reason'),
-                        securityRole: ThisRecord.'Security Role',
-                        justification: ThisRecord.Justification,
-                        approvalRequired: ThisRecord.'Approval Required',
-                        id: ThisRecord.'Access Request',
-                        statusColor: Switch(Text(ThisRecord.'Status Reason'),
-                            "Requested", "#c9d7f8",
-                            "Waiting for approval", "#246eb9",
-                            "Approved", "#78aace",
-                            "Rejected", "#b10f2e",
-                            "Granted", "#4da167",
-                            "Revoke", "#ff934f",
-                            "Revoked", "#cfcfcf",
-                            "Failed", "#f06543"
-                        )
-                    }
-                )
+        ForAll(Sort('Access Requests', 'Created On', SortOrder.Descending), 
+            Collect(myRequests, 
+                {
+                    name: ThisRecord.Name,
+                    created: DateTimeValue(ThisRecord.'Created On'),
+                    status: Text(ThisRecord.'Status Reason'),
+                    securityRole: ThisRecord.'Security Role',
+                    justification: ThisRecord.Justification,
+                    approvalRequired: ThisRecord.'Approval Required',
+                    id: ThisRecord.'Access Request',
+                    statusColor: Switch(Text(ThisRecord.'Status Reason'),
+                        "Requested", "#c9d7f8",
+                        "Waiting for approval", "#508bc7",
+                        "Approved", "#78aace",
+                        "Rejected", "#b10f2e",
+                        "Granted", "#4da167",
+                        "Revoke", "#ff934f",
+                        "Revoked", "#cfcfcf",
+                        "Failed", "#f06543"
+                    ),
+                    statusBorderColor: Switch(Text(ThisRecord.'Status Reason'),
+                        "Requested", "#c9d7f8",
+                        "Waiting for approval", "#1d5894",
+                        "Approved", "#78aace",
+                        "Rejected", "#b10f2e",
+                        "Granted", "#4da167",
+                        "Revoke", "#ff934f",
+                        "Revoked", "#cfcfcf",
+                        "Failed", "#f06543"
+                    ),
+                    statusTextColor: "#ffffff"
+                }
             )
+        )
 
     layoutMainContent As groupContainer.verticalAutoLayoutContainer:
         Height: =Parent.Height - Self.Y
@@ -60,6 +71,7 @@ Home As screen:
                                 securityRole: ThisRecord.'Security Role',
                                 justification: ThisRecord.Justification,
                                 approvalRequired: ThisRecord.'Approval Required',
+                                url: ThisRecord.'Environment Url',
                                 id: ThisRecord.'Access Request',
                                 statusColor: Switch(Text(ThisRecord.'Status Reason'),
                                     "Requested", "#c9d7f8",
@@ -154,6 +166,12 @@ Home As screen:
                 LargeDatasetPaging: =true
                 OnChange: |-
                     =If(CountRows(Self.SelectedItems) = 1,
+                        UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = listAccessRequests.Selected.id)});
+                        ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending));
+                        UpdateContext({showDetailPanel: true, showNewRequestPanel: false});
+                    );
+                    /*
+                    If(CountRows(Self.SelectedItems) = 1,
                         Collect(selectedAccessRequestActivities, {});
                         Clear(selectedAccessRequestActivities);
                         UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = listAccessRequests.Selected.id)});
@@ -169,15 +187,26 @@ Home As screen:
                                         "Canceled", "WizardComplete" 
                                     )
                                 }
-                            )
+                            );
+                            Collect(selectedActivities,
+                                {
+                                    ItemKey: ThisRecord.Activity,
+                                    ItemLabel: ThisRecord.Subject,
+                                    ItemStatus: ThisRecord.'Status Reason',
+                                    ItemDescription: ThisRecord.Description
+                                }
+                            );
                         );
                         UpdateContext({showDetailPanel: true, showNewRequestPanel: false});
                     )
-                OnSelect: =
+                    */
+                OnSelect: =Notify("SELECT")
                 PageSize: =15
                 RaiseOnRowSelectionChangeEvent: =true
                 RecordSelected: =
+                SelectionAlwaysVisible: =false
                 SelectRowsOnFocus: =true
+                Theme: =""
                 Width: =Parent.Width
                 X: =0
                 Y: =0
@@ -11581,8 +11610,11 @@ Home As screen:
 
             cntPanelContent As groupContainer.manualLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =Parent.Height
                 LayoutMinHeight: =100
-                LayoutMinWidth: =250
+                LayoutMinWidth: =300
+                Width: =450
                 ZIndex: =1
 
                 "lblEnvironment As 'Auto Width Label (1.0.22)'":
@@ -11595,7 +11627,7 @@ Home As screen:
                     Tooltip: =""
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =0
-                    Y: =40
+                    Y: =30
                     ZIndex: =1
 
                 "lblSecurityRole As 'Auto Width Label (1.0.22)'":
@@ -11608,7 +11640,7 @@ Home As screen:
                     Tooltip: =""
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =0
-                    Y: =lblEnvironment.Y + 36
+                    Y: =104
                     ZIndex: =2
 
                 "lblDuration As 'Auto Width Label (1.0.22)'":
@@ -11659,17 +11691,19 @@ Home As screen:
 
                 "lblStatusValue As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
+                    FontWeight: ="bold"
                     Height: =24
                     PaddingLeft: =0
                     Text: =currentAccessRequest.'Status Reason'
                     Tooltip: =""
                     Width: =120
                     X: =lblStatus.X + lblStatus.Width
-                    Y: =lblStatus.Y
+                    Y: =212
                     ZIndex: =7
 
                 "lblStatus As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
+                    FontWeight: ="bold"
                     Height: =24
                     PaddingLeft: =24
                     PaddingRight: =12
@@ -11678,24 +11712,86 @@ Home As screen:
                     Tooltip: =""
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =0
-                    Y: =lblDuration.Y + 36
+                    Y: =212
                     ZIndex: =8
+
+                Label2_1 As label:
+                    FontWeight: =FontWeight.Semibold
+                    Height: =24
+                    Size: =10.5
+                    Text: ="Details"
+                    X: =19
+                    ZIndex: =9
+
+                "lblEnvironment_4 As 'Auto Width Label (1.0.22)'":
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =24
+                    PaddingLeft: =24
+                    PaddingRight: =12
+                    Text: |-
+                        ="Url:"
+                    Tooltip: =""
+                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    X: =0
+                    Y: =67
+                    ZIndex: =10
+
+                HtmlText3 As htmlViewer:
+                    AutoHeight: =true
+                    Height: =24
+                    HtmlText: ="<a href='" & currentAccessRequest.'Environment Url' & "'>" & currentAccessRequest.'Environment Url' & "</a>"
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =10.5
+                    Width: =280
+                    X: =120
+                    Y: =67
+                    ZIndex: =11
+
+                "lblDuration_8 As 'Auto Width Label (1.0.22)'":
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =24
+                    PaddingLeft: =24
+                    PaddingRight: =12
+                    Text: |-
+                        ="Notification:"
+                    Tooltip: =""
+                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    X: =0
+                    Y: =177
+                    ZIndex: =12
+
+                "lblDurationValue_3 As 'Auto Width Label (1.0.22)'":
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =24
+                    PaddingLeft: =0
+                    Text: =If(IsBlank(currentAccessRequest.'Notification Channel'), "None", Concat(currentAccessRequest.'Notification Channel', Text(Value), ", "))
+                    Tooltip: =""
+                    Width: =120
+                    X: =lblDuration_8.X + lblDuration_8.Width
+                    Y: =lblDuration_8.Y
+                    ZIndex: =13
 
             cntTimeline As groupContainer.manualLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
                 Height: =Parent.Height - Self.Y
                 LayoutMinHeight: =100
-                LayoutMinWidth: =250
+                LayoutMinWidth: =150
+                Width: =350
                 ZIndex: =2
 
                 "subTimeline As 'SubwayNav (1.0.22) Preview'.pcfdataset":
                     DisplayMode: =DisplayMode.Edit
                     Height: =476
-                    Items: =selectedAccessRequestActivities
+                    Items: =currentAccessRequestActivities
+                    Visible: =false
                     Width: =320
                     X: =40
                     Y: =52
-                    ZIndex: =1
+                    ZIndex: =2
 
                     ItemKey1 As pcfDataField.textualColumn:
                         FieldDisplayName: ="ItemKey"
@@ -11721,18 +11817,213 @@ Home As screen:
                         Order: =3
                         ZIndex: =8
 
-                "lblTimelineHeader As 'Auto Width Label (1.0.22)'":
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: ="bold"
-                    FontWeight: =""
+                "Gallery5 As gallery.'BrowseLayout_Flexible_SocialFeed_ver4.0'":
+                    DelayItemLoading: =true
+                    Height: =511
+                    Items: =currentAccessRequestActivities
+                    Layout: =Layout.Vertical
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =2
+                    TemplateSize: =57
+                    Width: =400
+                    Y: =24
+                    ZIndex: =3
+
+                    Title5_1 As label:
+                        Height: =Self.Size * 2
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =2
+                        Size: =10.5
+                        Text: =ThisItem.Subject
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 104
+                        X: =40
+                        ZIndex: =1
+
+                    Subtitle5_1 As label:
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =9
+                        Text: =ThisItem.'Date Created'
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 104
+                        X: =40
+                        Y: =Title5_1.Y + Title5_1.Height + 2
+                        ZIndex: =2
+
+                    Body1_1 As label:
+                        AutoHeight: =true
+                        Height: =Self.Size * 4
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =10
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =9
+                        Text: =ThisItem.Description
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 104
+                        X: =40
+                        Y: =41
+                        ZIndex: =3
+
+                    Rectangle1 As rectangle:
+                        Fill: =RGBA(219, 219, 219, 1)
+                        Height: =Subtitle5_1.Height + Body1_1.Height - 4
+                        OnSelect: =Select(Parent)
+                        Visible: =Not(ThisItem.Activity = Last(currentAccessRequestActivities).Activity)
+                        Width: =3
+                        X: =16
+                        Y: =Icon1.Y + Icon1.Height + 4
+                        ZIndex: =5
+
+                    Group2 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =57
+                        ZIndex: =6
+
+                        Circle1 As circle:
+                            Fill: =RGBA(54, 176, 75, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.'Status Reason' = 'Status Reason (Access Request Activities)'.Completed
+                            Width: =23
+                            X: =6
+                            ZIndex: =4
+
+                        Icon1 As icon.CheckBadge:
+                            Color: =RGBA(255, 255, 255, 1)
+                            Height: =23
+                            Icon: =Icon.CheckBadge
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.'Status Reason' = 'Status Reason (Access Request Activities)'.Completed
+                            Width: =23
+                            X: =6
+                            ZIndex: =6
+
+                    Group2_1 As group:
+                        Height: =5
+                        Width: =5
+                        X: =-20
+                        Y: =-46
+                        ZIndex: =9
+
+                        Circle1_1 As circle:
+                            Fill: =RGBA(184, 0, 0, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            Visible: =If(Find("Reject", ThisItem.Description) > 0, true, false)
+                            Width: =23
+                            X: =6
+                            ZIndex: =7
+
+                        Icon1_1 As icon.CheckBadge:
+                            Color: =RGBA(255, 255, 255, 1)
+                            Height: =23
+                            Icon: =Icon.CancelBadge
+                            OnSelect: =Select(Parent)
+                            Visible: =If(Find("Reject", ThisItem.Description) > 0, true, false)
+                            Width: =23
+                            X: =6
+                            ZIndex: =8
+
+                    Group2_2 As group:
+                        Height: =5
+                        Width: =5
+                        X: =54
+                        Y: =34
+                        ZIndex: =11
+
+                        Circle1_2 As circle:
+                            Fill: =RGBA(39, 113, 194, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.'Status Reason' = 'Status Reason (Access Request Activities)'.Scheduled
+                            Width: =23
+                            X: =6
+                            Y: =1
+                            ZIndex: =9
+
+                        Icon1_2 As icon.CheckBadge:
+                            Color: =RGBA(255, 255, 255, 1)
+                            Height: =25
+                            Icon: =Icon.Clock
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.'Status Reason' = 'Status Reason (Access Request Activities)'.Scheduled
+                            Width: =25
+                            X: =5
+                            ZIndex: =10
+
+                    Group3 As group:
+                        Height: =5
+                        Width: =5
+                        X: =80
+                        Y: =57
+                        ZIndex: =14
+
+                        Circle1_3 As circle:
+                            BorderColor: =RGBA(255, 255, 255, 1)
+                            Fill: =RGBA(202, 202, 202, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.'Status Reason' = 'Status Reason (Access Request Activities)'.Open
+                            Width: =23
+                            X: =6
+                            ZIndex: =11
+
+                        Circle2 As circle:
+                            BorderColor: =RGBA(255, 255, 255, 1)
+                            BorderThickness: =1
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =21
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.'Status Reason' = 'Status Reason (Access Request Activities)'.Open
+                            Width: =21
+                            X: =7
+                            Y: =1
+                            ZIndex: =13
+
+                    Group2_3 As group:
+                        Height: =5
+                        Width: =5
+                        X: =55
+                        Y: =32
+                        ZIndex: =16
+
+                        Circle1_4 As circle:
+                            Fill: =RGBA(202, 202, 202, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.'Status Reason' = 'Status Reason (Access Request Activities)'.Canceled
+                            Width: =23
+                            X: =6
+                            ZIndex: =14
+
+                        Icon1_3 As icon.CheckBadge:
+                            Color: =RGBA(255, 255, 255, 1)
+                            Height: =23
+                            Icon: =Icon.Blocked
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.'Status Reason' = 'Status Reason (Access Request Activities)'.Canceled
+                            Width: =23
+                            X: =6
+                            ZIndex: =15
+
+                Label2 As label:
+                    FontWeight: =FontWeight.Semibold
                     Height: =24
-                    PaddingLeft: =0
+                    Size: =10.5
                     Text: ="Timeline"
-                    Tooltip: =""
-                    Width: =120
-                    X: =40
-                    Y: =16
-                    ZIndex: =2
+                    ZIndex: =4
 
         Label5 As label:
             Height: =Panel_1.Height
@@ -11752,7 +12043,7 @@ Home As screen:
 
         Panel_2 As Panel:
             Buttons: |-
-                =Table({Label: "Close", ButtonType:'Button.ButtonType'.Standard, Visible:Not(showSubmitAccessRequest), Enabled:true },{Label: "Back", ButtonType:'Button.ButtonType'.Standard, Visible:showSubmitAccessRequest, Enabled:true },{Label: "Submit", ButtonType:'Button.ButtonType'.Primary, Visible:showSubmitAccessRequest, Enabled:true })
+                =Table({Label: "Close", ButtonType:'Button.ButtonType'.Standard, Visible:Not(showSubmitAccessRequest), Enabled:true },{Label: "Back", ButtonType:'Button.ButtonType'.Standard, Visible:showSubmitAccessRequest, Enabled:true },{Label: "Submit", ButtonType:'Button.ButtonType'.Primary, Visible:showSubmitAccessRequest, Enabled:If(Not(selectedAccessProfile.'Justification Required') Or (selectedAccessProfile.'Justification Required' And Len(TextInput2.Text) > 10), true, false) })
             DialogWidth: =800
             Fill: =Panel_2.OverlayColor
             Height: =Parent.Height - Self.X
@@ -11760,10 +12051,10 @@ Home As screen:
                 =Switch(Self.SelectedButton.Label
                     ,"Submit",
                     Clear(notificationChannels);
-                    If(tglTeamsNotification, 
+                    If(tglTeamsNotification.Value, 
                         Collect(notificationChannels, 'Notification Channel (Access Requests)'.Teams)
                     );
-                    If(tglEmailNotification, 
+                    If(tglEmailNotification.Value, 
                         Collect(notificationChannels, 'Notification Channel (Access Requests)'.Email)
                     );
                     Patch('Access Requests', Defaults('Access Requests'), 
@@ -11779,7 +12070,7 @@ Home As screen:
                             Duration: selectedAccessProfile.Duration,
                             User: LookUp(Users, 'Primary Email' = User().Email), 
                             'Notify User': tglEmailNotification Or tglTeamsNotification, 
-                            'Notification Channel': Choices(notificationChannels),
+                            'Notification Channel': If(IsEmpty(notificationChannels), Blank(), notificationChannels),
                             Justification: TextInput2.Text,
                             'Status Reason': 'Status Reason (Access Requests)'.Requested
                 
@@ -12325,8 +12616,10 @@ Home As screen:
                     BorderColor: =ColorValue(header.Theme.palette.neutralDark)
                     BorderThickness: =1
                     Default: =
+                    FocusedBorderThickness: =1
                     Height: =96
                     HintText: =$"Enter your justification for requesting {selectedAccessProfile.'Security Role'} access to {selectedAccessProfile.'Environment Name'}"
+                    HoverFill: =RGBA(0, 0, 0, 0)
                     Mode: =TextMode.MultiLine
                     RadiusBottomLeft: =2
                     RadiusBottomRight: =2
@@ -12435,6 +12728,7 @@ Home As screen:
                     ZIndex: =27
 
                 tglTeamsNotification As toggleSwitch:
+                    FocusedBorderThickness: =0   
                     Height: =16
                     ShowLabel: =false
                     X: =84
@@ -12443,6 +12737,7 @@ Home As screen:
 
                 tglEmailNotification As toggleSwitch:
                     BorderColor: =Color.Transparent
+                    FocusedBorderThickness: =0
                     Height: =16
                     PressedBorderColor: =Color.Transparent
                     ShowLabel: =false

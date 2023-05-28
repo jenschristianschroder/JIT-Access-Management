@@ -215,7 +215,7 @@
         },
         "Update_a_row": {
           "runAfter": {
-            "Update_a_row_4": [
+            "Update_a_row_3": [
               "Succeeded"
             ]
           },
@@ -336,55 +336,6 @@
               "recordId": "@outputs('Add_a_new_row')?['body/activityid']",
               "item/statecode": 1,
               "item/statuscode": 2
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
-        "Update_a_row_4": {
-          "runAfter": {
-            "List_rows_2": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "32cbf60b-01e5-4c1c-8e67-8e841af0996d"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
-              "operationId": "UpdateRecord",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "cat_accessrequestactivities",
-              "recordId": "@first(outputs('List_rows_2')?['body/value'])?['activityid']",
-              "item/statecode": 1,
-              "item/statuscode": 2
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
-        "List_rows_2": {
-          "runAfter": {
-            "Update_a_row_3": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "a41b88d7-27cb-4a11-9925-5a6d594403ef"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
-              "operationId": "ListRecords",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "cat_accessrequestactivities",
-              "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Created'",
-              "$top": 1
             },
             "authentication": "@parameters('$authentication')"
           }

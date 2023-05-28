@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: |
+    OnStart: |-
         =If(
             Not(IsBlank(Param("environment"))),
             Set(
@@ -15,6 +15,34 @@ App As appinfo:
                 ""
             )
         );
+        
+        Collect(defaultAccessRequestActivities, 
+            {
+                activity: "Create",
+                mandatory: true,
+                label: "Access Request Created"
+            },
+            {
+                activity: "Approval",
+                mandatory: false,
+                label: "Waiting for Approval"
+            },
+            {
+                activity: "ApprovalResponse",
+                mandatory: false,
+                label: "Access Request Created"
+            },
+            {
+                activity: "Create",
+                mandatory: true,
+                label: "Access Request Created"
+            },
+            {
+                activity: "Create",
+                mandatory: true,
+                label: "Access Request Created"
+            }
+        )
 
     Host As hostControl.DefaultHostControlVariant:
         OnCancel: =false

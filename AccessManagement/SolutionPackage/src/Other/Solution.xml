@@ -101,6 +101,8 @@
       <RootComponent type="62" schemaName="cat_JITAccessManagement" behavior="0" />
       <RootComponent type="70" id="{4d6247ee-bee9-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="80" schemaName="cat_JITAccessManagement" behavior="0" />
+      <RootComponent type="91" id="{762aeb44-4d5b-4948-bf03-fabbd2cc1f13}" schemaName="AccessManagementPlugins.CreateAccessRequest, Version=0.1.0.0, Culture=neutral, PublicKeyToken=3e9cedfceff0e4f2" behavior="0" />
+      <RootComponent type="92" id="{815e7192-a6fc-ed11-8f6d-00224883988b}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
