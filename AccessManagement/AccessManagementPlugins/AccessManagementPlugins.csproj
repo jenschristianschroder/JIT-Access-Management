@@ -13,7 +13,7 @@
     <AssemblyName>AccessManagementPlugins.CreateAccessRequest</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <!--<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>-->
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetTfmPublishedFiles</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
