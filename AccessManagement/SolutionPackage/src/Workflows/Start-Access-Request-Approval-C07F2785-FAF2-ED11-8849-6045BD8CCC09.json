@@ -188,7 +188,7 @@
                 "actions": {
                   "Update_a_row": {
                     "runAfter": {
-                      "Update_a_row_3": [
+                      "Update_a_row_2": [
                         "Succeeded"
                       ]
                     },
@@ -232,54 +232,6 @@
                       },
                       "authentication": "@parameters('$authentication')"
                     }
-                  },
-                  "List_rows": {
-                    "runAfter": {
-                      "Update_a_row_2": [
-                        "Succeeded"
-                      ]
-                    },
-                    "metadata": {
-                      "operationMetadataId": "8fa16136-aea8-4cf2-8d63-4383d7929a03"
-                    },
-                    "type": "OpenApiConnection",
-                    "inputs": {
-                      "host": {
-                        "connectionName": "shared_commondataserviceforapps_1",
-                        "operationId": "ListRecords",
-                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                      },
-                      "parameters": {
-                        "entityName": "cat_accessrequestactivities",
-                        "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Created'"
-                      },
-                      "authentication": "@parameters('$authentication')"
-                    }
-                  },
-                  "Update_a_row_3": {
-                    "runAfter": {
-                      "List_rows": [
-                        "Succeeded"
-                      ]
-                    },
-                    "metadata": {
-                      "operationMetadataId": "346fbdd2-056c-4438-8518-9421c105af99"
-                    },
-                    "type": "OpenApiConnection",
-                    "inputs": {
-                      "host": {
-                        "connectionName": "shared_commondataserviceforapps_1",
-                        "operationId": "UpdateRecord",
-                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                      },
-                      "parameters": {
-                        "entityName": "cat_accessrequestactivities",
-                        "recordId": "@first(outputs('List_rows')?['body/value'])?['activityid']",
-                        "item/statecode": 2,
-                        "item/statuscode": 3
-                      },
-                      "authentication": "@parameters('$authentication')"
-                    }
                   }
                 }
               },
@@ -297,29 +249,31 @@
             "Apply_to_each_3": {
               "foreach": "@outputs('Start_and_wait_for_an_approval')?['body/responses']",
               "actions": {
-                "Add_Approver_Response_2": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "a3a014bd-02ac-41c7-b0fb-c3be18737e68"
+                "Condition_6": {
+                  "actions": {
+                    "Set_variable_3": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "444ae5ef-2183-40d6-9189-92947f969cf9"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "approverComments",
+                        "value": "\nComments: @{items('Apply_to_each_3')?['comments']}"
+                      }
+                    }
                   },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "CreateRecord",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "cat_accessrequestactivities",
-                      "item/subject": "Approval Response",
-                      "item/description": "@{items('Apply_to_each_3')?['responder/displayName']}: @{items('Apply_to_each_3')?['approverResponse']}\n\nComments: @{items('Apply_to_each_3')?['comments']}",
-                      "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
-                      "item/cat_flowname": "@workflow().name",
-                      "item/cat_flowrun": "@workflow().run.name",
-                      "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
+                  "runAfter": {},
+                  "expression": {
+                    "greater": [
+                      "@length(items('Apply_to_each_3')?['comments'])",
+                      0
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "ea460192-a71e-4e4a-b65f-ff65862e6404"
+                  },
+                  "type": "If"
                 },
                 "Complete_Approver_Response_2": {
                   "runAfter": {
@@ -342,6 +296,34 @@
                       "recordId": "@outputs('Add_Approver_Response_2')?['body/activityid']",
                       "item/statecode": 1,
                       "item/statuscode": 2
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Add_Approver_Response_2": {
+                  "runAfter": {
+                    "Condition_6": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a3a014bd-02ac-41c7-b0fb-c3be18737e68"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cat_accessrequestactivities",
+                      "item/subject": "Approval Response",
+                      "item/description": "@{items('Apply_to_each_3')?['responder/displayName']}: @{items('Apply_to_each_3')?['approverResponse']}@{variables('approverComments')} ",
+                      "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
+                      "item/cat_flowname": "@workflow().name",
+                      "item/cat_flowrun": "@workflow().run.name",
+                      "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
@@ -447,7 +429,7 @@
                   "actions": {
                     "Update_a_row_4": {
                       "runAfter": {
-                        "Update_a_row_6": [
+                        "Update_a_row_7": [
                           "Succeeded"
                         ]
                       },
@@ -492,37 +474,42 @@
                         "authentication": "@parameters('$authentication')"
                       }
                     },
-                    "List_rows_2": {
+                    "Add_a_new_row": {
                       "runAfter": {
                         "Update_a_row_5": [
                           "Succeeded"
                         ]
                       },
                       "metadata": {
-                        "operationMetadataId": "8fa16136-aea8-4cf2-8d63-4383d7929a03"
+                        "operationMetadataId": "74446aba-0092-4264-8249-7ecc064d9973"
                       },
                       "type": "OpenApiConnection",
                       "inputs": {
                         "host": {
                           "connectionName": "shared_commondataserviceforapps_1",
-                          "operationId": "ListRecords",
+                          "operationId": "CreateRecord",
                           "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                         },
                         "parameters": {
                           "entityName": "cat_accessrequestactivities",
-                          "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Created'"
+                          "item/subject": "Access Request Closed",
+                          "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
+                          "item/cat_flowname": "@workflow().name",
+                          "item/cat_flowrun": "@workflow().run.name",
+                          "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})",
+                          "item/statuscode": 1
                         },
                         "authentication": "@parameters('$authentication')"
                       }
                     },
-                    "Update_a_row_6": {
+                    "Update_a_row_7": {
                       "runAfter": {
-                        "List_rows_2": [
+                        "Add_a_new_row": [
                           "Succeeded"
                         ]
                       },
                       "metadata": {
-                        "operationMetadataId": "346fbdd2-056c-4438-8518-9421c105af99"
+                        "operationMetadataId": "602433cb-6c21-4416-8001-208703aa8f96"
                       },
                       "type": "OpenApiConnection",
                       "inputs": {
@@ -533,7 +520,7 @@
                         },
                         "parameters": {
                           "entityName": "cat_accessrequestactivities",
-                          "recordId": "@first(outputs('List_rows_2')?['body/value'])?['activityid']",
+                          "recordId": "@outputs('Add_a_new_row')?['body/activityid']",
                           "item/statecode": 2,
                           "item/statuscode": 3
                         },
@@ -558,30 +545,6 @@
               "Apply_to_each_2": {
                 "foreach": "@outputs('Start_and_wait_for_an_approval_2')?['body/responses']",
                 "actions": {
-                  "Add_Approver_Response": {
-                    "runAfter": {},
-                    "metadata": {
-                      "operationMetadataId": "a3a014bd-02ac-41c7-b0fb-c3be18737e68"
-                    },
-                    "type": "OpenApiConnection",
-                    "inputs": {
-                      "host": {
-                        "connectionName": "shared_commondataserviceforapps_1",
-                        "operationId": "CreateRecord",
-                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                      },
-                      "parameters": {
-                        "entityName": "cat_accessrequestactivities",
-                        "item/subject": "Approval Response",
-                        "item/description": "@{items('Apply_to_each_2')?['responder/displayName']}: @{items('Apply_to_each_2')?['approverResponse']}\n\nComments: @{items('Apply_to_each_2')?['comments']}",
-                        "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
-                        "item/cat_flowname": "@workflow().name",
-                        "item/cat_flowrun": "@workflow().run.name",
-                        "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})"
-                      },
-                      "authentication": "@parameters('$authentication')"
-                    }
-                  },
                   "Complete_Approver_Response": {
                     "runAfter": {
                       "Add_Approver_Response": [
@@ -603,6 +566,62 @@
                         "recordId": "@outputs('Add_Approver_Response')?['body/activityid']",
                         "item/statecode": 1,
                         "item/statuscode": 2
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Condition_5": {
+                    "actions": {
+                      "Set_variable_2": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "f9a66121-3cae-4309-8c8f-09b4a0bf25bf"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "approverComments",
+                          "value": "\nComments: @{items('Apply_to_each_2')?['comments']}"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "expression": {
+                      "not": {
+                        "equals": [
+                          "@items('Apply_to_each_2')?['comments']",
+                          "@null"
+                        ]
+                      }
+                    },
+                    "metadata": {
+                      "operationMetadataId": "021b48ad-21d6-4ab4-8bdc-01102449c86f"
+                    },
+                    "type": "If"
+                  },
+                  "Add_Approver_Response": {
+                    "runAfter": {
+                      "Condition_5": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "a3a014bd-02ac-41c7-b0fb-c3be18737e68"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "CreateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cat_accessrequestactivities",
+                        "item/subject": "Approval Response",
+                        "item/description": "@{items('Apply_to_each_2')?['responder/displayName']}: @{items('Apply_to_each_2')?['approverResponse']} @{variables('approverComments')}",
+                        "item/cat_flowenvironmentid": "@workflow().tags.environmentName",
+                        "item/cat_flowname": "@workflow().name",
+                        "item/cat_flowrun": "@workflow().run.name",
+                        "item/regardingobjectid_cat_accessrequest_cat_accessrequestactivity@odata.bind": "/cat_accessrequests(@{triggerOutputs()?['body/cat_accessrequestid']})"
                       },
                       "authentication": "@parameters('$authentication')"
                     }
@@ -792,7 +811,7 @@
         },
         "Get_a_row_by_ID_2": {
           "runAfter": {
-            "Initialize_variable": [
+            "Initialize_variable_2": [
               "Succeeded"
             ]
           },
@@ -858,6 +877,25 @@
               "item/statuscode": 2
             },
             "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_2": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "317cd448-cf07-480c-84f4-8c4f86dcdfdd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "approverComments",
+                "type": "string"
+              }
+            ]
           }
         }
       }

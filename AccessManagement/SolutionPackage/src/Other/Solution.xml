@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23044.224" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.23051.240" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>AccessManagement</UniqueName>
     <LocalizedNames>
       <LocalizedName description="JIT Access Management" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>0.0.0.0</Version>
+    <Version>0.0.0.1</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>catteam</UniqueName>
@@ -101,6 +101,8 @@
       <RootComponent type="62" schemaName="cat_JITAccessManagement" behavior="0" />
       <RootComponent type="70" id="{4d6247ee-bee9-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="80" schemaName="cat_JITAccessManagement" behavior="0" />
+      <RootComponent type="91" id="{1677f9aa-63c0-4ec5-884a-a9902da8f3ad}" schemaName="AccessManagementPlugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b094b05cfe14892f" behavior="0" />
+      <RootComponent type="92" id="{11bdee4f-fffd-ed11-8f6d-00224883988b}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -156,23 +158,23 @@
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2304.4012)" />
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2305.1013)" />
         <Dependent type="68" id="{fa1b3047-f169-4a0d-9c84-15cdd71dcdf0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2815)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2817)" />
         <Dependent type="26" schemaName="Calendar View" displayName="Calendar View" parentSchemaName="cat_accessrequest" parentDisplayName="Access Request" id="{2843f2fc-ace9-ed11-8849-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2815)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2817)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2304.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2305.1013)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.2512)" />
+        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.2514)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>

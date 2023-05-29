@@ -131,7 +131,7 @@
             }
           },
           "runAfter": {
-            "Create_Access_Request_Activity_-_Created": [
+            "Update_a_row_2": [
               "Succeeded"
             ]
           },
@@ -145,6 +145,31 @@
             "operationMetadataId": "46e619ff-896b-48f7-827f-81dfe4708faa"
           },
           "type": "If"
+        },
+        "Update_a_row_2": {
+          "runAfter": {
+            "Create_Access_Request_Activity_-_Created": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c494b26a-4ce3-4d2d-8037-4cb8b9a5ca8e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessrequestactivities",
+              "recordId": "@outputs('Create_Access_Request_Activity_-_Created')?['body/activityid']",
+              "item/statecode": 1,
+              "item/statuscode": 2
+            },
+            "authentication": "@parameters('$authentication')"
+          }
         }
       }
     },
