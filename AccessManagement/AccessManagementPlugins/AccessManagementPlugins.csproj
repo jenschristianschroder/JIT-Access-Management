@@ -85,5 +85,6 @@
       <BuildOutputInPackage Include="$(OutputPath)\*.*" Exclude="$(OutputPath)\microsoft.xrm.sdk*" />
     </ItemGroup>
   </Target>
+  <Target Name="GetProjectOutputPath" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
