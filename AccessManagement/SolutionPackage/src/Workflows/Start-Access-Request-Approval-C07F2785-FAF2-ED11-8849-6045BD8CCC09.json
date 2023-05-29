@@ -846,7 +846,7 @@
             },
             "parameters": {
               "entityName": "cat_accessrequestactivities",
-              "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Approvel Process started'"
+              "$filter": "_regardingobjectid_value eq '@{triggerOutputs()?['body/cat_accessrequestid']}' and subject eq 'Access Request Approval Process'"
             },
             "authentication": "@parameters('$authentication')"
           }
