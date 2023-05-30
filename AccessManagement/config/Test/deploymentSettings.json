@@ -3,6 +3,47 @@
 
                              ],
     "ConnectionReferences":  [
-
+                                 {
+                                     "LogicalName":  "cat_sharedapprovals_6aea4",
+                                     "ConnectionId":  "#{connectionreference.cat_sharedapprovals_6aea4}#",
+                                     "ConnectorId":  "/providers/Microsoft.PowerApps/apis/shared_approvals",
+                                     "ConnectionOwner":  "#{connectionreference.user.cat_sharedapprovals_6aea4}#"
+                                 },
+                                 {
+                                     "LogicalName":  "cat_sharedcommondataservice_b9c64",
+                                     "ConnectionId":  "#{connectionreference.cat_sharedcommondataservice_b9c64}#",
+                                     "ConnectorId":  "/providers/Microsoft.PowerApps/apis/shared_commondataservice",
+                                     "ConnectionOwner":  "#{connectionreference.user.cat_sharedcommondataservice_b9c64}#"
+                                 },
+                                 {
+                                     "LogicalName":  "cat_MicrosoftDataverseAccessManagement",
+                                     "ConnectionId":  "#{connectionreference.cat_MicrosoftDataverseAccessManagement}#",
+                                     "ConnectorId":  "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                                     "ConnectionOwner":  "#{connectionreference.user.cat_MicrosoftDataverseAccessManagement}#"
+                                 },
+                                 {
+                                     "LogicalName":  "cat_sharedteams_fdf5c",
+                                     "ConnectionId":  "#{connectionreference.cat_sharedteams_fdf5c}#",
+                                     "ConnectorId":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                     "ConnectionOwner":  "#{connectionreference.user.cat_sharedteams_fdf5c}#"
+                                 },
+                                 {
+                                     "LogicalName":  "cat_sharedoffice365_07f2f",
+                                     "ConnectionId":  "#{connectionreference.cat_sharedoffice365_07f2f}#",
+                                     "ConnectorId":  "/providers/Microsoft.PowerApps/apis/shared_office365",
+                                     "ConnectionOwner":  "#{connectionreference.user.cat_sharedoffice365_07f2f}#"
+                                 },
+                                 {
+                                     "LogicalName":  "cat_sharedflowmanagement_68987",
+                                     "ConnectionId":  "#{connectionreference.cat_sharedflowmanagement_68987}#",
+                                     "ConnectorId":  "/providers/Microsoft.PowerApps/apis/shared_flowmanagement",
+                                     "ConnectionOwner":  "#{connectionreference.user.cat_sharedflowmanagement_68987}#"
+                                 },
+                                 {
+                                     "LogicalName":  "cat_sharedpowerplatformforadmins_e2509",
+                                     "ConnectionId":  "#{connectionreference.cat_sharedpowerplatformforadmins_e2509}#",
+                                     "ConnectorId":  "/providers/Microsoft.PowerApps/apis/shared_powerplatformforadmins",
+                                     "ConnectionOwner":  "#{connectionreference.user.cat_sharedpowerplatformforadmins_e2509}#"
+                                 }
                              ]
 }
