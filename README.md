@@ -4,6 +4,8 @@ Just-In-Time Access Management Solution for Power Platform
 
 Allow Makers to request Just-In-Time access to Power Platform Environments based on configured Access Profiles.
 
+![Access Request Details screen shot](/docs/images/Access-Request-Details.png)
+
 Access Profiles can be configured to require Approval and/or Justification.
 
 All Access Requests are logged (audit) in Dataverse include timeline of Access Request Activities.
