@@ -72,3 +72,7 @@ You must have an Azure AD Application Registration with permissions to use the D
 3. **Select the Access Profile** you for which you wish to request access.
 4. Enter the required information.
 5. Click **Submit**.
+
+### JIT Access Request Demo
+
+[![JIT Access Request Demo Video](/docs/images/Access-Request-Details-Demo.png)](https://youtu.be/t7_zFoi50ok)
