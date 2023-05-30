@@ -190,29 +190,6 @@
           "type": "Compose",
           "inputs": "@@odata.id"
         },
-        "HTTP_2": {
-          "runAfter": {
-            "Compose": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "ecf7b209-4af1-45b7-97d2-e34b02ffe196"
-          },
-          "type": "Http",
-          "inputs": {
-            "method": "DELETE",
-            "uri": "@{outputs('Get_Access_Profile')?['body/cat_environmenturl']}api/data/v9.2/systemusers(@{first(outputs('List_rows_(legacy)_2')?['body/value'])?['systemuserid']})/systemuserroles_association(@{first(outputs('List_rows_(legacy)')?['body/value'])?['roleid']})/$ref",
-            "authentication": {
-              "type": "ActiveDirectoryOAuth",
-              "authority": "https://login.microsoftonline.com",
-              "tenant": "m365x05777723.onmicrosoft.com",
-              "audience": "@outputs('Get_Access_Profile')?['body/cat_environmenturl']",
-              "clientId": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationId']}",
-              "secret": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationSecret']}"
-            }
-          }
-        },
         "Update_a_row": {
           "runAfter": {
             "Update_a_row_3": [
@@ -268,7 +245,7 @@
         },
         "List_rows": {
           "runAfter": {
-            "HTTP_2": [
+            "Apply_to_each": [
               "Succeeded"
             ]
           },
@@ -401,6 +378,39 @@
           "inputs": {
             "runStatus": "Succeeded"
           }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Get_Access_Management_Setup')?['body/value']",
+          "actions": {
+            "HTTP_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "ecf7b209-4af1-45b7-97d2-e34b02ffe196"
+              },
+              "type": "Http",
+              "inputs": {
+                "method": "DELETE",
+                "uri": "@{outputs('Get_Access_Profile')?['body/cat_environmenturl']}api/data/v9.2/systemusers(@{first(outputs('List_rows_(legacy)_2')?['body/value'])?['systemuserid']})/systemuserroles_association(@{first(outputs('List_rows_(legacy)')?['body/value'])?['roleid']})/$ref",
+                "authentication": {
+                  "type": "ActiveDirectoryOAuth",
+                  "authority": "https://login.microsoftonline.com",
+                  "tenant": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_TenantId']}",
+                  "audience": "@outputs('Get_Access_Profile')?['body/cat_environmenturl']",
+                  "clientId": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationId']}",
+                  "secret": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationSecret']}"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "de13a18e-4191-4ad7-bf7a-d1d437ca85c0"
+          },
+          "type": "Foreach"
         }
       }
     },
