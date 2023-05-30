@@ -28,6 +28,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{57e03bcf-4d37-4f6c-87f2-6052cafb25e4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Tenant Id" languagecode="1033" />
+                        </labels>
+                        <control id="cat_tenantid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_tenantid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{c5a2c88c-423c-4356-9c38-b29fd45cd9fb}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Application Registration Id" languagecode="1033" />
