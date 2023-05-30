@@ -75,4 +75,4 @@ You must have an Azure AD Application Registration with permissions to use the D
 
 ### JIT Access Request Demo
 
-[![JIT Access Request Demo Video](/docs/videos/Access-Request-Demo.mp4)](/docs/videos/Access-Request-Demo.mp4)
+[![JIT Access Request Demo Video](/docs/images/Access-Reguest-Details.png)]([/docs/videos/Access-Request-Demo.mp4](https://youtu.be/t7_zFoi50ok))
