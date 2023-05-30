@@ -50,7 +50,7 @@
       "actions": {
         "Delay": {
           "runAfter": {
-            "Add_a_new_row": [
+            "Update_a_row_2": [
               "Succeeded"
             ]
           },
@@ -195,6 +195,31 @@
             "operationMetadataId": "83c22dc6-edb3-4faf-83a2-c5fc91cd2223"
           },
           "type": "If"
+        },
+        "Update_a_row_2": {
+          "runAfter": {
+            "Add_a_new_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c6201aef-714b-4b3d-9fc1-7f5e92999b20"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessrequestactivities",
+              "recordId": "@outputs('Add_a_new_row')?['body/activityid']",
+              "item/statecode": 3,
+              "item/statuscode": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
         }
       }
     },

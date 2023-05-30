@@ -1,0 +1,53 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |-
+        =If(
+            Not(IsBlank(Param("environment"))),
+            Set(
+                environmentFilter,
+                LookUp(
+                    'Access Profiles',
+                    'Environment Id' = Param("environment")
+                ).'Environment Name'
+            ),
+            Set(
+                environmentFilter,
+                ""
+            )
+        );
+        
+        Collect(defaultAccessRequestActivities, 
+            {
+                activity: "Create",
+                mandatory: true,
+                label: "Access Request Created"
+            },
+            {
+                activity: "Approval",
+                mandatory: false,
+                label: "Waiting for Approval"
+            },
+            {
+                activity: "ApprovalResponse",
+                mandatory: false,
+                label: "Access Request Created"
+            },
+            {
+                activity: "Create",
+                mandatory: true,
+                label: "Access Request Created"
+            },
+            {
+                activity: "Create",
+                mandatory: true,
+                label: "Access Request Created"
+            }
+        )
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

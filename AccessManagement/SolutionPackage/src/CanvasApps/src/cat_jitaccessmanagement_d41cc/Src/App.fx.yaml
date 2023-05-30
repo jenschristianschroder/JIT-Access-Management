@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: =If(Not(IsBlank(Param("environment"))),Set(environmentFilter,Param("environmentFilter")),Set(environmentFilter, Blank()));
+    OnStart: =If(Not(IsBlank(Param("environment"))),Set(environmentFilter,Param("environment")),Set(environmentFilter, Blank()));
 
     Host As hostControl.DefaultHostControlVariant:
         OnCancel: =false
