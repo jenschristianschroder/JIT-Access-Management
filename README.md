@@ -37,9 +37,10 @@ The Azure AD Application Registration must be added as an Application User (S2S 
 2. Select the **Setup** area in bottom left corner.
 3. Create a new **JIT Access Management Setup** record.
 4. Give the record a name.
-5. Enter the **Client Id** of the Azure Application Registration to be used for granting and revoking access.
-6. Enter the **Client Secret** of the Azure Application Registration to be used for granting and revoking access.
-7. Select the **JIT Access Management** area in bottom left corner.
+5. Enter the **Tenant**. This can be either tenant id or domain name
+6. Enter the **Client Id** of the Azure Application Registration to be used for granting and revoking access.
+7. Enter the **Client Secret** of the Azure Application Registration to be used for granting and revoking access.
+8. Select the **JIT Access Management** area in bottom left corner.
 
 ## Configuration
 
