@@ -11698,7 +11698,7 @@ Home As screen:
                     Tooltip: =""
                     Width: =120
                     X: =lblStatus.X + lblStatus.Width
-                    Y: =212
+                    Y: =lblStatus.Y
                     ZIndex: =7
 
                 "lblStatus As 'Auto Width Label (1.0.22)'":
@@ -11712,7 +11712,7 @@ Home As screen:
                     Tooltip: =""
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =0
-                    Y: =212
+                    Y: =251
                     ZIndex: =8
 
                 Label2_1 As label:
@@ -11774,6 +11774,30 @@ Home As screen:
                     Y: =lblDuration_8.Y
                     ZIndex: =13
 
+                "lblDuration_9 As 'Auto Width Label (1.0.22)'":
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =24
+                    PaddingLeft: =24
+                    PaddingRight: =12
+                    Text: |-
+                        ="Justification:"
+                    Tooltip: =""
+                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    X: =0
+                    Y: =214
+                    ZIndex: =14
+
+                "lblDurationValue_4 As 'Auto Width Label (1.0.22)'":
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =24
+                    PaddingLeft: =0
+                    Text: =If(IsBlank(currentAccessRequest.Justification), "None", currentAccessRequest.Justification)
+                    Tooltip: =""
+                    Width: =120
+                    X: =lblDuration_9.X + lblDuration_9.Width
+                    Y: =lblDuration_9.Y
+                    ZIndex: =15
+
             cntTimeline As groupContainer.manualLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
@@ -11825,7 +11849,7 @@ Home As screen:
                     LoadingSpinner: =LoadingSpinner.Data
                     TemplatePadding: =2
                     TemplateSize: =57
-                    Width: =400
+                    Width: =350
                     Y: =24
                     ZIndex: =3
 
@@ -12024,6 +12048,15 @@ Home As screen:
                     Size: =10.5
                     Text: ="Timeline"
                     ZIndex: =4
+
+                Icon2 As icon.Reload:
+                    Color: =ColorValue(header.Theme.palette.neutralPrimary)
+                    Height: =20
+                    Icon: =Icon.Reload
+                    OnSelect: =ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending))
+                    Width: =20
+                    X: =311
+                    ZIndex: =5
 
         Label5 As label:
             Height: =Panel_1.Height
@@ -12707,7 +12740,7 @@ Home As screen:
                     Text: |-
                         ="Teams:"
                     Tooltip: =""
-                    Visible: =selectedAccessProfile.'Approval Required'
+                    Visible: =true
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =0
                     Y: =327
@@ -12721,7 +12754,7 @@ Home As screen:
                     Text: |-
                         ="Email:"
                     Tooltip: =""
-                    Visible: =selectedAccessProfile.'Approval Required'
+                    Visible: =true
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =2
                     Y: =353
