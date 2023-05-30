@@ -180,32 +180,6 @@
                   "type": "Compose",
                   "inputs": "@@odata.id"
                 },
-                "Assign_Security_Role": {
-                  "runAfter": {
-                    "odata.id": [
-                      "Succeeded"
-                    ]
-                  },
-                  "metadata": {
-                    "operationMetadataId": "ecf7b209-4af1-45b7-97d2-e34b02ffe196"
-                  },
-                  "type": "Http",
-                  "inputs": {
-                    "method": "POST",
-                    "uri": "@{outputs('Get_Access_Profile')?['body/cat_environmenturl']}api/data/v9.2/systemusers(@{first(outputs('Get_System_User')?['body/value'])?['systemuserid']})/systemuserroles_association/$ref",
-                    "body": {
-                      "@{outputs('odata.id')}": "@{outputs('Get_Access_Profile')?['body/cat_environmenturl']}api/data/v9.2/roles(@{first(outputs('Get_Security_Role')?['body/value'])?['roleid']})"
-                    },
-                    "authentication": {
-                      "type": "ActiveDirectoryOAuth",
-                      "authority": "https://login.microsoftonline.com",
-                      "tenant": "m365x05777723.onmicrosoft.com",
-                      "audience": "@outputs('Get_Access_Profile')?['body/cat_environmenturl']",
-                      "clientId": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationId']}",
-                      "secret": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationSecret']}"
-                    }
-                  }
-                },
                 "Create_Access_Request_Activity": {
                   "runAfter": {
                     "Assign_Security_Role": [
@@ -282,6 +256,32 @@
                       "item/statuscode": 809060001
                     },
                     "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Assign_Security_Role": {
+                  "runAfter": {
+                    "odata.id": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "ecf7b209-4af1-45b7-97d2-e34b02ffe196"
+                  },
+                  "type": "Http",
+                  "inputs": {
+                    "method": "POST",
+                    "uri": "@{outputs('Get_Access_Profile')?['body/cat_environmenturl']}api/data/v9.2/systemusers(@{first(outputs('Get_System_User')?['body/value'])?['systemuserid']})/systemuserroles_association/$ref",
+                    "body": {
+                      "@{outputs('odata.id')}": "@{outputs('Get_Access_Profile')?['body/cat_environmenturl']}api/data/v9.2/roles(@{first(outputs('Get_Security_Role')?['body/value'])?['roleid']})"
+                    },
+                    "authentication": {
+                      "type": "ActiveDirectoryOAuth",
+                      "authority": "https://login.microsoftonline.com",
+                      "tenant": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_TenantId']}",
+                      "audience": "@outputs('Get_Access_Profile')?['body/cat_environmenturl']",
+                      "clientId": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationId']}",
+                      "secret": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationSecret']}"
+                    }
                   }
                 }
               },
