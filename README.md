@@ -67,6 +67,6 @@ You must have an Azure AD Application Registration with permissions to use the D
 
 1. Launch the JIT Access Request Canvas App.
 2. Click **New Request**.
-3. Select the Access Profile you for which you wish to request access.
+3. **Select the Access Profile** you for which you wish to request access.
 4. Enter the required information.
-5. Click Submit.
+5. Click **Submit**.
