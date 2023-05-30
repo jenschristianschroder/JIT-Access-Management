@@ -146,6 +146,12 @@
                                             "canvasNameInSolution":  "cat_jitaccessmanagementdefaultcommandlibrary_a47fe",
                                             "canvasDisplayName":  "JITAccessManagement_DefaultCommandLibrary",
                                             "roleName":  "#{canvasshare.roleName.cat_jitaccessmanagementdefaultcommandlibrary_a47fe}#"
+                                        },
+                                        {
+                                            "aadGroupId":  "#{canvasshare.aadGroupId.cat_jitaccessrequest_201f8}#",
+                                            "canvasNameInSolution":  "cat_jitaccessrequest_201f8",
+                                            "canvasDisplayName":  "JIT Access Request",
+                                            "roleName":  "#{canvasshare.roleName.cat_jitaccessrequest_201f8}#"
                                         }
                                     ],
     "AadGroupTeamConfiguration":  [
