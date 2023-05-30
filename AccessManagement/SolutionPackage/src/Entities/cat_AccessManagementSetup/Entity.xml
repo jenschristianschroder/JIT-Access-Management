@@ -174,7 +174,7 @@
           <Type>nvarchar</Type>
           <Name>cat_tenantid</Name>
           <LogicalName>cat_tenantid</LogicalName>
-          <RequiredLevel>none</RequiredLevel>
+          <RequiredLevel>required</RequiredLevel>
           <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
@@ -204,7 +204,7 @@
           <MaxLength>100</MaxLength>
           <Length>200</Length>
           <displaynames>
-            <displayname description="Tenant Id" languagecode="1033" />
+            <displayname description="Tenant" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
