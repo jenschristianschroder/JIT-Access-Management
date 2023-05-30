@@ -24,6 +24,8 @@ The JIT Access Management Solution relies on an **Azure AD Application Registrat
 
 You must have an Azure AD Application Registration with permissions to use the Dataverse (Dynamics CRM) API.
 
+The Azure AD Application Registration must be added as an Application User (S2S app) with System Administrator security role in the environments that are configured for JIT Access.
+
 ## Installation
 
 1. Download the managed solution from the assets in the latest release: https://github.com/jenschristianschroder/JIT-Access-Management/releases.
