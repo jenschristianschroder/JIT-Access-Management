@@ -62,6 +62,7 @@ Home As screen:
                 =Switch(Self.Selected.ItemKey,
                     "refreshRequests",
                     Clear(myRequests);
+                    Refresh('Access Requests');
                     ForAll(Sort('Access Requests', 'Created On', SortOrder.Descending), 
                         Collect(myRequests, 
                             {
@@ -99,6 +100,7 @@ Home As screen:
                     ),
                 
                     "newRequest",
+                    Refresh('Access Profiles');
                     UpdateContext({showDetailPanel:false, showNewRequestPanel: true});
                 );
             Theme: =header.Theme.palette.black
@@ -166,10 +168,33 @@ Home As screen:
                 LargeDatasetPaging: =true
                 OnChange: |-
                     =If(CountRows(Self.SelectedItems) = 1,
+                        Concurrent(
+                            Refresh('Access Requests'),
+                            Refresh('Access Request Activities'),
+                            Refresh('Access Profile Approvers')
+                        );
+                        
                         UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = listAccessRequests.Selected.id)});
-                        ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending));
+                        Concurrent(
+                            ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending)),
+                            UpdateContext({currentApprovalType: Text(LookUp('Access Profile Approvers', 'Access Profile'.'Access Profile' = currentAccessRequest.'Access Profile'.'Access Profile').'Approval Type')})
+                        );
                         UpdateContext({showDetailPanel: true, showNewRequestPanel: false});
+                        
+                        If(Not(IsBlankOrError(currentApprovalType)),
+                            UpdateContext({currentAccessProfile: currentAccessRequest.'Access Profile'});
+                    
+                            Clear(accessProfileApprovers);
+                                ForAll(First(currentAccessProfile.'Access Profile Approvers').Users, 
+                                    Collect(accessProfileApprovers, { upn: ThisRecord.'Primary Email', profileImage: Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", ""), fullname: ThisRecord.'Full Name'});
+                            );
+                            //ClearCollect(accessProfileApprovers, AddColumns(First(currentAccessProfile.'Access Profile Approvers').Users, "profileImage", Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", "")));
+                        );
+                       
+                    
                     );
+                    
+                    
                     /*
                     If(CountRows(Self.SelectedItems) = 1,
                         Collect(selectedAccessRequestActivities, {});
@@ -11625,7 +11650,7 @@ Home As screen:
                     Text: |-
                         ="Environment:"
                     Tooltip: =""
-                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    Width: =If(Self.AutoWidth < 130, 130, Self.AutoWidth)
                     X: =0
                     Y: =30
                     ZIndex: =1
@@ -11638,9 +11663,9 @@ Home As screen:
                     Text: |-
                         ="Security Role:"
                     Tooltip: =""
-                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    Width: =If(Self.AutoWidth < 130, 130, Self.AutoWidth)
                     X: =0
-                    Y: =104
+                    Y: =htmlEnvironmentUrl.Y + htmlEnvironmentUrl.Height + 16
                     ZIndex: =2
 
                 "lblDuration As 'Auto Width Label (1.0.22)'":
@@ -11651,7 +11676,7 @@ Home As screen:
                     Text: |-
                         ="Duration:"
                     Tooltip: =""
-                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    Width: =If(Self.AutoWidth < 130, 130, Self.AutoWidth)
                     X: =0
                     Y: =lblSecurityRole.Y + 36
                     ZIndex: =3
@@ -11710,9 +11735,9 @@ Home As screen:
                     Text: |-
                         ="Status:"
                     Tooltip: =""
-                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    Width: =If(Self.AutoWidth < 130, 130, Self.AutoWidth)
                     X: =0
-                    Y: =251
+                    Y: =288
                     ZIndex: =8
 
                 Label2_1 As label:
@@ -11723,7 +11748,7 @@ Home As screen:
                     X: =19
                     ZIndex: =9
 
-                "lblEnvironment_4 As 'Auto Width Label (1.0.22)'":
+                "lblEnvironmentUrl As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     Height: =24
                     PaddingLeft: =24
@@ -11731,12 +11756,12 @@ Home As screen:
                     Text: |-
                         ="Url:"
                     Tooltip: =""
-                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    Width: =If(Self.AutoWidth < 130, 130, Self.AutoWidth)
                     X: =0
                     Y: =67
                     ZIndex: =10
 
-                HtmlText3 As htmlViewer:
+                htmlEnvironmentUrl As htmlViewer:
                     AutoHeight: =true
                     Height: =24
                     HtmlText: ="<a href='" & currentAccessRequest.'Environment Url' & "'>" & currentAccessRequest.'Environment Url' & "</a>"
@@ -11745,8 +11770,8 @@ Home As screen:
                     PaddingRight: =0
                     PaddingTop: =0
                     Size: =10.5
-                    Width: =280
-                    X: =120
+                    Width: =Parent.Width - Self.X
+                    X: =lblEnvironmentUrl.X + lblEnvironmentUrl.Width
                     Y: =67
                     ZIndex: =11
 
@@ -11758,7 +11783,7 @@ Home As screen:
                     Text: |-
                         ="Notification:"
                     Tooltip: =""
-                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    Width: =If(Self.AutoWidth < 130, 130, Self.AutoWidth)
                     X: =0
                     Y: =177
                     ZIndex: =12
@@ -11782,7 +11807,7 @@ Home As screen:
                     Text: |-
                         ="Justification:"
                     Tooltip: =""
-                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    Width: =If(Self.AutoWidth < 130, 130, Self.AutoWidth)
                     X: =0
                     Y: =214
                     ZIndex: =14
@@ -11797,6 +11822,33 @@ Home As screen:
                     X: =lblDuration_9.X + lblDuration_9.Width
                     Y: =lblDuration_9.Y
                     ZIndex: =15
+
+                "lblDuration_10 As 'Auto Width Label (1.0.22)'":
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =24
+                    PaddingLeft: =24
+                    PaddingRight: =12
+                    Text: |-
+                        ="Approval Type:"
+                    Tooltip: =""
+                    Width: =If(Self.AutoWidth < 130, 130, Self.AutoWidth)
+                    X: =0
+                    Y: =251
+                    ZIndex: =16
+
+                "lblDurationValue_5 As 'Auto Width Label (1.0.22)'":
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =24
+                    PaddingLeft: =0
+                    Text: |-
+                        =If(IsBlankOrError(currentApprovalType), "None", currentApprovalType)
+                        
+                        //If(IsBlank(currentAccessRequest.'Access Profile'.'Access Profile Approvers'), "None", Concat(currentAccessRequest.'Notification Channel', Text(Value), ", "))
+                    Tooltip: =""
+                    Width: =120
+                    X: =127
+                    Y: =lblDuration_10.Y
+                    ZIndex: =17
 
             cntTimeline As groupContainer.manualLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
@@ -11861,8 +11913,9 @@ Home As screen:
                         PaddingRight: =0
                         PaddingTop: =2
                         Size: =10.5
-                        Text: =ThisItem.Subject
+                        Text: =If(StartsWith(ThisItem.Subject, "Waiting for"), "Waiting for", ThisItem.Subject)
                         VerticalAlign: =VerticalAlign.Top
+                        Visible: =false
                         Width: =Parent.TemplateWidth - 104
                         X: =40
                         ZIndex: =1
@@ -11879,7 +11932,7 @@ Home As screen:
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.TemplateWidth - 104
                         X: =40
-                        Y: =Title5_1.Y + Title5_1.Height + 2
+                        Y: =25
                         ZIndex: =2
 
                     Body1_1 As label:
@@ -11895,7 +11948,7 @@ Home As screen:
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.TemplateWidth - 104
                         X: =40
-                        Y: =41
+                        Y: =42
                         ZIndex: =3
 
                     Rectangle1 As rectangle:
@@ -12016,6 +12069,16 @@ Home As screen:
                             Y: =1
                             ZIndex: =13
 
+                    "AutoWidthLabel1 As 'Auto Width Label (1.0.22)'":
+                        DisplayMode: =DisplayMode.Edit
+                        FontWeight: ="bold"
+                        Height: =21
+                        Text: =If(StartsWith(ThisItem.Subject, "Waiting for"), "Waiting for", ThisItem.Subject)
+                        Width: =Self.AutoWidth + 4
+                        X: =40
+                        Y: =2
+                        ZIndex: =16
+
                     Group2_3 As group:
                         Height: =5
                         Width: =5
@@ -12042,6 +12105,97 @@ Home As screen:
                             X: =6
                             ZIndex: =15
 
+                    "Facepile2 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =24
+                        ImageShouldFadeIn: =true
+                        Items: |
+                            =AddColumns(Filter(accessProfileApprovers, 'Full Name' =  Right(ThisItem.Subject, Len(ThisItem.Subject) - Len("Waiting for "))), 
+                                "ItemPersonaKey", upn,
+                                "ItemPersonaName", 'Full Name',
+                                "ItemFullName", 'Full Name',
+                                "IsImage", false,
+                                "ItemPersonaImageInfo", profileImage,// Office365Users.UserPhotoV2('Primary Email'),//Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", ""),
+                                /*    //Get base64 image data
+                                    Substitute(
+                                        JSON(
+                                            Office365Users.UserPhotoV2(Id),
+                                            JSONFormat.IncludeBinaryData
+                                        ),
+                                        """",
+                                        ""
+                                    ),*/
+                                    "ItemPersonaPresence",
+                                    "Away",
+                                    "ItemPersonaClickable",
+                                    true)
+                        MaxDisplayablePersonas: =1
+                        OnSelect: |-
+                            =Switch( Self.EventName,
+                                "PersonaEvent", 
+                                Launch("https://teams.microsoft.com/l/chat/0/0?users=" &  Self.Selected.ItemPersonaKey,
+                                    {},
+                                    LaunchTarget.New
+                                )
+                            )
+                        OverflowButtonType: ='PowerCAT.Facepile.OverflowButtonType'.none
+                        PersonaSize: ='PowerCAT.Facepile.PersonaSize'.Size24
+                        Visible: =StartsWith(ThisItem.Subject, "Waiting for")
+                        Width: =If(StartsWith(ThisItem.Subject, "Waiting for"), 24, 0)
+                        X: =AutoWidthLabel1.X + AutoWidthLabel1.AutoWidth + 4
+                        Y: =0
+                        ZIndex: =17
+
+                        "'Full Name1' As pcfDataField.textualColumn":
+                            FieldDisplayName: ="Full Name"
+                            FieldName: ="fullname"
+                            FieldType: ="s"
+                            FieldVariantName: ="textualColumn"
+                            Order: =1
+                            ZIndex: =31
+
+                        "'Business Unit1' As pcfDataField":
+                            FieldDisplayName: ="Business Unit"
+                            FieldName: ="businessunitid"
+                            FieldType: ="E"
+                            FieldVariantName: ="complexTypeColumn"
+                            Order: =2
+                            ZIndex: =32
+
+                        Title4 As pcfDataField.textualColumn:
+                            FieldDisplayName: ="Title"
+                            FieldName: ="title"
+                            FieldType: ="s"
+                            FieldVariantName: ="textualColumn"
+                            Order: =3
+                            ZIndex: =33
+
+                        Position1 As pcfDataField:
+                            FieldDisplayName: ="Position"
+                            FieldName: ="positionid"
+                            FieldType: ="E"
+                            FieldVariantName: ="complexTypeColumn"
+                            Order: =4
+                            ZIndex: =34
+
+                        "'Main Phone1' As pcfDataField.textualColumn":
+                            FieldDisplayName: ="Main Phone"
+                            FieldName: ="address1_telephone1"
+                            FieldType: ="s"
+                            FieldVariantName: ="textualColumn"
+                            Order: =5
+                            ZIndex: =35
+
+                    "AutoWidthLabel1_1 As 'Auto Width Label (1.0.22)'":
+                        DisplayMode: =DisplayMode.Edit
+                        FontWeight: ="bold"
+                        Height: =21
+                        Text: =If(StartsWith(ThisItem.Subject, "Waiting for"), Right(ThisItem.Subject, Len(ThisItem.Subject) - Len("Waiting for ")))
+                        Width: =Self.AutoWidth + 4
+                        X: =Facepile2.X + Facepile2.Width + 4
+                        Y: =2
+                        ZIndex: =18
+
                 Label2 As label:
                     FontWeight: =FontWeight.Semibold
                     Height: =24
@@ -12053,7 +12207,14 @@ Home As screen:
                     Color: =ColorValue(header.Theme.palette.neutralPrimary)
                     Height: =20
                     Icon: =Icon.Reload
-                    OnSelect: =ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending))
+                    OnSelect: |-
+                        =Concurrent(
+                            Refresh('Access Requests'),
+                            Refresh('Access Request Activities')
+                        );
+                        
+                        UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = currentAccessRequest.'Access Request')});
+                        ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending))
                     Width: =20
                     X: =311
                     ZIndex: =5
@@ -12156,7 +12317,7 @@ Home As screen:
                 "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
                     DelayItemLoading: =true
                     Height: =523
-                    Items: =Filter('Access Profiles', StartsWith('Environment Name', TextInput3.Text))
+                    Items: =Filter('Access Profiles', Status = 'Status (Access Profiles)'.Active And StartsWith('Environment Name', txtAccessProfileSearch.Text))
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
                     OnSelect: |
@@ -12357,7 +12518,7 @@ Home As screen:
                             Y: =107
                             ZIndex: =10
 
-        TextInput3 As text:
+        txtAccessProfileSearch As text:
             BorderColor: =ColorValue(header.Theme.palette.neutralDark)
             BorderThickness: =1
             Default: =environmentFilter
