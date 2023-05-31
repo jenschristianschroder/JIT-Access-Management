@@ -93,6 +93,62 @@
         "PCFExternalServiceUsageAllowed": false
       },
       "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.AutoWidthLabel",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.AutoWidthLabel",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.AutoWidthLabel",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.AutoWidthLabel",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.Facepile",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.AutoWidthLabel",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.AutoWidthLabel",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
       "Identifier": "cat_PowerCAT.SubwayNav",
       "IdentifierType": 0
     },
@@ -279,22 +335,6 @@
       "ComponentName": "CustomControl",
       "Identifier": "cat_PowerCAT.Icon",
       "IdentifierType": 0
-    },
-    {
-      "Capabilities": {
-        "PCFExternalServiceUsageAllowed": false
-      },
-      "ComponentName": "CustomControl",
-      "Identifier": "cat_PowerCAT.AutoWidthLabel",
-      "IdentifierType": 0
-    },
-    {
-      "Capabilities": {
-        "PCFExternalServiceUsageAllowed": false
-      },
-      "ComponentName": "CustomControl",
-      "Identifier": "cat_PowerCAT.AutoWidthLabel",
-      "IdentifierType": 0
     }
   ],
   "DatasetName": "default.cds",
@@ -317,7 +357,7 @@
     "StateOptionSetAttribute": "{\"@odata.context\":\"https://access-management.crm4.dynamics.com/api/data/v9.0/$metadata#EntityDefinitions('cat_accessprofile')/Attributes/Microsoft.Dynamics.CRM.StateAttributeMetadata(MetadataId,LogicalName,SchemaName,DisplayName,OptionSet())\",\"value\":[{\"MetadataId\":\"ff75f788-8ad3-450a-9ca7-0e9e1c4456ba\",\"LogicalName\":\"statecode\",\"SchemaName\":\"statecode\",\"DisplayName\":{\"LocalizedLabels\":[{\"Label\":\"Status\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"a3094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Status\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"a3094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}},\"OptionSet\":{\"MetadataId\":\"a8094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null,\"IsCustomOptionSet\":true,\"IsGlobal\":false,\"IsManaged\":false,\"Name\":\"cat_accessprofile_statecode\",\"ExternalTypeName\":null,\"OptionSetType\":\"State\",\"IntroducedVersion\":\"1.0\",\"ParentOptionSetName\":null,\"Description\":{\"LocalizedLabels\":[{\"Label\":\"Status of the Access Profile\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"ad094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Status of the Access Profile\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"ad094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}},\"DisplayName\":{\"LocalizedLabels\":[{\"Label\":\"Status\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"ac094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Status\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"ac094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}},\"IsCustomizable\":{\"Value\":true,\"CanBeChanged\":true,\"ManagedPropertyLogicalName\":\"iscustomizable\"},\"Options\":[{\"@odata.type\":\"#Microsoft.Dynamics.CRM.StateOptionMetadata\",\"Value\":0,\"Color\":null,\"IsManaged\":false,\"ExternalValue\":null,\"ParentValues\":[],\"Tag\":null,\"MetadataId\":null,\"HasChanged\":null,\"DefaultStatus\":809060001,\"InvariantName\":\"Active\",\"Label\":{\"LocalizedLabels\":[{\"Label\":\"Active\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"2c0048d2-74ee-42b4-9774-258894261f54\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Active\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"2c0048d2-74ee-42b4-9774-258894261f54\",\"HasChanged\":null}},\"Description\":{\"LocalizedLabels\":[],\"UserLocalizedLabel\":null}},{\"@odata.type\":\"#Microsoft.Dynamics.CRM.StateOptionMetadata\",\"Value\":1,\"Color\":null,\"IsManaged\":false,\"ExternalValue\":null,\"ParentValues\":[],\"Tag\":null,\"MetadataId\":null,\"HasChanged\":null,\"DefaultStatus\":2,\"InvariantName\":\"Inactive\",\"Label\":{\"LocalizedLabels\":[{\"Label\":\"Inactive\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"a8f02e3d-8e7f-40dd-9fd4-7e5bbb0ce904\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Inactive\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"a8f02e3d-8e7f-40dd-9fd4-7e5bbb0ce904\",\"HasChanged\":null}},\"Description\":{\"LocalizedLabels\":[],\"UserLocalizedLabel\":null}}]}}]}",
     "StatusOptionSetAttribute": "{\"@odata.context\":\"https://access-management.crm4.dynamics.com/api/data/v9.0/$metadata#EntityDefinitions('cat_accessprofile')/Attributes/Microsoft.Dynamics.CRM.StatusAttributeMetadata(MetadataId,LogicalName,SchemaName,DisplayName,OptionSet())\",\"value\":[{\"MetadataId\":\"95c94632-6f79-4f7d-bc9c-ed752606635f\",\"LogicalName\":\"statuscode\",\"SchemaName\":\"statuscode\",\"DisplayName\":{\"LocalizedLabels\":[{\"Label\":\"Status Reason\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"b2094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Status Reason\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"b2094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}},\"OptionSet\":{\"MetadataId\":\"b7094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null,\"IsCustomOptionSet\":true,\"IsGlobal\":false,\"IsManaged\":false,\"Name\":\"cat_accessprofile_statuscode\",\"ExternalTypeName\":null,\"OptionSetType\":\"Status\",\"IntroducedVersion\":\"1.0\",\"ParentOptionSetName\":null,\"Description\":{\"LocalizedLabels\":[{\"Label\":\"Reason for the status of the Access Profile\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"ba094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Reason for the status of the Access Profile\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"ba094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}},\"DisplayName\":{\"LocalizedLabels\":[{\"Label\":\"Status Reason\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"b9094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Status Reason\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"b9094ad5-78f4-ed11-8848-0022488031ab\",\"HasChanged\":null}},\"IsCustomizable\":{\"Value\":true,\"CanBeChanged\":true,\"ManagedPropertyLogicalName\":\"iscustomizable\"},\"Options\":[{\"@odata.type\":\"#Microsoft.Dynamics.CRM.StatusOptionMetadata\",\"Value\":809060001,\"Color\":null,\"IsManaged\":false,\"ExternalValue\":null,\"ParentValues\":[],\"Tag\":null,\"MetadataId\":null,\"HasChanged\":null,\"State\":0,\"TransitionData\":null,\"Label\":{\"LocalizedLabels\":[{\"Label\":\"Draft\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"492537b4-048e-47d2-a22a-956f0e256db2\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Draft\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"492537b4-048e-47d2-a22a-956f0e256db2\",\"HasChanged\":null}},\"Description\":{\"LocalizedLabels\":[{\"Label\":\"\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"d9a0ac24-837e-4cb3-948d-15b24a3451d5\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"d9a0ac24-837e-4cb3-948d-15b24a3451d5\",\"HasChanged\":null}}},{\"@odata.type\":\"#Microsoft.Dynamics.CRM.StatusOptionMetadata\",\"Value\":1,\"Color\":null,\"IsManaged\":false,\"ExternalValue\":null,\"ParentValues\":[],\"Tag\":null,\"MetadataId\":null,\"HasChanged\":null,\"State\":0,\"TransitionData\":null,\"Label\":{\"LocalizedLabels\":[{\"Label\":\"Active\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"b5330a03-79cc-4e62-9760-c34589b0fb31\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Active\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"b5330a03-79cc-4e62-9760-c34589b0fb31\",\"HasChanged\":null}},\"Description\":{\"LocalizedLabels\":[],\"UserLocalizedLabel\":null}},{\"@odata.type\":\"#Microsoft.Dynamics.CRM.StatusOptionMetadata\",\"Value\":2,\"Color\":null,\"IsManaged\":false,\"ExternalValue\":null,\"ParentValues\":[],\"Tag\":null,\"MetadataId\":null,\"HasChanged\":null,\"State\":1,\"TransitionData\":null,\"Label\":{\"LocalizedLabels\":[{\"Label\":\"Inactive\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"cd844dd2-064d-4ba1-9474-335b217f822f\",\"HasChanged\":null}],\"UserLocalizedLabel\":{\"Label\":\"Inactive\",\"LanguageCode\":1033,\"IsManaged\":false,\"MetadataId\":\"cd844dd2-064d-4ba1-9474-335b217f822f\",\"HasChanged\":null}},\"Description\":{\"LocalizedLabels\":[],\"UserLocalizedLabel\":null}}]}}]}",
     "TableName": "cat_accessprofile",
-    "Views": "{\"@odata.context\":\"https://access-management.crm4.dynamics.com/api/data/v9.0/$metadata#savedqueries(savedqueryid,name,querytype)\",\"value\":[{\"@odata.etag\":\"W/\\\"1451513\\\"\",\"savedqueryid\":\"e0b818f9-8ae9-ed11-8849-6045bd8ccc09\",\"name\":\"Active Access Profiles\",\"querytype\":0}]}"
+    "Views": "{\"@odata.context\":\"https://access-management.crm4.dynamics.com/api/data/v9.0/$metadata#savedqueries(savedqueryid,name,querytype)\",\"value\":[{\"@odata.etag\":\"W/\\\"2050946\\\"\",\"savedqueryid\":\"f68469a0-8fff-ed11-8f6d-000d3a246956\",\"name\":\"Inactive Access Profiles\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"1451513\\\"\",\"savedqueryid\":\"e0b818f9-8ae9-ed11-8849-6045bd8ccc09\",\"name\":\"Active Access Profiles\",\"querytype\":0}]}"
   },
   "webApiVersion": "v9.0"
 }
