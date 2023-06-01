@@ -1,4 +1,5 @@
 Home As screen:
+    Fill: =RGBA(237, 237, 237, 1)
     OnVisible: |-
         =If(Not(environmentFilter = ""),
             UpdateContext({showNewRequestPanel:true})
@@ -44,278 +45,295 @@ Home As screen:
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         Width: =Parent.Width - Self.X
-        X: =46
         Y: =50
         ZIndex: =1
 
-        "cmbAccessRequests As 'Fluent Command Bar (1.0.22)'.pcfdataset":
-            DisplayMode: =DisplayMode.Edit
-            Height: =46
-            Items: |-
-                =Table(
-                    {ItemKey:"newRequest",ItemDisplayName:"New Request",ItemIconName:"Add"},
-                    {ItemKey:"refreshRequests",ItemDisplayName:"Refresh",ItemIconName:"Refresh"}
-                )
-            LayoutMinHeight: =200
-            LayoutMinWidth: =200
-            OnSelect: |-
-                =Switch(Self.Selected.ItemKey,
-                    "refreshRequests",
-                    Clear(myRequests);
-                    Refresh('Access Requests');
-                    ForAll(Sort('Access Requests', 'Created On', SortOrder.Descending), 
-                        Collect(myRequests, 
-                            {
-                                name: ThisRecord.Name,
-                                created: DateTimeValue(ThisRecord.'Created On'),
-                                status: Text(ThisRecord.'Status Reason'),
-                                securityRole: ThisRecord.'Security Role',
-                                justification: ThisRecord.Justification,
-                                approvalRequired: ThisRecord.'Approval Required',
-                                url: ThisRecord.'Environment Url',
-                                id: ThisRecord.'Access Request',
-                                statusColor: Switch(Text(ThisRecord.'Status Reason'),
-                                    "Requested", "#c9d7f8",
-                                    "Waiting for approval", "#508bc7",
-                                    "Approved", "#78aace",
-                                    "Rejected", "#b10f2e",
-                                    "Granted", "#4da167",
-                                    "Revoke", "#ff934f",
-                                    "Revoked", "#cfcfcf",
-                                    "Failed", "#f06543"
-                                ),
-                                statusBorderColor: Switch(Text(ThisRecord.'Status Reason'),
-                                    "Requested", "#c9d7f8",
-                                    "Waiting for approval", "#1d5894",
-                                    "Approved", "#78aace",
-                                    "Rejected", "#b10f2e",
-                                    "Granted", "#4da167",
-                                    "Revoke", "#ff934f",
-                                    "Revoked", "#cfcfcf",
-                                    "Failed", "#f06543"
-                                ),
-                                statusTextColor: "#ffffff"
-                            }
-                        )
-                    ),
-                
-                    "newRequest",
-                    Refresh('Access Profiles');
-                    UpdateContext({showDetailPanel:false, showNewRequestPanel: true});
-                );
-            Theme: =header.Theme.palette.black
-            Tooltip: =""
-            Width: =Parent. Width
-            X: =0
-            Y: =0
-            ZIndex: =1
-
-        cntDetailList As groupContainer.manualLayoutContainer:
+        Container5 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.Regular
+            Fill: =RGBA(255, 255, 255, 1)
+            FillPortions: =0
+            Height: =40
             LayoutMinHeight: =100
             LayoutMinWidth: =250
-            PaddingLeft: =10
-            PaddingRight: =10
-            ZIndex: =3
+            ZIndex: =1
 
-            "listAccessRequests As 'Fluent Details List (1.0.22)'.pcfdataset":
-                AlternateRowColor: =header.Theme.palette.neutralLighterAlt
-                columns_Items: |-
-                    =With({
-                            // If there is a selection column, we remove the width and the padding
-                            availableWidth:Self.Width,
-                            padding:32,
-                            scrollWidth:20,
-                            collapsedModifiedOn:false,
-                            multiLineDescription: false
-                            },
-                            Table(
-                            {
-                                ColName:"name",ColDisplayName:"Name",ColSortable:true,ColWidth:200,ColRowHeader:true,
-                                ColResizable:true
-                            },
-                            {
-                                ColName:"created",ColDisplayName:"Created",ColSortable:true,ColWidth:150,ColRowHeader:true,
-                                ColResizable:true
-                            },
-                            {
-                                ColName:"status",ColDisplayName:"Status",ColSortable:true,ColWidth:200,ColRowHeader:true,
-                                ColResizable:false,
-                                ColCellType:"indicatortag",
-                                ColTagColorColumn: "statusColor",
-                                ColTagBorderColorColumn: "statusBorderColor"
-                            },
-                            {
-                                ColName:"securityRole",ColDisplayName:"Security Role",ColSortable:true,ColWidth:140,ColRowHeader:true,
-                                ColResizable:true
-                            },
-                            {
-                                ColName:"approvalRequired",ColDisplayName:"Approval Required",ColSortable:true,ColWidth:140,ColRowHeader:true,
-                                ColResizable:true
-                            },
-                            {
-                                ColName:"justification",ColDisplayName:"Justification",ColSortable:true,ColWidth:300,ColRowHeader:true,
-                                ColResizable:true
-                            }
-                        )
-                    )
-                Compact: =true
-                CurrentSortColumn: ="created"
-                CurrentSortDirection: ='PowerCAT.FluentDetailsList.CurrentSortDirection'.Descending
+            "cmbAccessRequests As 'Fluent Command Bar (1.0.22)'.pcfdataset":
                 DisplayMode: =DisplayMode.Edit
-                Height: =Parent.Height - 46
-                InputEvent: =ctxGridEvent
-                Items: =myRequests
-                LargeDatasetPaging: =true
-                OnChange: |-
-                    =If(CountRows(Self.SelectedItems) = 1,
-                        Concurrent(
-                            Refresh('Access Requests'),
-                            Refresh('Access Request Activities'),
-                            Refresh('Access Profile Approvers')
-                        );
-                        
-                        UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = listAccessRequests.Selected.id)});
-                        Concurrent(
-                            ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending)),
-                            UpdateContext({currentApprovalType: Text(LookUp('Access Profile Approvers', 'Access Profile'.'Access Profile' = currentAccessRequest.'Access Profile'.'Access Profile').'Approval Type')})
-                        );
-                        UpdateContext({showDetailPanel: true, showNewRequestPanel: false});
-                        
-                        If(Not(IsBlankOrError(currentApprovalType)),
-                            UpdateContext({currentAccessProfile: currentAccessRequest.'Access Profile'});
-                    
-                            Clear(accessProfileApprovers);
-                                ForAll(First(currentAccessProfile.'Access Profile Approvers').Users, 
-                                    Collect(accessProfileApprovers, { upn: ThisRecord.'Primary Email', profileImage: Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", ""), fullname: ThisRecord.'Full Name'});
-                            );
-                            //ClearCollect(accessProfileApprovers, AddColumns(First(currentAccessProfile.'Access Profile Approvers').Users, "profileImage", Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", "")));
-                        );
-                       
-                    
-                    );
-                    
-                    
-                    /*
-                    If(CountRows(Self.SelectedItems) = 1,
-                        Collect(selectedAccessRequestActivities, {});
-                        Clear(selectedAccessRequestActivities);
-                        UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = listAccessRequests.Selected.id)});
-                        ForAll(Sort(Filter('Access Request Activities', Regarding = currentAccessRequest), 'Date Created', SortOrder.Ascending),
-                            
-                            Collect(selectedAccessRequestActivities, 
-                                {
-                                    ItemKey: Text(CountRows(selectedAccessRequestActivities) + 1),
-                                    ItemLabel: ThisRecord.Subject,
-                                    ItemState: Switch(Text(ThisRecord.'Status Reason'),
-                                        "Open", "WizardComplete",
-                                        "Completed", "WizardComplete",
-                                        "Canceled", "WizardComplete" 
-                                    )
-                                }
-                            );
-                            Collect(selectedActivities,
-                                {
-                                    ItemKey: ThisRecord.Activity,
-                                    ItemLabel: ThisRecord.Subject,
-                                    ItemStatus: ThisRecord.'Status Reason',
-                                    ItemDescription: ThisRecord.Description
-                                }
-                            );
-                        );
-                        UpdateContext({showDetailPanel: true, showNewRequestPanel: false});
+                Height: =40
+                Items: |-
+                    =Table(
+                        {ItemKey:"newRequest",ItemDisplayName:"New Request",ItemIconName:"Add"},
+                        {ItemKey:"refreshRequests",ItemDisplayName:"Refresh",ItemIconName:"Refresh"}
                     )
-                    */
-                OnSelect: =Notify("SELECT")
-                PageSize: =15
-                RaiseOnRowSelectionChangeEvent: =true
-                RecordSelected: =
-                SelectionAlwaysVisible: =false
-                SelectRowsOnFocus: =true
-                Theme: =""
-                Width: =Parent.Width
+                OnSelect: |-
+                    =Switch(Self.Selected.ItemKey,
+                        "refreshRequests",
+                        Clear(myRequests);
+                        Refresh('Access Requests');
+                        ForAll(Sort('Access Requests', 'Created On', SortOrder.Descending), 
+                            Collect(myRequests, 
+                                {
+                                    name: ThisRecord.Name,
+                                    created: DateTimeValue(ThisRecord.'Created On'),
+                                    status: Text(ThisRecord.'Status Reason'),
+                                    securityRole: ThisRecord.'Security Role',
+                                    justification: ThisRecord.Justification,
+                                    approvalRequired: ThisRecord.'Approval Required',
+                                    url: ThisRecord.'Environment Url',
+                                    id: ThisRecord.'Access Request',
+                                    statusColor: Switch(Text(ThisRecord.'Status Reason'),
+                                        "Requested", "#c9d7f8",
+                                        "Waiting for approval", "#508bc7",
+                                        "Approved", "#78aace",
+                                        "Rejected", "#b10f2e",
+                                        "Granted", "#4da167",
+                                        "Revoke", "#ff934f",
+                                        "Revoked", "#cfcfcf",
+                                        "Failed", "#f06543"
+                                    ),
+                                    statusBorderColor: Switch(Text(ThisRecord.'Status Reason'),
+                                        "Requested", "#c9d7f8",
+                                        "Waiting for approval", "#1d5894",
+                                        "Approved", "#78aace",
+                                        "Rejected", "#b10f2e",
+                                        "Granted", "#4da167",
+                                        "Revoke", "#ff934f",
+                                        "Revoked", "#cfcfcf",
+                                        "Failed", "#f06543"
+                                    ),
+                                    statusTextColor: "#ffffff"
+                                }
+                            )
+                        ),
+                    
+                        "newRequest",
+                        Refresh('Access Profiles');
+                        UpdateContext({showDetailPanel:false, showNewRequestPanel: true});
+                    );
+                Theme: =header.Theme.palette.white
+                Tooltip: =""
+                Width: =Parent. Width
                 X: =0
                 Y: =0
                 ZIndex: =1
 
-                approvalRequired1 As pcfDataField.textualColumn:
-                    FieldDisplayName: ="approvalRequired"
-                    FieldName: ="approvalRequired"
-                    FieldType: ="l"
-                    FieldVariantName: ="textualColumn"
-                    Order: =1
-                    ZIndex: =16
+        Container3 As groupContainer.manualLayoutContainer:
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            ZIndex: =3
 
-                created3 As pcfDataField.textualColumn:
-                    FieldDisplayName: ="created"
-                    FieldName: ="created"
-                    FieldType: ="T"
-                    FieldVariantName: ="textualColumn"
-                    Order: =2
-                    ZIndex: =17
+            cntDetailList As groupContainer.manualLayoutContainer:
+                DropShadow: =DropShadow.Regular
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =Parent.Height - 20
+                Width: =Parent.Width - 20
+                X: =10
+                Y: =10
+                ZIndex: =1
 
-                justification2 As pcfDataField.textualColumn:
-                    FieldDisplayName: ="justification"
-                    FieldName: ="justification"
-                    FieldType: ="s"
-                    FieldVariantName: ="textualColumn"
-                    Order: =3
-                    ZIndex: =18
+                "listAccessRequests As 'Fluent Details List (1.0.22)'.pcfdataset":
+                    AlternateRowColor: =header.Theme.palette.neutralLighterAlt
+                    columns_Items: |-
+                        =With({
+                                // If there is a selection column, we remove the width and the padding
+                                availableWidth:Self.Width,
+                                padding:32,
+                                scrollWidth:20,
+                                collapsedModifiedOn:false,
+                                multiLineDescription: false
+                                },
+                                Table(
+                                {
+                                    ColName:"name",ColDisplayName:"Name",ColSortable:true,ColWidth:200,ColRowHeader:true,
+                                    ColResizable:true
+                                },
+                                {
+                                    ColName:"created",ColDisplayName:"Created",ColSortable:true,ColWidth:150,ColRowHeader:true,
+                                    ColResizable:true
+                                },
+                                {
+                                    ColName:"status",ColDisplayName:"Status",ColSortable:true,ColWidth:200,ColRowHeader:true,
+                                    ColResizable:false,
+                                    ColCellType:"indicatortag",
+                                    ColTagColorColumn: "statusColor",
+                                    ColTagBorderColorColumn: "statusBorderColor"
+                                },
+                                {
+                                    ColName:"securityRole",ColDisplayName:"Security Role",ColSortable:true,ColWidth:140,ColRowHeader:true,
+                                    ColResizable:true
+                                },
+                                {
+                                    ColName:"approvalRequired",ColDisplayName:"Approval Required",ColSortable:true,ColWidth:140,ColRowHeader:true,
+                                    ColResizable:true
+                                },
+                                {
+                                    ColName:"justification",ColDisplayName:"Justification",ColSortable:true,ColWidth:300,ColRowHeader:true,
+                                    ColResizable:true
+                                }
+                            )
+                        )
+                    Compact: =true
+                    CurrentSortColumn: ="created"
+                    CurrentSortDirection: ='PowerCAT.FluentDetailsList.CurrentSortDirection'.Descending
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =Parent.Height - 30
+                    InputEvent: =ctxGridEvent
+                    Items: =myRequests
+                    LargeDatasetPaging: =true
+                    OnChange: |-
+                        =If(CountRows(Self.SelectedItems) = 1,
+                            Concurrent(
+                                Refresh('Access Requests'),
+                                Refresh('Access Request Activities'),
+                                Refresh('Access Profile Approvers')
+                            );
+                            
+                            UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = listAccessRequests.Selected.id)});
+                            Concurrent(
+                                ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending)),
+                                UpdateContext({currentApprovalType: Text(LookUp('Access Profile Approvers', 'Access Profile'.'Access Profile' = currentAccessRequest.'Access Profile'.'Access Profile').'Approval Type')})
+                            );
+                            UpdateContext({showDetailPanel: true, showNewRequestPanel: false});
+                            
+                            If(currentAccessRequest.'Approval Required',
+                                UpdateContext({currentAccessProfile: currentAccessRequest.'Access Profile'});
+                        
+                                Clear(accessProfileApprovers);
+                                    ForAll(First(currentAccessProfile.'Access Profile Approvers').Users, 
+                                        Collect(accessProfileApprovers, { upn: ThisRecord.'Primary Email', profileImage: Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", ""), fullname: ThisRecord.'Full Name'});
+                                );
+                                //ClearCollect(accessProfileApprovers, AddColumns(First(currentAccessProfile.'Access Profile Approvers').Users, "profileImage", Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", "")));
+                            );
+                           
+                        
+                        );
+                        
+                        
+                        /*
+                        If(CountRows(Self.SelectedItems) = 1,
+                            Collect(selectedAccessRequestActivities, {});
+                            Clear(selectedAccessRequestActivities);
+                            UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = listAccessRequests.Selected.id)});
+                            ForAll(Sort(Filter('Access Request Activities', Regarding = currentAccessRequest), 'Date Created', SortOrder.Ascending),
+                                
+                                Collect(selectedAccessRequestActivities, 
+                                    {
+                                        ItemKey: Text(CountRows(selectedAccessRequestActivities) + 1),
+                                        ItemLabel: ThisRecord.Subject,
+                                        ItemState: Switch(Text(ThisRecord.'Status Reason'),
+                                            "Open", "WizardComplete",
+                                            "Completed", "WizardComplete",
+                                            "Canceled", "WizardComplete" 
+                                        )
+                                    }
+                                );
+                                Collect(selectedActivities,
+                                    {
+                                        ItemKey: ThisRecord.Activity,
+                                        ItemLabel: ThisRecord.Subject,
+                                        ItemStatus: ThisRecord.'Status Reason',
+                                        ItemDescription: ThisRecord.Description
+                                    }
+                                );
+                            );
+                            UpdateContext({showDetailPanel: true, showNewRequestPanel: false});
+                        )
+                        */
+                    OnSelect: =Notify("SELECT")
+                    PageSize: =15
+                    RaiseOnRowSelectionChangeEvent: =true
+                    RecordSelected: =
+                    SelectionAlwaysVisible: =false
+                    SelectRowsOnFocus: =true
+                    Theme: =""
+                    Width: =Parent.Width
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
 
-                name3 As pcfDataField.textualColumn:
-                    FieldDisplayName: ="name"
-                    FieldName: ="name"
-                    FieldType: ="s"
-                    FieldVariantName: ="textualColumn"
-                    Order: =4
-                    ZIndex: =19
+                    approvalRequired1 As pcfDataField.textualColumn:
+                        FieldDisplayName: ="approvalRequired"
+                        FieldName: ="approvalRequired"
+                        FieldType: ="l"
+                        FieldVariantName: ="textualColumn"
+                        Order: =1
+                        ZIndex: =16
 
-                securityRole2 As pcfDataField.textualColumn:
-                    FieldDisplayName: ="securityRole"
-                    FieldName: ="securityRole"
-                    FieldType: ="s"
-                    FieldVariantName: ="textualColumn"
-                    Order: =5
-                    ZIndex: =20
+                    created3 As pcfDataField.textualColumn:
+                        FieldDisplayName: ="created"
+                        FieldName: ="created"
+                        FieldType: ="T"
+                        FieldVariantName: ="textualColumn"
+                        Order: =2
+                        ZIndex: =17
 
-                status3 As pcfDataField.textualColumn:
-                    FieldDisplayName: ="status"
-                    FieldName: ="status"
-                    FieldType: ="s"
-                    FieldVariantName: ="textualColumn"
-                    Order: =6
-                    ZIndex: =21
+                    justification2 As pcfDataField.textualColumn:
+                        FieldDisplayName: ="justification"
+                        FieldName: ="justification"
+                        FieldType: ="s"
+                        FieldVariantName: ="textualColumn"
+                        Order: =3
+                        ZIndex: =18
 
-            "icoForward As 'Fluent Icon (1.0.22)'":
-                DisplayMode: =If(listAccessRequests.HasNextPage,DisplayMode.Edit,DisplayMode.Disabled)
-                Height: =24
-                IconName: ="Forward"
-                OnChange: |-
-                    =UpdateContext({ctxGridEvent:"LoadNextPage" & Text(Rand())})
-                Width: =30
-                X: =690
-                Y: =listAccessRequests.Y + listAccessRequests.Height
-                ZIndex: =2
+                    name3 As pcfDataField.textualColumn:
+                        FieldDisplayName: ="name"
+                        FieldName: ="name"
+                        FieldType: ="s"
+                        FieldVariantName: ="textualColumn"
+                        Order: =4
+                        ZIndex: =19
 
-            "icoBack As 'Fluent Icon (1.0.22)'":
-                DisplayMode: =If(listAccessRequests.HasPreviousPage,DisplayMode.Edit,DisplayMode.Disabled)
-                Height: =24
-                IconName: ="Back"
-                OnChange: |-
-                    =UpdateContext({ctxGridEvent:"LoadPreviousPage" & Text(Rand())})
-                Width: =30
-                X: =544
-                Y: =listAccessRequests.Y + listAccessRequests.Height
-                ZIndex: =3
+                    securityRole2 As pcfDataField.textualColumn:
+                        FieldDisplayName: ="securityRole"
+                        FieldName: ="securityRole"
+                        FieldType: ="s"
+                        FieldVariantName: ="textualColumn"
+                        Order: =5
+                        ZIndex: =20
 
-            lblPageNumber As label:
-                Align: =Align.Center
-                Height: =24
-                Size: =10.5
-                Text: ="Page " & listAccessRequests.PageNumber
-                Width: =116
-                X: =574
-                Y: =626
-                ZIndex: =4
+                    status3 As pcfDataField.textualColumn:
+                        FieldDisplayName: ="status"
+                        FieldName: ="status"
+                        FieldType: ="s"
+                        FieldVariantName: ="textualColumn"
+                        Order: =6
+                        ZIndex: =21
+
+                "icoForward As 'Fluent Icon (1.0.22)'":
+                    DisplayMode: =If(listAccessRequests.HasNextPage,DisplayMode.Edit,DisplayMode.Disabled)
+                    Height: =24
+                    IconName: ="Forward"
+                    OnChange: |-
+                        =UpdateContext({ctxGridEvent:"LoadNextPage" & Text(Rand())})
+                    Width: =30
+                    X: =lblPageNumber.X + lblPageNumber.Width
+                    Y: =listAccessRequests.Y + listAccessRequests.Height
+                    ZIndex: =2
+
+                "icoBack As 'Fluent Icon (1.0.22)'":
+                    DisplayMode: =If(listAccessRequests.HasPreviousPage,DisplayMode.Edit,DisplayMode.Disabled)
+                    Height: =24
+                    IconName: ="Back"
+                    OnChange: |-
+                        =UpdateContext({ctxGridEvent:"LoadPreviousPage" & Text(Rand())})
+                    Width: =30
+                    X: =lblPageNumber.X - Self.Width
+                    Y: =listAccessRequests.Y + listAccessRequests.Height
+                    ZIndex: =3
+
+                lblPageNumber As label:
+                    Align: =Align.Center
+                    Height: =24
+                    Size: =10.5
+                    Text: ="Page " & listAccessRequests.PageNumber
+                    Width: =116
+                    X: =Parent.Width / 2 - Self.Width / 2
+                    Y: =listAccessRequests.Y + listAccessRequests.Height
+                    ZIndex: =4
 
     menuMain As ExpandMenu:
         Fill: =ColorValue(menuMain.Theme.palette.neutralLight)
@@ -11599,6 +11617,7 @@ Home As screen:
             =Table(
                 {Icon: "FollowUser", Label: "JIT Access Requests", Screen:App.ActiveScreen, Tooltip:"JIT Access Requests"}
             )
+        Visible: =false
         Y: =50
         ZIndex: =2
 
@@ -12112,32 +12131,28 @@ Home As screen:
                         Items: |
                             =AddColumns(Filter(accessProfileApprovers, 'Full Name' =  Right(ThisItem.Subject, Len(ThisItem.Subject) - Len("Waiting for "))), 
                                 "ItemPersonaKey", upn,
-                                "ItemPersonaName", 'Full Name',
-                                "ItemFullName", 'Full Name',
+                                "ItemPersonaName", "Chat with " & 'Full Name',
                                 "IsImage", false,
-                                "ItemPersonaImageInfo", profileImage,// Office365Users.UserPhotoV2('Primary Email'),//Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", ""),
-                                /*    //Get base64 image data
-                                    Substitute(
-                                        JSON(
-                                            Office365Users.UserPhotoV2(Id),
-                                            JSONFormat.IncludeBinaryData
-                                        ),
-                                        """",
-                                        ""
-                                    ),*/
-                                    "ItemPersonaPresence",
-                                    "Away",
-                                    "ItemPersonaClickable",
-                                    true)
+                                "ItemPersonaImageInfo", profileImage,
+                                "ItemPersonaPresence", "Away",
+                                "ItemPersonaClickable", true
+                            )
                         MaxDisplayablePersonas: =1
                         OnSelect: |-
-                            =Switch( Self.EventName,
+                            =Launch("https://teams.microsoft.com/l/chat/0/0?users=" &  Self.Selected.ItemPersonaKey,
+                                {},
+                                LaunchTarget.New
+                            );
+                            
+                            /*
+                            Switch( Self.EventName,
                                 "PersonaEvent", 
                                 Launch("https://teams.microsoft.com/l/chat/0/0?users=" &  Self.Selected.ItemPersonaKey,
                                     {},
                                     LaunchTarget.New
                                 )
                             )
+                            */
                         OverflowButtonType: ='PowerCAT.Facepile.OverflowButtonType'.none
                         PersonaSize: ='PowerCAT.Facepile.PersonaSize'.Size24
                         Visible: =StartsWith(ThisItem.Subject, "Waiting for")
@@ -12952,20 +12967,26 @@ Home As screen:
                     Y: =207
                     ZIndex: =30
 
-    header As Header:
-        HeaderFill: =ColorValue(header.Theme.palette.black)
-        LeftButtonVisible: =false
-        OnRightButtonSelect: |-
-            =Launch("https://github.com/jenschristianschroder/JIT-Access-Management")
-        RightButtonImage: |-
-            ="data:image/svg+xml," & 
-             EncodeUrl(
-                "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 2048' class='svg_dd790ee3' focusable='false'><style
-               type='text/css'
-               id='style48'>
-            	.st0{fill:#FAFBFB;}
-            </style><path class='st0' d='M896 1920h128v128H896v-128zM960 0q79 0 152 20t138 58 117 91 90 117 58 137 21 153q0 84-22 152t-58 124-82 105-94 93-94 89-82 95-58 108-22 130v192H896v-192q0-84 22-152t58-124 82-104 94-93 94-90 82-95 58-108 22-130q0-93-35-174t-96-142-142-96-175-36q-93 0-174 35t-142 96-96 142-36 175H384q0-79 20-152t58-138 91-117 117-90 137-58T960 0z'></path></svg>"
-            )
-        Text: ="JIT Access Request"
-        ZIndex: =5
+    Container4 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Regular
+        Height: =50
+        Width: =1366
+        ZIndex: =6
+
+        header As Header:
+            HeaderFill: =ColorValue(header.Theme.palette.black)
+            Height: =50
+            LeftButtonVisible: =false
+            OnRightButtonSelect: |-
+                =Launch("https://github.com/jenschristianschroder/JIT-Access-Management")
+            RightButtonImage: |-
+                ="data:image/svg+xml," & 
+                 EncodeUrl(
+                    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 2048' class='svg_dd790ee3' focusable='false'><style
+                   type='text/css'
+                   id='style48'>
+                	.st0{fill:#FAFBFB;}
+                </style><path class='st0' d='M896 1920h128v128H896v-128zM960 0q79 0 152 20t138 58 117 91 90 117 58 137 21 153q0 84-22 152t-58 124-82 105-94 93-94 89-82 95-58 108-22 130v192H896v-192q0-84 22-152t58-124 82-104 94-93 94-90 82-95 58-108 22-130q0-93-35-174t-96-142-142-96-175-36q-93 0-174 35t-142 96-96 142-36 175H384q0-79 20-152t58-138 91-117 117-90 137-58T960 0z'></path></svg>"
+                )
+            Text: ="JIT Access Request"
 
