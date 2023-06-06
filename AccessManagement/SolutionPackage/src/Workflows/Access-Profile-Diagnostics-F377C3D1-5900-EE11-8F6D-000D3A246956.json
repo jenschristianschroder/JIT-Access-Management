@@ -1,0 +1,605 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedcommondataserviceforapps_7bafb"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_powerplatformforadmins": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedpowerplatformforadmins_e2509"
+        },
+        "api": {
+          "name": "shared_powerplatformforadmins"
+        }
+      },
+      "shared_commondataservice": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedcommondataservice_b9c64"
+        },
+        "api": {
+          "name": "shared_commondataservice"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "13dca684-0ec6-4c50-992b-78e372a31360"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "accessProfileId",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Access Profile Id",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_a_row_by_ID": {
+          "runAfter": {
+            "Initialize_approvalUsers": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "67fc5c07-cbfd-433c-bab7-e5e9c7d57a82"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessprofiles",
+              "recordId": "@triggerBody()['text']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Environment_as_Admin": {
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2cddd0de-8fec-4ebe-826a-a33b686dcc77"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_powerplatformforadmins",
+              "operationId": "GetSingleEnvironment",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_powerplatformforadmins"
+            },
+            "parameters": {
+              "environment": "@outputs('Get_a_row_by_ID')?['body/cat_environmentid']",
+              "api-version": "2018-10-01"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_environmentExist": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0f7c56ba-8356-48ea-ae80-9a1ca0c3fdb0"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "environmentExist",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "Initialize_securityRoleExist": {
+          "runAfter": {
+            "Initialize_environmentExist": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "49b3c0d0-bf4a-4fde-8d3a-0383cf066d9f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "securityRoleExist",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "Initialize_approvalUsersExist": {
+          "runAfter": {
+            "Initialize_accessProfileApproversExist": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "568efa06-f105-4745-af4e-c33f8a90fbee"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "approvalUsersExist",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "set_environmentExist_false": {
+          "runAfter": {
+            "Get_Environment_as_Admin": [
+              "Failed"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "eee425ae-58bc-4030-ace1-4a5e703e0e2b"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "environmentExist",
+            "value": "@false"
+          }
+        },
+        "set_environmentExist_true": {
+          "runAfter": {
+            "Get_Environment_as_Admin": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f454dffd-03e1-4742-949b-983e5ba0cce8"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "environmentExist",
+            "value": "@true"
+          }
+        },
+        "Initialize_accessProfileApproversExist": {
+          "runAfter": {
+            "Initialize_securityRoleExist": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c43cbe9b-d8f0-4a9d-88f3-89035b39cacd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "accessProfileApproversExist",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "Initialize_approvalUsers": {
+          "runAfter": {
+            "Initialize_approvalUsersExist": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f2c373ef-09a7-42ae-b43e-619cdf4467b0"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "approvalUsers",
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "List_rows_(legacy)": {
+          "runAfter": {
+            "set_environmentExist_true": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6f0c9c07-d9de-4221-a821-671e04da0627"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataservice",
+              "operationId": "GetItems_V2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataservice"
+            },
+            "parameters": {
+              "dataset": "@outputs('Get_a_row_by_ID')?['body/cat_environmentuniquename']",
+              "table": "roles",
+              "$filter": "name eq '@{outputs('Get_a_row_by_ID')?['body/cat_securityrole']}'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "securityRole_Exist": {
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "9a64be17-8785-4482-ae16-025ee3621338"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "securityRoleExist",
+                "value": "@true"
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows_(legacy)": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_variable_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "c392403f-50ef-4965-ad82-f7baef04ef08"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "securityRoleExist",
+                  "value": "@false"
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(outputs('List_rows_(legacy)')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "923603b0-4879-4ccf-8927-4a2e69c7d3a5"
+          },
+          "type": "If"
+        },
+        "approvalRequired": {
+          "actions": {
+            "List_AccessProfileApprovers": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "f553e6a8-b1eb-4465-88dd-22c9c78dd1d8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "cat_accessprofileapproverses",
+                  "$filter": "_cat_accessprofile_value eq '@{outputs('Get_a_row_by_ID')?['body/cat_accessprofileid']}'"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Switch": {
+              "runAfter": {
+                "List_AccessProfileApprovers": [
+                  "Succeeded"
+                ]
+              },
+              "cases": {
+                "accessProfileApprovers_does_not_exist": {
+                  "case": 0,
+                  "actions": {
+                    "Set_accessProfileApproversExist_false": {
+                      "runAfter": {},
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "accessProfileApproversExist",
+                        "value": "@false"
+                      }
+                    }
+                  }
+                },
+                "1_accessProfileApprovers_Exist": {
+                  "case": 1,
+                  "actions": {
+                    "set_accessProfileApproversExist_true": {
+                      "runAfter": {},
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "accessProfileApproversExist",
+                        "value": "@true"
+                      }
+                    }
+                  }
+                }
+              },
+              "default": {
+                "actions": {}
+              },
+              "expression": "@length(outputs('List_AccessProfileApprovers')?['body/value'])",
+              "metadata": {
+                "operationMetadataId": "756904ba-dcd0-4c37-a6f0-d2ee477a4107"
+              },
+              "type": "Switch"
+            }
+          },
+          "runAfter": {
+            "set_environmentExist_false": [
+              "Succeeded",
+              "Skipped"
+            ],
+            "securityRole_Exist": [
+              "Succeeded",
+              "Skipped"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_a_row_by_ID')?['body/cat_approvalrequired']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6149dd1d-4c98-48b6-a935-c652310c87e4"
+          },
+          "type": "If"
+        },
+        "accessProfileApprovers_Exist": {
+          "actions": {
+            "List_AccessProfileApprovers_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "f553e6a8-b1eb-4465-88dd-22c9c78dd1d8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "cat_accessprofileapproverses",
+                  "$filter": "_cat_accessprofile_value eq '@{outputs('Get_a_row_by_ID')?['body/cat_accessprofileid']}'"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "List_rows": {
+              "runAfter": {
+                "List_AccessProfileApprovers_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7a9aa7fa-b5a4-4236-b65a-1abd5bcd2657"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "fetchXml": "<fetch>\n  <entity name=\"systemuser\">\n    <link-entity name=\"cat_accessprofileapprovers_systemuser\" from=\"systemuserid\" to=\"systemuserid\" alias=\"approvalusers\" intersect=\"true\">\n      <link-entity name=\"cat_accessprofileapprovers\" from=\"cat_accessprofileapproversid\" to=\"cat_accessprofileapproversid\" intersect=\"true\">\n        <filter>\n          <condition attribute=\"cat_accessprofileapproversid\" operator=\"eq\" value=\"@{first(outputs('List_AccessProfileApprovers_2')?['body/value'])?['cat_accessprofileapproversid']}\" />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Condition": {
+              "actions": {
+                "Apply_to_each_2": {
+                  "foreach": "@outputs('List_rows')?['body/value']",
+                  "actions": {
+                    "Append_to_array_variable": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "7c539c65-8028-4d08-a4ab-e20e2df36a7c"
+                      },
+                      "type": "AppendToArrayVariable",
+                      "inputs": {
+                        "name": "approvalUsers",
+                        "value": {
+                          "systemuserid": "@{items('Apply_to_each_2')?['systemuserid']}",
+                          "fullname": "@{items('Apply_to_each_2')?['fullname']}",
+                          "upn": "@{items('Apply_to_each_2')?['internalemailaddress']}",
+                          "type": "@{items('Apply_to_each_2')?['accessmode']}",
+                          "disabled": "@{items('Apply_to_each_2')?['isdisabled']}"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "a6382e08-5f8f-44df-8c27-92571280f5ad"
+                  },
+                  "type": "Foreach"
+                },
+                "Set_variable_3": {
+                  "runAfter": {
+                    "Apply_to_each_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "c6ec28b9-e4e2-4a0e-892e-a34142dd1c41"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "approvalUsersExist",
+                    "value": "@true"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_rows": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Set_variable_4": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "98cbfd18-11cf-4796-b0c6-77fed27dbd4f"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "approvalUsersExist",
+                      "value": "@false"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "greater": [
+                  "@length(outputs('List_rows')?['body/value'])",
+                  0
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e9f592cc-1f23-4d32-8a78-1da4d5888eac"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "approvalRequired": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@variables('accessProfileApproversExist')",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3896053f-ea98-4c46-97dc-9550a494e4c4"
+          },
+          "type": "If"
+        },
+        "Response": {
+          "runAfter": {
+            "accessProfileApprovers_Exist": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a2838fb7-58ca-443f-9185-ad976f2f3439"
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "environmentExist": "@{variables('environmentExist')}",
+              "securityRoleExist": "@{variables('securityRoleExist')}",
+              "accessProfileApproversExist": "@{variables('accessProfileApproversExist')}",
+              "approvalUsersExist": "@{variables('approvalUsersExist')}",
+              "approvalUsers": "@variables('approvalUsers')"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "environmentExist": {
+                  "type": "string"
+                },
+                "securityRoleExist": {
+                  "type": "string"
+                },
+                "accessProfileApproversExist": {
+                  "type": "string"
+                },
+                "approvalUsersExist": {
+                  "type": "string"
+                },
+                "approvalUsers": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "systemuserid": {
+                        "type": "string"
+                      },
+                      "fullname": {
+                        "type": "string"
+                      },
+                      "upn": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "disabled": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "systemuserid",
+                      "fullname",
+                      "upn",
+                      "type",
+                      "disabled"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

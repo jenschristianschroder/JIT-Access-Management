@@ -1,0 +1,1074 @@
+Screen1 As screen:
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: =
+
+    Label1 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontSize: =12
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: =accessProfile.Name
+        Width: =320
+        X: =10
+        Y: =0
+        ZIndex: =1
+
+    Label3 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Name: "
+        Width: =92
+        X: =10
+        Y: =136
+        ZIndex: =3
+
+    Icon1 As icon.Reload:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Color: =RGBA(0, 120, 212, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(220, 220, 220, 1)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(diagnosticsRunning, DisplayMode.Disabled, DisplayMode.Edit)
+        Height: =24
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Icon: =Icon.Reload
+        OnSelect: |-
+            =Set(diagnosticsRunning, true);
+            Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile'));
+            Set(diagnosticsRunning, false);
+        PaddingBottom: =3
+        PaddingLeft: =3
+        PaddingRight: =3
+        PaddingTop: =3
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        Width: =24
+        X: =12
+        Y: =63
+        ZIndex: =6
+
+    Button2 As Button:
+        BorderColor: =RGBA(230, 230, 230, 1)
+        BorderStyle: =BorderStyle.Solid
+        BorderThickness: =1
+        DisplayMode: =If(diagnosticsRunning, DisplayMode.Disabled, DisplayMode.Edit)
+        FillColor: =RGBA(255, 255, 255, 1)
+        Height: =32
+        HoverBorderColor: =RGBA(230, 230, 230, 1)
+        HoverFillColor: =RGBA(230, 230, 230, 1)
+        HoverTextColor: =RGBA(9, 33, 98, 1)
+        OnSelect: |-
+            =Set(diagnosticsRunning, true);
+            
+            // Verify environment exist
+            //IfError(Set(environmentResult, PowerPlatformforAdmins.GetSingleEnvironment(accessProfile.'Environment Id')), Set(environmentResult, Blank()));
+            
+            
+            // Verify security role exist
+            
+            
+            
+            // Verify approval configured
+            
+            
+            
+            // Verify approval users configured
+            
+            
+            
+            
+            Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile'));
+            ClearCollect(colApprovalUsers, diagnosticsResult.approvalUsers);
+            Clear(colAccessProfileApprovalUsers);
+            ForAll(colApprovalUsers, 
+                            Collect(colAccessProfileApprovalUsers, { upn: ThisRecord.upn, profileImage: Substitute(JSON(Office365Users.UserPhotoV2(ThisRecord.upn), JSONFormat.IncludeBinaryData), """", ""), fullname: ThisRecord.fullname});
+                    );
+            Set(diagnosticsRunning, false);
+        Text: ="Rerun diagnostics"
+        TextColor: =RGBA(0, 120, 212, 1)
+        Width: =141
+        X: =42
+        Y: =58
+        ZIndex: =7
+
+    Rectangle1 As rectangle:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledFill: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderColor: =RGBA(0, 120, 212, 1)
+        Height: =1
+        HoverFill: =RGBA(0, 120, 212, 1)
+        PressedFill: =RGBA(0, 120, 212, 1)
+        Width: =Parent.Width - 20
+        X: =10
+        Y: =103
+        ZIndex: =8
+
+    Label3_1 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontSize: =12
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: ="Details "
+        Width: =68
+        X: =10
+        Y: =104
+        ZIndex: =9
+
+    Label3_2 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Environment: "
+        Width: =92
+        X: =10
+        Y: =175
+        ZIndex: =10
+
+    Label3_3 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Id: "
+        Width: =92
+        X: =10
+        Y: =214
+        ZIndex: =12
+
+    Label3_4 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Url: "
+        Width: =92
+        X: =10
+        Y: =246
+        ZIndex: =13
+
+    Label3_5 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Security Role: "
+        Width: =101
+        X: =10
+        Y: =278
+        ZIndex: =14
+
+    Label3_6 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Approval: "
+        Width: =101
+        X: =10
+        Y: =310
+        ZIndex: =15
+
+    Label3_7 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: =accessProfile.'Approval Required'
+        Width: =356
+        X: =111
+        Y: =310
+        ZIndex: =16
+
+    Label3_8 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: =accessProfile.'Security Role'
+        Width: =356
+        X: =111
+        Y: =278
+        ZIndex: =17
+
+    Label3_10 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: =accessProfile.'Environment Id'
+        Width: =356
+        X: =111
+        Y: =214
+        ZIndex: =19
+
+    HtmlText1 As htmlViewer:
+        Height: =32
+        HtmlText: =$"<a href='{accessProfile.'Environment Url'}'>{accessProfile.'Environment Url'}</a>"
+        PaddingLeft: =0
+        Width: =337
+        X: =111
+        Y: =246
+        ZIndex: =20
+
+    Label3_11 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: =accessProfile.'Environment Name'
+        Width: =356
+        X: =111
+        Y: =175
+        ZIndex: =21
+
+    Label3_12 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: =accessProfile.Name
+        Width: =356
+        X: =111
+        Y: =139
+        ZIndex: =22
+
+    Label3_9 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Status: "
+        Width: =101
+        X: =10
+        Y: =342
+        ZIndex: =23
+
+    Label3_13 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: =accessProfile.'Status Reason'
+        Width: =356
+        X: =111
+        Y: =342
+        ZIndex: =24
+
+    Label3_14 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Environment exist: "
+        Width: =119
+        X: =12
+        Y: =392
+        ZIndex: =25
+
+    Label3_16 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Security Role exist: "
+        Width: =119
+        X: =12
+        Y: =If(Label6_2.Visible, Button3_2.Y + Button3_2.Height, Label3_14 .Y + Label3_14.Height)
+        ZIndex: =27
+
+    Container1 As groupContainer.manualLayoutContainer:
+        Height: =Label3_18.Height + Label3_20.Height
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =accessProfile.'Approval Required'
+        Y: =If(Label6_3.Visible, Button3_3.Y + Button3_3.Height, Label3_16.Y + Label3_16.Height)
+        ZIndex: =51
+
+        Label3_18 As Label:
+            DisplayMode: =DisplayMode.Edit
+            Height: =If(Not(Boolean(diagnosticsResult.accessProfileApproversExist)) && Not(diagnosticsRunning), Label6_1.Height + Button3_1.Height + 5, 32)
+            Text: |-
+                ="Approval configured: "
+            VerticalAlignment: =VerticalAlign.Top
+            Width: =132
+            X: =10
+            Y: =1
+            ZIndex: =10
+
+        Label3_20 As Label:
+            DisplayMode: =DisplayMode.Edit
+            Height: =If(Not(Boolean(diagnosticsResult.approvalUsersExist)), Label6.Height + Button3.Height + 5, 32)
+            Text: |-
+                ="Approval users: "
+            VerticalAlignment: =VerticalAlign.Top
+            Width: =132
+            X: =10
+            Y: =If(Label6_1.Visible, Button3_1.Y + Button3_1.Height, Label3_18.Y + Label3_18.Height)
+            ZIndex: =11
+
+        Group5 As group:
+            Height: =5
+            Width: =5
+            X: =60
+            Y: =60
+            ZIndex: =14
+
+            Circle1_8 As circle:
+                BorderColor: =RGBA(166, 166, 166, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledFill: =RGBA(255, 0, 0, 1)
+                Fill: =RGBA(255, 0, 0, 1)
+                Height: =21
+                HoverFill: =RGBA(255, 0, 0, 1)
+                PressedFill: =RGBA(255, 0, 0, 1)
+                Visible: =Not(Boolean(diagnosticsResult.approvalUsersExist)) && Not(diagnosticsRunning)
+                Width: =21
+                X: =150
+                Y: =Label3_20.Y + 5
+                ZIndex: =6
+
+            Icon2_8 As icon.CheckBadge:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(220, 220, 220, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Height: =23
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.CancelBadge
+                PaddingBottom: =3
+                PaddingLeft: =3
+                PaddingRight: =3
+                PaddingTop: =3
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Visible: =Not(Boolean(diagnosticsResult.approvalUsersExist)) && Not(diagnosticsRunning)
+                Width: =23
+                X: =149
+                Y: =Label3_20.Y + 4
+                ZIndex: =7
+
+            Circle1_7 As circle:
+                BorderColor: =RGBA(166, 166, 166, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledFill: =RGBA(54, 176, 75, 1)
+                Fill: =RGBA(54, 176, 75, 1)
+                Height: =21
+                HoverFill: =RGBA(54, 176, 75, 1)
+                PressedFill: =RGBA(54, 176, 75, 1)
+                Visible: =Boolean(diagnosticsResult.approvalUsersExist) && Not(diagnosticsRunning)
+                Width: =21
+                X: =150
+                Y: =Label3_20.Y + 5
+                ZIndex: =8
+
+            Icon2_7 As icon.CheckBadge:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(220, 220, 220, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Height: =23
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.CheckBadge
+                PaddingBottom: =3
+                PaddingLeft: =3
+                PaddingRight: =3
+                PaddingTop: =3
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Visible: =Boolean(diagnosticsResult.approvalUsersExist) && Not(diagnosticsRunning)
+                Width: =23
+                X: =149
+                Y: =Label3_20.Y + 4
+                ZIndex: =9
+
+            Circle1_11 As circle:
+                BorderColor: =RGBA(166, 166, 166, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledFill: =RGBA(0, 134, 208, 1)
+                Fill: =RGBA(0, 134, 208, 1)
+                Height: =21
+                HoverFill: =RGBA(0, 134, 208, 1)
+                PressedFill: =RGBA(0, 134, 208, 1)
+                Visible: =diagnosticsRunning
+                Width: =21
+                X: =150
+                Y: =Label3_20.Y + 5
+                ZIndex: =12
+
+            Icon2_11 As icon.CheckBadge:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(220, 220, 220, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Height: =21
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.Reload
+                PaddingBottom: =3
+                PaddingLeft: =3
+                PaddingRight: =3
+                PaddingTop: =3
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Rotation: =iconRotation
+                Visible: =diagnosticsRunning
+                Width: =21
+                X: =150
+                Y: =Label3_20.Y + 5
+                ZIndex: =13
+
+        Group6 As group:
+            Height: =5
+            Width: =5
+            X: =60
+            Y: =60
+            ZIndex: =16
+
+            Circle1_6 As circle:
+                BorderColor: =RGBA(166, 166, 166, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledFill: =RGBA(255, 0, 0, 1)
+                Fill: =RGBA(255, 0, 0, 1)
+                Height: =21
+                HoverFill: =RGBA(255, 0, 0, 1)
+                PressedFill: =RGBA(255, 0, 0, 1)
+                Visible: =Not(Boolean(diagnosticsResult.accessProfileApproversExist)) && Not(diagnosticsRunning)
+                Width: =21
+                X: =150
+                Y: =5
+                ZIndex: =1
+
+            Icon2_6 As icon.CheckBadge:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(220, 220, 220, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Height: =23
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.CancelBadge
+                PaddingBottom: =3
+                PaddingLeft: =3
+                PaddingRight: =3
+                PaddingTop: =3
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Visible: =Not(Boolean(diagnosticsResult.accessProfileApproversExist)) && Not(diagnosticsRunning)
+                Width: =23
+                X: =149
+                Y: =4
+                ZIndex: =2
+
+            Circle1_5 As circle:
+                BorderColor: =RGBA(166, 166, 166, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledFill: =RGBA(54, 176, 75, 1)
+                Fill: =RGBA(54, 176, 75, 1)
+                Height: =21
+                HoverFill: =RGBA(54, 176, 75, 1)
+                PressedFill: =RGBA(54, 176, 75, 1)
+                Visible: =Boolean(diagnosticsResult.accessProfileApproversExist) && Not(diagnosticsRunning)
+                Width: =21
+                X: =150
+                Y: =5
+                ZIndex: =3
+
+            Icon2_5 As icon.CheckBadge:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(220, 220, 220, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Height: =23
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.CheckBadge
+                PaddingBottom: =3
+                PaddingLeft: =3
+                PaddingRight: =3
+                PaddingTop: =3
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Visible: =Boolean(diagnosticsResult.accessProfileApproversExist) && Not(diagnosticsRunning)
+                Width: =23
+                X: =149
+                Y: =4
+                ZIndex: =4
+
+            Circle1_12 As circle:
+                BorderColor: =RGBA(166, 166, 166, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledFill: =RGBA(0, 134, 208, 1)
+                Fill: =RGBA(0, 134, 208, 1)
+                Height: =21
+                HoverFill: =RGBA(0, 134, 208, 1)
+                PressedFill: =RGBA(0, 134, 208, 1)
+                Visible: =diagnosticsRunning
+                Width: =21
+                X: =150
+                Y: =5
+                ZIndex: =14
+
+            Icon2_12 As icon.CheckBadge:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(220, 220, 220, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Height: =21
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.Reload
+                PaddingBottom: =3
+                PaddingLeft: =3
+                PaddingRight: =3
+                PaddingTop: =3
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Rotation: =iconRotation
+                Visible: =diagnosticsRunning
+                Width: =21
+                X: =150
+                Y: =5
+                ZIndex: =15
+
+        Button3 As Button:
+            BorderColor: =RGBA(230, 230, 230, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =1
+            DisplayMode: =DisplayMode.Edit
+            FillColor: =Color.White
+            Height: =If(Not(Boolean(diagnosticsResult.approvalUsersExist)) && Boolean(diagnosticsResult.accessProfileApproversExist) && Not(diagnosticsRunning), 32, 0)
+            HoverBorderColor: =RGBA(237, 237, 237, 1)
+            HoverFillColor: =RGBA(237, 237, 237, 1)
+            HoverTextColor: =RGBA(9, 33, 98, 1)
+            OnSelect: =Navigate(LookUp('Access Profile Approvers', 'Access Profile'.'Access Profile' = accessProfile.'Access Profile'))
+            Text: ="Fix this"
+            TextColor: =RGBA(0, 120, 212, 1)
+            Visible: =Not(Boolean(diagnosticsResult.approvalUsersExist)) && Boolean(diagnosticsResult.accessProfileApproversExist) && Not(diagnosticsRunning)
+            Width: =96
+            X: =180
+            Y: =Label6.Y + Label6.Height
+            ZIndex: =17
+
+        Button3_1 As Button:
+            BorderColor: =RGBA(230, 230, 230, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =1
+            DisplayMode: =DisplayMode.Edit
+            FillColor: =Color.White
+            Height: =If(Not(Boolean(diagnosticsResult.accessProfileApproversExist)) && Not(diagnosticsRunning), 32, 0)
+            HoverBorderColor: =RGBA(237, 237, 237, 1)
+            HoverFillColor: =RGBA(237, 237, 237, 1)
+            HoverTextColor: =RGBA(9, 33, 98, 1)
+            OnSelect: |-
+                =IfError(Patch('Access Profile Approvers', Defaults('Access Profile Approvers'), { Name: accessProfile.Name & " Approvers", 'Access Profile': accessProfile, 'Approval Type': 'Approval Type (Access Profile Approvers)'.'First to respond' }), Notify(FirstError.Message));
+                Set(diagnosticsRunning, true);
+                Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile'));
+                Set(diagnosticsRunning, false);
+                //Navigate(LookUp('Access Profile Approvers', 'Access Profile'.'Access Profile' = accessProfile.'Access Profile'));
+            Text: ="Fix this"
+            TextColor: =RGBA(0, 120, 212, 1)
+            Visible: =Not(Boolean(diagnosticsResult.accessProfileApproversExist)) && Not(diagnosticsRunning)
+            Width: =96
+            X: =180
+            Y: =Label6_1.Y + Label6_1.Height
+            ZIndex: =18
+
+        Label6 As Label:
+            DisplayMode: =DisplayMode.Edit
+            Height: =47
+            Text: =If(Not(Boolean(diagnosticsResult.accessProfileApproversExist)), "Please ensure Access Profile Approval is configured correctly and run Diagnostics again", "There should be at least one user configured for the approval")
+            Visible: =Not(Boolean(diagnosticsResult.approvalUsersExist)) && Not(diagnosticsRunning)
+            Width: =320
+            X: =180
+            Y: =Label3_20.Y
+            ZIndex: =19
+
+        Label6_1 As Label:
+            DisplayMode: =DisplayMode.Edit
+            Height: =If(Not(Boolean(diagnosticsResult.accessProfileApproversExist)) && Not(diagnosticsRunning), 60, 0)
+            Text: ="There is no Access Profile Approval record related to the Access Profile. Click Fix this to create the record now."
+            Visible: =Not(Boolean(diagnosticsResult.accessProfileApproversExist)) && Not(diagnosticsRunning)
+            Width: =320
+            X: =180
+            Y: =1
+            ZIndex: =20
+
+    Timer1 As timer:
+        AutoStart: =true
+        BorderColor: =RGBA(0, 120, 212, 1)
+        BorderStyle: =BorderStyle.None
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Duration: =1000
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderThickness: =2
+        Font: =Font.'Segoe UI'
+        HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        OnTimerEnd: |-
+            =Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile'));
+            Set(diagnosticsRunning, false);
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        Size: =10.5
+        Visible: =false
+        X: =307
+        Y: =48
+        ZIndex: =52
+
+    Timer2 As timer:
+        AutoStart: =diagnosticsRunning
+        BorderColor: =RGBA(0, 120, 212, 1)
+        BorderStyle: =BorderStyle.None
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Duration: =50
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderThickness: =2
+        Font: =Font.'Segoe UI'
+        HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        OnTimerEnd: =Set(iconRotation, iconRotation + 10);
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        Repeat: =true
+        Size: =10.5
+        Visible: =false
+        X: =330
+        Y: =8
+        ZIndex: =55
+
+    Group3 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =55
+
+        Circle1_1 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(255, 0, 0, 1)
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =21
+            HoverFill: =RGBA(255, 0, 0, 1)
+            PressedFill: =RGBA(255, 0, 0, 1)
+            Visible: =Not(Boolean(diagnosticsResult.environmentExist)) && Not(diagnosticsRunning)
+            Width: =21
+            X: =150
+            Y: =397
+            ZIndex: =35
+
+        Icon2_1 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =23
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.CancelBadge
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =Not(Boolean(diagnosticsResult.environmentExist)) && Not(diagnosticsRunning)
+            Width: =23
+            X: =149
+            Y: =396
+            ZIndex: =36
+
+        Circle1_2 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(54, 176, 75, 1)
+            Fill: =RGBA(54, 176, 75, 1)
+            Height: =21
+            HoverFill: =RGBA(54, 176, 75, 1)
+            PressedFill: =RGBA(54, 176, 75, 1)
+            Visible: =Boolean(diagnosticsResult.environmentExist) && Not(diagnosticsRunning)
+            Width: =21
+            X: =150
+            Y: =397
+            ZIndex: =37
+
+        Icon2_2 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =23
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.CheckBadge
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =Boolean(diagnosticsResult.environmentExist) && Not(diagnosticsRunning)
+            Width: =23
+            X: =149
+            Y: =396
+            ZIndex: =38
+
+        Circle1_9 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(0, 134, 208, 1)
+            Fill: =RGBA(0, 134, 208, 1)
+            Height: =21
+            HoverFill: =RGBA(0, 134, 208, 1)
+            PressedFill: =RGBA(0, 134, 208, 1)
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =150
+            Y: =397
+            ZIndex: =53
+
+        Icon2_9 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =21
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.Reload
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Rotation: =iconRotation
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =150
+            Y: =397
+            ZIndex: =54
+
+    "ComboBox1 As 'Combo box'.pcfdataset":
+        DisplayMode: =If(diagnosticsRunning, DisplayMode.Disabled, DisplayMode.Edit)
+        Height: =32
+        Items: ='Access Profiles'
+        OnChange: |
+            =Set(accessProfile, LookUp('Access Profiles', 'Access Profile' = Self.Selected.'Access Profile'));
+            Select(Button2);
+        Visible: =debugMode
+        Width: =320
+        X: =111
+        Y: =107
+        ZIndex: =58
+
+        Name1 As pcfDataField.textualColumn:
+            FieldDisplayName: ="Name"
+            FieldName: ="cat_name"
+            FieldType: ="s"
+            FieldVariantName: ="textualColumn"
+            Order: =1
+            ZIndex: =21
+
+    Group4 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =58
+
+        Circle1_4 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(255, 0, 0, 1)
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =21
+            HoverFill: =RGBA(255, 0, 0, 1)
+            PressedFill: =RGBA(255, 0, 0, 1)
+            Visible: =Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning)
+            Width: =21
+            X: =150
+            Y: =Label3_16.Y + 5
+            ZIndex: =39
+
+        Icon2_4 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =23
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.CancelBadge
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning)
+            Width: =23
+            X: =149
+            Y: =Label3_16.Y + 4
+            ZIndex: =40
+
+        Circle1_3 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(54, 176, 75, 1)
+            Fill: =RGBA(54, 176, 75, 1)
+            Height: =21
+            HoverFill: =RGBA(54, 176, 75, 1)
+            PressedFill: =RGBA(54, 176, 75, 1)
+            Visible: =Boolean(diagnosticsResult.securityRoleExist) && Not(diagnosticsRunning)
+            Width: =21
+            X: =150
+            Y: =Label3_16.Y + 5
+            ZIndex: =41
+
+        Icon2_3 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =23
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.CheckBadge
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =Boolean(diagnosticsResult.securityRoleExist) && Not(diagnosticsRunning)
+            Width: =23
+            X: =149
+            Y: =Label3_16.Y + 4
+            ZIndex: =42
+
+        Circle1_10 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(0, 134, 208, 1)
+            Fill: =RGBA(0, 134, 208, 1)
+            Height: =21
+            HoverFill: =RGBA(0, 134, 208, 1)
+            PressedFill: =RGBA(0, 134, 208, 1)
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =150
+            Y: =Label3_16.Y + 5
+            ZIndex: =56
+
+        Icon2_10 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =21
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.Reload
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Rotation: =iconRotation
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =150
+            Y: =Label3_16.Y + 5
+            ZIndex: =57
+
+    Button3_2 As Button:
+        BorderColor: =RGBA(230, 230, 230, 1)
+        BorderStyle: =BorderStyle.Solid
+        BorderThickness: =1
+        DisplayMode: =DisplayMode.Edit
+        FillColor: =Color.White
+        Height: =If(Not(Boolean(diagnosticsResult.environmentExist)) && Not(diagnosticsRunning), 32, 0)
+        HoverBorderColor: =RGBA(237, 237, 237, 1)
+        HoverFillColor: =RGBA(237, 237, 237, 1)
+        HoverTextColor: =RGBA(9, 33, 98, 1)
+        OnSelect: =Navigate(LookUp('Access Profiles', 'Access Profile' = accessProfile.'Access Profile'));
+        Text: ="Fix this"
+        TextColor: =RGBA(0, 120, 212, 1)
+        Visible: =Not(Boolean(diagnosticsResult.environmentExist)) && Not(diagnosticsRunning)
+        Width: =96
+        X: =180
+        Y: =Label6_2.Y + Label6_2.Height
+        ZIndex: =59
+
+    Label6_2 As Label:
+        AutoHeight: =true
+        DisplayMode: =DisplayMode.Edit
+        Height: =36
+        Text: =$"The environment with Id {accessProfile.'Environment Id'} does not exist" 
+        Visible: =Not(Boolean(diagnosticsResult.environmentExist)) && Not(diagnosticsRunning)
+        Width: =320
+        X: =180
+        Y: =392
+        ZIndex: =60
+
+    Button3_3 As Button:
+        BorderColor: =RGBA(230, 230, 230, 1)
+        BorderStyle: =BorderStyle.Solid
+        BorderThickness: =1
+        DisplayMode: =DisplayMode.Edit
+        FillColor: =Color.White
+        Height: =If(Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning), 32, 0)
+        HoverBorderColor: =RGBA(237, 237, 237, 1)
+        HoverFillColor: =RGBA(237, 237, 237, 1)
+        HoverTextColor: =RGBA(9, 33, 98, 1)
+        OnSelect: =Navigate(LookUp('Access Profiles', 'Access Profile' = accessProfile.'Access Profile'));
+        Text: ="Fix this"
+        TextColor: =RGBA(0, 120, 212, 1)
+        Visible: =Not(Boolean(diagnosticsResult.environmentExist)) && Not(diagnosticsRunning)
+        Width: =96
+        X: =180
+        Y: =Label6_3.Y + Label6_3.Height
+        ZIndex: =61
+
+    Label6_3 As Label:
+        AutoHeight: =true
+        DisplayMode: =DisplayMode.Edit
+        Height: =36
+        Text: =$"The Security Role {accessProfile.'Security Role'} does not exist in the configured environment" 
+        Visible: =Not(Boolean(diagnosticsResult.environmentExist)) && Not(diagnosticsRunning)
+        Width: =320
+        X: =180
+        Y: =Label3_16.Y
+        ZIndex: =62
+
+    Gallery1 As gallery.BrowseLayout_Vertical_TwoTextOneImageVariant_pcfCore:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        DelayItemLoading: =true
+        FocusedBorderColor: =RGBA(0, 120, 212, 1)
+        FocusedBorderThickness: =2
+        Height: =199
+        Items: =colAccessProfileApprovalUsers
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =48
+        Width: =500
+        Y: =Container1.Y + Container1.Height
+        ZIndex: =63
+
+        Rectangle2 As rectangle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(0,0,0,0)
+            Fill: =RGBA(0,0,0,0)
+            FocusedBorderColor: =RGBA(0, 120, 212, 1)
+            Height: =Parent.TemplateHeight
+            HoverFill: =RGBA(0,0,0,0)
+            OnSelect: =Select(Parent)
+            PressedFill: =RGBA(0,0,0,0)
+            TabIndex: =0
+            Width: =Parent.TemplateWidth
+            ZIndex: =1
+
+        Title1 As Label:
+            DisplayMode: =DisplayMode.Edit
+            FontSize: =10.5
+            FontWeight: =FontWeight.Semibold
+            Height: =24
+            OnSelect: =Select(Parent)
+            TabIndex: =-1
+            Text: =ThisItem.fullname
+            VerticalAlignment: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Self.X - 8
+            X: =Facepile1.X + Facepile1.Width
+            Y: =((Parent.TemplateHeight - 36) / 2) - 4
+            ZIndex: =3
+
+        Subtitle1 As Label:
+            DisplayMode: =DisplayMode.Edit
+            FontSize: =9
+            FontWeight: =FontWeight.Normal
+            Height: =24
+            OnSelect: =Select(Parent)
+            TabIndex: =-1
+            Text: =ThisItem.upn
+            VerticalAlignment: =VerticalAlign.Top
+            Width: =Title1.Width
+            X: =Title1.X
+            Y: =Title1.Y + Title1.Height - 6
+            ZIndex: =4
+
+        "Facepile1 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
+            DisplayMode: =DisplayMode.Edit
+            Height: =33
+            ImageShouldFadeIn: =true
+            Items: |+
+                ={
+                    ItemPersonaKey: ThisItem.upn,
+                    ItemPersonaName: ThisItem.fullname,
+                    IsImage: false,
+                    ItemPersonaImageInfo: ThisItem.profileImage,
+                    ItemPersonaPresence: "Away",
+                    ItemPersonaClickable: true
+                }
+                
+            MaxDisplayablePersonas: =1
+            OnSelect: =Select(Parent)
+            ShowAddButton: =false
+            Width: =40
+            X: =13
+            Y: =11
+            ZIndex: =5
+

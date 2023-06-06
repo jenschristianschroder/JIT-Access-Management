@@ -1,0 +1,126 @@
+{
+  "08098adb-b021-4b04-914b-df5f8729c987": {
+    "connectionRef": {
+      "apiTier": "Premium",
+      "displayName": "Microsoft Dataverse (legacy)",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1636/1.0.1636.3297/commondataservice/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_commondataservice",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "9aff3ae9-f485-490d-9dc6-3dfa515c9a8c"
+    ],
+    "id": "08098adb-b021-4b04-914b-df5f8729c987"
+  },
+  "1d3500d6-cf8a-43dd-bb6a-9f47dda79cbb": {
+    "connectionRef": {
+      "apiTier": "Premium",
+      "bypassConsent": true,
+      "displayName": "Microsoft Dataverse",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1636/1.0.1636.3297/commondataserviceforapps/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_commondataserviceforapps",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "9aff3ae9-f485-490d-9dc6-3dfa515c9a8c"
+    ],
+    "id": "1d3500d6-cf8a-43dd-bb6a-9f47dda79cbb"
+  },
+  "9aff3ae9-f485-490d-9dc6-3dfa515c9a8c": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1636/1.0.1636.3297/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "08098adb-b021-4b04-914b-df5f8729c987": {
+          "value": "shared_commondataservice"
+        },
+        "1d3500d6-cf8a-43dd-bb6a-9f47dda79cbb": {
+          "value": "shared_commondataserviceforapps"
+        },
+        "d8e90b8d-5fb9-41fc-87ae-1d64e9fb93ad": {
+          "value": "shared_powerplatformforadmins"
+        },
+        "workflowEntityId": {
+          "value": "f377c3d1-5900-ee11-8f6d-000d3a246956"
+        },
+        "workflowName": {
+          "value": "3ddd16ab-6582-da1e-042d-a46f090a451b"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_commondataservice": {
+          "value": "08098adb-b021-4b04-914b-df5f8729c987"
+        },
+        "shared_commondataserviceforapps": {
+          "value": "1d3500d6-cf8a-43dd-bb6a-9f47dda79cbb"
+        },
+        "shared_powerplatformforadmins": {
+          "value": "d8e90b8d-5fb9-41fc-87ae-1d64e9fb93ad"
+        },
+        "workflowEntityId": {
+          "value": "f377c3d1-5900-ee11-8f6d-000d3a246956"
+        },
+        "workflowName": {
+          "value": "3ddd16ab-6582-da1e-042d-a46f090a451b"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "Access-Profile-Diagnostics"
+    ],
+    "dependencies": {
+      "shared_commondataservice": "08098adb-b021-4b04-914b-df5f8729c987",
+      "shared_commondataserviceforapps": "1d3500d6-cf8a-43dd-bb6a-9f47dda79cbb",
+      "shared_powerplatformforadmins": "d8e90b8d-5fb9-41fc-87ae-1d64e9fb93ad"
+    },
+    "dependents": [],
+    "id": "9aff3ae9-f485-490d-9dc6-3dfa515c9a8c"
+  },
+  "d8e90b8d-5fb9-41fc-87ae-1d64e9fb93ad": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Power Platform for Admins",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1637/1.0.1637.3300/powerplatformforadmins/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_powerplatformforadmins",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "PowerPlatformforAdmins"
+    ],
+    "dependencies": {},
+    "dependents": [
+      "9aff3ae9-f485-490d-9dc6-3dfa515c9a8c"
+    ],
+    "id": "d8e90b8d-5fb9-41fc-87ae-1d64e9fb93ad"
+  },
+  "edc0df3a-2c40-4693-b3ca-46fbeb110a9c": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1626/1.0.1626.3238/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "edc0df3a-2c40-4693-b3ca-46fbeb110a9c"
+  }
+}

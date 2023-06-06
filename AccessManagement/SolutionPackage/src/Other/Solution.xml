@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23051.240" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23052.226" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>AccessManagement</UniqueName>
     <LocalizedNames>
@@ -93,10 +93,13 @@
       <RootComponent type="29" id="{c03c9bed-f1ef-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="29" id="{c07f2785-faf2-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="29" id="{e0bcf20f-97f0-ed11-8849-6045bd8ccc09}" behavior="0" />
+      <RootComponent type="29" id="{f377c3d1-5900-ee11-8f6d-000d3a246956}" behavior="0" />
+      <RootComponent type="300" schemaName="cat_accessprofilediagnostics_33039" behavior="0" />
       <RootComponent type="300" schemaName="cat_jitaccessmanagement_d41cc" behavior="0" />
       <RootComponent type="300" schemaName="cat_jitaccessmanagementdefaultcommandlibrary_a47fe" behavior="0" />
       <RootComponent type="300" schemaName="cat_jitaccessrequest_201f8" behavior="0" />
       <RootComponent type="60" id="{1af66d4e-2ff7-ed11-8848-000d3a246956}" behavior="0" />
+      <RootComponent type="61" schemaName="cat_accessprofilediagnostics" behavior="0" />
       <RootComponent type="61" schemaName="cat_accessrequestquickcreateformlibrary" behavior="0" />
       <RootComponent type="62" schemaName="cat_JITAccessManagement" behavior="0" />
       <RootComponent type="70" id="{4d6247ee-bee9-ed11-8849-6045bd8ccc09}" behavior="0" />
@@ -137,6 +140,12 @@
         <Required type="66" schemaName="cat_PowerCAT.Facepile" displayName="cat_PowerCAT.Facepile" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
         </Required>
+        <Dependent type="300" schemaName="cat_accessprofilediagnostics_33039" displayName="Access Profile Diagnostics" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="cat_PowerCAT.Facepile" displayName="cat_PowerCAT.Facepile" solution="CreatorKitCore (1.0.20230421.1)">
+          <package>CreatorKitCore (1.0.20230421.1)</package>
+        </Required>
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
@@ -158,24 +167,28 @@
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2305.1013)" />
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2305.2016)" />
         <Dependent type="68" id="{fa1b3047-f169-4a0d-9c84-15cdd71dcdf0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2817)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2820)" />
         <Dependent type="26" schemaName="Calendar View" displayName="Calendar View" parentSchemaName="cat_accessrequest" parentDisplayName="Access Request" id="{2843f2fc-ace9-ed11-8849-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2817)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2820)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2305.1013)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2305.2016)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.2514)" />
+        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.2517)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_sharedcommondataserviceforapps_7bafb" solution="Active" id.connectionreferencelogicalname="cat_sharedcommondataserviceforapps_7bafb" />
+        <Dependent type="29" displayName="Access-Profile-Diagnostics" id="{f377c3d1-5900-ee11-8f6d-000d3a246956}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="SettingDefinition" displayName="FluentThemingPreview" solution="msdyn_PowerAppsThemingSettings (1.0.0.6)" id.uniquename="FluentThemingPreview" />

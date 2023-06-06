@@ -1,0 +1,20 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_cat_accessprofile_forms",
+      "Namespace": "Access Profiles (Forms)",
+      "Values": {
+        "Access Profile main form": "e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09",
+        "Access Profile quick create form": "5bfded23-9af0-ed11-8849-6045bd8ccc09",
+        "Access Profile quick view form": "c0fc3a6e-e5ef-ed11-8849-6045bd8ccc09"
+      }
+    },
+    {
+      "Kind": "default.cds_cat_accessprofileapprovers_forms",
+      "Namespace": "Access Profile Approvers (Forms)",
+      "Values": {
+        "Information": "31c9fe15-458d-4aa1-bc1e-ad7c86240cb3"
+      }
+    }
+  ]
+}
