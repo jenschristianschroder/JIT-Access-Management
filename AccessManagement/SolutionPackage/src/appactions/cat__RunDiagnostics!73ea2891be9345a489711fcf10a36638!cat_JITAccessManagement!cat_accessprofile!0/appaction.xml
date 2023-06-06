@@ -1,0 +1,32 @@
+<appaction uniquename="cat__RunDiagnostics!73ea2891be9345a489711fcf10a36638!cat_JITAccessManagement!cat_accessprofile!0">
+  <appmoduleid>
+    <uniquename>cat_JITAccessManagement</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Run Diagnostics">
+    <label description="Run Diagnostics" languagecode="1033" />
+  </buttonlabeltext>
+  <buttonsequencepriority>49.0625000000</buttonsequencepriority>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cat_accessprofile</logicalname>
+  </contextentity>
+  <contextvalue>cat_accessprofile</contextvalue>
+  <fonticon>Health</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>RunDiagnostics!73ea2891be9345a489711fcf10a36638</name>
+  <onclickeventjavascriptfunctionname>openAccessProfileDiagnostics</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":4}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>69eda3f1-8100-ee11-8f6d-00224883988b</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

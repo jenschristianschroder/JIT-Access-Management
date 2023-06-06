@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>cat_jitaccessmanagement_d41cc</Name>
-  <AppVersion>2023-05-22T13:25:54Z</AppVersion>
+  <AppVersion>2023-06-06T13:05:31Z</AppVersion>
   <Status>Ready</Status>
   <CreatedByClientVersion>3.23052.19.0</CreatedByClientVersion>
   <MinClientVersion>3.23052.19.0</MinClientVersion>
@@ -10,11 +10,11 @@
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
   <DisplayName>JIT Access Management POC</DisplayName>
-  <Description xsi:nil="true"></Description>
-  <CommitMessage xsi:nil="true"></CommitMessage>
+  <Description></Description>
+  <CommitMessage></CommitMessage>
   <Publisher></Publisher>
   <AuthorizationReferences>[]</AuthorizationReferences>
-  <ConnectionReferences>{"9762438a-8fca-4a70-b085-364bb9275b1d":{"id":"/providers/microsoft.powerapps/apis/shared_powerappsforappmakers","displayName":"Power Apps for Makers","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1626/1.0.1626.3238/powerappsforappmakers/icon.png","dataSources":["PowerAppsforMakers"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Get-Environments"]}}</ConnectionReferences>
+  <ConnectionReferences>{"9762438a-8fca-4a70-b085-364bb9275b1d":{"id":"/providers/microsoft.powerapps/apis/shared_powerappsforappmakers","displayName":"Power Apps for Makers","iconUri":"https://connectoricons-prod.azureedge.net/u/shgogna/globalperconnector-train1/1.0.1639.3310/powerappsforappmakers/icon.png","dataSources":["PowerAppsforMakers"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Get-Environments"]}}</ConnectionReferences>
   <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified"}},"dataSources":{"Access Profiles":{"entitySetName":"cat_accessprofiles","logicalName":"cat_accessprofile"},"Access Requests":{"entitySetName":"cat_accessrequests","logicalName":"cat_accessrequest"},"Users":{"entitySetName":"systemusers","logicalName":"systemuser"}}}}</DatabaseReferences>
   <AppComponents>[]</AppComponents>
   <AppComponentDependencies>[]</AppComponentDependencies>
@@ -24,7 +24,7 @@
   <AdminControlBypassConsent>0</AdminControlBypassConsent>
   <EmbeddedApp xsi:nil="true"></EmbeddedApp>
   <IntroducedVersion>1.0</IntroducedVersion>
-  <CdsDependencies>{"cdsdependencies":[{"logicalname":"cat_accessprofile","componenttype":1},{"logicalname":"cat_accessrequest","componenttype":1},{"logicalname":"systemuser","componenttype":1}]}</CdsDependencies>
+  <CdsDependencies>{"cdsdependencies":[{"componenttype":1,"logicalname":"cat_accessprofile"},{"componenttype":1,"logicalname":"cat_accessrequest"},{"componenttype":1,"logicalname":"systemuser"}]}</CdsDependencies>
   <IsCustomizable>1</IsCustomizable>
   <BackgroundImageUri>/CanvasApps/cat_jitaccessmanagement_d41cc_BackgroundImageUri</BackgroundImageUri>
   <DocumentUri>/CanvasApps/cat_jitaccessmanagement_d41cc_DocumentUri.msapp</DocumentUri>

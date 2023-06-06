@@ -5,7 +5,7 @@
   <buttonlabeltext default="Environment">
     <label description="Environment" languagecode="1033" />
   </buttonlabeltext>
-  <buttonsequencepriority>5.5000000000</buttonsequencepriority>
+  <buttonsequencepriority>49.3750000000</buttonsequencepriority>
   <context>1</context>
   <contextentity>
     <logicalname>cat_accessprofile</logicalname>

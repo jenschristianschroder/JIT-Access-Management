@@ -48,7 +48,7 @@ Home As screen:
         Y: =50
         ZIndex: =1
 
-        Container5 As groupContainer.manualLayoutContainer:
+        cntCommandBar As groupContainer.manualLayoutContainer:
             DropShadow: =DropShadow.Regular
             Fill: =RGBA(255, 255, 255, 1)
             FillPortions: =0
@@ -117,7 +117,7 @@ Home As screen:
                 Y: =0
                 ZIndex: =1
 
-        Container3 As groupContainer.manualLayoutContainer:
+        cntList As groupContainer.manualLayoutContainer:
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             PaddingBottom: =10
@@ -11645,6 +11645,7 @@ Home As screen:
             Width: =App.Width
 
         layoutPanelContent As groupContainer.horizontalAutoLayoutContainer:
+            Fill: =RGBA(255, 255, 255, 1)
             Height: =535
             LayoutMode: =LayoutMode.Auto
             Width: =800
@@ -11654,6 +11655,7 @@ Home As screen:
 
             cntPanelContent As groupContainer.manualLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
+                Fill: =RGBA(255, 255, 255, 1)
                 FillPortions: =0
                 Height: =Parent.Height
                 LayoutMinHeight: =100
@@ -12332,7 +12334,7 @@ Home As screen:
                 "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
                     DelayItemLoading: =true
                     Height: =523
-                    Items: =Filter('Access Profiles', Status = 'Status (Access Profiles)'.Active And StartsWith('Environment Name', txtAccessProfileSearch.Text))
+                    Items: =Filter('Access Profiles', 'Status Reason' = 'Status Reason (Access Profiles)'.Active And StartsWith('Environment Name', txtAccessProfileSearch.Text))
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
                     OnSelect: |
@@ -12405,8 +12407,10 @@ Home As screen:
                         PaddingTop: =0
                         Size: =9
                         Text: =ThisItem.Name
+                        Tooltip: =ThisItem.Name
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth 
+                        Width: =Parent.TemplateWidth - 40
+                        Wrap: =false
                         X: =20
                         Y: =20
                         ZIndex: =3
@@ -12516,7 +12520,7 @@ Home As screen:
                             RadiusTopRight: =2
                             Visible: =ThisItem.'Approval Required'
                             Width: =If(ThisItem.'Approval Required', 70, 0)
-                            X: =lblJustificationTag.X + lblJustificationTag.Width + 6
+                            X: =If(lblJustificationTag.Visible, lblJustificationTag.X + lblJustificationTag.Width + 6, 20)
                             Y: =107
                             ZIndex: =9
 
@@ -12529,7 +12533,7 @@ Home As screen:
                             Text: ="Approval"
                             Visible: =ThisItem.'Approval Required'
                             Width: =If(ThisItem.'Approval Required', 70, 0)
-                            X: =lblJustificationTag.X + lblJustificationTag.Width + 6
+                            X: =If(lblJustificationTag.Visible, lblJustificationTag.X + lblJustificationTag.Width + 6, 20)
                             Y: =107
                             ZIndex: =10
 
@@ -12967,7 +12971,7 @@ Home As screen:
                     Y: =207
                     ZIndex: =30
 
-    Container4 As groupContainer.manualLayoutContainer:
+    cntHeader As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
         Height: =50
         Width: =1366

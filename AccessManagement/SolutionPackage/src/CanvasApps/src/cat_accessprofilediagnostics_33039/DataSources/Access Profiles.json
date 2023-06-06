@@ -1,0 +1,147 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cat_accessprofiles",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cat_accessprofile",
+    "MaxGetRowsCount": 500,
+    "Name": "Access Profiles",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cat_accessprofile_AsyncOperations": "System Jobs",
+      "cat_accessprofile_BulkDeleteFailures": "Bulk Delete Failures",
+      "cat_accessprofile_DuplicateBaseRecord": "Duplicate Records (cat_accessprofile_DuplicateBaseRecord)",
+      "cat_accessprofile_DuplicateMatchingRecord": "Duplicate Records (cat_accessprofile_DuplicateMatchingRecord)",
+      "cat_accessprofile_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cat_accessprofile_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cat_accessprofile_ProcessSession": "Process Sessions",
+      "cat_accessprofile_SyncErrors": "Sync Errors",
+      "cat_accessprofileid": "Access Profile",
+      "cat_approvalrequired": "Approval Required",
+      "cat_cat_accessprofileapprovers_AccessProfile_": "Access Profile Approvers",
+      "cat_cat_accessrequest_AccessProfile_cat_acces": "Access Requests",
+      "cat_description": "Description",
+      "cat_duration": "Duration",
+      "cat_environmentid": "Environment Id",
+      "cat_environmentname": "Environment Name",
+      "cat_environmentresourceid": "Environment Resource Id",
+      "cat_environmentuniquename": "Environment Unique Name",
+      "cat_environmenturl": "Environment Url",
+      "cat_justificationrequired": "Justification Required",
+      "cat_name": "Name",
+      "cat_securityrole": "Security Role",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Access Profiles",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Access Profiles (Views)",
+    "Name": "_cat_accessprofile_views",
+    "RelatedEntityName": "Access Profiles",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "e0b818f9-8ae9-ed11-8849-6045bd8ccc09": "Active Access Profiles",
+      "f68469a0-8fff-ed11-8f6d-000d3a246956": "Inactive Access Profiles"
+    }
+  },
+  {
+    "DisplayName": "Approval Required (Access Profiles)",
+    "Name": "cat_accessprofile_cat_approvalrequired",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cat_approvalrequired",
+        "OptionSetReferenceEntityName": "Access Profiles"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "cat_approvalrequired",
+    "RelatedEntityName": "Access Profiles",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Justification Required (Access Profiles)",
+    "Name": "cat_accessprofile_cat_justificationrequired",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cat_justificationrequired",
+        "OptionSetReferenceEntityName": "Access Profiles"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "cat_justificationrequired",
+    "RelatedEntityName": "Access Profiles",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Access Profiles)",
+    "Name": "cat_accessprofile_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Access Profiles"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Access Profiles",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Access Profiles)",
+    "Name": "cat_accessprofile_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "809060001": "Draft"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Access Profiles"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Access Profiles",
+    "Type": "OptionSetInfo"
+  }
+]

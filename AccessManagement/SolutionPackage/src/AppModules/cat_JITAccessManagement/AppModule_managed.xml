@@ -12,6 +12,7 @@
   <AppModuleComponents>
     <AppModuleComponent type="1" schemaName="cat_accessmanagementsetup" />
     <AppModuleComponent type="1" schemaName="cat_accessprofile" />
+    <AppModuleComponent type="1" schemaName="cat_accessprofileapprovers" />
     <AppModuleComponent type="1" schemaName="cat_accessrequest" />
     <AppModuleComponent type="60" id="{5bfded23-9af0-ed11-8849-6045bd8ccc09}" />
     <AppModuleComponent type="60" id="{1af66d4e-2ff7-ed11-8848-000d3a246956}" />
@@ -28,6 +29,13 @@
     <LocalizedName description="JIT Access Management" languagecode="1033" />
   </LocalizedNames>
   <appelements>
+    <appelement uniquename="cat_cat_JITAccessManagement_canvasappid_cat_accessprofilediagnostics_33039">
+      <canvasappid>
+        <name>cat_accessprofilediagnostics_33039</name>
+      </canvasappid>
+      <iscustomizable>1</iscustomizable>
+      <name>cat_cat_JITAccessManagement_canvasappid_cat_accessprofilediagnostics_33039</name>
+    </appelement>
     <appelement uniquename="cat_cat_JITAccessManagement_canvasappid_cat_jitaccessmanagementdefaultcommandlibrary_a47fe">
       <canvasappid>
         <name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</name>

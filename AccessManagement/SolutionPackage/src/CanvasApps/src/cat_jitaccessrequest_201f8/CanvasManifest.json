@@ -128,7 +128,6 @@
     "UserLocale": "en-US"
   },
   "ScreenOrder": [
-    "Home",
-    "Screen1"
+    "Home"
   ]
 }
