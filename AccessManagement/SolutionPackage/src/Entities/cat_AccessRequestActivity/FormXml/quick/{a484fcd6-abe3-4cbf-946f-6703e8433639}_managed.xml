@@ -22,7 +22,7 @@
                     <row>
                       <cell id="{420a3e79-985d-4629-9966-eda7b35182a9}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Subject" languagecode="1033" />
                         </labels>
                         <control id="subject" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="subject" />
                       </cell>
@@ -30,7 +30,7 @@
                     <row>
                       <cell id="{68825d45-ae1c-4724-8c0f-171891b44042}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Regarding" languagecode="1033" />
                         </labels>
                         <control id="regardingobjectid" classid="{F3015350-44A2-4aa0-97B5-00166532B5E9}" datafieldname="regardingobjectid" />
                       </cell>
@@ -38,7 +38,7 @@
                     <row>
                       <cell id="{550f53e2-1132-486c-9c18-cdccdb13735b}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Activity Status" languagecode="1033" />
                         </labels>
                         <control id="statecode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="statecode" />
                       </cell>
@@ -53,7 +53,7 @@
                     <row>
                       <cell id="{bc32bd98-71c9-48c8-bcd5-0f38516da4b3}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Priority" languagecode="1033" />
                         </labels>
                         <control id="prioritycode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="prioritycode" />
                       </cell>
@@ -61,7 +61,7 @@
                     <row>
                       <cell id="{2e050cde-4aed-4495-ac1b-67394e340a1a}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Due Date" languagecode="1033" />
                         </labels>
                         <control id="scheduledend" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="scheduledend" />
                       </cell>
@@ -69,7 +69,7 @@
                     <row>
                       <cell id="{3e74090b-8f8f-438a-90d3-58e37ccdfa79}">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Owner" languagecode="1033" />
                         </labels>
                         <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
                       </cell>

@@ -5,7 +5,7 @@
   <buttonlabeltext default="Enable Approval">
     <label description="Enable Approval" languagecode="1033" />
   </buttonlabeltext>
-  <buttonsequencepriority>3.2500000000</buttonsequencepriority>
+  <buttonsequencepriority>47.5000000000</buttonsequencepriority>
   <context>1</context>
   <contextentity>
     <logicalname>cat_accessprofile</logicalname>

@@ -1,0 +1,20 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |
+        =If(Not(IsBlank(Param("recordId"))),
+            Set(diagnosticsRunning, true);
+            Set(accessProfile, LookUp('Access Profiles', 'Access Profile' = GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))));
+            ,
+            Notify("No Access Profile passed to the Diagnostics tool! Running in DEBUG MODE", NotificationType.Warning);
+            Set(debugMode, true);
+            Set(accessProfile, First('Access Profiles'));
+            Set(diagnosticsRunning, false);
+        );
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+
