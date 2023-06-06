@@ -999,14 +999,14 @@ Screen1 As screen:
         DelayItemLoading: =true
         FocusedBorderColor: =RGBA(0, 120, 212, 1)
         FocusedBorderThickness: =2
-        Height: =199
+        Height: =248
         Items: =colAccessProfileApprovalUsers
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
         TemplateSize: =48
         Width: =500
-        Y: =Container1.Y + Container1.Height
+        Y: =520
         ZIndex: =63
 
         Rectangle2 As rectangle:
