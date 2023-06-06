@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</Name>
-  <AppVersion>2023-06-01T13:49:34Z</AppVersion>
+  <AppVersion>2023-06-06T13:05:28Z</AppVersion>
   <Status>Ready</Status>
   <CreatedByClientVersion>3.23052.29.0</CreatedByClientVersion>
   <MinClientVersion>0.0.0.0</MinClientVersion>
@@ -10,7 +10,7 @@
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>RGBA(251,101,60,255)</BackgroundColor>
   <DisplayName>JITAccessManagement_DefaultCommandLibrary</DisplayName>
-  <Description xsi:nil="true"></Description>
+  <Description></Description>
   <CommitMessage>Saved by Command designer.</CommitMessage>
   <Publisher></Publisher>
   <AuthorizationReferences>[]</AuthorizationReferences>
@@ -24,8 +24,8 @@
   <AdminControlBypassConsent>0</AdminControlBypassConsent>
   <EmbeddedApp xsi:nil="true"></EmbeddedApp>
   <IntroducedVersion>1.0</IntroducedVersion>
-  <CdsDependencies>{"cdsdependencies":[{"logicalname":"cat_accessrequest","componenttype":1},{"logicalname":"cat_accessprofile","componenttype":1},{"logicalname":"cat_accessprofileapprovers","componenttype":1},{"logicalname":"cat_accessrequestactivity","componenttype":1}]}</CdsDependencies>
+  <CdsDependencies>{"cdsdependencies":[{"componenttype":1,"logicalname":"cat_accessrequest"},{"componenttype":1,"logicalname":"cat_accessprofile"},{"componenttype":1,"logicalname":"cat_accessprofileapprovers"},{"componenttype":1,"logicalname":"cat_accessrequestactivity"}]}</CdsDependencies>
   <IsCustomizable>1</IsCustomizable>
-  <BackgroundImageUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_82403_BackgroundImageUri</BackgroundImageUri>
-  <DocumentUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_38907_DocumentUri.msapp</DocumentUri>
+  <BackgroundImageUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_57518_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_56246_DocumentUri.msapp</DocumentUri>
 </CanvasApp>
