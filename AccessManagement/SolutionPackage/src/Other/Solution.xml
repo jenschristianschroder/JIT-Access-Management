@@ -187,10 +187,6 @@
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="connectionreference" displayName="cat_sharedcommondataserviceforapps_7bafb" solution="Active" id.connectionreferencelogicalname="cat_sharedcommondataserviceforapps_7bafb" />
-        <Dependent type="29" displayName="Access-Profile-Diagnostics" id="{f377c3d1-5900-ee11-8f6d-000d3a246956}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="SettingDefinition" displayName="FluentThemingPreview" solution="msdyn_PowerAppsThemingSettings (1.0.0.6)" id.uniquename="FluentThemingPreview" />
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=cat_JITAccessManagement,settingdefinitionid.uniquename=FluentThemingPreview" id.parentappmoduleid.uniquename="cat_JITAccessManagement" id.settingdefinitionid.uniquename="FluentThemingPreview" />
       </MissingDependency>
