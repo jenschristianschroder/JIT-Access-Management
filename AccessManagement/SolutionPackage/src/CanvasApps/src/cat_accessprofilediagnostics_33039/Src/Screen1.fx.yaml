@@ -224,7 +224,7 @@ Screen1 As screen:
         Text: =accessProfile.Name
         Width: =356
         X: =111
-        Y: =139
+        Y: =136
         ZIndex: =22
 
     Label3_9 As Label:
@@ -261,7 +261,7 @@ Screen1 As screen:
         DisplayMode: =DisplayMode.Edit
         Height: =32
         Text: |-
-            ="Security Role exist: "
+            ="App User exist: "
         Width: =119
         X: =12
         Y: =If(Label6_2.Visible, Button3_2.Y + Button3_2.Height, Label3_14 .Y + Label3_14.Height)
@@ -274,7 +274,7 @@ Screen1 As screen:
         RadiusTopLeft: =4
         RadiusTopRight: =4
         Visible: =accessProfile.'Approval Required'
-        Y: =If(Label6_3.Visible, Button3_3.Y + Button3_3.Height, Label3_16.Y + Label3_16.Height)
+        Y: =If(Label6_4.Visible, Button3_4.Y + Button3_4.Height, Label3_17.Y + Label3_17.Height)
         ZIndex: =51
 
         Label3_18 As Label:
@@ -825,7 +825,7 @@ Screen1 As screen:
             Height: =21
             HoverFill: =RGBA(255, 0, 0, 1)
             PressedFill: =RGBA(255, 0, 0, 1)
-            Visible: =Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning)
+            Visible: =Not(Boolean(diagnosticsResult.applicationUserExist)) && Not(diagnosticsRunning)
             Width: =21
             X: =150
             Y: =Label3_16.Y + 5
@@ -849,7 +849,7 @@ Screen1 As screen:
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
             PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning)
+            Visible: =Not(Boolean(diagnosticsResult.applicationUserExist)) && Not(diagnosticsRunning)
             Width: =23
             X: =149
             Y: =Label3_16.Y + 4
@@ -864,7 +864,7 @@ Screen1 As screen:
             Height: =21
             HoverFill: =RGBA(54, 176, 75, 1)
             PressedFill: =RGBA(54, 176, 75, 1)
-            Visible: =Boolean(diagnosticsResult.securityRoleExist) && Not(diagnosticsRunning)
+            Visible: =Boolean(diagnosticsResult.applicationUserExist) && Not(diagnosticsRunning)
             Width: =21
             X: =150
             Y: =Label3_16.Y + 5
@@ -888,7 +888,7 @@ Screen1 As screen:
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
             PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =Boolean(diagnosticsResult.securityRoleExist) && Not(diagnosticsRunning)
+            Visible: =Boolean(diagnosticsResult.applicationUserExist) && Not(diagnosticsRunning)
             Width: =23
             X: =149
             Y: =Label3_16.Y + 4
@@ -970,14 +970,15 @@ Screen1 As screen:
         BorderThickness: =1
         DisplayMode: =DisplayMode.Edit
         FillColor: =Color.White
-        Height: =If(Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning), 32, 0)
+        Height: =If(Not(Boolean(diagnosticsResult.applicationUserExist)) && Not(diagnosticsRunning), 32, 0)
         HoverBorderColor: =RGBA(237, 237, 237, 1)
         HoverFillColor: =RGBA(237, 237, 237, 1)
         HoverTextColor: =RGBA(9, 33, 98, 1)
-        OnSelect: =Navigate(LookUp('Access Profiles', 'Access Profile' = accessProfile.'Access Profile'));
+        OnSelect: |-
+            =Launch($"https://admin.powerplatform.microsoft.com/environments/{accessProfile.'Environment Resource Id'}/appusers")
         Text: ="Fix this"
         TextColor: =RGBA(0, 120, 212, 1)
-        Visible: =Not(Boolean(diagnosticsResult.environmentExist)) && Not(diagnosticsRunning)
+        Visible: =Not(Boolean(diagnosticsResult.applicationUserExist)) && Not(diagnosticsRunning)
         Width: =96
         X: =180
         Y: =Label6_3.Y + Label6_3.Height
@@ -987,8 +988,9 @@ Screen1 As screen:
         AutoHeight: =true
         DisplayMode: =DisplayMode.Edit
         Height: =36
-        Text: =$"The Security Role {accessProfile.'Security Role'} does not exist in the configured environment" 
-        Visible: =Not(Boolean(diagnosticsResult.environmentExist)) && Not(diagnosticsRunning)
+        Text: |-
+            =$"The Application User (client id: {First('Access Management Setups').'Application Registration Id'}) does not exist in the configured environment" 
+        Visible: =Not(Boolean(diagnosticsResult.applicationUserExist)) && Not(diagnosticsRunning)
         Width: =320
         X: =180
         Y: =Label3_16.Y
@@ -1006,7 +1008,7 @@ Screen1 As screen:
         TemplatePadding: =0
         TemplateSize: =48
         Width: =500
-        Y: =520
+        Y: =Container1.Y + Container1.Height
         ZIndex: =63
 
         Rectangle2 As rectangle:
@@ -1071,4 +1073,169 @@ Screen1 As screen:
             X: =13
             Y: =11
             ZIndex: =5
+
+    Label3_17 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Security Role exist: "
+        Width: =119
+        X: =12
+        Y: =If(Label6_3.Visible, Button3_3.Y + Button3_3.Height, Label3_16 .Y + Label3_16.Height)
+        ZIndex: =64
+
+    Group4_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =473
+        ZIndex: =71
+
+        Circle1_15 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(255, 0, 0, 1)
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =21
+            HoverFill: =RGBA(255, 0, 0, 1)
+            PressedFill: =RGBA(255, 0, 0, 1)
+            Visible: =Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning)
+            Width: =21
+            X: =150
+            Y: =Label3_17.Y + 5
+            ZIndex: =65
+
+        Icon2_15 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =23
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.CancelBadge
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning)
+            Width: =23
+            X: =149
+            Y: =Label3_17.Y + 4
+            ZIndex: =66
+
+        Circle1_14 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(54, 176, 75, 1)
+            Fill: =RGBA(54, 176, 75, 1)
+            Height: =21
+            HoverFill: =RGBA(54, 176, 75, 1)
+            PressedFill: =RGBA(54, 176, 75, 1)
+            Visible: =Boolean(diagnosticsResult.securityRoleExist) && Not(diagnosticsRunning)
+            Width: =21
+            X: =150
+            Y: =Label3_17.Y + 5
+            ZIndex: =67
+
+        Icon2_14 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =23
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.CheckBadge
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =Boolean(diagnosticsResult.securityRoleExist) && Not(diagnosticsRunning)
+            Width: =23
+            X: =149
+            Y: =Label3_17.Y + 4
+            ZIndex: =68
+
+        Circle1_13 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(0, 134, 208, 1)
+            Fill: =RGBA(0, 134, 208, 1)
+            Height: =21
+            HoverFill: =RGBA(0, 134, 208, 1)
+            PressedFill: =RGBA(0, 134, 208, 1)
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =150
+            Y: =Label3_17.Y + 5
+            ZIndex: =69
+
+        Icon2_13 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =21
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.Reload
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Rotation: =iconRotation
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =150
+            Y: =Label3_17.Y + 5
+            ZIndex: =70
+
+    Button3_4 As Button:
+        BorderColor: =RGBA(230, 230, 230, 1)
+        BorderStyle: =BorderStyle.Solid
+        BorderThickness: =1
+        DisplayMode: =DisplayMode.Edit
+        FillColor: =Color.White
+        Height: =If(Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning), 32, 0)
+        HoverBorderColor: =RGBA(237, 237, 237, 1)
+        HoverFillColor: =RGBA(237, 237, 237, 1)
+        HoverTextColor: =RGBA(9, 33, 98, 1)
+        OnSelect: =Navigate(LookUp('Access Profiles', 'Access Profile' = accessProfile.'Access Profile'));
+        Text: ="Fix this"
+        TextColor: =RGBA(0, 120, 212, 1)
+        Visible: =Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning)
+        Width: =96
+        X: =180
+        Y: =Label6_4.Y + Label6_4.Height
+        ZIndex: =72
+
+    Label6_4 As Label:
+        AutoHeight: =true
+        DisplayMode: =DisplayMode.Edit
+        Height: =36
+        Text: =$"The Security Role {accessProfile.'Security Role'} does not exist in the configured environment" 
+        Visible: =Not(Boolean(diagnosticsResult.securityRoleExist)) && Not(diagnosticsRunning)
+        Width: =320
+        X: =180
+        Y: =Label3_17.Y
+        ZIndex: =73
 
