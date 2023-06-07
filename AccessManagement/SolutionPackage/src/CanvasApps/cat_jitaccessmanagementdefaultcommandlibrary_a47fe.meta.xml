@@ -26,6 +26,6 @@
   <IntroducedVersion>1.0</IntroducedVersion>
   <CdsDependencies>{"cdsdependencies":[{"componenttype":1,"logicalname":"cat_accessrequest"},{"componenttype":1,"logicalname":"cat_accessprofile"},{"componenttype":1,"logicalname":"cat_accessprofileapprovers"},{"componenttype":1,"logicalname":"cat_accessrequestactivity"}]}</CdsDependencies>
   <IsCustomizable>1</IsCustomizable>
-  <BackgroundImageUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_73487_BackgroundImageUri</BackgroundImageUri>
-  <DocumentUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_58287_DocumentUri.msapp</DocumentUri>
+  <BackgroundImageUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_29456_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_53914_DocumentUri.msapp</DocumentUri>
 </CanvasApp>

@@ -629,7 +629,7 @@
             "parameters": {
               "dataset": "@outputs('Get_a_row_by_ID')?['body/cat_environmentuniquename']",
               "table": "systemusers",
-              "$filter": "applicationid eq '@{first(outputs('List_Access_Management_Setups')?['body/value'])?['cat_applicationregistrationid']}'"
+              "$filter": "applicationid eq '@{first(outputs('List_Access_Management_Setups')?['body/value'])?['cat_applicationregistrationid']}' and isdisabled eq false"
             },
             "authentication": "@parameters('$authentication')"
           }

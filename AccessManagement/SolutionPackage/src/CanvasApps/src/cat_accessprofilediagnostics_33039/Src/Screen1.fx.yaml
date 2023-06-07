@@ -989,7 +989,7 @@ Screen1 As screen:
         DisplayMode: =DisplayMode.Edit
         Height: =36
         Text: |-
-            =$"The Application User (client id: {First('Access Management Setups').'Application Registration Id'}) does not exist in the configured environment" 
+            =$"The Application User (client id: {First('Access Management Setups').'Application Registration Id'}) does not exist or is inactive in the configured environment" 
         Visible: =Not(Boolean(diagnosticsResult.applicationUserExist)) && Not(diagnosticsRunning)
         Width: =320
         X: =180
