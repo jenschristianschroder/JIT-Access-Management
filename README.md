@@ -26,6 +26,10 @@ You must have an Azure AD Application Registration with permissions to use the D
 
 The Azure AD Application Registration must be added as an Application User (S2S app) with System Administrator security role in the environments that are configured for JIT Access.
 
+### Audit
+
+Audit needs to be enabled in the environment for auditing of Access Profiles and Access Requests to be enabled.
+
 ## Installation
 
 1. Download the managed solution from the assets in the latest release: https://github.com/jenschristianschroder/JIT-Access-Management/releases.
