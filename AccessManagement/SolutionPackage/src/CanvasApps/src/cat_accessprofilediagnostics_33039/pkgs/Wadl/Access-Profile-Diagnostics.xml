@@ -7,6 +7,7 @@
         <property name="text" type="string" />
       </object>
       <string name="ResponseActionOutput_environmentExist_def" />
+      <string name="ResponseActionOutput_applicationUserExist_def" />
       <string name="ResponseActionOutput_securityRoleExist_def" />
       <string name="ResponseActionOutput_accessProfileApproversExist_def" />
       <string name="ResponseActionOutput_approvalUsersExist_def" />
@@ -25,6 +26,7 @@
       <array typeRef="ResponseActionOutput_approvalUsers_def_items_def" name="ResponseActionOutput_approvalUsers_def" />
       <object name="ResponseActionOutput">
         <property name="environmentExist" type="string" />
+        <property name="applicationUserExist" type="string" />
         <property name="securityRoleExist" type="string" />
         <property name="accessProfileApproversExist" type="string" />
         <property name="approvalUsersExist" type="string" />

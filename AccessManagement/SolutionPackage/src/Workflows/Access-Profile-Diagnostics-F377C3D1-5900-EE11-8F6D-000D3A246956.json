@@ -132,7 +132,7 @@
         },
         "Initialize_securityRoleExist": {
           "runAfter": {
-            "Initialize_environmentExist": [
+            "Initialize_variable": [
               "Succeeded"
             ]
           },
@@ -238,7 +238,7 @@
         },
         "List_rows_(legacy)": {
           "runAfter": {
-            "set_environmentExist_true": [
+            "applicationUserExist": [
               "Succeeded"
             ]
           },
@@ -543,6 +543,7 @@
             "statusCode": 200,
             "body": {
               "environmentExist": "@{variables('environmentExist')}",
+              "applicationUserExist": "@{variables('applicationUserExist')}",
               "securityRoleExist": "@{variables('securityRoleExist')}",
               "accessProfileApproversExist": "@{variables('accessProfileApproversExist')}",
               "approvalUsersExist": "@{variables('approvalUsersExist')}",
@@ -552,6 +553,9 @@
               "type": "object",
               "properties": {
                 "environmentExist": {
+                  "type": "string"
+                },
+                "applicationUserExist": {
                   "type": "string"
                 },
                 "securityRoleExist": {
@@ -596,6 +600,117 @@
               }
             }
           }
+        },
+        "List_Application_Users": {
+          "runAfter": {
+            "List_Access_Management_Setups": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "85a4920f-3ed1-4418-80a9-e2896f505525"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataservice",
+              "operationId": "GetItems_V2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataservice"
+            },
+            "parameters": {
+              "dataset": "@outputs('Get_a_row_by_ID')?['body/cat_environmentuniquename']",
+              "table": "systemusers",
+              "$filter": "applicationid eq '@{first(outputs('List_Access_Management_Setups')?['body/value'])?['cat_applicationregistrationid']}' and isdisabled eq false"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_Access_Management_Setups": {
+          "runAfter": {
+            "set_environmentExist_true": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9fde5d39-9607-41ed-9737-d59e01d07215"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessmanagementsetups",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Initialize_environmentExist": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3a1b0e25-59a1-44d1-a040-801015849efc"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "applicationUserExist",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "applicationUserExist": {
+          "actions": {
+            "Set_variable_5": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "05e5145c-c82a-48af-b655-5fb9ee27e960"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "applicationUserExist",
+                "value": "@true"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Application_Users": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_variable_6": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "f4d3e342-2113-4a91-a6fb-5a5cfe134a2b"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "applicationUserExist",
+                  "value": "@false"
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(outputs('List_Application_Users')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "eedfcecf-09d5-479d-abad-8ed1d35da8de"
+          },
+          "type": "If"
         }
       }
     },

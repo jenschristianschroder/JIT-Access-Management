@@ -15,6 +15,13 @@
       "Values": {
         "Information": "31c9fe15-458d-4aa1-bc1e-ad7c86240cb3"
       }
+    },
+    {
+      "Kind": "default.cds_cat_accessmanagementsetup_forms",
+      "Namespace": "Access Management Setups (Forms)",
+      "Values": {
+        "Information": "a8274ca0-fdcc-4e6a-936a-729cc77c2a17"
+      }
     }
   ]
 }
