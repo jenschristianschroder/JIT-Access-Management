@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{7a63dc2e-9906-ee11-8f6e-000d3a246956}</WebResourceId>
+  <Name>cat_accessprofilesharedwith</Name>
+  <DisplayName>Access Profile Shared With</DisplayName>
+  <WebResourceType>3</WebResourceType>
+  <IntroducedVersion>0.0.0.1</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/cat_accessprofilesharedwith7A63DC2E-9906-EE11-8F6E-000D3A246956</FileName>
+</WebResource>

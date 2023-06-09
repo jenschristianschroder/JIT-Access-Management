@@ -1,0 +1,29 @@
+<appaction uniquename="cat__AccessProfile!d9fe7871b7cc44c4838fe3a0cd136fbb!cat_JITAccessManagement!cat_accessprofile!0">
+  <appmoduleid>
+    <uniquename>cat_JITAccessManagement</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Access Profile">
+    <label description="Access Profile" languagecode="1033" />
+  </buttonlabeltext>
+  <buttonsequencepriority>49.5312500000</buttonsequencepriority>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cat_accessprofile</logicalname>
+  </contextentity>
+  <contextvalue>cat_accessprofile</contextvalue>
+  <hidden>0</hidden>
+  <iconwebresourceid>
+    <webresourceid>6ea5fa81-06d8-48e1-a4df-1df9e712c5d7</webresourceid>
+  </iconwebresourceid>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>AccessProfile!d9fe7871b7cc44c4838fe3a0cd136fbb</name>
+  <onclickeventtype>0</onclickeventtype>
+  <origin>0</origin>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>1</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

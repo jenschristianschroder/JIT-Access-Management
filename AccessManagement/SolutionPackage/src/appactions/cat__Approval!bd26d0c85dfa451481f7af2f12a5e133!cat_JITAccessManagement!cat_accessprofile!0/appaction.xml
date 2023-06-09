@@ -1,0 +1,32 @@
+<appaction uniquename="cat__Approval!bd26d0c85dfa451481f7af2f12a5e133!cat_JITAccessManagement!cat_accessprofile!0">
+  <appmoduleid>
+    <uniquename>cat_JITAccessManagement</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Approval">
+    <label description="Approval" languagecode="1033" />
+  </buttonlabeltext>
+  <buttonsequencepriority>10000.0000000000</buttonsequencepriority>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cat_accessprofile</logicalname>
+  </contextentity>
+  <contextvalue>cat_accessprofile</contextvalue>
+  <hidden>0</hidden>
+  <iconwebresourceid>
+    <webresourceid>1e6bd5b4-af3c-4a8c-b35d-00667787ba67</webresourceid>
+  </iconwebresourceid>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>Approval!bd26d0c85dfa451481f7af2f12a5e133</name>
+  <onclickeventtype>0</onclickeventtype>
+  <origin>0</origin>
+  <parentappactionid>
+    <uniquename>cat__NewGroup!c1f5ab6c7e6f4cdc84f8026a46cbc84e!cat_JITAccessManagement!cat_accessprofile!0</uniquename>
+  </parentappactionid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>1</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

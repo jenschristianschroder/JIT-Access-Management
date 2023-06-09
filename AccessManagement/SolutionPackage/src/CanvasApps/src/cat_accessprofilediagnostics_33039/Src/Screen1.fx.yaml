@@ -37,7 +37,35 @@ Screen1 As screen:
         Icon: =Icon.Reload
         OnSelect: |-
             =Set(diagnosticsRunning, true);
-            Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile'));
+            Clear(colAccessProfileApprovalUsers);
+            Concurrent(
+                Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile')),
+                ClearCollect(
+                    UserPersonas,
+                    {
+                        ItemPersonaKey: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', ""),
+                        ItemPersonaName: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Full Name', ""),
+                        IsImage: false,
+                        ItemPersonaImageInfo:
+                        //Get base64 image data
+                        Substitute(
+                            JSON(
+                                Office365Users.UserPhotoV2(If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', "")),
+                                JSONFormat.IncludeBinaryData
+                            ),
+                            """",
+                            ""
+                        ),
+                        ItemPersonaPresence: "Away",
+                        ItemPersonaClickable: false
+                    }
+                )
+            );
+            ClearCollect(colApprovalUsers, diagnosticsResult.approvalUsers);
+            Clear(colAccessProfileApprovalUsers);
+            ForAll(colApprovalUsers, 
+                            Collect(colAccessProfileApprovalUsers, { upn: ThisRecord.upn, profileImage: Substitute(JSON(Office365Users.UserPhotoV2(ThisRecord.upn), JSONFormat.IncludeBinaryData), """", ""), fullname: ThisRecord.fullname});
+                    );
             Set(diagnosticsRunning, false);
         PaddingBottom: =3
         PaddingLeft: =3
@@ -63,25 +91,30 @@ Screen1 As screen:
         HoverTextColor: =RGBA(9, 33, 98, 1)
         OnSelect: |-
             =Set(diagnosticsRunning, true);
-            
-            // Verify environment exist
-            //IfError(Set(environmentResult, PowerPlatformforAdmins.GetSingleEnvironment(accessProfile.'Environment Id')), Set(environmentResult, Blank()));
-            
-            
-            // Verify security role exist
-            
-            
-            
-            // Verify approval configured
-            
-            
-            
-            // Verify approval users configured
-            
-            
-            
-            
-            Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile'));
+            Clear(colAccessProfileApprovalUsers);
+            Concurrent(
+                Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile')),
+                ClearCollect(
+                    UserPersonas,
+                    {
+                        ItemPersonaKey: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', ""),
+                        ItemPersonaName: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Full Name', ""),
+                        IsImage: false,
+                        ItemPersonaImageInfo:
+                        //Get base64 image data
+                        Substitute(
+                            JSON(
+                                Office365Users.UserPhotoV2(If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', "")),
+                                JSONFormat.IncludeBinaryData
+                            ),
+                            """",
+                            ""
+                        ),
+                        ItemPersonaPresence: "Away",
+                        ItemPersonaClickable: false
+                    }
+                )
+            );
             ClearCollect(colApprovalUsers, diagnosticsResult.approvalUsers);
             Clear(colAccessProfileApprovalUsers);
             ForAll(colApprovalUsers, 
@@ -128,7 +161,7 @@ Screen1 As screen:
             ="Environment: "
         Width: =92
         X: =10
-        Y: =175
+        Y: =202
         ZIndex: =10
 
     Label3_3 As Label:
@@ -138,7 +171,7 @@ Screen1 As screen:
             ="Id: "
         Width: =92
         X: =10
-        Y: =214
+        Y: =232
         ZIndex: =12
 
     Label3_4 As Label:
@@ -148,7 +181,7 @@ Screen1 As screen:
             ="Url: "
         Width: =92
         X: =10
-        Y: =246
+        Y: =264
         ZIndex: =13
 
     Label3_5 As Label:
@@ -158,7 +191,7 @@ Screen1 As screen:
             ="Security Role: "
         Width: =101
         X: =10
-        Y: =278
+        Y: =296
         ZIndex: =14
 
     Label3_6 As Label:
@@ -168,7 +201,7 @@ Screen1 As screen:
             ="Approval: "
         Width: =101
         X: =10
-        Y: =310
+        Y: =328
         ZIndex: =15
 
     Label3_7 As Label:
@@ -177,7 +210,7 @@ Screen1 As screen:
         Text: =accessProfile.'Approval Required'
         Width: =356
         X: =111
-        Y: =310
+        Y: =328
         ZIndex: =16
 
     Label3_8 As Label:
@@ -186,7 +219,7 @@ Screen1 As screen:
         Text: =accessProfile.'Security Role'
         Width: =356
         X: =111
-        Y: =278
+        Y: =296
         ZIndex: =17
 
     Label3_10 As Label:
@@ -195,7 +228,7 @@ Screen1 As screen:
         Text: =accessProfile.'Environment Id'
         Width: =356
         X: =111
-        Y: =214
+        Y: =232
         ZIndex: =19
 
     HtmlText1 As htmlViewer:
@@ -204,7 +237,7 @@ Screen1 As screen:
         PaddingLeft: =0
         Width: =337
         X: =111
-        Y: =246
+        Y: =264
         ZIndex: =20
 
     Label3_11 As Label:
@@ -214,7 +247,7 @@ Screen1 As screen:
         Text: =accessProfile.'Environment Name'
         Width: =356
         X: =111
-        Y: =175
+        Y: =202
         ZIndex: =21
 
     Label3_12 As Label:
@@ -234,7 +267,7 @@ Screen1 As screen:
             ="Status: "
         Width: =101
         X: =10
-        Y: =342
+        Y: =360
         ZIndex: =23
 
     Label3_13 As Label:
@@ -244,7 +277,7 @@ Screen1 As screen:
         Text: =accessProfile.'Status Reason'
         Width: =356
         X: =111
-        Y: =342
+        Y: =360
         ZIndex: =24
 
     Label3_14 As Label:
@@ -279,11 +312,11 @@ Screen1 As screen:
 
         Label3_18 As Label:
             DisplayMode: =DisplayMode.Edit
-            Height: =If(Not(Boolean(diagnosticsResult.accessProfileApproversExist)) && Not(diagnosticsRunning), Label6_1.Height + Button3_1.Height + 5, 32)
+            Height: =32
             Text: |-
                 ="Approval configured: "
             VerticalAlignment: =VerticalAlign.Top
-            Width: =132
+            Width: =170
             X: =10
             Y: =1
             ZIndex: =10
@@ -613,6 +646,7 @@ Screen1 As screen:
             ZIndex: =20
 
     Timer1 As timer:
+        AutoPause: =false
         AutoStart: =true
         BorderColor: =RGBA(0, 120, 212, 1)
         BorderStyle: =BorderStyle.None
@@ -627,8 +661,37 @@ Screen1 As screen:
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
         OnTimerEnd: |-
-            =Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile'));
-            Set(diagnosticsRunning, false);
+            =Set(diagnosticsRunning, true);
+                Concurrent(
+                    Set(diagnosticsResult, 'Access-Profile-Diagnostics'.Run(accessProfile.'Access Profile')),
+                    ClearCollect(
+                        UserPersonas,
+                        {
+                            ItemPersonaKey: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', ""),
+                            ItemPersonaName: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Full Name', ""),
+                            IsImage: false,
+                            ItemPersonaImageInfo:
+                            //Get base64 image data
+                            Substitute(
+                                JSON(
+                                    Office365Users.UserPhotoV2(If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', "")),
+                                    JSONFormat.IncludeBinaryData
+                                ),
+                                """",
+                                ""
+                            ),
+                            ItemPersonaPresence: "Away",
+                            ItemPersonaClickable: false
+                        }
+                    )
+                );
+            
+                ClearCollect(colApprovalUsers, diagnosticsResult.approvalUsers);
+                Clear(colAccessProfileApprovalUsers);
+                ForAll(colApprovalUsers, 
+                                Collect(colAccessProfileApprovalUsers, { upn: ThisRecord.upn, profileImage: Substitute(JSON(Office365Users.UserPhotoV2(ThisRecord.upn), JSONFormat.IncludeBinaryData), """", ""), fullname: ThisRecord.fullname});
+                        );
+                Set(diagnosticsRunning, false);
         PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
         PressedColor: =RGBA(255, 255, 255, 1)
         PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
@@ -1001,7 +1064,7 @@ Screen1 As screen:
         DelayItemLoading: =true
         FocusedBorderColor: =RGBA(0, 120, 212, 1)
         FocusedBorderThickness: =2
-        Height: =248
+        Height: =Parent.Height - Self.Y
         Items: =colAccessProfileApprovalUsers
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -1062,14 +1125,15 @@ Screen1 As screen:
                     ItemPersonaName: ThisItem.fullname,
                     IsImage: false,
                     ItemPersonaImageInfo: ThisItem.profileImage,
+                    ItemPersonaImage: false,
                     ItemPersonaPresence: "Away",
-                    ItemPersonaClickable: true
+                    ItemPersonaClickable: false
                 }
                 
             MaxDisplayablePersonas: =1
             OnSelect: =Select(Parent)
             ShowAddButton: =false
-            Width: =40
+            Width: =37
             X: =13
             Y: =11
             ZIndex: =5
@@ -1238,4 +1302,85 @@ Screen1 As screen:
         X: =180
         Y: =Label3_17.Y
         ZIndex: =73
+
+    "Facepile1_1 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        ImageShouldFadeIn: =true
+        Items: =UserPersonas
+        MaxDisplayablePersonas: =1
+        OverflowButtonType: ='PowerCAT.Facepile.OverflowButtonType'.none
+        PersonaSize: ='PowerCAT.Facepile.PersonaSize'.Size32
+        Visible: =IsType(accessProfile.Owner, Users)
+        Width: =If(IsType(accessProfile.Owner, Users), 37, 0)
+        X: =109
+        Y: =170
+        ZIndex: =74
+
+    Button1 As Button:
+        Alignment: =Align.Center
+        ButtonType: ='Button.ButtonType'.Primary
+        DisplayMode: =DisplayMode.Edit
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Normal
+        Height: =32
+        OnSelect: |-
+            =ClearCollect(
+                UserPersonas,
+                {
+                    ItemPersonaKey: User().Email,
+                    ItemPersonaName: User().FullName,
+                    IsImage: false,
+                    ItemPersonaImageInfo:
+                    //Get base64 image data
+                    Substitute(
+                        JSON(
+                            Office365Users.UserPhotoV2(User().Email),
+                            JSONFormat.IncludeBinaryData
+                        ),
+                        """",
+                        ""
+                    ),
+                    ItemPersonaPresence: "Away",
+                    ItemPersonaClickable: false
+                }
+            );
+        VerticalAlignment: =VerticalAlign.Middle
+        Visible: =false
+        Width: =96
+        X: =404
+        Y: =4
+        ZIndex: =75
+
+    Label3_15 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Owner: "
+        Width: =92
+        X: =10
+        Y: =168
+        ZIndex: =76
+
+    Label3_19 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontWeight: =FontWeight.Semibold
+        Height: =31
+        Text: =If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Full Name', AsType(accessProfile.Owner, Teams).'Team Name')
+        Width: =266
+        X: =Facepile1_1.X + Facepile1_1.Width
+        Y: =171
+        ZIndex: =77
+
+    "Facepile2 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
+        DisplayMode: =DisplayMode.Edit
+        Height: =47
+        Items: =UserPersonas
+        OverflowButtonType: ='PowerCAT.Facepile.OverflowButtonType'.descriptive
+        PersonaSize: ='PowerCAT.Facepile.PersonaSize'.Size32
+        Visible: =false
+        Width: =200
+        X: =300
+        Y: =4
+        ZIndex: =78
 

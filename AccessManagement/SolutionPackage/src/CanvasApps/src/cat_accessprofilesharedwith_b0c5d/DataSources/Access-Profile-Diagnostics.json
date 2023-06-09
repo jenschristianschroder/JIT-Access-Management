@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "c2ffb822-4d03-48f4-9f10-e90bb33bf802",
+    "Name": "Access-Profile-Diagnostics",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "f377c3d1-5900-ee11-8f6d-000d3a246956"
+  }
+]

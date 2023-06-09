@@ -1,0 +1,426 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_MicrosoftDataverseAccessManagement"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "be3bc3f4-08b0-4c44-be88-866133e6b7a5"
+          },
+          "type": "Request",
+          "kind": "PowerApp",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accessProfileId_Inputs": {
+                  "type": "any",
+                  "description": "Inputs",
+                  "x-ms-powerflows-param-ispartial": false
+                }
+              },
+              "required": [
+                "accessProfileId_Inputs"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_Access_Management_Setup": {
+          "runAfter": {
+            "Initialize_teamConditions": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9b1458df-ff31-4a88-a712-a3692ce7b72f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cat_accessmanagementsetups",
+              "$top": 1
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Retrieve_Shared_Access": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ecf7b209-4af1-45b7-97d2-e34b02ffe196"
+          },
+          "type": "Http",
+          "inputs": {
+            "method": "GET",
+            "uri": "@{variables('environmentUrl')}/api/data/v9.2/RetrieveSharedPrincipalsAndAccess(Target=@tid)?@tid={'@odata.id':'cat_accessprofiles(@{triggerBody()['accessProfileId_Inputs']})'}",
+            "authentication": {
+              "type": "ActiveDirectoryOAuth",
+              "authority": "https://login.microsoftonline.com",
+              "tenant": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_TenantId']}",
+              "audience": "@variables('environmentUrl')",
+              "clientId": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationId']}",
+              "secret": "@{first(outputs('Get_Access_Management_Setup')?['body/value'])?['cat_ApplicationRegistrationSecret']}"
+            }
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@body('Retrieve_Shared_Access')?['PrincipalAccesses']",
+          "actions": {
+            "Condition": {
+              "actions": {
+                "Append_systemUserConditions": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "c5345f66-bc6b-4482-bc1a-2c5f048d3bd7"
+                  },
+                  "type": "AppendToStringVariable",
+                  "inputs": {
+                    "name": "systemUserConditions",
+                    "value": "<condition attribute=\"systemuserid\" operator=\"eq\" value=\"@{items('Apply_to_each')?['principal/ownerid']}\" />"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Append_to_string_variable": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "dba268ac-5270-4aea-97a3-4aa9d783dd46"
+                    },
+                    "type": "AppendToStringVariable",
+                    "inputs": {
+                      "name": "teamConditions",
+                      "value": "<condition attribute=\"teamid\" operator=\"eq\" value=\"@{items('Apply_to_each')?['principal/ownerid']}\" />"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@split(items('Apply_to_each')?['principal/@odata.type'], '.')[sub(length(split(items('Apply_to_each')?['principal/@odata.type'], '.')), 1)]",
+                  "systemuser"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "08676cc7-1536-4b21-9fbd-fa437162e9cd"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Retrieve_Shared_Access": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4b091bd8-0c8a-4894-b16c-611ba2013ce0"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_systemUserConditions": {
+          "runAfter": {
+            "accessProfileId": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "62b439fb-f9ab-424b-b288-405356ebd6ac"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "systemUserConditions",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_teamConditions": {
+          "runAfter": {
+            "Initialize_systemUserConditions": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5a8d627c-2074-46e0-bec2-7898588d92a3"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "teamConditions",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Response": {
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ],
+            "List_rows_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "897e487d-5000-4b68-abaf-f622dfe2b016"
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "users": "@outputs('List_rows_2')?['body/value']",
+              "teams": "@outputs('List_rows')?['body/value']"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "users": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "@@odata.type": {
+                        "type": "string"
+                      },
+                      "@@odata.id": {
+                        "type": "string"
+                      },
+                      "@@odata.etag": {
+                        "type": "string"
+                      },
+                      "@@odata.editLink": {
+                        "type": "string"
+                      },
+                      "firstname": {
+                        "type": "string"
+                      },
+                      "fullname": {
+                        "type": "string"
+                      },
+                      "internalemailaddress": {
+                        "type": "string"
+                      },
+                      "isdisabled@OData.Community.Display.V1.FormattedValue": {
+                        "type": "string"
+                      },
+                      "isdisabled": {
+                        "type": "boolean"
+                      },
+                      "lastname": {
+                        "type": "string"
+                      },
+                      "systemuserid@odata.type": {
+                        "type": "string"
+                      },
+                      "systemuserid": {
+                        "type": "string"
+                      },
+                      "ownerid@odata.type": {
+                        "type": "string"
+                      },
+                      "ownerid": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "@@odata.type",
+                      "@@odata.id",
+                      "@@odata.etag",
+                      "@@odata.editLink",
+                      "firstname",
+                      "fullname",
+                      "internalemailaddress",
+                      "isdisabled@OData.Community.Display.V1.FormattedValue",
+                      "isdisabled",
+                      "lastname",
+                      "systemuserid@odata.type",
+                      "systemuserid",
+                      "ownerid@odata.type",
+                      "ownerid"
+                    ]
+                  }
+                },
+                "teams": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "@@odata.type": {
+                        "type": "string"
+                      },
+                      "@@odata.id": {
+                        "type": "string"
+                      },
+                      "@@odata.etag": {
+                        "type": "string"
+                      },
+                      "@@odata.editLink": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "teamid@odata.type": {
+                        "type": "string"
+                      },
+                      "teamid": {
+                        "type": "string"
+                      },
+                      "teamtype@OData.Community.Display.V1.FormattedValue": {
+                        "type": "string"
+                      },
+                      "teamtype": {
+                        "type": "integer"
+                      },
+                      "ownerid@odata.type": {
+                        "type": "string"
+                      },
+                      "ownerid": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "@@odata.type",
+                      "@@odata.id",
+                      "@@odata.etag",
+                      "@@odata.editLink",
+                      "name",
+                      "teamid@odata.type",
+                      "teamid",
+                      "teamtype@OData.Community.Display.V1.FormattedValue",
+                      "teamtype",
+                      "ownerid@odata.type",
+                      "ownerid"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "accessProfileId": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "8c84b81b-5be4-42cd-b535-e43c59466bed"
+          },
+          "type": "Compose",
+          "inputs": "@triggerBody()['accessProfileId_Inputs']"
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Get_Access_Management_Setup": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9c42012a-62da-4954-ada5-6cfea4e5972e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "environmentUrl",
+                "type": "string",
+                "value": "@{first(split(first(outputs('Get_Access_Management_Setup')?['body/value'])?['@odata.id'], 'api/data/'))}"
+              }
+            ]
+          }
+        },
+        "List_rows": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5fee6c2f-8b1f-4de7-adda-2d5377bf3d7c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "teams",
+              "fetchXml": "<fetch>\n  <entity name=\"team\">\n    <attribute name=\"emailaddress\" />\n    <attribute name=\"name\" />\n    <attribute name=\"teamid\" />\n    <attribute name=\"teamtype\" />\n    <filter type=\"or\">\n@{if(greater(length(variables('teamConditions')), 0), variables('teamConditions'), '<condition attribute=\"teamid\" operator=\"eq\" value=\"00000000-0000-0000-0000-000000000000\" />')}\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "List_rows_2": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "17e9e67d-b400-4a34-80a8-9f12620890b7"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "fetchXml": "<fetch>\n  <entity name=\"systemuser\">\n    <attribute name=\"firstname\" />\n    <attribute name=\"fullname\" />\n    <attribute name=\"internalemailaddress\" />\n    <attribute name=\"isdisabled\" />\n    <attribute name=\"lastname\" />\n    <filter type=\"or\">\n@{if(greater(length(variables('systemUserConditions')), 0), variables('systemUserConditions'), '<condition attribute=\"systemuserid\" operator=\"eq\" value=\"00000000-0000-0000-0000-000000000000\" />')}\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -7,6 +7,22 @@
       "ComponentName": "CustomControl",
       "Identifier": "cat_PowerCAT.Facepile",
       "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.Facepile",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.Facepile",
+      "IdentifierType": 0
     }
   ],
   "DatasetName": "default.cds",
