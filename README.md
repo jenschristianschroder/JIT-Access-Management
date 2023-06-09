@@ -1,5 +1,13 @@
 # JIT-Access-Management
 
+## NOTE
+
+As of v1.0.20230609.1 Access Profiles are restricted to only the users they have been shared with.
+If you are upgrading from previous version you need to share your Access Profiles with users.
+See [Share Access Profiles with users](/README.md#Share-Access-Profile-with-users)
+
+## Introduction
+
 Just-In-Time Access Management Solution for Power Platform
 
 Allow Makers to request Just-In-Time access to Power Platform Environments based on configured Access Profiles.
@@ -67,6 +75,14 @@ Audit needs to be enabled in the environment for auditing of Access Profiles and
 5. Select the Associated record.
 6. Select the **Approval Type** of Approval Process you want to apply to the Access Profile.
 7. Add the users who should be part of the Approval process.
+
+### Share Access Profile with users
+
+By default, an **Access Profile** is not shared with any users. An Access Management administrator needs to share the **Access Profile** with relevant teams or users for users to be able to request access via the profile.
+
+**Access Profiles** should be shared with the **Read** and **Apend To** privileges.
+
+For guidance on how to share a record see the official documentation here : [Share rows with a user or team](https://learn.microsoft.com/en-us/power-apps/user/share-row).
 
 ## Share the JIT Access Request Canvas App with users
 
