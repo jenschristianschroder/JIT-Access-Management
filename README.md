@@ -80,7 +80,7 @@ Audit needs to be enabled in the environment for auditing of Access Profiles and
 
 By default, an **Access Profile** is not shared with any users. An Access Management administrator needs to share the **Access Profile** with relevant teams or users for users to be able to request access via the profile.
 
-**Access Profiles** should be shared with the **Read** and **Apend To** privileges.
+**Access Profiles** should be shared with the **Read** and **Append To** privileges.
 
 For guidance on how to share a record see the official documentation here : [Share rows with a user or team](https://learn.microsoft.com/en-us/power-apps/user/share-row).
 
