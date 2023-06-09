@@ -54,6 +54,13 @@
       <statecode>0</statecode>
       <statuscode>1</statuscode>
     </connectionreference>
+    <connectionreference connectionreferencelogicalname="cat_sharedpowerappsforappmakers_19378">
+      <connectionreferencedisplayname>Power Apps for Makers AccessManagement-19378</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_powerappsforappmakers</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
     <connectionreference connectionreferencelogicalname="cat_sharedpowerplatformforadmins_e2509">
       <connectionreferencedisplayname>Power Platform for Admins AccessManagement-e2509</connectionreferencedisplayname>
       <connectorid>/providers/Microsoft.PowerApps/apis/shared_powerplatformforadmins</connectorid>

@@ -13,6 +13,9 @@
   <contextvalue>cat_accessprofile</contextvalue>
   <fonticon>$clientsvg:EnableSecurityRoles</fonticon>
   <hidden>0</hidden>
+  <iconwebresourceid>
+    <webresourceid>2f0bb0c9-fab4-4f86-b696-63a073f7a027</webresourceid>
+  </iconwebresourceid>
   <iscustomizable>1</iscustomizable>
   <isdisabled>0</isdisabled>
   <isgrouptitlehidden>0</isgrouptitlehidden>

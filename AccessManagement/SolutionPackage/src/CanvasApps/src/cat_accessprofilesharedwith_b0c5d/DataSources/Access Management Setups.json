@@ -1,0 +1,99 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cat_accessmanagementsetups",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cat_accessmanagementsetup",
+    "Name": "Access Management Setups",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cat_accessmanagementsetup_AsyncOperations": "System Jobs",
+      "cat_accessmanagementsetup_BulkDeleteFailures": "Bulk Delete Failures",
+      "cat_accessmanagementsetup_DuplicateBaseRecord": "Duplicate Records (cat_accessmanagementsetup_DuplicateBaseRecord)",
+      "cat_accessmanagementsetup_DuplicateMatchingRecord": "Duplicate Records (cat_accessmanagementsetup_DuplicateMatchingRecord)",
+      "cat_accessmanagementsetup_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cat_accessmanagementsetup_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cat_accessmanagementsetup_ProcessSession": "Process Sessions",
+      "cat_accessmanagementsetup_SyncErrors": "Sync Errors",
+      "cat_accessmanagementsetupid": "Access Management Setup",
+      "cat_applicationregistrationid": "Application Registration Id",
+      "cat_applicationregistrationsecret": "Application Registration Secret",
+      "cat_name": "Name",
+      "cat_tenantid": "Tenant",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Access Management Setups",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Access Management Setups (Views)",
+    "Name": "_cat_accessmanagementsetup_views",
+    "RelatedEntityName": "Access Management Setups",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1f2b0fb0-3803-4739-87e9-30e4201117cc": "Inactive Access Management Setups",
+      "5bcbbfb6-d3b0-43ae-b314-ae3448485bc5": "Active Access Management Setups",
+      "b58a0c55-2d12-4c60-88eb-fe384306d351": "Access Management Setup Lookup View",
+      "b6c52bbf-6dc2-4d2a-b440-4247276b5ed8": "Access Management Setup Advanced Find View",
+      "b869563b-63e8-4beb-9db1-fcdc1ca4f9e8": "Access Management Setup Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Access Management Setups)",
+    "Name": "cat_accessmanagementsetup_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Access Management Setups"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Access Management Setups",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Access Management Setups)",
+    "Name": "cat_accessmanagementsetup_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Access Management Setups"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Access Management Setups",
+    "Type": "OptionSetInfo"
+  }
+]

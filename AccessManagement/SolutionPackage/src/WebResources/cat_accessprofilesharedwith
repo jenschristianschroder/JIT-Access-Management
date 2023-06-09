@@ -1,0 +1,27 @@
+// Side Dialog
+function openAccessProfileShared(SelectedControlSelectedItemReferences)
+{
+    console.log(SelectedControlSelectedItemReferences);
+
+    var pageInput = {
+        pageType: "custom",
+        name: "cat_accessprofilesharedwith_b0c5d",
+        recordId: SelectedControlSelectedItemReferences
+    };
+    var navigationOptions = {
+        target: 2, 
+        position: 2,
+        width: {value: 500, unit: "px"},
+        title: "Access Profile Shared With"
+    };
+    Xrm.Navigation.navigateTo(pageInput, navigationOptions)
+        .then(
+            function () {
+                // Called when the dialog closes
+            }
+        ).catch(
+            function (error) {
+                // Handle error
+            }
+        );
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "f2fa73a2-d811-419f-b1dd-2f023a963c94",
+    "Name": "Retrieve-Shared-Access",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "4df6fe63-c805-ee11-8f6e-000d3a246956"
+  }
+]

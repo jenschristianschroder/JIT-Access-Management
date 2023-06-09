@@ -22,6 +22,13 @@
         <SubArea Id="subarea_2ab78072" VectorIcon="/WebResources/SLAManagement/_imgs/SLA.svg" Icon="/WebResources/SLAManagement/_imgs/SLA.svg" Entity="cat_accessprofile" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
         <SubArea Id="subarea_37735243" VectorIcon="/WebResources/AppCommon/ControlWS/SummaryPageImages/BPF_HighContrast.svg" Icon="/WebResources/AppCommon/ControlWS/SummaryPageImages/BPF_HighContrast.svg" Entity="cat_accessrequest" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
       </Group>
+      <Group Id="group_27a091b8" ResourceId="SitemapDesigner.NewGroup" DescriptionResourceId="SitemapDesigner.NewGroup" IntroducedVersion="7.0.0.0" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="Environment Users" />
+        </Titles>
+        <SubArea Id="subarea_fe317c93" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="systemuser" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
+        <SubArea Id="subarea_c8cf7eb6" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="team" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
+      </Group>
     </Area>
     <Area Id="area_4aa32c0a" ResourceId="SitemapDesigner.NewTitle" DescriptionResourceId="SitemapDesigner.NewTitle" VectorIcon="/WebResources/AppCommon/ControlWS/HeaderIconImages/ServiceConfig.svg" Icon="/WebResources/AppCommon/ControlWS/HeaderIconImages/ServiceConfig.svg" ShowGroups="true" IntroducedVersion="7.0.0.0">
       <Titles>
