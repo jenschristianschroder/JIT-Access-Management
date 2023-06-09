@@ -4,7 +4,7 @@
 
 As of v1.0.20230609.1 Access Profiles are restricted to only the users they have been shared with.
 If you are upgrading from previous version you need to share your Access Profiles with users.
-See [Share Access Profiles with users](/README.md#Share-Access-Profile-with-users)
+See [Share Access Profiles with users](./#Share-Access-Profile-with-users)
 
 ## Introduction
 
