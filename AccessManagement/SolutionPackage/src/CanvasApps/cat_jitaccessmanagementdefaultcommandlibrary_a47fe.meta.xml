@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>cat_jitaccessmanagementdefaultcommandlibrary_a47fe</Name>
-  <AppVersion>2023-06-06T13:05:28Z</AppVersion>
+  <AppVersion>2023-06-09T07:54:09Z</AppVersion>
   <Status>Ready</Status>
-  <CreatedByClientVersion>3.23052.29.0</CreatedByClientVersion>
+  <CreatedByClientVersion>3.23055.16.0</CreatedByClientVersion>
   <MinClientVersion>0.0.0.0</MinClientVersion>
-  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","sienaVersion":"20230517T063302Z-3.23051.23.0","deviceCapabilities":"","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","publisherVersion":"3.23051.23","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false"}</Tags>
+  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","sienaVersion":"20230609T074316Z-3.23055.16.0","deviceCapabilities":"","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","publisherVersion":"3.23051.23","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false"}</Tags>
   <IsCdsUpgraded>0</IsCdsUpgraded>
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>RGBA(251,101,60,255)</BackgroundColor>
   <DisplayName>JITAccessManagement_DefaultCommandLibrary</DisplayName>
-  <Description></Description>
+  <Description xsi:nil="true"></Description>
   <CommitMessage>Saved by Command designer.</CommitMessage>
   <Publisher></Publisher>
   <AuthorizationReferences>[]</AuthorizationReferences>
@@ -24,8 +24,8 @@
   <AdminControlBypassConsent>0</AdminControlBypassConsent>
   <EmbeddedApp xsi:nil="true"></EmbeddedApp>
   <IntroducedVersion>1.0</IntroducedVersion>
-  <CdsDependencies>{"cdsdependencies":[{"componenttype":1,"logicalname":"cat_accessrequest"},{"componenttype":1,"logicalname":"cat_accessprofile"},{"componenttype":1,"logicalname":"cat_accessprofileapprovers"},{"componenttype":1,"logicalname":"cat_accessrequestactivity"}]}</CdsDependencies>
+  <CdsDependencies>{"cdsdependencies":[{"logicalname":"cat_accessrequest","componenttype":1},{"logicalname":"cat_accessprofile","componenttype":1},{"logicalname":"cat_accessprofileapprovers","componenttype":1},{"logicalname":"cat_accessrequestactivity","componenttype":1}]}</CdsDependencies>
   <IsCustomizable>1</IsCustomizable>
-  <BackgroundImageUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_85526_BackgroundImageUri</BackgroundImageUri>
-  <DocumentUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_94905_DocumentUri.msapp</DocumentUri>
+  <BackgroundImageUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_49892_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/cat_jitaccessmanagementdefaultcommandlibrary_99497_DocumentUri.msapp</DocumentUri>
 </CanvasApp>

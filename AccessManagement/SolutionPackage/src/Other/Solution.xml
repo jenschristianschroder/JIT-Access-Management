@@ -86,6 +86,7 @@
       <RootComponent type="20" id="{a5d9ee8e-bfe9-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="20" id="{dec607cd-bfe9-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="29" id="{1796d559-98f0-ed11-8849-6045bd8ccc09}" behavior="0" />
+      <RootComponent type="29" id="{4df6fe63-c805-ee11-8f6e-000d3a246956}" behavior="0" />
       <RootComponent type="29" id="{5470ca61-85e9-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="29" id="{6b460363-9ce9-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="29" id="{97d2c821-0af3-ed11-8849-6045bd8ccc09}" behavior="0" />
@@ -95,11 +96,13 @@
       <RootComponent type="29" id="{e0bcf20f-97f0-ed11-8849-6045bd8ccc09}" behavior="0" />
       <RootComponent type="29" id="{f377c3d1-5900-ee11-8f6d-000d3a246956}" behavior="0" />
       <RootComponent type="300" schemaName="cat_accessprofilediagnostics_33039" behavior="0" />
+      <RootComponent type="300" schemaName="cat_accessprofilesharedwith_b0c5d" behavior="0" />
       <RootComponent type="300" schemaName="cat_jitaccessmanagement_d41cc" behavior="0" />
       <RootComponent type="300" schemaName="cat_jitaccessmanagementdefaultcommandlibrary_a47fe" behavior="0" />
       <RootComponent type="300" schemaName="cat_jitaccessrequest_201f8" behavior="0" />
       <RootComponent type="60" id="{1af66d4e-2ff7-ed11-8848-000d3a246956}" behavior="0" />
       <RootComponent type="61" schemaName="cat_accessprofilediagnostics" behavior="0" />
+      <RootComponent type="61" schemaName="cat_accessprofilesharedwith" behavior="0" />
       <RootComponent type="61" schemaName="cat_accessrequestquickcreateformlibrary" behavior="0" />
       <RootComponent type="62" schemaName="cat_JITAccessManagement" behavior="0" />
       <RootComponent type="70" id="{4d6247ee-bee9-ed11-8849-6045bd8ccc09}" behavior="0" />
@@ -115,8 +118,20 @@
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="AppCommon/ControlWS/SummaryPageImages/BPF_HighContrast.svg" displayName="AppCommon/ControlWS/SummaryPageImages/BPF_HighContrast.svg" solution="msdynce_AppCommon (9.0.4.0066)">
+          <package>msdynce_AppCommonAnchor (9.0.23051.10001)</package>
+        </Required>
+        <Dependent type="62" schemaName="cat_JITAccessManagement" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
         <Dependent type="80" schemaName="cat_JITAccessManagement" displayName="JIT Access Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="SLAManagement/_imgs/SLA.svg" displayName="SLAManagement/_imgs/SLA.svg" solution="msdynce_ServiceLevelAgreementExtension (9.0.23051.1004)">
+          <package>msdynce_ServiceLevelAgreementAnchor (9.0.23051.1004)</package>
+        </Required>
+        <Dependent type="appaction" displayName="cat__AccessProfile!d9fe7871b7cc44c4838fe3a0cd136fbb!cat_JITAccessManagement!cat_accessprofile!0" id.uniquename="cat__AccessProfile!d9fe7871b7cc44c4838fe3a0cd136fbb!cat_JITAccessManagement!cat_accessprofile!0" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.AutoWidthLabel" displayName="cat_PowerCAT.AutoWidthLabel" solution="CreatorKitCore (1.0.20230421.1)">
@@ -141,6 +156,12 @@
           <package>CreatorKitCore (1.0.20230421.1)</package>
         </Required>
         <Dependent type="300" schemaName="cat_accessprofilediagnostics_33039" displayName="Access Profile Diagnostics" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="cat_PowerCAT.Facepile" displayName="cat_PowerCAT.Facepile" solution="CreatorKitCore (1.0.20230421.1)">
+          <package>CreatorKitCore (1.0.20230421.1)</package>
+        </Required>
+        <Dependent type="300" schemaName="cat_accessprofilesharedwith_b0c5d" displayName="Access Profile Shared With" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.Facepile" displayName="cat_PowerCAT.Facepile" solution="CreatorKitCore (1.0.20230421.1)">

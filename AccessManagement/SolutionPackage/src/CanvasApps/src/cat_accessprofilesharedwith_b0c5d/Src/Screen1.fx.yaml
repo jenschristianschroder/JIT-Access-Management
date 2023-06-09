@@ -1,0 +1,806 @@
+Screen1 As screen:
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: =
+
+    Label1 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontSize: =12
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: =accessProfile.Name
+        Width: =320
+        X: =10
+        Y: =0
+        ZIndex: =1
+
+    Label3 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Name: "
+        Width: =92
+        X: =10
+        Y: =136
+        ZIndex: =3
+
+    Icon1 As icon.Reload:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Color: =RGBA(0, 120, 212, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(220, 220, 220, 1)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(diagnosticsRunning, DisplayMode.Disabled, DisplayMode.Edit)
+        Height: =24
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Icon: =Icon.Reload
+        OnSelect: |-
+            =Set(diagnosticsRunning, true);
+            Concurrent(
+                Set(sharedResult, 'Retrieve-Shared-Access'.Run(accessProfile.'Environment Url')),
+                ClearCollect(
+                    UserPersonas,
+                    {
+                        ItemPersonaKey: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', ""),
+                        ItemPersonaName: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Full Name', ""),
+                        IsImage: false,
+                        ItemPersonaImageInfo:
+                        //Get base64 image data
+                        Substitute(
+                            JSON(
+                                Office365Users.UserPhotoV2(If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', "")),
+                                JSONFormat.IncludeBinaryData
+                            ),
+                            """",
+                            ""
+                        ),
+                        ItemPersonaPresence: "Away",
+                        ItemPersonaClickable: false
+                    }
+                )
+            );
+            
+            
+            Set(diagnosticsRunning, false);
+        PaddingBottom: =3
+        PaddingLeft: =3
+        PaddingRight: =3
+        PaddingTop: =3
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        Width: =24
+        X: =12
+        Y: =63
+        ZIndex: =6
+
+    Button2 As Button:
+        BorderColor: =RGBA(230, 230, 230, 1)
+        BorderStyle: =BorderStyle.Solid
+        BorderThickness: =1
+        DisplayMode: =If(diagnosticsRunning, DisplayMode.Disabled, DisplayMode.Edit)
+        FillColor: =RGBA(255, 255, 255, 1)
+        Height: =32
+        HoverBorderColor: =RGBA(230, 230, 230, 1)
+        HoverFillColor: =RGBA(230, 230, 230, 1)
+        HoverTextColor: =RGBA(9, 33, 98, 1)
+        OnSelect: |-
+            =Set(diagnosticsRunning, true);
+            Set(sharedResult, Blank());
+            Concurrent(
+                Set(sharedResult, 'Retrieve-Shared-Access'.Run(accessProfile.'Access Profile')),
+                ClearCollect(
+                    UserPersonas,
+                    {
+                        ItemPersonaKey: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', ""),
+                        ItemPersonaName: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Full Name', ""),
+                        IsImage: false,
+                        ItemPersonaImageInfo:
+                        //Get base64 image data
+                        Substitute(
+                            JSON(
+                                Office365Users.UserPhotoV2(If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', "")),
+                                JSONFormat.IncludeBinaryData
+                            ),
+                            """",
+                            ""
+                        ),
+                        ItemPersonaPresence: "Away",
+                        ItemPersonaClickable: false
+                    }
+                )
+            );
+            
+            ClearCollect(sharedWithUsers,
+                AddColumns(sharedResult.users, 
+                    "ItemPersonaKey",
+                    internalemailaddress,
+                    "ItemPersonaName",
+                    fullname,
+                    "IsImage",
+                    false,
+                    "ItemPersonaImageInfo",
+                    //Get base64 image data
+                    Substitute(
+                        JSON(
+                            Office365Users.UserPhotoV2(internalemailaddress),
+                            JSONFormat.IncludeBinaryData
+                        ),
+                        """",
+                        ""
+                    ),
+                    "ItemPersonaPresence",
+                    "Away",
+                    "ItemPersonaClickable",
+                    true
+                )
+            );
+            
+            
+            Set(diagnosticsRunning, false);
+        Text: ="Refresh"
+        TextColor: =RGBA(0, 120, 212, 1)
+        Width: =141
+        X: =42
+        Y: =58
+        ZIndex: =7
+
+    Rectangle1 As rectangle:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledFill: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderColor: =RGBA(0, 120, 212, 1)
+        Height: =1
+        HoverFill: =RGBA(0, 120, 212, 1)
+        PressedFill: =RGBA(0, 120, 212, 1)
+        Width: =Parent.Width - 20
+        X: =10
+        Y: =103
+        ZIndex: =8
+
+    Label3_1 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontSize: =12
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: ="Details "
+        Width: =68
+        X: =10
+        Y: =104
+        ZIndex: =9
+
+    Label3_2 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Environment: "
+        Width: =92
+        X: =10
+        Y: =202
+        ZIndex: =10
+
+    Label3_3 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Id: "
+        Width: =92
+        X: =10
+        Y: =232
+        ZIndex: =12
+
+    Label3_4 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Url: "
+        Width: =92
+        X: =10
+        Y: =264
+        ZIndex: =13
+
+    Label3_5 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Security Role: "
+        Width: =101
+        X: =10
+        Y: =296
+        ZIndex: =14
+
+    Label3_6 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Approval: "
+        Width: =101
+        X: =10
+        Y: =328
+        ZIndex: =15
+
+    Label3_7 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: =accessProfile.'Approval Required'
+        Width: =356
+        X: =111
+        Y: =328
+        ZIndex: =16
+
+    Label3_8 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: =accessProfile.'Security Role'
+        Width: =356
+        X: =111
+        Y: =296
+        ZIndex: =17
+
+    Label3_10 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: =accessProfile.'Environment Id'
+        Width: =356
+        X: =111
+        Y: =232
+        ZIndex: =19
+
+    HtmlText1 As htmlViewer:
+        Height: =32
+        HtmlText: =$"<a href='{accessProfile.'Environment Url'}'>{accessProfile.'Environment Url'}</a>"
+        PaddingLeft: =0
+        Width: =337
+        X: =111
+        Y: =264
+        ZIndex: =20
+
+    Label3_11 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: =accessProfile.'Environment Name'
+        Width: =356
+        X: =111
+        Y: =202
+        ZIndex: =21
+
+    Label3_12 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: =accessProfile.Name
+        Width: =356
+        X: =111
+        Y: =136
+        ZIndex: =22
+
+    Label3_9 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Status: "
+        Width: =101
+        X: =10
+        Y: =360
+        ZIndex: =23
+
+    Label3_13 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Text: =accessProfile.'Status Reason'
+        Width: =356
+        X: =111
+        Y: =360
+        ZIndex: =24
+
+    Timer1 As timer:
+        AutoPause: =false
+        AutoStart: =true
+        BorderColor: =RGBA(0, 120, 212, 1)
+        BorderStyle: =BorderStyle.None
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Duration: =1000
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderThickness: =2
+        Font: =Font.'Segoe UI'
+        HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        OnTimerEnd: |-
+            =Set(diagnosticsRunning, true);
+            Set(sharedResult, Blank());
+            Concurrent(
+                Set(sharedResult, 'Retrieve-Shared-Access'.Run(accessProfile.'Access Profile')),
+                ClearCollect(
+                    UserPersonas,
+                    {
+                        ItemPersonaKey: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', ""),
+                        ItemPersonaName: If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Full Name', ""),
+                        IsImage: false,
+                        ItemPersonaImageInfo:
+                        //Get base64 image data
+                        Substitute(
+                            JSON(
+                                Office365Users.UserPhotoV2(If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Primary Email', "")),
+                                JSONFormat.IncludeBinaryData
+                            ),
+                            """",
+                            ""
+                        ),
+                        ItemPersonaPresence: "Away",
+                        ItemPersonaClickable: false
+                    }
+                )
+            );
+            
+            ClearCollect(sharedWithUsers,
+                AddColumns(sharedResult.users, 
+                    "ItemPersonaKey",
+                    internalemailaddress,
+                    "ItemPersonaName",
+                    fullname,
+                    "IsImage",
+                    false,
+                    "ItemPersonaImageInfo",
+                    //Get base64 image data
+                    Substitute(
+                        JSON(
+                            Office365Users.UserPhotoV2(internalemailaddress),
+                            JSONFormat.IncludeBinaryData
+                        ),
+                        """",
+                        ""
+                    ),
+                    "ItemPersonaPresence",
+                    "Away",
+                    "ItemPersonaClickable",
+                    true
+                )
+            );
+            
+            
+            Set(diagnosticsRunning, false);
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        Size: =10.5
+        Visible: =false
+        X: =307
+        Y: =48
+        ZIndex: =52
+
+    "ComboBox1 As 'Combo box'.pcfdataset":
+        DisplayMode: =If(diagnosticsRunning, DisplayMode.Disabled, DisplayMode.Edit)
+        Height: =32
+        Items: ='Access Profiles'
+        OnChange: |
+            =Set(accessProfile, LookUp('Access Profiles', 'Access Profile' = Self.Selected.'Access Profile'));
+            Select(Button2);
+        Visible: =debugMode
+        Width: =320
+        X: =111
+        Y: =107
+        ZIndex: =58
+
+        Name1 As pcfDataField.textualColumn:
+            FieldDisplayName: ="Name"
+            FieldName: ="cat_name"
+            FieldType: ="s"
+            FieldVariantName: ="textualColumn"
+            Order: =1
+            ZIndex: =21
+
+    Gallery1 As gallery.BrowseLayout_Vertical_TwoTextOneImageVariant_pcfCore:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        DelayItemLoading: =true
+        FocusedBorderColor: =RGBA(0, 120, 212, 1)
+        FocusedBorderThickness: =2
+        Height: =Min(Self.AllItemsCount * Self.TemplateHeight, Parent.Height - Self.Y) 
+        Items: =sharedWithUsers
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =48
+        Width: =500
+        Y: =Label2_1.Y + Label2_1.Height
+        ZIndex: =63
+
+        Rectangle2 As rectangle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(0,0,0,0)
+            Fill: =RGBA(0,0,0,0)
+            FocusedBorderColor: =RGBA(0, 120, 212, 1)
+            Height: =Parent.TemplateHeight
+            HoverFill: =RGBA(0,0,0,0)
+            OnSelect: =Select(Parent)
+            PressedFill: =RGBA(0,0,0,0)
+            TabIndex: =0
+            Width: =Parent.TemplateWidth
+            ZIndex: =1
+
+        Title1 As Label:
+            DisplayMode: =DisplayMode.Edit
+            FontSize: =10.5
+            FontWeight: =FontWeight.Semibold
+            Height: =24
+            OnSelect: =Select(Parent)
+            TabIndex: =-1
+            Text: =ThisItem.fullname
+            VerticalAlignment: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Self.X - 8
+            X: =Facepile1.X + Facepile1.Width
+            Y: =((Parent.TemplateHeight - 36) / 2) - 4
+            ZIndex: =3
+
+        Subtitle1 As Label:
+            DisplayMode: =DisplayMode.Edit
+            FontSize: =9
+            FontWeight: =FontWeight.Normal
+            Height: =24
+            OnSelect: =Select(Parent)
+            TabIndex: =-1
+            Text: =ThisItem.fullname
+            VerticalAlignment: =VerticalAlign.Top
+            Width: =Title1.Width
+            X: =Title1.X
+            Y: =Title1.Y + Title1.Height - 6
+            ZIndex: =4
+
+        "Facepile1 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
+            DisplayMode: =DisplayMode.Edit
+            Height: =33
+            ImageShouldFadeIn: =true
+            Items: |+
+                ={
+                    ItemPersonaKey: ThisItem.ItemPersonaKey,
+                    ItemPersonaName: ThisItem.ItemPersonaName,
+                    IsImage: false,
+                    ItemPersonaImageInfo: ThisItem.ItemPersonaImageInfo,
+                    ItemPersonaImage: false,
+                    ItemPersonaPresence: "Away",
+                    ItemPersonaClickable: false
+                }
+                
+            MaxDisplayablePersonas: =1
+            OnSelect: =Select(Parent)
+            ShowAddButton: =false
+            Width: =40
+            X: =13
+            Y: =11
+            ZIndex: =5
+
+    "Facepile1_1 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        ImageShouldFadeIn: =true
+        Items: =UserPersonas
+        MaxDisplayablePersonas: =1
+        OverflowButtonType: ='PowerCAT.Facepile.OverflowButtonType'.none
+        PersonaSize: ='PowerCAT.Facepile.PersonaSize'.Size32
+        Visible: =IsType(accessProfile.Owner, Users)
+        Width: =If(IsType(accessProfile.Owner, Users), 37, 0)
+        X: =109
+        Y: =170
+        ZIndex: =74
+
+    Button1 As Button:
+        Alignment: =Align.Center
+        ButtonType: ='Button.ButtonType'.Primary
+        DisplayMode: =DisplayMode.Edit
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Normal
+        Height: =32
+        OnSelect: |-
+            =ClearCollect(
+                UserPersonas,
+                {
+                    ItemPersonaKey: User().Email,
+                    ItemPersonaName: User().FullName,
+                    IsImage: false,
+                    ItemPersonaImageInfo:
+                    //Get base64 image data
+                    Substitute(
+                        JSON(
+                            Office365Users.UserPhotoV2(User().Email),
+                            JSONFormat.IncludeBinaryData
+                        ),
+                        """",
+                        ""
+                    ),
+                    ItemPersonaPresence: "Away",
+                    ItemPersonaClickable: false
+                }
+            );
+        VerticalAlignment: =VerticalAlign.Middle
+        Visible: =false
+        Width: =96
+        X: =404
+        Y: =4
+        ZIndex: =75
+
+    Label3_15 As Label:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Text: |-
+            ="Owner: "
+        Width: =92
+        X: =10
+        Y: =168
+        ZIndex: =76
+
+    Label3_19 As Label:
+        DisplayMode: =DisplayMode.Edit
+        FontWeight: =FontWeight.Semibold
+        Height: =31
+        Text: =If(IsType(accessProfile.Owner, Users), AsType(accessProfile.Owner, Users).'Full Name', AsType(accessProfile.Owner, Teams).'Team Name')
+        Width: =266
+        X: =Facepile1_1.X + Facepile1_1.Width
+        Y: =171
+        ZIndex: =77
+
+    "Facepile2 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
+        DisplayMode: =DisplayMode.Edit
+        Height: =47
+        Items: =UserPersonas
+        OverflowButtonType: ='PowerCAT.Facepile.OverflowButtonType'.descriptive
+        PersonaSize: ='PowerCAT.Facepile.PersonaSize'.Size32
+        Visible: =false
+        Width: =200
+        X: =300
+        Y: =4
+        ZIndex: =78
+
+    Gallery1_1 As gallery.BrowseLayout_Vertical_TwoTextOneImageVariant_pcfCore:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        DelayItemLoading: =true
+        FocusedBorderColor: =RGBA(0, 120, 212, 1)
+        FocusedBorderThickness: =2
+        Height: =Min(Self.AllItemsCount * Self.TemplateHeight, 4 * Self.TemplateHeight) 
+        Items: =sharedResult.teams
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =Navigate(LookUp(Teams, Team = GUID(ThisItem.teamid)));
+        TemplatePadding: =0
+        TemplateSize: =48
+        Width: =500
+        Y: =Label2.Y + Label2.Height
+        ZIndex: =79
+
+        Rectangle2_1 As rectangle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(0,0,0,0)
+            Fill: =RGBA(0,0,0,0)
+            FocusedBorderColor: =RGBA(0, 120, 212, 1)
+            Height: =Parent.TemplateHeight
+            HoverFill: =RGBA(0,0,0,0)
+            OnSelect: =Select(Parent)
+            PressedFill: =RGBA(0,0,0,0)
+            TabIndex: =0
+            Width: =Parent.TemplateWidth
+            ZIndex: =1
+
+        Title1_1 As Label:
+            DisplayMode: =DisplayMode.Edit
+            FontSize: =10.5
+            FontWeight: =FontWeight.Semibold
+            Height: =24
+            OnSelect: =Select(Parent)
+            TabIndex: =-1
+            Text: =ThisItem.name
+            VerticalAlignment: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Self.X - 8
+            X: =Facepile1_2.X + Facepile1_2.Width
+            Y: =12
+            ZIndex: =3
+
+        "Facepile1_2 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
+            DisplayMode: =DisplayMode.Edit
+            Height: =32
+            ImageShouldFadeIn: =true
+            Items: |+
+                ={
+                    ItemPersonaKey: ThisItem.name,
+                    ItemPersonaName: ThisItem.name,
+                    IsImage: false,
+                    ItemPersonaImageInfo: "",
+                    ItemPersonaImage: false,
+                    ItemPersonaPresence: "Away",
+                    ItemPersonaClickable: false
+                }
+                
+            MaxDisplayablePersonas: =1
+            OnSelect: =Select(Parent)
+            ShowAddButton: =false
+            Width: =37
+            X: =13
+            Y: =11
+            ZIndex: =5
+
+    Label2 As Label:
+        Alignment: =Align.Left
+        DisplayMode: =DisplayMode.Edit
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Overflow: ='Label.Overflow'.Hidden
+        Text: ="Shared with Teams"
+        TextRole: ='Label.TextRole'.Default
+        VerticalAlignment: =VerticalAlign.Middle
+        Width: =320
+        X: =10
+        Y: =405
+        ZIndex: =80
+
+    Label2_1 As Label:
+        Alignment: =Align.Left
+        DisplayMode: =DisplayMode.Edit
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =32
+        Overflow: ='Label.Overflow'.Hidden
+        Text: ="Shared with Users"
+        TextRole: ='Label.TextRole'.Default
+        VerticalAlignment: =VerticalAlign.Middle
+        Width: =320
+        X: =10
+        Y: =If(Gallery1_1.Height = 0, Gallery1_1.Y + 40, Gallery1_1.Y + Gallery1_1.Height + 20)
+        ZIndex: =81
+
+    Label4 As Label:
+        Alignment: =Align.Left
+        DisplayMode: =DisplayMode.Edit
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Normal
+        Height: =32
+        Overflow: ='Label.Overflow'.Hidden
+        Text: ="Not shared with any users"
+        TextRole: ='Label.TextRole'.Default
+        VerticalAlignment: =VerticalAlign.Middle
+        Visible: =Not(diagnosticsRunning) && Gallery1.AllItemsCount = 0
+        Width: =320
+        X: =10
+        Y: =Label2_1.Y + Label2_1.Height
+        ZIndex: =82
+
+    Label4_1 As Label:
+        Alignment: =Align.Left
+        DisplayMode: =DisplayMode.Edit
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Normal
+        Height: =32
+        Overflow: ='Label.Overflow'.Hidden
+        Text: ="Not shared with any users"
+        TextRole: ='Label.TextRole'.Default
+        VerticalAlignment: =VerticalAlign.Middle
+        Visible: =Not(diagnosticsRunning) && Gallery1_1.AllItemsCount = 0
+        Width: =320
+        X: =10
+        Y: =Label2.Y + Label2.Height
+        ZIndex: =83
+
+    Timer2 As timer:
+        AutoStart: =diagnosticsRunning
+        BorderColor: =RGBA(0, 120, 212, 1)
+        BorderStyle: =BorderStyle.None
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Duration: =50
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderThickness: =2
+        Font: =Font.'Segoe UI'
+        HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        OnTimerEnd: =Set(iconRotation, iconRotation + 10);
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        Repeat: =true
+        Size: =10.5
+        Visible: =false
+        X: =332
+        Y: =18
+        ZIndex: =86
+
+    Group1 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =86
+
+        Circle1_13 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(0, 134, 208, 1)
+            Fill: =RGBA(0, 134, 208, 1)
+            Height: =21
+            HoverFill: =RGBA(0, 134, 208, 1)
+            PressedFill: =RGBA(0, 134, 208, 1)
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =145
+            Y: =Label2.Y + 5
+            ZIndex: =84
+
+        Icon2_13 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =21
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.Reload
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Rotation: =iconRotation
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =145
+            Y: =Label2.Y + 5
+            ZIndex: =85
+
+    Group1_1 As group:
+        Height: =5
+        Width: =5
+        X: =20
+        Y: =20
+        ZIndex: =89
+
+        Circle1_14 As circle:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(0, 134, 208, 1)
+            Fill: =RGBA(0, 134, 208, 1)
+            Height: =21
+            HoverFill: =RGBA(0, 134, 208, 1)
+            PressedFill: =RGBA(0, 134, 208, 1)
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =145
+            Y: =Label2_1.Y + 5
+            ZIndex: =87
+
+        Icon2_14 As icon.CheckBadge:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(220, 220, 220, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Height: =21
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.Reload
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Rotation: =iconRotation
+            Visible: =diagnosticsRunning
+            Width: =21
+            X: =145
+            Y: =Label2_1.Y + 5
+            ZIndex: =88
+
