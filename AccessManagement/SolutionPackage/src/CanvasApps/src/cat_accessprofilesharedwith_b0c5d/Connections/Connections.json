@@ -61,6 +61,7 @@
   },
   "720a3f99-aeb4-4a76-9645-93db084b3e9c": {
     "connectionRef": {
+      "apiTier": "Standard",
       "displayName": "Logic flows",
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1636/1.0.1636.3297/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",

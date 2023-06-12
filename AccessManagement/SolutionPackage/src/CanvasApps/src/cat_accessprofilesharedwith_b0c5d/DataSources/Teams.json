@@ -6,6 +6,7 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "team",
+    "MaxGetRowsCount": 500,
     "Name": "Teams",
     "NativeCDSDataSourceInfoNameMapping": {
       "administratorid": "Administrator",

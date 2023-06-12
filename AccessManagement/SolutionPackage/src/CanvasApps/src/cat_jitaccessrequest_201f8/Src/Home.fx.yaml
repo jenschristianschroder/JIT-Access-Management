@@ -177,16 +177,54 @@ Home As screen:
                             )
                         )
                     Compact: =true
-                    CurrentSortColumn: ="created"
-                    CurrentSortDirection: ='PowerCAT.FluentDetailsList.CurrentSortDirection'.Descending
+                    CurrentSortColumn: =ctxSortCol
+                    CurrentSortDirection: |-
+                        =If(ctxSortAsc,
+                            'PowerCAT.FluentDetailsList.CurrentSortDirection'.Ascending,
+                            'PowerCAT.FluentDetailsList.CurrentSortDirection'.Descending) 
                     DisplayMode: =DisplayMode.Edit
                     Height: =Parent.Height - 30
                     InputEvent: =ctxGridEvent
-                    Items: =myRequests
+                    Items: =SortByColumns(myRequests,ctxSortCol,If(ctxSortAsc,SortOrder.Ascending,SortOrder.Descending))
                     LargeDatasetPaging: =true
                     OnChange: |-
-                        =If(CountRows(Self.SelectedItems) = 1,
-                            Concurrent(
+                        =Switch(Self.EventName,
+                            "Sort",
+                            UpdateContext({
+                                ctxSortCol:Self.SortEventColumn,
+                                ctxSortAsc:If(Self.SortEventDirection='PowerCAT.FluentDetailsList.SortEventDirection'.Ascending,true,false)
+                            })
+                            ,
+                            
+                            "OnRowSelectionChange",
+                            If(CountRows(Self.SelectedItems) = 1,
+                                Concurrent(
+                                    Refresh('Access Requests'),
+                                    Refresh('Access Request Activities'),
+                                    Refresh('Access Profile Approvers')
+                                );
+                        
+                                UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = listAccessRequests.Selected.id)});
+                        
+                                Concurrent(
+                                    ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending)),
+                                    UpdateContext({currentApprovalType: Text(LookUp('Access Profile Approvers', 'Access Profile'.'Access Profile' = currentAccessRequest.'Access Profile'.'Access Profile').'Approval Type')})
+                                );
+                                UpdateContext({showDetailPanel: true, showNewRequestPanel: false});
+                                
+                                If(currentAccessRequest.'Approval Required',
+                                    UpdateContext({currentAccessProfile: currentAccessRequest.'Access Profile'});
+                        
+                                    Clear(accessProfileApprovers);
+                                        ForAll(First(currentAccessProfile.'Access Profile Approvers').Users, 
+                                            Collect(accessProfileApprovers, { upn: ThisRecord.'Primary Email', profileImage: Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", ""), fullname: ThisRecord.'Full Name'});
+                                    );
+                                );
+                            );
+                               
+                        );
+                    OnSelect: |+
+                        =    Concurrent(
                                 Refresh('Access Requests'),
                                 Refresh('Access Request Activities'),
                                 Refresh('Access Profile Approvers')
@@ -206,49 +244,13 @@ Home As screen:
                                     ForAll(First(currentAccessProfile.'Access Profile Approvers').Users, 
                                         Collect(accessProfileApprovers, { upn: ThisRecord.'Primary Email', profileImage: Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", ""), fullname: ThisRecord.'Full Name'});
                                 );
-                                //ClearCollect(accessProfileApprovers, AddColumns(First(currentAccessProfile.'Access Profile Approvers').Users, "profileImage", Substitute(JSON(Office365Users.UserPhotoV2('Primary Email'), JSONFormat.IncludeBinaryData), """", "")));
                             );
-                           
                         
-                        );
-                        
-                        
-                        /*
-                        If(CountRows(Self.SelectedItems) = 1,
-                            Collect(selectedAccessRequestActivities, {});
-                            Clear(selectedAccessRequestActivities);
-                            UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = listAccessRequests.Selected.id)});
-                            ForAll(Sort(Filter('Access Request Activities', Regarding = currentAccessRequest), 'Date Created', SortOrder.Ascending),
-                                
-                                Collect(selectedAccessRequestActivities, 
-                                    {
-                                        ItemKey: Text(CountRows(selectedAccessRequestActivities) + 1),
-                                        ItemLabel: ThisRecord.Subject,
-                                        ItemState: Switch(Text(ThisRecord.'Status Reason'),
-                                            "Open", "WizardComplete",
-                                            "Completed", "WizardComplete",
-                                            "Canceled", "WizardComplete" 
-                                        )
-                                    }
-                                );
-                                Collect(selectedActivities,
-                                    {
-                                        ItemKey: ThisRecord.Activity,
-                                        ItemLabel: ThisRecord.Subject,
-                                        ItemStatus: ThisRecord.'Status Reason',
-                                        ItemDescription: ThisRecord.Description
-                                    }
-                                );
-                            );
-                            UpdateContext({showDetailPanel: true, showNewRequestPanel: false});
-                        )
-                        */
-                    OnSelect: =Notify("SELECT")
                     PageSize: =15
                     RaiseOnRowSelectionChangeEvent: =true
                     RecordSelected: =
                     SelectionAlwaysVisible: =false
-                    SelectRowsOnFocus: =true
+                    SelectRowsOnFocus: =false
                     Theme: =""
                     Width: =Parent.Width
                     X: =0
@@ -12222,7 +12224,7 @@ Home As screen:
 
                 Icon2 As icon.Reload:
                     Color: =ColorValue(header.Theme.palette.neutralPrimary)
-                    Height: =20
+                    Height: =18
                     Icon: =Icon.Reload
                     OnSelect: |-
                         =Concurrent(
@@ -12232,8 +12234,9 @@ Home As screen:
                         
                         UpdateContext({currentAccessRequest: LookUp('Access Requests', 'Access Request' = currentAccessRequest.'Access Request')});
                         ClearCollect(currentAccessRequestActivities,SortByColumns(Filter('Access Request Activities', Regarding = currentAccessRequest), "createdon", SortOrder.Ascending))
-                    Width: =20
-                    X: =311
+                    Width: =18
+                    X: =298
+                    Y: =3
                     ZIndex: =5
 
         Label5 As label:
@@ -12272,13 +12275,13 @@ Home As screen:
                         {
                             'Access Profile': selectedAccessProfile,
                             Name: selectedAccessProfile.Name, 
-                            'Environment Id': selectedAccessProfile.'Environment Id',
-                            'Environment Name': selectedAccessProfile.'Environment Name',
-                            'Environment Url': selectedAccessProfile.'Environment Url',
-                            'Environment Unique Name': selectedAccessProfile.'Environment Unique Name',
-                            'Security Role': selectedAccessProfile.'Security Role',
-                            'Approval Required': If(selectedAccessProfile.'Approval Required' = 'Approval Required (Access Profiles)'.Yes, 'Approval Required (Access Requests)'.Yes),
-                            Duration: selectedAccessProfile.Duration,
+                            //'Environment Id': selectedAccessProfile.'Environment Id',
+                            //'Environment Name': selectedAccessProfile.'Environment Name',
+                            //'Environment Url': selectedAccessProfile.'Environment Url',
+                            //'Environment Unique Name': selectedAccessProfile.'Environment Unique Name',
+                            //'Security Role': selectedAccessProfile.'Security Role',
+                            //'Approval Required': If(selectedAccessProfile.'Approval Required' = 'Approval Required (Access Profiles)'.Yes, 'Approval Required (Access Requests)'.Yes),
+                            //Duration: selectedAccessProfile.Duration,
                             User: LookUp(Users, 'Primary Email' = User().Email), 
                             'Notify User': tglEmailNotification Or tglTeamsNotification, 
                             'Notification Channel': If(IsEmpty(notificationChannels), Blank(), notificationChannels),

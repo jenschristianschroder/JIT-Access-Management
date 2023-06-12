@@ -16640,7 +16640,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "false",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "SelectRowsOnFocus",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
