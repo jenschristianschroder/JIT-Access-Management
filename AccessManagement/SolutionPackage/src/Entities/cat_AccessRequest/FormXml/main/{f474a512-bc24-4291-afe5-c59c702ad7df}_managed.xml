@@ -47,7 +47,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{1b81075c-5c99-4dd4-8be5-f086f12997eb}">
+                      <cell locklevel="0" id="{f74d9cf8-edbe-482d-aa70-df20166e5740}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -274,11 +274,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{1d174913-75e8-48e8-941d-4092b87a5c93}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{8378ccce-b573-4f51-8e1d-a52615e5bd9b}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Status" languagecode="1033" />
+                          <label description="Justification" languagecode="1033" />
                         </labels>
-                        <control id="statecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statecode" disabled="false" />
+                        <control id="cat_justification" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_justification" disabled="false" />
                       </cell>
                       <cell locklevel="0" id="{6fef2f59-5c1c-4743-b844-3a07a310d782}">
                         <labels>
@@ -292,11 +292,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{73e4d333-30f4-4bca-b002-c8c89757dc12}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{1d174913-75e8-48e8-941d-4092b87a5c93}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Status Reason" languagecode="1033" />
+                          <label description="Status" languagecode="1033" />
                         </labels>
-                        <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+                        <control id="statecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statecode" disabled="false" />
                       </cell>
                       <cell locklevel="0" id="{717066b6-2067-46fd-bb56-d6faffd199a9}">
                         <labels>
@@ -304,6 +304,24 @@
                         </labels>
                       </cell>
                       <cell locklevel="0" id="{916d8ca2-4da3-4d0d-be22-e55cd3ce3e84}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{73e4d333-30f4-4bca-b002-c8c89757dc12}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Status Reason" languagecode="1033" />
+                        </labels>
+                        <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="true" />
+                      </cell>
+                      <cell locklevel="0" id="{101f5660-30c8-40de-b069-76cacee00064}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{fc809b60-9ead-4e45-ab2a-a91d46ca0997}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
