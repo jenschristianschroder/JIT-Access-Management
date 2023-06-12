@@ -476,7 +476,7 @@ Screen1 As screen:
             PaddingRight: =3
             PaddingTop: =3
             PressedBorderColor: =RGBA(0, 0, 0, 0)
-            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedColor: =RGBA(0, 0, 0, 0)
             PressedFill: =RGBA(0, 0, 0, 0)
             Width: =Parent.TemplateWidth
             ZIndex: =4
@@ -671,7 +671,7 @@ Screen1 As screen:
             PaddingRight: =3
             PaddingTop: =3
             PressedBorderColor: =RGBA(0, 0, 0, 0)
-            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedColor: =RGBA(0, 0, 0, 0)
             PressedFill: =RGBA(0, 0, 0, 0)
             Width: =Parent.TemplateWidth
             ZIndex: =4
