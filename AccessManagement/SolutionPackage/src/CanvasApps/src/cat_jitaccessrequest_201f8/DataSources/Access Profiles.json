@@ -59,6 +59,7 @@
     "TrimmedViewName": true,
     "Type": "ViewInfo",
     "ViewInfoNameMapping": {
+      "70ae3b33-f504-4126-8756-68f3089ac750": "Access Profile Lookup View",
       "e0b818f9-8ae9-ed11-8849-6045bd8ccc09": "Active Access Profiles",
       "f68469a0-8fff-ed11-8f6d-000d3a246956": "Inactive Access Profiles"
     }
