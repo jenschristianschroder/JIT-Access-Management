@@ -164,6 +164,11 @@
       "Kind": "Page",
       "Name": "Facepile Test",
       "Value": "custompage:cat_facepiletest_172d0"
+    },
+    {
+      "Kind": "Page",
+      "Name": "Access Profile Shared With",
+      "Value": "custompage:cat_accessprofilesharedwith_b0c5d"
     }
   ]
 }

@@ -88,6 +88,7 @@ Screen1 As screen:
         OnSelect: |-
             =Set(diagnosticsRunning, true);
             Set(sharedResult, Blank());
+            Clear(sharedWithUsers);
             Concurrent(
                 Set(sharedResult, 'Retrieve-Shared-Access'.Run(accessProfile.'Access Profile')),
                 ClearCollect(
@@ -316,6 +317,7 @@ Screen1 As screen:
         OnTimerEnd: |-
             =Set(diagnosticsRunning, true);
             Set(sharedResult, Blank());
+            Clear(sharedWithUsers);
             Concurrent(
                 Set(sharedResult, 'Retrieve-Shared-Access'.Run(accessProfile.'Access Profile')),
                 ClearCollect(
@@ -406,6 +408,7 @@ Screen1 As screen:
         Items: =sharedWithUsers
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =Navigate(LookUp(Users, User = GUID(ThisItem.systemuserid)));
         TemplatePadding: =0
         TemplateSize: =48
         Width: =500
@@ -437,7 +440,7 @@ Screen1 As screen:
             Width: =Parent.TemplateWidth - Self.X - 8
             X: =Facepile1.X + Facepile1.Width
             Y: =((Parent.TemplateHeight - 36) / 2) - 4
-            ZIndex: =3
+            ZIndex: =2
 
         Subtitle1 As Label:
             DisplayMode: =DisplayMode.Edit
@@ -446,11 +449,36 @@ Screen1 As screen:
             Height: =24
             OnSelect: =Select(Parent)
             TabIndex: =-1
-            Text: =ThisItem.fullname
+            Text: =ThisItem.internalemailaddress
             VerticalAlignment: =VerticalAlign.Top
             Width: =Title1.Width
             X: =Title1.X
             Y: =Title1.Y + Title1.Height - 6
+            ZIndex: =3
+
+        Icon3_1 As icon.Message:
+            AutoDisableOnSelect: =false
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(0, 0, 0, 0)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderColor: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =0
+            Height: =Parent.TemplateHeight
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.Message
+            OnSelect: =Select(Parent)
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Width: =Parent.TemplateWidth
             ZIndex: =4
 
         "Facepile1 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
@@ -471,7 +499,7 @@ Screen1 As screen:
             MaxDisplayablePersonas: =1
             OnSelect: =Select(Parent)
             ShowAddButton: =false
-            Width: =40
+            Width: =37
             X: =13
             Y: =11
             ZIndex: =5
@@ -598,7 +626,7 @@ Screen1 As screen:
             Width: =Parent.TemplateWidth - Self.X - 8
             X: =Facepile1_2.X + Facepile1_2.Width
             Y: =12
-            ZIndex: =3
+            ZIndex: =2
 
         "Facepile1_2 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
             DisplayMode: =DisplayMode.Edit
@@ -621,7 +649,32 @@ Screen1 As screen:
             Width: =37
             X: =13
             Y: =11
-            ZIndex: =5
+            ZIndex: =3
+
+        Icon3 As icon.Message:
+            AutoDisableOnSelect: =false
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(0, 0, 0, 0)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderColor: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =0
+            Height: =Parent.TemplateHeight
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Icon: =Icon.Message
+            OnSelect: =Select(Parent)
+            PaddingBottom: =3
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =3
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Width: =Parent.TemplateWidth
+            ZIndex: =4
 
     Label2 As Label:
         Alignment: =Align.Left
