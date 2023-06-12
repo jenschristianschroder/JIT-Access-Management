@@ -35,8 +35,42 @@ namespace AccessManagementPlugins
             {
                 Entity accessRequest = (Entity)context.InputParameters["Target"];
 
+                EntityReference accessProfileRef = (EntityReference)accessRequest.GetAttributeValue<EntityReference>("cat_accessprofile");
+
+                tracingService.Trace($"Get Access Profile ({accessProfileRef.Id})");
+                Entity accessProfile = currentUserService.Retrieve("cat_accessprofile", accessProfileRef.Id, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
+
+                tracingService.Trace($"access profile state {accessProfile.GetAttributeValue<OptionSetValue>("statecode").Value} status {accessProfile.GetAttributeValue<OptionSetValue>("statuscode").Value}");
+
+                if(accessProfile.GetAttributeValue<OptionSetValue>("statecode").Value != 0 || accessProfile.GetAttributeValue<OptionSetValue>("statuscode").Value != 1)
+                {
+                    throw new Exception($"Access Request created for Access Profile ({accessProfile.Id}) that is not Active");
+                }
+
+                tracingService.Trace("Ensure Access Request match Access Profile");
+                accessRequest.Attributes["cat_environmentid"] = accessProfile.GetAttributeValue<String>("cat_environmentid");
+                accessRequest.Attributes["cat_environmentname"] = accessProfile.GetAttributeValue<String>("cat_environmentname");
+                accessRequest.Attributes["cat_environmentuniquename"] = accessProfile.GetAttributeValue<String>("cat_environmentuniquename");
+                accessRequest.Attributes["cat_environmenturl"] = accessProfile.GetAttributeValue<String>("cat_environmenturl");
+                accessRequest.Attributes["cat_duration"] = accessProfile.GetAttributeValue<Int32>("cat_duration");
+                accessRequest.Attributes["cat_approvalrequired"] = accessProfile.GetAttributeValue<bool>("cat_approvalrequired");
+                accessRequest.Attributes["cat_securityrole"] = accessProfile.GetAttributeValue<String>("cat_securityrole");
+
+                if(accessProfile.GetAttributeValue<bool>("cat_justificationrequired"))
+                {
+                    if(String.IsNullOrEmpty(accessRequest.GetAttributeValue<String>("cat_justification")))
+                    {
+                        throw new Exception($"Access Request has no Justification. Selectec Access Profile ({accessProfile.Id}) requires Justification");
+                    }
+                }
+
                 // Set Status Reason to "Request" (1)
-                accessRequest.Attributes["statuscode"] = 1;
+                if (accessRequest.GetAttributeValue<OptionSetValue>("statuscode") != new OptionSetValue(1))
+                {
+                    tracingService.Trace($"Access Request created with status code {accessRequest.GetAttributeValue<OptionSetValue>("statuscode").Value}");
+                    tracingService.Trace($"Setting Access Request status code to 1 (Requested)");
+                    accessRequest.Attributes["statuscode"] = 1;
+                }
             }
             // Only throw an InvalidPluginExecutionException. Please Refer https://go.microsoft.com/fwlink/?linkid=2153829.
             catch (Exception ex)
