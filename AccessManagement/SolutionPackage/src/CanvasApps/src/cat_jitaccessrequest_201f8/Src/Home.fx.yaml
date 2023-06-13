@@ -38,7 +38,28 @@ Home As screen:
                     statusTextColor: "#ffffff"
                 }
             )
-        )
+        );
+        
+        ClearCollect(
+                UserPerson,
+                {
+                    ItemPersonaKey: User().Email,
+                    ItemPersonaName: User().FullName,
+                    IsImage: false,
+                    ItemPersonaImageInfo:
+                    //Get base64 image data
+                    Substitute(
+                        JSON(
+                            Office365Users.UserPhotoV2(User().Email),
+                            JSONFormat.IncludeBinaryData
+                        ),
+                        """",
+                        ""
+                    ),
+                    ItemPersonaPresence: "Away",
+                    ItemPersonaClickable: false
+                }
+            );
 
     layoutMainContent As groupContainer.verticalAutoLayoutContainer:
         Height: =Parent.Height - Self.Y
@@ -12720,6 +12741,7 @@ Home As screen:
                                 LaunchTarget.New
                             )
                         )
+                    Theme: =AppThemeJson
                     Tooltip: ="Approvers"
                     Visible: =selectedAccessProfile.'Approval Required'
                     Width: =192
@@ -12973,6 +12995,18 @@ Home As screen:
                     X: =140
                     Y: =207
                     ZIndex: =30
+
+        "Facepile3 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
+            DisplayMode: =DisplayMode.Edit
+            Height: =38
+            Items: =UserPerson
+            OverflowButtonType: ='PowerCAT.Facepile.OverflowButtonType'.descriptive
+            PersonaSize: ='PowerCAT.Facepile.PersonaSize'.Size32
+            Visible: =false //showNewRequestPanel
+            Width: =200
+            X: =1088
+            Y: =24
+            ZIndex: =6
 
     cntHeader As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
