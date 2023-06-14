@@ -60,7 +60,7 @@ namespace AccessManagementPlugins
                 {
                     if(String.IsNullOrEmpty(accessRequest.GetAttributeValue<String>("cat_justification")))
                     {
-                        throw new Exception($"Access Request has no Justification. Selectec Access Profile ({accessProfile.Id}) requires Justification");
+                        throw new Exception($"Access Request has no Justification. Selected Access Profile ({accessProfile.Id}) requires Justification");
                     }
                 }
 
