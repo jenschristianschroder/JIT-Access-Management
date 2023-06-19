@@ -69,12 +69,9 @@ Audit needs to be enabled in the environment for auditing of Access Profiles and
 ### Configure Access Profile Approval Process
 
 1. Select the Access Profile for which you want to enable the Approval Process.
-2. Click the **Enable Approval** button in the command bar.
-3. Click the **Related** tab drop down.
-4. Select **Access Profile Approvers**.
-5. Select the Associated record.
-6. Select the **Approval Type** of Approval Process you want to apply to the Access Profile.
-7. Add the users who should be part of the Approval process.
+2. Click the **Access Profile** > **Approval** > **Enable Approval** button in the command bar.
+3. Once the **Approval Form** has loaded, select the **Approval Type** of the Approval Process you want to apply to the Access Profile.
+4. Add the users who should be part of the Approval process.
 
 ### Share Access Profile with users
 
