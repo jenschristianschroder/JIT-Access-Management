@@ -302,10 +302,6 @@ Screen1 As screen:
 
     Container1 As groupContainer.manualLayoutContainer:
         Height: =Label3_18.Height + Label3_20.Height
-        RadiusBottomLeft: =4
-        RadiusBottomRight: =4
-        RadiusTopLeft: =4
-        RadiusTopRight: =4
         Visible: =accessProfile.'Approval Required'
         Y: =If(Label6_4.Visible, Button3_4.Y + Button3_4.Height, Label3_17.Y + Label3_17.Height)
         ZIndex: =51

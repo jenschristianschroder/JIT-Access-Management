@@ -31,6 +31,7 @@
       "cat_accessrequest_Tasks": "Tasks",
       "cat_accessrequestid": "Access Request",
       "cat_approvalrequired": "Approval Required",
+      "cat_comment": "Comment",
       "cat_duration": "Duration",
       "cat_environmentid": "Environment Id",
       "cat_environmentname": "Environment Name",

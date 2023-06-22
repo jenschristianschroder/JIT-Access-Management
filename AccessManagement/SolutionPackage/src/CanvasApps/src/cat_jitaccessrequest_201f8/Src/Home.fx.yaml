@@ -12278,13 +12278,14 @@ Home As screen:
 
         Panel_2 As Panel:
             Buttons: |-
-                =Table({Label: "Close", ButtonType:'Button.ButtonType'.Standard, Visible:Not(showSubmitAccessRequest), Enabled:true },{Label: "Back", ButtonType:'Button.ButtonType'.Standard, Visible:showSubmitAccessRequest, Enabled:true },{Label: "Submit", ButtonType:'Button.ButtonType'.Primary, Visible:showSubmitAccessRequest, Enabled:If(Not(selectedAccessProfile.'Justification Required') Or (selectedAccessProfile.'Justification Required' And Len(TextInput2.Text) > 10), true, false) })
+                =Table({Label: "Close", ButtonType:'Button.ButtonType'.Standard, Visible:Not(showSubmitAccessRequest), Enabled:true },{Label: "Back", ButtonType:'Button.ButtonType'.Standard, Visible:showSubmitAccessRequest, Enabled:Not(submitRequest) },{Label: "Submit", ButtonType:'Button.ButtonType'.Primary, Visible:showSubmitAccessRequest, Enabled:If(Not(submitRequest) And (Not(selectedAccessProfile.'Justification Required') Or (selectedAccessProfile.'Justification Required' And Len(txtJustification.Text) > 10)), true, false) })
             DialogWidth: =800
             Fill: =Panel_2.OverlayColor
             Height: =Parent.Height - Self.X
             OnButtonSelect: |-
                 =Switch(Self.SelectedButton.Label
                     ,"Submit",
+                    UpdateContext({submitRequest: true});
                     Clear(notificationChannels);
                     If(tglTeamsNotification.Value, 
                         Collect(notificationChannels, 'Notification Channel (Access Requests)'.Teams)
@@ -12306,27 +12307,30 @@ Home As screen:
                             User: LookUp(Users, 'Primary Email' = User().Email), 
                             'Notify User': tglEmailNotification Or tglTeamsNotification, 
                             'Notification Channel': If(IsEmpty(notificationChannels), Blank(), notificationChannels),
-                            Justification: TextInput2.Text,
+                            Comment: txtComment.Text,
+                            Justification: txtJustification.Text,
                             'Status Reason': 'Status Reason (Access Requests)'.Requested
                 
                         }
                     );
                     UpdateContext({showNewRequestPanel:false, showSubmitAccessRequest:false, selectedAccessProfile: Blank()});
                     Set(environmentFilter, "");
-                    Reset(TextInput2);
+                    Reset(txtJustification);
                     Reset(tglEmailNotification);
-                    Reset(tglTeamsNotification),
+                    Reset(tglTeamsNotification);
+                    UpdateContext({submitRequest: false});
+                    Notify("Your Access Request was submitted successfully", NotificationType.Success, 2000),
                 
                     "Back",
                     UpdateContext({showSubmitAccessRequest:false, selectedAccessProfile: Blank()});
-                    Reset(TextInput2);
+                    Reset(txtJustification);
                     Reset(tglEmailNotification);
                     Reset(tglTeamsNotification);
                 
                     "Close",
                     UpdateContext({showNewRequestPanel:false, showSubmitAccessRequest:false, selectedAccessProfile: Blank()});
                     Set(environmentFilter, "");
-                    Reset(TextInput2);
+                    Reset(txtJustification);
                     Reset(tglEmailNotification);
                     Reset(tglTeamsNotification);
                 );
@@ -12666,7 +12670,7 @@ Home As screen:
                     Y: =lblDuration_1.Y
                     ZIndex: =6
 
-                HtmlText1 As htmlViewer:
+                htmlDescription As htmlViewer:
                     Height: =78
                     HtmlText: =selectedAccessProfile.Description
                     Width: =764
@@ -12674,7 +12678,7 @@ Home As screen:
                     Y: =15
                     ZIndex: =9
 
-                "lblDuration_2 As 'Auto Width Label (1.0.22)'":
+                "lblRequirements As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     Height: =24
                     PaddingLeft: =24
@@ -12810,7 +12814,7 @@ Home As screen:
                         Y: =241
                         ZIndex: =14
 
-                "lblDuration_3 As 'Auto Width Label (1.0.22)'":
+                "lblApprovers As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     Height: =24
                     PaddingLeft: =24
@@ -12838,7 +12842,7 @@ Home As screen:
                     Y: =207
                     ZIndex: =17
 
-                "lblDurationValue_2 As 'Auto Width Label (1.0.22)'":
+                "lblApprovalTypeValue As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     Height: =24
                     PaddingLeft: =0
@@ -12850,14 +12854,15 @@ Home As screen:
                     Y: =lblApprovalType.Y
                     ZIndex: =18
 
-                TextInput2 As text:
+                txtJustification As text:
                     BorderColor: =ColorValue(header.Theme.palette.neutralDark)
                     BorderThickness: =1
                     Default: =
                     FocusedBorderThickness: =1
-                    Height: =96
+                    Height: =56
                     HintText: =$"Enter your justification for requesting {selectedAccessProfile.'Security Role'} access to {selectedAccessProfile.'Environment Name'}"
                     HoverFill: =RGBA(0, 0, 0, 0)
+                    MaxLength: =250
                     Mode: =TextMode.MultiLine
                     RadiusBottomLeft: =2
                     RadiusBottomRight: =2
@@ -12867,10 +12872,10 @@ Home As screen:
                     Visible: =selectedAccessProfile.'Justification Required'
                     Width: =762
                     X: =20
-                    Y: =Parent.Height - Self.Height - 10
+                    Y: =468
                     ZIndex: =19
 
-                "lblDuration_4 As 'Auto Width Label (1.0.22)'":
+                "lblJustification As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     FontWeight: ="bold"
                     Height: =24
@@ -12882,10 +12887,10 @@ Home As screen:
                     Visible: =selectedAccessProfile.'Justification Required'
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =0
-                    Y: =TextInput2.Y - Self.Height
+                    Y: =txtJustification.Y - Self.Height
                     ZIndex: =20
 
-                "lblEnvironment_2 As 'Auto Width Label (1.0.22)'":
+                "lblEnvironmentId_1 As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     Height: =24
                     PaddingLeft: =24
@@ -12898,7 +12903,7 @@ Home As screen:
                     Y: =172
                     ZIndex: =21
 
-                "lblEnvironmentValue_2 As 'Auto Width Label (1.0.22)'":
+                "lblEnvironmentIdValue As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     Height: =24
                     PaddingLeft: =0
@@ -12909,7 +12914,7 @@ Home As screen:
                     Y: =172
                     ZIndex: =22
 
-                "lblEnvironment_3 As 'Auto Width Label (1.0.22)'":
+                "lblEnvironmentUrl_1 As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     Height: =24
                     PaddingLeft: =24
@@ -12922,7 +12927,7 @@ Home As screen:
                     Y: =207
                     ZIndex: =23
 
-                "lblDuration_5 As 'Auto Width Label (1.0.22)'":
+                "lblNotification As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     FontWeight: ="bold"
                     Height: =24
@@ -12934,10 +12939,10 @@ Home As screen:
                     Visible: =selectedAccessProfile.'Approval Required'
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =0
-                    Y: =302
+                    Y: =284
                     ZIndex: =25
 
-                "lblDuration_6 As 'Auto Width Label (1.0.22)'":
+                "lblTeamsNotification As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     Height: =24
                     PaddingLeft: =24
@@ -12948,10 +12953,10 @@ Home As screen:
                     Visible: =true
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =0
-                    Y: =327
+                    Y: =309
                     ZIndex: =26
 
-                "lblDuration_7 As 'Auto Width Label (1.0.22)'":
+                "lblEmailNotification As 'Auto Width Label (1.0.22)'":
                     DisplayMode: =DisplayMode.Edit
                     Height: =24
                     PaddingLeft: =24
@@ -12962,7 +12967,7 @@ Home As screen:
                     Visible: =true
                     Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
                     X: =2
-                    Y: =353
+                    Y: =335
                     ZIndex: =27
 
                 tglTeamsNotification As toggleSwitch:
@@ -12970,7 +12975,7 @@ Home As screen:
                     Height: =16
                     ShowLabel: =false
                     X: =84
-                    Y: =331
+                    Y: =313
                     ZIndex: =28
 
                 tglEmailNotification As toggleSwitch:
@@ -12980,10 +12985,10 @@ Home As screen:
                     PressedBorderColor: =Color.Transparent
                     ShowLabel: =false
                     X: =84
-                    Y: =357
+                    Y: =339
                     ZIndex: =29
 
-                HtmlText2 As htmlViewer:
+                htmlUrl As htmlViewer:
                     Height: =24
                     HtmlText: ="<a href='" & selectedAccessProfile.'Environment Url' & "'>" & selectedAccessProfile.'Environment Url' & "</a>"
                     PaddingBottom: =0
@@ -12995,6 +13000,41 @@ Home As screen:
                     X: =140
                     Y: =207
                     ZIndex: =30
+
+                txtComment As text:
+                    BorderColor: =ColorValue(header.Theme.palette.neutralDark)
+                    BorderThickness: =1
+                    Default: =
+                    FocusedBorderThickness: =1
+                    Height: =32
+                    HintText: =$"Enter additional comments"
+                    HoverFill: =RGBA(0, 0, 0, 0)
+                    MaxLength: =200
+                    RadiusBottomLeft: =2
+                    RadiusBottomRight: =2
+                    RadiusTopLeft: =2
+                    RadiusTopRight: =2
+                    Size: =10.5
+                    Visible: =selectedAccessProfile.'Justification Required'
+                    Width: =762
+                    X: =20
+                    Y: =394
+                    ZIndex: =31
+
+                "lblComment As 'Auto Width Label (1.0.22)'":
+                    DisplayMode: =DisplayMode.Edit
+                    FontWeight: ="bold"
+                    Height: =24
+                    PaddingLeft: =24
+                    PaddingRight: =12
+                    Text: |-
+                        ="Comment:"
+                    Tooltip: =""
+                    Visible: =selectedAccessProfile.'Justification Required'
+                    Width: =If(Self.AutoWidth < 120, 120, Self.AutoWidth)
+                    X: =0
+                    Y: =370
+                    ZIndex: =32
 
         "Facepile3 As 'Fluent Facepile (1.0.22) Preview'.pcfdataset":
             DisplayMode: =DisplayMode.Edit
