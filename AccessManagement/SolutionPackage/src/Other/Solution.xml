@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23053.234" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23054.212" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>AccessManagement</UniqueName>
     <LocalizedNames>
@@ -188,23 +188,23 @@
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2305.3022)" />
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2305.4013)" />
         <Dependent type="68" id="{fa1b3047-f169-4a0d-9c84-15cdd71dcdf0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2822)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2826)" />
         <Dependent type="26" schemaName="Calendar View" displayName="Calendar View" parentSchemaName="cat_accessrequest" parentDisplayName="Access Request" id="{2843f2fc-ace9-ed11-8849-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2822)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2826)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2305.3022)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2305.4013)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.2519)" />
+        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.2523)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
