@@ -23,7 +23,7 @@
     "Name": "groupContainer",
     "Version": "1.0"
   },
-  "hostControl": {
+  "Host": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
     "HostType": "Default",

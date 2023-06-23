@@ -5,14 +5,6 @@
         "PCFExternalServiceUsageAllowed": false
       },
       "ComponentName": "CustomControl",
-      "Identifier": "cat_PowerCAT.Facepile",
-      "IdentifierType": 0
-    },
-    {
-      "Capabilities": {
-        "PCFExternalServiceUsageAllowed": false
-      },
-      "ComponentName": "CustomControl",
       "Identifier": "cat_PowerCAT.CommandBar",
       "IdentifierType": 0
     },
@@ -197,6 +189,14 @@
         "PCFExternalServiceUsageAllowed": false
       },
       "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.Facepile",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
       "Identifier": "cat_PowerCAT.Elevation",
       "IdentifierType": 0
     },
@@ -293,6 +293,14 @@
         "PCFExternalServiceUsageAllowed": false
       },
       "ComponentName": "CustomControl",
+      "Identifier": "cat_PowerCAT.Facepile",
+      "IdentifierType": 0
+    },
+    {
+      "Capabilities": {
+        "PCFExternalServiceUsageAllowed": false
+      },
+      "ComponentName": "CustomControl",
       "Identifier": "cat_PowerCAT.AutoWidthLabel",
       "IdentifierType": 0
     },
@@ -301,7 +309,7 @@
         "PCFExternalServiceUsageAllowed": false
       },
       "ComponentName": "CustomControl",
-      "Identifier": "cat_PowerCAT.Facepile",
+      "Identifier": "cat_PowerCAT.AutoWidthLabel",
       "IdentifierType": 0
     },
     {
