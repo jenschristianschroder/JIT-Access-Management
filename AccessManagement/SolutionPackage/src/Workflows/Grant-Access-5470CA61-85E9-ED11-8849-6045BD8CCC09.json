@@ -49,10 +49,15 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "cat_accessrequest",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filterexpression": "(statecode eq 0 and statuscode eq 1 and cat_approvalrequired eq false) or (statecode eq 0 and statuscode eq 809060007) ",
+              "subscriptionRequest/filterexpression": "(statecode eq 0 and statuscode eq 1 and cat_approvalrequired eq false) or (statecode eq 0 and statuscode eq 809060007 and cat_approvalrequired eq true) ",
               "subscriptionRequest/runas": 3
             },
             "authentication": "@parameters('$authentication')"
+          },
+          "runtimeConfiguration": {
+            "concurrency": {
+              "runs": 1
+            }
           }
         }
       },
