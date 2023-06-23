@@ -274,11 +274,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{8378ccce-b573-4f51-8e1d-a52615e5bd9b}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{e417e3f0-6140-400d-ba8f-e6ebc703f220}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Justification" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="cat_justification" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_justification" disabled="false" />
+                        <control id="cat_comment" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_comment" disabled="false" />
                       </cell>
                       <cell locklevel="0" id="{6fef2f59-5c1c-4743-b844-3a07a310d782}">
                         <labels>
@@ -292,18 +292,36 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{8378ccce-b573-4f51-8e1d-a52615e5bd9b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Justification" languagecode="1033" />
+                        </labels>
+                        <control id="cat_justification" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_justification" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{101f5660-30c8-40de-b069-76cacee00064}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{fc809b60-9ead-4e45-ab2a-a91d46ca0997}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{1d174913-75e8-48e8-941d-4092b87a5c93}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Status" languagecode="1033" />
                         </labels>
                         <control id="statecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statecode" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{717066b6-2067-46fd-bb56-d6faffd199a9}">
+                      <cell locklevel="0" id="{d8be8fa5-1c3d-49e0-a863-c7401e591349}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{916d8ca2-4da3-4d0d-be22-e55cd3ce3e84}">
+                      <cell locklevel="0" id="{77f7310c-8459-4f7b-9471-a6ceab5305f7}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -316,12 +334,12 @@
                         </labels>
                         <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="true" />
                       </cell>
-                      <cell locklevel="0" id="{101f5660-30c8-40de-b069-76cacee00064}">
+                      <cell locklevel="0" id="{9c47c988-f870-4142-b92b-4eec9545b136}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{fc809b60-9ead-4e45-ab2a-a91d46ca0997}">
+                      <cell locklevel="0" id="{c1262fcf-eb6d-4322-ae3a-9ad98d9bb5c7}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>

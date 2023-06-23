@@ -44,6 +44,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{91d491a4-665f-46c5-950a-f9b182138bab}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="cat_comment" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cat_comment" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{6107175b-cb01-4848-a722-5077289a9231}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Justification" languagecode="1033" />
