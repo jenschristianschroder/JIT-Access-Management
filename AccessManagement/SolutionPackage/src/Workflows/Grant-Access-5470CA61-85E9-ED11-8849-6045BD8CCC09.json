@@ -102,6 +102,13 @@
               "$top": 1
             },
             "authentication": "@parameters('$authentication')"
+          },
+          "runtimeConfiguration": {
+            "secureData": {
+              "properties": [
+                "outputs"
+              ]
+            }
           }
         },
         "Get_Security_Role": {

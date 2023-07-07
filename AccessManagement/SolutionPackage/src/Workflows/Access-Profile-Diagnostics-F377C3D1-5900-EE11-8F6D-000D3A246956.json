@@ -338,6 +338,9 @@
                   "actions": {
                     "Set_accessProfileApproversExist_false": {
                       "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "76f694b5-e0f3-4137-b36b-fbc1c93da25b"
+                      },
                       "type": "SetVariable",
                       "inputs": {
                         "name": "accessProfileApproversExist",
@@ -351,6 +354,9 @@
                   "actions": {
                     "set_accessProfileApproversExist_true": {
                       "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "968f8d1a-73fb-47f9-a8c2-d99cb20833c6"
+                      },
                       "type": "SetVariable",
                       "inputs": {
                         "name": "accessProfileApproversExist",
