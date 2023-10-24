@@ -104,6 +104,11 @@
     "OptionSetInfoNameMapping": {
       "10097": "Teams chat",
       "10317": "Access Request Activity",
+      "10458": "Customer Voice alert",
+      "10459": "Customer Voice survey invite",
+      "10460": "Customer Voice survey response",
+      "10484": "Invite Redemption",
+      "10485": "Portal Comment",
       "4201": "Appointment",
       "4202": "Email",
       "4204": "Fax",

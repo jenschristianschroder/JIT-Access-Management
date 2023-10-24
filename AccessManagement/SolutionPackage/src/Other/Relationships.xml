@@ -2,6 +2,7 @@
 <EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <EntityRelationship Name="account_cat_AccessRequestActivities" />
   <EntityRelationship Name="activity_pointer_cat_AccessRequestActivity" />
+  <EntityRelationship Name="adx_invitation_cat_AccessRequestActivities" />
   <EntityRelationship Name="business_unit_cat_accessmanagementsetup" />
   <EntityRelationship Name="business_unit_cat_accessprofile" />
   <EntityRelationship Name="business_unit_cat_accessprofileapprovers" />
@@ -32,6 +33,12 @@
   <EntityRelationship Name="lk_cat_accessprofileapprovers_modifiedby" />
   <EntityRelationship Name="lk_cat_accessrequest_createdby" />
   <EntityRelationship Name="lk_cat_accessrequest_modifiedby" />
+  <EntityRelationship Name="mspp_adplacement_cat_AccessRequestActivities" />
+  <EntityRelationship Name="mspp_pollplacement_cat_AccessRequestActivities" />
+  <EntityRelationship Name="mspp_publishingstatetransitionrule_cat_AccessRequestActivities" />
+  <EntityRelationship Name="mspp_redirect_cat_AccessRequestActivities" />
+  <EntityRelationship Name="mspp_shortcut_cat_AccessRequestActivities" />
+  <EntityRelationship Name="mspp_website_cat_AccessRequestActivities" />
   <EntityRelationship Name="owner_cat_accessmanagementsetup" />
   <EntityRelationship Name="owner_cat_accessprofile" />
   <EntityRelationship Name="owner_cat_accessprofileapprovers" />

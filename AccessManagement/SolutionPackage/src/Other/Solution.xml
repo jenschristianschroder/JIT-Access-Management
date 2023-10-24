@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23061.188" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23094.206" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>AccessManagement</UniqueName>
     <LocalizedNames>
@@ -114,12 +114,13 @@
       <MissingDependency>
         <Required type="300" schemaName="cat_powercatcomponentlibrary_0be3a" displayName="Power CAT Component Library" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/ControlWS/SummaryPageImages/BPF_HighContrast.svg" displayName="AppCommon/ControlWS/SummaryPageImages/BPF_HighContrast.svg" solution="msdynce_AppCommon (9.0.4.0066)">
-          <package>msdynce_AppCommonAnchor (9.0.23053.10002)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23091.10001)</package>
         </Required>
         <Dependent type="62" schemaName="cat_JITAccessManagement" />
       </MissingDependency>
@@ -128,87 +129,96 @@
         <Dependent type="80" schemaName="cat_JITAccessManagement" displayName="JIT Access Management" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="SLAManagement/_imgs/SLA.svg" displayName="SLAManagement/_imgs/SLA.svg" solution="msdynce_ServiceLevelAgreementExtension (9.0.23053.1004)">
-          <package>msdynce_ServiceLevelAgreementAnchor (9.0.23053.1004)</package>
+        <Required type="61" schemaName="SLAManagement/_imgs/SLA.svg" displayName="SLAManagement/_imgs/SLA.svg" solution="msdynce_ServiceLevelAgreementExtension (9.0.23093.1006)">
+          <package>msdynce_ServiceLevelAgreementAnchor (9.0.23093.1006)</package>
         </Required>
         <Dependent type="62" schemaName="cat_JITAccessManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.AutoWidthLabel" displayName="cat_PowerCAT.AutoWidthLabel" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.CommandBar" displayName="cat_PowerCAT.CommandBar" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.Elevation" displayName="cat_PowerCAT.Elevation" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.Facepile" displayName="cat_PowerCAT.Facepile" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_accessprofilediagnostics_33039" displayName="Access Profile Diagnostics" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.Facepile" displayName="cat_PowerCAT.Facepile" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_accessprofilesharedwith_b0c5d" displayName="Access Profile Shared With" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.Facepile" displayName="cat_PowerCAT.Facepile" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.FluentDetailsList" displayName="cat_PowerCAT.FluentDetailsList" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.Icon" displayName="cat_PowerCAT.Icon" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="cat_PowerCAT.SubwayNav" displayName="cat_PowerCAT.SubwayNav" solution="CreatorKitCore (1.0.20230421.1)">
           <package>CreatorKitCore (1.0.20230421.1)</package>
+          <package>DataverseAccelerator_Anchor (1.0.1.0)</package>
         </Required>
         <Dependent type="300" schemaName="cat_jitaccessrequest_201f8" displayName="JIT Access Request" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2306.1011)" />
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2309.4020)" />
         <Dependent type="68" id="{fa1b3047-f169-4a0d-9c84-15cdd71dcdf0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2833)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.3107)" />
         <Dependent type="26" schemaName="Calendar View" displayName="Calendar View" parentSchemaName="cat_accessrequest" parentDisplayName="Access Request" id="{2843f2fc-ace9-ed11-8849-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2833)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.3107)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2306.1011)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2309.4020)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.2530)" />
+        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.2804)" />
         <Dependent type="60" displayName="Access Profile main form" parentDisplayName="Access Profile" id="{e3cc5f02-dbe8-ed11-a7c6-6045bd8ccc09}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="SettingDefinition" displayName="FluentThemingPreview" solution="msdyn_PowerAppsThemingSettings (1.0.0.6)" id.uniquename="FluentThemingPreview" />
+        <Required type="SettingDefinition" displayName="FluentThemingPreview" solution="msdyn_PowerAppsThemingSettings (1.0.0.10)" id.uniquename="FluentThemingPreview" />
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=cat_JITAccessManagement,settingdefinitionid.uniquename=FluentThemingPreview" id.parentappmoduleid.uniquename="cat_JITAccessManagement" id.settingdefinitionid.uniquename="FluentThemingPreview" />
       </MissingDependency>
     </MissingDependencies>
