@@ -55,5 +55,6 @@
     "TableName": "cat_accessprofile",
     "Views": "{\"@odata.context\":\"https://access-management.crm4.dynamics.com/api/data/v9.0/$metadata#savedqueries(savedqueryid,name,querytype)\",\"value\":[{\"@odata.etag\":\"W/\\\"2370584\\\"\",\"savedqueryid\":\"f68469a0-8fff-ed11-8f6d-000d3a246956\",\"name\":\"Inactive Access Profiles\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"2370587\\\"\",\"savedqueryid\":\"e0b818f9-8ae9-ed11-8849-6045bd8ccc09\",\"name\":\"Active Access Profiles\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"2370590\\\"\",\"savedqueryid\":\"70ae3b33-f504-4126-8756-68f3089ac750\",\"name\":\"Access Profile Lookup View\",\"querytype\":64}]}"
   },
+  "UnusedDataSources": {},
   "webApiVersion": "v9.0"
 }

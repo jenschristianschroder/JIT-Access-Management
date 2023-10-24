@@ -47,6 +47,7 @@ App As appinfo:
                 label: "Access Request Created"
             }
         )
+    Theme: =PowerAppsTheme
 
     Host As hostControl.DefaultHostControlVariant:
         OnCancel: =false

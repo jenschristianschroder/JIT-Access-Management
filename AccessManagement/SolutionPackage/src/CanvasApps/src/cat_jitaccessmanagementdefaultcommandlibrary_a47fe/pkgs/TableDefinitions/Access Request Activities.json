@@ -21,5 +21,6 @@
     "TableName": "cat_accessrequestactivity",
     "Views": "{\"@odata.context\":\"https://access-management.crm4.dynamics.com/api/data/v9.0/$metadata#savedqueries(savedqueryid,name,querytype)\",\"value\":[{\"@odata.etag\":\"W/\\\"1463671\\\"\",\"savedqueryid\":\"7e1af4d2-86b9-463b-86c3-1d0ee9407429\",\"name\":\"Access Request Activity Advanced Find View\",\"querytype\":1},{\"@odata.etag\":\"W/\\\"1463623\\\"\",\"savedqueryid\":\"8f873aff-c9de-4ea5-97c5-7324094c4b5e\",\"name\":\"All Access Request Activities\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"1463647\\\"\",\"savedqueryid\":\"a5858357-2c55-4e6a-9afd-7b3d664946d6\",\"name\":\"Access Request Activity Associated View\",\"querytype\":2},{\"@odata.etag\":\"W/\\\"1463635\\\"\",\"savedqueryid\":\"e82feb42-38ad-4fc7-87f3-b60960e49e86\",\"name\":\"Closed Access Request Activities\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"1463611\\\"\",\"savedqueryid\":\"74424ed3-8af4-459b-b21b-c3eb88ded22e\",\"name\":\"My Open Access Request Activities\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"1463659\\\"\",\"savedqueryid\":\"81252e24-4d88-4273-a0e4-ecc1a353f9ae\",\"name\":\"Access Request Activity Lookup View\",\"querytype\":64}]}"
   },
+  "UnusedDataSources": {},
   "webApiVersion": "v9.0"
 }

@@ -21,5 +21,6 @@
     "TableName": "cat_accessprofile",
     "Views": "{\"@odata.context\":\"https://access-management.crm4.dynamics.com/api/data/v9.0/$metadata#savedqueries(savedqueryid,name,querytype)\",\"value\":[{\"@odata.etag\":\"W/\\\"1451513\\\"\",\"savedqueryid\":\"e0b818f9-8ae9-ed11-8849-6045bd8ccc09\",\"name\":\"Active Access Profiles\",\"querytype\":0}]}"
   },
+  "UnusedDataSources": {},
   "webApiVersion": "v9.0"
 }

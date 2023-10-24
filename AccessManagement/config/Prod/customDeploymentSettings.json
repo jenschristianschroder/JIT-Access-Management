@@ -3,49 +3,42 @@
                                       {
                                           "solutionComponentName":  "Access-Request-Created",
                                           "solutionComponentUniqueName":  "c03c9bed-f1ef-ed11-8849-6045bd8ccc09",
-                                          "activateAsUser":  "#{activateflow.activateas.Access-Request-Created.c03c9bed-f1ef-ed11-8849-6045bd8ccc09}#",
                                           "sortOrder":  "#{activateflow.order.Access-Request-Created.c03c9bed-f1ef-ed11-8849-6045bd8ccc09}#",
                                           "activate":  "#{activateflow.activate.Access-Request-Created.c03c9bed-f1ef-ed11-8849-6045bd8ccc09}#"
                                       },
                                       {
                                           "solutionComponentName":  "Get-Environment-Details",
                                           "solutionComponentUniqueName":  "e0bcf20f-97f0-ed11-8849-6045bd8ccc09",
-                                          "activateAsUser":  "#{activateflow.activateas.Get-Environment-Details.e0bcf20f-97f0-ed11-8849-6045bd8ccc09}#",
                                           "sortOrder":  "#{activateflow.order.Get-Environment-Details.e0bcf20f-97f0-ed11-8849-6045bd8ccc09}#",
                                           "activate":  "#{activateflow.activate.Get-Environment-Details.e0bcf20f-97f0-ed11-8849-6045bd8ccc09}#"
                                       },
                                       {
                                           "solutionComponentName":  "Grant-Access",
                                           "solutionComponentUniqueName":  "5470ca61-85e9-ed11-8849-6045bd8ccc09",
-                                          "activateAsUser":  "#{activateflow.activateas.Grant-Access.5470ca61-85e9-ed11-8849-6045bd8ccc09}#",
                                           "sortOrder":  "#{activateflow.order.Grant-Access.5470ca61-85e9-ed11-8849-6045bd8ccc09}#",
                                           "activate":  "#{activateflow.activate.Grant-Access.5470ca61-85e9-ed11-8849-6045bd8ccc09}#"
                                       },
                                       {
                                           "solutionComponentName":  "Notify-User",
                                           "solutionComponentUniqueName":  "97d2c821-0af3-ed11-8849-6045bd8ccc09",
-                                          "activateAsUser":  "#{activateflow.activateas.Notify-User.97d2c821-0af3-ed11-8849-6045bd8ccc09}#",
                                           "sortOrder":  "#{activateflow.order.Notify-User.97d2c821-0af3-ed11-8849-6045bd8ccc09}#",
                                           "activate":  "#{activateflow.activate.Notify-User.97d2c821-0af3-ed11-8849-6045bd8ccc09}#"
                                       },
                                       {
                                           "solutionComponentName":  "Revoke-Access",
                                           "solutionComponentUniqueName":  "6b460363-9ce9-ed11-8849-6045bd8ccc09",
-                                          "activateAsUser":  "#{activateflow.activateas.Revoke-Access.6b460363-9ce9-ed11-8849-6045bd8ccc09}#",
                                           "sortOrder":  "#{activateflow.order.Revoke-Access.6b460363-9ce9-ed11-8849-6045bd8ccc09}#",
                                           "activate":  "#{activateflow.activate.Revoke-Access.6b460363-9ce9-ed11-8849-6045bd8ccc09}#"
                                       },
                                       {
                                           "solutionComponentName":  "Start-Access-Request-Approval",
                                           "solutionComponentUniqueName":  "c07f2785-faf2-ed11-8849-6045bd8ccc09",
-                                          "activateAsUser":  "#{activateflow.activateas.Start-Access-Request-Approval.c07f2785-faf2-ed11-8849-6045bd8ccc09}#",
                                           "sortOrder":  "#{activateflow.order.Start-Access-Request-Approval.c07f2785-faf2-ed11-8849-6045bd8ccc09}#",
                                           "activate":  "#{activateflow.activate.Start-Access-Request-Approval.c07f2785-faf2-ed11-8849-6045bd8ccc09}#"
                                       },
                                       {
                                           "solutionComponentName":  "Update-Access-Request",
                                           "solutionComponentUniqueName":  "b53bc662-d6ef-ed11-8849-6045bd8ccc09",
-                                          "activateAsUser":  "#{activateflow.activateas.Update-Access-Request.b53bc662-d6ef-ed11-8849-6045bd8ccc09}#",
                                           "sortOrder":  "#{activateflow.order.Update-Access-Request.b53bc662-d6ef-ed11-8849-6045bd8ccc09}#",
                                           "activate":  "#{activateflow.activate.Update-Access-Request.b53bc662-d6ef-ed11-8849-6045bd8ccc09}#"
                                       }

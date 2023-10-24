@@ -55,5 +55,6 @@
     "TableName": "cat_accessmanagementsetup",
     "Views": "{\"@odata.context\":\"https://access-management.crm4.dynamics.com/api/data/v9.0/$metadata#savedqueries(savedqueryid,name,querytype)\",\"value\":[{\"@odata.etag\":\"W/\\\"2370700\\\"\",\"savedqueryid\":\"1f2b0fb0-3803-4739-87e9-30e4201117cc\",\"name\":\"Inactive Access Management Setups\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"2370713\\\"\",\"savedqueryid\":\"b6c52bbf-6dc2-4d2a-b440-4247276b5ed8\",\"name\":\"Access Management Setup Advanced Find View\",\"querytype\":1},{\"@odata.etag\":\"W/\\\"2370707\\\"\",\"savedqueryid\":\"5bcbbfb6-d3b0-43ae-b314-ae3448485bc5\",\"name\":\"Active Access Management Setups\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"2370716\\\"\",\"savedqueryid\":\"b869563b-63e8-4beb-9db1-fcdc1ca4f9e8\",\"name\":\"Access Management Setup Associated View\",\"querytype\":2},{\"@odata.etag\":\"W/\\\"2370710\\\"\",\"savedqueryid\":\"b58a0c55-2d12-4c60-88eb-fe384306d351\",\"name\":\"Access Management Setup Lookup View\",\"querytype\":64}]}"
   },
+  "UnusedDataSources": {},
   "webApiVersion": "v9.0"
 }
