@@ -198,7 +198,10 @@
                   "type": "AppendToArrayVariable",
                   "inputs": {
                     "name": "arrayWaitingForActivities",
-                    "value": "@outputs('Add_a_new_row_2')"
+                    "value": {
+                      "entraId": "@{outputs('Get_a_row_by_ID_3')?['body/azureactivedirectoryobjectid']}",
+                      "activity": "@outputs('Add_a_new_row_2')"
+                    }
                   }
                 }
               },
@@ -426,7 +429,7 @@
                             },
                             "parameters": {
                               "entityName": "cat_accessrequestactivities",
-                              "recordId": "@items('Apply_to_each_5')?['body']?['activityid']",
+                              "recordId": "@items('Apply_to_each_5')?['activity']?['body']?['activityid']",
                               "item/statecode": 1,
                               "item/description": "@{items('Apply_to_each_3')?['approverResponse']} @{if(equals(items('Apply_to_each_3')?['comments'], null), null, concat('\\nComment', items('Apply_to_each_3')?['comments']))}",
                               "item/statuscode": 2
@@ -511,9 +514,9 @@
                       },
                       "runAfter": {},
                       "expression": {
-                        "endsWith": [
-                          "@items('Apply_to_each_5')?['body']?['subject']",
-                          "@items('Apply_to_each_3')?['responder']?['displayName']"
+                        "equals": [
+                          "@items('Apply_to_each_5')?['entraId']",
+                          "@items('Apply_to_each_3')?['responder/id']"
                         ]
                       },
                       "metadata": {
@@ -639,7 +642,10 @@
                     "type": "AppendToArrayVariable",
                     "inputs": {
                       "name": "arrayWaitingForActivities",
-                      "value": "@outputs('Add_a_new_row_3')"
+                      "value": {
+                        "entraId": "@{outputs('Get_a_row_by_ID_4')?['body/azureactivedirectoryobjectid']}",
+                        "activity": "@outputs('Add_a_new_row_3')"
+                      }
                     }
                   }
                 },
@@ -699,7 +705,7 @@
                                   },
                                   "parameters": {
                                     "entityName": "cat_accessrequestactivities",
-                                    "recordId": "@items('Apply_to_each_9')?['body']?['activityid']",
+                                    "recordId": "@items('Apply_to_each_9')?['activity']?['body']?['activityid']",
                                     "item/statecode": 1,
                                     "item/description": "@{items('Apply_to_each_8')?['approverResponse']} @{if(equals(items('Apply_to_each_8')?['comments'], null), null, concat('\\nComment', items('Apply_to_each_8')?['comments']))}",
                                     "item/statuscode": 2
@@ -725,7 +731,7 @@
                                     },
                                     "parameters": {
                                       "entityName": "cat_accessrequestactivities",
-                                      "recordId": "@items('Apply_to_each_9')?['body']?['activityid']",
+                                      "recordId": "@items('Apply_to_each_9')?['activity']['body']['activityid']",
                                       "item/statecode": 1,
                                       "item/description": "@{items('Apply_to_each_8')?['approverResponse']} @{if(equals(items('Apply_to_each_8')?['comments'], null), null, concat('\\nComment', items('Apply_to_each_8')?['comments']))}",
                                       "item/statuscode": 2
@@ -749,9 +755,9 @@
                         },
                         "runAfter": {},
                         "expression": {
-                          "endsWith": [
-                            "@items('Apply_to_each_9')?['body']?['subject']",
-                            "@items('Apply_to_each_8')?['responder']?['displayName']"
+                          "equals": [
+                            "@items('Apply_to_each_9')?['entraId']",
+                            "@items('Apply_to_each_8')?['responder/id']"
                           ]
                         },
                         "metadata": {
